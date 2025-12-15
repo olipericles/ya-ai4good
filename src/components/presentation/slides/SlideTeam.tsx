@@ -1,0 +1,93 @@
+import SlideContainer from "../SlideContainer";
+import { Linkedin } from "lucide-react";
+
+interface SlideTeamProps {
+  isActive: boolean;
+}
+
+const SlideTeam = ({ isActive }: SlideTeamProps) => {
+  const team = [
+    {
+      name: "Adriele Ornellas",
+      role: "Especialista em Pessoas e Comunidades",
+      linkedin: "https://www.linkedin.com/in/adrieleornellas/",
+      delay: "delay-100",
+      gradient: "from-primary to-primary/60",
+    },
+    {
+      name: "Péricles Oliveira",
+      role: "Estrategista de IA e Negócios",
+      linkedin: "https://www.linkedin.com/in/olipericles/",
+      delay: "delay-300",
+      gradient: "from-secondary to-secondary/60",
+    },
+    {
+      name: "Luã Mota",
+      role: "Arquiteto de Software",
+      linkedin: "https://www.linkedin.com/in/luaamota/",
+      delay: "delay-500",
+      gradient: "from-accent to-accent/60",
+    },
+  ];
+
+  return (
+    <SlideContainer isActive={isActive}>
+      <div className="space-y-12">
+        {/* Title */}
+        <div className={`text-center space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
+          <h2 className="text-3xl md:text-5xl font-bold">
+            Da <span className="text-gradient">periferia de Salvador</span> pro Brasil
+          </h2>
+          <p className="text-foreground/60 text-lg md:text-xl">
+            Conhecemos essa realidade porque viemos dela.
+          </p>
+        </div>
+
+        {/* Team cards */}
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          {team.map((member, index) => (
+            <div
+              key={index}
+              className={`group relative ${isActive ? `animate-scale-in ${member.delay}` : 'opacity-0'}`}
+            >
+              <div className="bg-card border border-border rounded-2xl p-6 md:p-8 text-center hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
+                {/* Gradient top bar */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${member.gradient}`} />
+
+                {/* Avatar placeholder */}
+                <div className={`w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br ${member.gradient} mx-auto mb-6 flex items-center justify-center text-3xl md:text-4xl font-bold text-white`}>
+                  {member.name.split(' ').map(n => n[0]).join('')}
+                </div>
+
+                {/* Name and role */}
+                <h3 className="text-xl md:text-2xl font-bold mb-2">{member.name}</h3>
+                <p className="text-foreground/60 text-sm md:text-base mb-4">{member.role}</p>
+
+                {/* LinkedIn button */}
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2]/20 transition-colors"
+                >
+                  <Linkedin className="w-5 h-5" />
+                  <span className="text-sm font-medium">LinkedIn</span>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Quote */}
+        <blockquote className={`text-center max-w-3xl mx-auto ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
+          <p className="text-lg md:text-xl text-foreground/80 italic">
+            "A gente não estudou esse problema num paper — a gente viveu do lado dele. 
+            Estamos construindo a ferramenta que a gente queria que existisse pra elas."
+          </p>
+        </blockquote>
+      </div>
+    </SlideContainer>
+  );
+};
+
+export default SlideTeam;

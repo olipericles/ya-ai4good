@@ -1,13 +1,19 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Helmet } from "react-helmet";
+import Presentation from "@/components/presentation/Presentation";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <Helmet>
+        <title>Yá - Cuidando de Quem Cuida | Pitch Deck</title>
+        <meta name="description" content="Yá é uma assistente financeira no WhatsApp feita para mães solo brasileiras. Uma IA que cuida de quem cuida de todo mundo." />
+        <meta property="og:title" content="Yá - Cuidando de Quem Cuida" />
+        <meta property="og:description" content="Assistente financeira no WhatsApp para mães solo. 11 milhões de lares. Uma solução." />
+      </Helmet>
+      <main>
+        <Presentation />
+      </main>
+    </>
   );
 };
 
