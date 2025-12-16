@@ -1,11 +1,14 @@
 import SlideContainer from "../SlideContainer";
 import { Mic, Camera, Keyboard, Settings, TrendingUp, ArrowRight } from "lucide-react";
 
+type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+
 interface SlideHowItWorksProps {
   isActive: boolean;
+  transition?: TransitionType;
 }
 
-const SlideHowItWorks = ({ isActive }: SlideHowItWorksProps) => {
+const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
   const steps = [
     {
       number: "01",
@@ -34,7 +37,7 @@ const SlideHowItWorks = ({ isActive }: SlideHowItWorksProps) => {
   ];
 
   return (
-    <SlideContainer isActive={isActive}>
+    <SlideContainer isActive={isActive} transition={transition}>
       <div className="space-y-12">
         {/* Title */}
         <h2 className={`text-3xl md:text-5xl font-bold text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

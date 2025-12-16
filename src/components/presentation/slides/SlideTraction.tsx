@@ -1,11 +1,14 @@
 import SlideContainer from "../SlideContainer";
 import { Check, RefreshCw, Clock } from "lucide-react";
 
+type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+
 interface SlideTractionProps {
   isActive: boolean;
+  transition?: TransitionType;
 }
 
-const SlideTraction = ({ isActive }: SlideTractionProps) => {
+const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
   const milestones = [
     { 
       status: "done", 
@@ -41,7 +44,7 @@ const SlideTraction = ({ isActive }: SlideTractionProps) => {
   ];
 
   return (
-    <SlideContainer isActive={isActive}>
+    <SlideContainer isActive={isActive} transition={transition}>
       <div className="space-y-12">
         {/* Title */}
         <h2 className={`text-3xl md:text-5xl font-bold text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

@@ -64,18 +64,18 @@ const Presentation = () => {
       className="relative w-full h-screen bg-background overflow-hidden cursor-pointer"
       onClick={nextSlide}
     >
-      {/* Slides */}
+      {/* Slides with varied dramatic transitions */}
       <div className="absolute inset-0">
-        <SlideOpening isActive={currentSlide === 0} />
-        <SlideProblemDimension isActive={currentSlide === 1} />
-        <SlideProblemInvisible isActive={currentSlide === 2} />
-        <SlideSolution isActive={currentSlide === 3} />
-        <SlideHowItWorks isActive={currentSlide === 4} />
-        <SlideWhyWhatsApp isActive={currentSlide === 5} />
-        <SlideDifferential isActive={currentSlide === 6} />
-        <SlideTraction isActive={currentSlide === 7} />
-        <SlideTeam isActive={currentSlide === 8} />
-        <SlideClosing isActive={currentSlide === 9} />
+        <SlideOpening isActive={currentSlide === 0} transition="fade-zoom" />
+        <SlideProblemDimension isActive={currentSlide === 1} transition="slide-up" />
+        <SlideProblemInvisible isActive={currentSlide === 2} transition="zoom-rotate" />
+        <SlideSolution isActive={currentSlide === 3} transition="blur-scale" />
+        <SlideHowItWorks isActive={currentSlide === 4} transition="slide-left" />
+        <SlideWhyWhatsApp isActive={currentSlide === 5} transition="fade-zoom" />
+        <SlideDifferential isActive={currentSlide === 6} transition="slide-right" />
+        <SlideTraction isActive={currentSlide === 7} transition="zoom-rotate" />
+        <SlideTeam isActive={currentSlide === 8} transition="blur-scale" />
+        <SlideClosing isActive={currentSlide === 9} transition="fade-zoom" />
       </div>
 
       {/* Navigation arrows */}

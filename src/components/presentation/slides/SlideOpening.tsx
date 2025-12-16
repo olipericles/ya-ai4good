@@ -2,13 +2,16 @@ import SlideContainer from "../SlideContainer";
 import AnimatedNumber from "../AnimatedNumber";
 import yaLogo from "@/assets/ya-logo.png";
 
+type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+
 interface SlideOpeningProps {
   isActive: boolean;
+  transition?: TransitionType;
 }
 
-const SlideOpening = ({ isActive }: SlideOpeningProps) => {
+const SlideOpening = ({ isActive, transition }: SlideOpeningProps) => {
   return (
-    <SlideContainer isActive={isActive}>
+    <SlideContainer isActive={isActive} transition={transition}>
       <div className="text-center space-y-8">
         {/* Logo */}
         <div className={`flex justify-center mb-8 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
