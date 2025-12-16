@@ -1,5 +1,6 @@
 import SlideContainer from "../SlideContainer";
 import AnimatedNumber from "../AnimatedNumber";
+import HoverInfo from "@/components/ui/HoverInfo";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
 
@@ -10,9 +11,27 @@ interface SlideProblemDimensionProps {
 
 const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionProps) => {
   const stats = [
-    { value: 64, suffix: "%", label: "vivem em situação de pobreza", delay: "delay-100" },
-    { value: 39, suffix: "%", label: "menos renda que homens casados com filhos", delay: "delay-300" },
-    { value: 72, suffix: "%", label: "enfrentam essa jornada sozinhas", delay: "delay-500" },
+    {
+      value: 64,
+      suffix: "%",
+      label: "vivem em situação de pobreza",
+      delay: "delay-100",
+      tooltip: "Fonte: Síntese de Indicadores Sociais, IBGE 2023"
+    },
+    {
+      value: 39,
+      suffix: "%",
+      label: "menos renda que homens casados com filhos",
+      delay: "delay-300",
+      tooltip: "Comparativo de renda média mensal — Fonte: PNAD Contínua 2023"
+    },
+    {
+      value: 72,
+      suffix: "%",
+      label: "enfrentam essa jornada sozinhas",
+      delay: "delay-500",
+      tooltip: "Sem rede de apoio familiar ou institucional — Fonte: FGV Social"
+    },
   ];
 
   return (
@@ -31,12 +50,14 @@ const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionPr
               className={`bg-card border border-border/50 rounded-2xl p-4 sm:p-8 text-center hover:border-primary/50 transition-all duration-300 ${isActive ? `animate-scale-in ${stat.delay}` : 'opacity-0'}`}
             >
               <div className="text-4xl sm:text-5xl md:text-6xl font-black text-primary mb-2 sm:mb-4">
-                <AnimatedNumber
-                  value={stat.value}
-                  suffix={stat.suffix}
-                  isActive={isActive}
-                  duration={1500 + index * 200}
-                />
+                <HoverInfo tooltip={stat.tooltip}>
+                  <AnimatedNumber
+                    value={stat.value}
+                    suffix={stat.suffix}
+                    isActive={isActive}
+                    duration={1500 + index * 200}
+                  />
+                </HoverInfo>
               </div>
               <p className="text-foreground/70 text-sm sm:text-lg">{stat.label}</p>
             </div>
@@ -47,7 +68,10 @@ const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionPr
         <div className={`relative ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
           <div className="bg-gradient-to-r from-secondary/20 via-primary/20 to-secondary/20 rounded-2xl p-4 sm:p-6 md:p-8 border border-primary/20">
             <p className="text-center text-base sm:text-xl md:text-2xl">
-              <span className="text-primary font-bold">90%</span> do aumento na última década:
+              <HoverInfo tooltip="Crescimento de 2012-2022 — Fonte: IPEA Retrato das Desigualdades">
+                <span className="text-primary font-bold">90%</span>
+              </HoverInfo>{" "}
+              do aumento na última década:
               <span className="text-secondary font-semibold"> mulheres pretas e pardas</span>
             </p>
           </div>

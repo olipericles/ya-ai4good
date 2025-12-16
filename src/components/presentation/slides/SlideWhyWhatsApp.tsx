@@ -43,7 +43,7 @@ const SlideWhyWhatsApp = ({ isActive, transition }: SlideWhyWhatsAppProps) => {
               </TooltipTrigger>
               <TooltipContent side="bottom" className="bg-card border border-border p-3 max-w-xs">
                 <p className="text-sm text-foreground/80">
-                  Fonte: <a href="https://opinionbox.com" target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:underline font-medium">OpinionBox</a> — Pesquisa sobre uso de internet móvel no Brasil
+                  Fonte: <a href="https://cetic.br" target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:underline font-medium">TIC Domicílios 2023, CETIC.br</a>
                 </p>
               </TooltipContent>
             </Tooltip>
@@ -74,7 +74,7 @@ const SlideWhyWhatsApp = ({ isActive, transition }: SlideWhyWhatsAppProps) => {
               </TooltipTrigger>
               <TooltipContent side="bottom" className="bg-card border border-border p-3 max-w-xs">
                 <p className="text-sm text-foreground/80">
-                  Fonte: <a href="https://opinionbox.com" target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:underline font-medium">OpinionBox</a> — Pesquisa sobre uso do WhatsApp no Brasil
+                  Fonte: <a href="https://mobiletime.com.br" target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:underline font-medium">Panorama Mobile Time/Opinion Box, 2024</a>
                 </p>
               </TooltipContent>
             </Tooltip>
