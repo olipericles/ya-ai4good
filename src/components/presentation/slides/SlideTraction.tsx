@@ -46,14 +46,20 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
     {
       status: "pending",
       icon: Clock,
-      text: "Piloto com 20 beta testers",
+      text: "Mais consciência, senso de controle e menos estresse",
       delay: "delay-350"
     },
     {
       status: "pending",
       icon: Clock,
-      text: "Parcerias e escala",
+      text: "Ambiente seguro e com perspectiva para ~2 filhos/mãe",
       delay: "delay-400"
+    },
+    {
+      status: "pending",
+      icon: Clock,
+      text: "Impacto geracional: redução da pobreza e desigualdade",
+      delay: "delay-450"
     },
   ];
 
