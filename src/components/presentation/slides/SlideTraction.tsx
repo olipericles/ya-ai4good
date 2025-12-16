@@ -37,7 +37,7 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
               </li>
               <li className="flex items-start gap-2 text-sm sm:text-base md:text-lg">
                 <span className="text-primary mt-1">•</span>
-                <span><strong>Alimentação:</strong> gasto mais citado como "sem controle"</span>
+                <span><strong>70%</strong> querem ser alertadas ANTES — não depois que o dinheiro acabou</span>
               </li>
             </ul>
           </div>
