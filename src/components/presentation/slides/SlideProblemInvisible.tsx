@@ -11,7 +11,7 @@ interface SlideProblemInvisibleProps {
 const SlideProblemInvisible = ({ isActive, transition }: SlideProblemInvisibleProps) => {
   const invisibleCosts = [
     { icon: CreditCard, label: "Taxa que veio sem avisar", delay: "delay-200" },
-    { icon: ShoppingBag, label: "Lanche de R$12 que virou R$200", delay: "delay-400" },
+    { icon: ShoppingBag, label: "Remédio de emergência no cartão", delay: "delay-400" },
     { icon: Receipt, label: "Conta esquecida", delay: "delay-600" },
   ];
 

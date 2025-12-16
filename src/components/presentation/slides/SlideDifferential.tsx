@@ -80,6 +80,11 @@ const SlideDifferential = ({ isActive, transition }: SlideDifferentialProps) => 
             </div>
           ))}
         </div>
+
+        {/* Footnote about Granazen */}
+        <p className={`text-center text-sm text-foreground/50 max-w-2xl mx-auto ${isActive ? 'animate-fade-up delay-500' : 'opacity-0'}`}>
+          *O Granazen também usa WhatsApp, mas exige cadastro formal e não entende áudio.
+        </p>
       </div>
     </SlideContainer>
   );
