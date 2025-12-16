@@ -1,5 +1,8 @@
 import SlideContainer from "../SlideContainer";
 import { Linkedin } from "lucide-react";
+import adrielePhoto from "@/assets/adriele.png";
+import periclesPhoto from "@/assets/pericles.png";
+import luaPhoto from "@/assets/lua.png";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
 
@@ -14,6 +17,7 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
       name: "Adriele Ornellas",
       role: "Especialista em Pessoas e Comunidades",
       linkedin: "https://www.linkedin.com/in/adrieleornellas/",
+      photo: adrielePhoto,
       delay: "delay-100",
       gradient: "from-primary to-primary/60",
     },
@@ -21,6 +25,7 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
       name: "Péricles Oliveira",
       role: "Estrategista de IA e Negócios",
       linkedin: "https://www.linkedin.com/in/olipericles/",
+      photo: periclesPhoto,
       delay: "delay-300",
       gradient: "from-secondary to-secondary/60",
     },
@@ -28,6 +33,7 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
       name: "Luã Mota",
       role: "Arquiteto de Software",
       linkedin: "https://www.linkedin.com/in/luaamota/",
+      photo: luaPhoto,
       delay: "delay-500",
       gradient: "from-accent to-accent/60",
     },
@@ -57,9 +63,13 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
                 {/* Gradient top bar */}
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${member.gradient}`} />
 
-                {/* Avatar placeholder */}
-                <div className={`w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br ${member.gradient} mx-auto mb-4 sm:mb-6 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl font-bold text-white`}>
-                  {member.name.split(' ').map(n => n[0]).join('')}
+                {/* Avatar with photo */}
+                <div className={`w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 sm:mb-6 overflow-hidden ring-4 ring-offset-2 ring-offset-background ring-primary/20`}>
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 {/* Name and role */}
@@ -81,8 +91,8 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
           ))}
         </div>
 
-        {/* Quote */}
-        <blockquote className={`text-center max-w-3xl mx-auto ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
+        {/* Quote - hidden on mobile */}
+        <blockquote className={`hidden sm:block text-center max-w-3xl mx-auto ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
           <p className="text-lg md:text-xl text-foreground/80 italic">
             "A gente não estudou esse problema num paper — a gente viveu do lado dele.
             Estamos construindo a ferramenta que a gente queria que existisse pra elas."
