@@ -37,15 +37,6 @@ const SlideOpening = ({ isActive, transition }: SlideOpeningProps) => {
             Mais do que a população inteira de Portugal.
           </span>
         </p>
-
-        {/* Decorative elements */}
-        <div className={`absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 ${isActive ? 'animate-fade-in delay-700' : 'opacity-0'}`}>
-          <div className="flex items-center gap-2 text-muted-foreground text-xs sm:text-sm">
-            <span className="hidden sm:block w-12 h-px bg-muted-foreground/30"></span>
-            <span>Pressione espaço ou clique para continuar</span>
-            <span className="hidden sm:block w-12 h-px bg-muted-foreground/30"></span>
-          </div>
-        </div>
       </div>
 
       {/* Background glow */}
