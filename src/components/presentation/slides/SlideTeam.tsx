@@ -14,20 +14,20 @@ interface SlideTeamProps {
 const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
   const team = [
     {
-      name: "Adriele Ornellas",
-      role: "Especialista em Pessoas e Comunidades",
-      linkedin: "https://www.linkedin.com/in/adrieleornellas/",
-      photo: adrielePhoto,
-      delay: "delay-100",
-      gradient: "from-primary to-primary/60",
-    },
-    {
       name: "Péricles Oliveira",
       role: "Estrategista de IA e Negócios",
       linkedin: "https://www.linkedin.com/in/olipericles/",
       photo: periclesPhoto,
-      delay: "delay-300",
+      delay: "delay-100",
       gradient: "from-secondary to-secondary/60",
+    },
+    {
+      name: "Adriele Ornellas",
+      role: "Especialista em Pessoas e Comunidades",
+      linkedin: "https://www.linkedin.com/in/adrieleornellas/",
+      photo: adrielePhoto,
+      delay: "delay-300",
+      gradient: "from-primary to-primary/60",
     },
     {
       name: "Luã Mota",
@@ -45,7 +45,7 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
         {/* Title */}
         <div className={`text-center space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold">
-            Da <span className="text-gradient">periferia de Salvador</span> pro Brasil
+            Da <span className="text-gradient">periferia de Salvador</span> para o mundo
           </h2>
           <p className="text-foreground/60 text-sm sm:text-lg md:text-xl">
             Conhecemos essa realidade porque viemos dela.
@@ -99,7 +99,7 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
           </p>
         </blockquote>
       </div>
-    </SlideContainer>
+    </SlideContainer >
   );
 };
 
