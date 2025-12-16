@@ -1,5 +1,6 @@
 import SlideContainer from "../SlideContainer";
-import { Check, Star, Circle } from "lucide-react";
+import { Check, Star } from "lucide-react";
+import { useState } from "react";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
 
@@ -9,150 +10,156 @@ interface SlideTractionProps {
 }
 
 const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const activeIndex = hoveredIndex !== null ? hoveredIndex : 4;
+
   const milestones = [
     { text: "Propósito e ideia", status: "done" },
-    { text: "Selecionados AI4Good", status: "done" },
-    { text: "Pesquisa em campo", status: "done" },
-    { text: "Protótipo WhatsApp", status: "done" },
+    { text: "Selecionados AI4Good 2025 (8 de 167)", status: "done" },
+    { text: "Pesquisa com mães solo em campo", status: "done" },
+    { text: "Protótipo funcional no WhatsApp", status: "done" },
     { text: "DemoDay", status: "current" },
-    { text: "Consciência e controle", status: "pending" },
-    { text: "Dados para políticas", status: "pending" },
-    { text: "Ambiente seguro", status: "pending" },
-    { text: "Impacto geracional", status: "pending" },
+    { text: "Mais consciência, senso de controle e menos estresse", status: "pending" },
+    { text: "Dados agregados para políticas públicas", status: "pending" },
+    { text: "Ambiente seguro e com perspectiva para ~2 filhos/mãe", status: "pending" },
+    { text: "Impacto geracional: redução da pobreza e desigualdade", status: "pending" },
   ];
 
-  // Positions for snake-like path (alternating left-right)
   const positions = [
-    { x: 15, y: 8 },   // 1
-    { x: 50, y: 8 },   // 2
-    { x: 85, y: 8 },   // 3
-    { x: 85, y: 35 },  // 4
-    { x: 50, y: 35 },  // 5 - current
-    { x: 15, y: 35 },  // 6
-    { x: 15, y: 62 },  // 7
-    { x: 50, y: 62 },  // 8
-    { x: 85, y: 62 },  // 9
+    { x: 20, y: 12 },
+    { x: 50, y: 12 },
+    { x: 80, y: 12 },
+    { x: 80, y: 50 },
+    { x: 50, y: 50 },
+    { x: 20, y: 50 },
+    { x: 20, y: 88 },
+    { x: 50, y: 88 },
+    { x: 80, y: 88 },
   ];
 
   return (
     <SlideContainer isActive={isActive} transition={transition}>
-      <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col h-full">
         {/* Title */}
-        <h2 className={`text-xl sm:text-2xl md:text-4xl font-bold text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
+        <h2 className={`text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-6 sm:mb-8 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
           Nossa <span className="text-gradient">Jornada</span>
         </h2>
 
-        {/* Game Map */}
-        <div className={`relative w-full max-w-4xl mx-auto aspect-[16/9] ${isActive ? 'animate-fade-in delay-200' : 'opacity-0'}`}>
-          {/* SVG Path */}
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 75" preserveAspectRatio="xMidYMid meet">
-            {/* Curved path connecting points */}
-            <path
-              d={`M 15 8 
-                  L 50 8 
-                  L 85 8 
-                  C 95 8, 95 35, 85 35
-                  L 50 35 
-                  L 15 35
-                  C 5 35, 5 62, 15 62
-                  L 50 62 
-                  L 85 62`}
-              fill="none"
-              stroke="url(#pathGradient)"
-              strokeWidth="0.8"
-              strokeDasharray="2 1"
-              className="opacity-40"
-            />
-            {/* Progress path (filled up to current) */}
-            <path
-              d={`M 15 8 
-                  L 50 8 
-                  L 85 8 
-                  C 95 8, 95 35, 85 35
-                  L 50 35`}
-              fill="none"
-              stroke="url(#progressGradient)"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-            />
-            <defs>
-              <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="hsl(var(--primary))" />
-                <stop offset="100%" stopColor="hsl(var(--muted))" />
-              </linearGradient>
-              <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="hsl(var(--primary))" />
-                <stop offset="100%" stopColor="hsl(var(--secondary))" />
-              </linearGradient>
-            </defs>
-          </svg>
+        {/* Split Layout */}
+        <div className={`flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 ${isActive ? 'animate-fade-in delay-200' : 'opacity-0'}`}>
 
-          {/* Milestone Points */}
-          {milestones.map((milestone, index) => {
-            const pos = positions[index];
-            const isDone = milestone.status === "done";
-            const isCurrent = milestone.status === "current";
+          {/* Left: List */}
+          <div className="flex flex-col justify-center gap-2 sm:gap-3">
+            {milestones.map((milestone, index) => {
+              const isDone = milestone.status === "done";
+              const isCurrent = milestone.status === "current";
+              const isHovered = activeIndex === index;
 
-            return (
-              <div
-                key={index}
-                className={`absolute transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center ${isActive ? 'animate-scale-in' : 'opacity-0'}`}
-                style={{
-                  left: `${pos.x}%`,
-                  top: `${pos.y}%`,
-                  animationDelay: `${200 + index * 80}ms`
-                }}
-              >
-                {/* Point circle */}
-                <div className={`
-                  w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center
-                  ${isCurrent
-                    ? 'bg-secondary text-secondary-foreground ring-4 ring-secondary/30 animate-pulse'
-                    : isDone
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-muted text-muted-foreground border-2 border-dashed border-muted-foreground/30'}
-                `}>
-                  {isDone ? (
-                    <Check className="w-3 h-3 sm:w-4 sm:h-4" />
-                  ) : isCurrent ? (
-                    <Star className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" />
-                  ) : (
-                    <Circle className="w-2 h-2 sm:w-3 sm:h-3" />
+              return (
+                <div
+                  key={index}
+                  className={`
+                    flex items-center gap-3 sm:gap-4 p-2 sm:p-3 rounded-xl
+                    transition-all duration-200
+                    ${isHovered ? 'bg-primary/10 translate-x-1' : ''}
+                  `}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  <div className={`
+                    w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0
+                    text-sm sm:text-base font-bold
+                    ${isCurrent
+                      ? 'bg-secondary text-secondary-foreground'
+                      : isDone
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-muted text-muted-foreground'}
+                  `}>
+                    {isDone ? <Check className="w-4 h-4 sm:w-5 sm:h-5" /> : isCurrent ? <Star className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" /> : index + 1}
+                  </div>
+
+                  <span className={`
+                    text-sm sm:text-base md:text-lg flex-1 leading-tight
+                    ${isCurrent ? 'text-secondary font-semibold' : isDone ? 'text-foreground' : 'text-foreground/60'}
+                  `}>
+                    {milestone.text}
+                  </span>
+
+                  {isCurrent && (
+                    <span className="text-xs bg-secondary/20 text-secondary px-2 py-1 rounded-full whitespace-nowrap font-medium">
+                      Você está aqui!
+                    </span>
                   )}
                 </div>
-
-                {/* Label */}
-                <span className={`
-                  mt-1 text-[8px] sm:text-[10px] md:text-xs text-center max-w-[60px] sm:max-w-[80px] md:max-w-[100px] leading-tight
-                  ${isCurrent ? 'text-secondary font-bold' : isDone ? 'text-foreground/80' : 'text-foreground/50'}
-                `}>
-                  {milestone.text}
-                </span>
-
-                {/* Current indicator */}
-                {isCurrent && (
-                  <span className="mt-0.5 text-[6px] sm:text-[8px] bg-secondary/20 text-secondary px-1.5 py-0.5 rounded-full font-medium">
-                    Você está aqui!
-                  </span>
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Legend */}
-        <div className={`flex justify-center gap-4 sm:gap-6 text-xs sm:text-sm ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
-          <div className="flex items-center gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-primary" />
-            <span className="text-foreground/60">Concluído</span>
+              );
+            })}
           </div>
-          <div className="flex items-center gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-secondary animate-pulse" />
-            <span className="text-foreground/60">Atual</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-muted border border-dashed border-muted-foreground/30" />
-            <span className="text-foreground/60">Próximo</span>
+
+          {/* Right: Map */}
+          <div className="relative w-full h-full min-h-[300px] sm:min-h-[350px] bg-gradient-to-br from-card to-muted/30 rounded-3xl border border-border/50 shadow-inner">
+            <svg className="absolute inset-0 w-full h-full p-6" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+              <path
+                d="M 20 12 L 50 12 L 80 12 C 95 12, 95 50, 80 50 L 50 50 L 20 50 C 5 50, 5 88, 20 88 L 50 88 L 80 88"
+                fill="none"
+                stroke="hsl(var(--muted-foreground))"
+                strokeWidth="0.6"
+                strokeDasharray="2 1.5"
+                className="opacity-20"
+              />
+              <path
+                d="M 20 12 L 50 12 L 80 12 C 95 12, 95 50, 80 50 L 50 50"
+                fill="none"
+                stroke="url(#progressGradient)"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+              <defs>
+                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" />
+                  <stop offset="100%" stopColor="hsl(var(--secondary))" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            {milestones.map((milestone, index) => {
+              const pos = positions[index];
+              const isDone = milestone.status === "done";
+              const isCurrent = milestone.status === "current";
+              const isHovered = activeIndex === index;
+
+              return (
+                <div
+                  key={index}
+                  className="absolute"
+                  style={{
+                    left: `${pos.x}%`,
+                    top: `${pos.y}%`,
+                    transform: 'translate(-50%, -50%)'
+                  }}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  <div className={`
+                    w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center
+                    transition-all duration-200 shadow-md
+                    ${isHovered ? 'scale-125 ring-3 ring-primary/40 shadow-xl' : ''}
+                    ${isCurrent
+                      ? 'bg-secondary text-secondary-foreground shadow-lg shadow-secondary/50'
+                      : isDone
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-muted text-muted-foreground border-2 border-dashed border-muted-foreground/30'}
+                  `}>
+                    {isDone ? (
+                      <Check className="w-5 h-5 sm:w-6 sm:h-6" />
+                    ) : isCurrent ? (
+                      <Star className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" />
+                    ) : (
+                      <span className="text-sm sm:text-base font-bold">{index + 1}</span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

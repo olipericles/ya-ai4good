@@ -7,32 +7,33 @@ const puppeteer = require('puppeteer');
     });
 
     const page = await browser.newPage();
-    await page.setViewport({ width: 393, height: 852 });
 
-    await page.goto('http://localhost:5174', { waitUntil: 'networkidle0' });
-
-    // Navigate to slide 9 (Team slide) using keyboard
-    for (let i = 1; i <= 8; i++) {
-        await page.keyboard.press('ArrowRight');
-        await new Promise(r => setTimeout(r, 300));
-    }
-
-    await new Promise(r => setTimeout(r, 800));
-    await page.screenshot({ path: '/projetos/ai4good/ya-ai4good/team_mobile.png' });
-    console.log('Team slide captured!');
-
-    // Desktop view
+    // Desktop view of slide 8 (Nossa Jornada)
     await page.setViewport({ width: 1280, height: 720 });
     await page.goto('http://localhost:5174', { waitUntil: 'networkidle0' });
 
-    for (let i = 1; i <= 8; i++) {
+    // Navigate to slide 8 (7 arrow presses from slide 1)
+    for (let i = 0; i < 7; i++) {
         await page.keyboard.press('ArrowRight');
-        await new Promise(r => setTimeout(r, 300));
+        await new Promise(r => setTimeout(r, 400));
     }
 
-    await new Promise(r => setTimeout(r, 800));
-    await page.screenshot({ path: '/projetos/ai4good/ya-ai4good/team_desktop.png' });
-    console.log('Team desktop captured!');
+    await new Promise(r => setTimeout(r, 1000));
+    await page.screenshot({ path: '/projetos/ai4good/ya-ai4good/jornada_desktop.png' });
+    console.log('Slide 8 Jornada desktop captured!');
+
+    // Mobile view
+    await page.setViewport({ width: 393, height: 852 });
+    await page.goto('http://localhost:5174', { waitUntil: 'networkidle0' });
+
+    for (let i = 0; i < 7; i++) {
+        await page.keyboard.press('ArrowRight');
+        await new Promise(r => setTimeout(r, 400));
+    }
+
+    await new Promise(r => setTimeout(r, 1000));
+    await page.screenshot({ path: '/projetos/ai4good/ya-ai4good/jornada_mobile.png' });
+    console.log('Slide 8 Jornada mobile captured!');
 
     await browser.close();
 })();
