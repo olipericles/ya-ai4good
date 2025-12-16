@@ -89,10 +89,8 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
 
         {/* Bottom quote */}
         <div className={`text-center ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
-          <p className="inline-block bg-muted/50 border border-border rounded-2xl px-6 py-4 text-base sm:text-lg md:text-xl">
-            <span className="text-primary font-semibold">"</span>
-            Não exigimos perfeição. Um registro imperfeito é melhor do que nenhum.
-            <span className="text-primary font-semibold">"</span>
+          <p className="inline-block text-base sm:text-lg md:text-xl text-foreground/60">
+            Não exigimos perfeição. <span className="text-primary font-semibold">Um registro imperfeito é melhor do que nenhum.</span>
           </p>
         </div>
       </div>

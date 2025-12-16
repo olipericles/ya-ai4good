@@ -91,13 +91,10 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
           ))}
         </div>
 
-        {/* Quote - hidden on mobile */}
-        <blockquote className={`hidden sm:block text-center max-w-3xl mx-auto ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
-          <p className="text-lg md:text-xl text-foreground/80 italic">
-            "A gente não estudou esse problema num paper — a gente viveu do lado dele.
-            Estamos construindo a ferramenta que a gente queria que existisse pra elas."
-          </p>
-        </blockquote>
+        {/* Quote */}
+        <p className={`text-center max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-foreground/60 italic ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
+          "A gente não estudou esse problema num paper — a gente viveu do lado dele."
+        </p>
       </div>
     </SlideContainer >
   );
