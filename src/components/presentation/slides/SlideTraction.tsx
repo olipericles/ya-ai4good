@@ -13,9 +13,15 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
     {
       status: "done",
       icon: Check,
+      text: "Propósito e ideia",
+      delay: "delay-100"
+    },
+    {
+      status: "done",
+      icon: Check,
       text: "Selecionados AI4Good 2025 (8 de 167)",
       highlight: true,
-      delay: "delay-100"
+      delay: "delay-150"
     },
     {
       status: "done",
@@ -27,7 +33,7 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
       status: "done",
       icon: Check,
       text: "Protótipo funcional no WhatsApp",
-      delay: "delay-300"
+      delay: "delay-250"
     },
     {
       status: "progress",
@@ -35,19 +41,19 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
       text: "DemoDay",
       highlight: true,
       current: true,
-      delay: "delay-400"
+      delay: "delay-300"
     },
     {
       status: "pending",
       icon: Clock,
-      text: "Piloto com 20 beta testers (vieram da pesquisa)",
-      delay: "delay-500"
+      text: "Piloto com 20 beta testers",
+      delay: "delay-350"
     },
     {
       status: "pending",
       icon: Clock,
       text: "Parcerias e escala",
-      delay: "delay-600"
+      delay: "delay-400"
     },
   ];
 
