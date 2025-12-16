@@ -12,68 +12,31 @@ interface SlideClosingProps {
 const SlideClosing = ({ isActive, transition }: SlideClosingProps) => {
   return (
     <SlideContainer isActive={isActive} transition={transition}>
-      <div className="text-center space-y-6 sm:space-y-12">
+      <div className="flex flex-col items-center justify-center h-full gap-12 sm:gap-16 md:gap-20">
         {/* Logo with glow */}
         <div className={`relative inline-block ${isActive ? 'animate-scale-in' : 'opacity-0'}`}>
           <img
             src={yaLogo}
             alt="Yá Logo"
-            className="h-20 sm:h-32 md:h-48 object-contain mx-auto"
+            className="h-28 sm:h-40 md:h-56 object-contain mx-auto"
           />
-          <div className="absolute inset-0 bg-primary/30 blur-[60px] -z-10 rounded-full" />
+          <div className="absolute inset-0 bg-primary/30 blur-[80px] -z-10 rounded-full" />
         </div>
 
         {/* Main message */}
-        <div className={`space-y-4 ${isActive ? 'animate-fade-up delay-200' : 'opacity-0'}`}>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold">
+        <div className={`text-center space-y-6 sm:space-y-8 ${isActive ? 'animate-fade-up delay-200' : 'opacity-0'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold">
             Yá: <span className="text-gradient">mãe</span>, em yorubá.
           </h2>
-          <p className="text-base sm:text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto">
-            Uma homenagem às mulheres que sustentam esse país sem ninguém ver.
-          </p>
         </div>
 
-        {/* Heart animation */}
+        {/* Tagline */}
         <div className={`${isActive ? 'animate-fade-in delay-400' : 'opacity-0'}`}>
-          <div className="inline-flex items-center gap-2 text-primary">
-            <Heart className="w-6 h-6 animate-pulse" fill="currentColor" />
-            <span className="text-sm sm:text-lg font-medium">Uma IA que cuida de quem cuida de todo mundo</span>
-            <Heart className="w-6 h-6 animate-pulse" fill="currentColor" />
+          <div className="inline-flex items-center gap-3 text-primary">
+            <Heart className="w-6 h-6 sm:w-8 sm:h-8 animate-pulse" fill="currentColor" />
+            <span className="text-lg sm:text-xl md:text-2xl font-medium">Uma IA que cuida de quem cuida de todo mundo</span>
+            <Heart className="w-6 h-6 sm:w-8 sm:h-8 animate-pulse" fill="currentColor" />
           </div>
-          <p className="mt-3 text-xs sm:text-sm text-foreground/50 max-w-lg mx-auto">
-            Dados que podem guiar políticas públicas para quem mais precisa.
-          </p>
-        </div>
-
-        {/* CTA */}
-        <div className={`space-y-6 ${isActive ? 'animate-fade-up delay-600' : 'opacity-0'}`}>
-          <div className="inline-block bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl p-4 sm:p-8 border border-primary/30">
-            <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gradient mb-2">
-              Obrigada!
-            </p>
-            <p className="text-foreground/60">
-              Adriele Ornellas — Apresentadora
-            </p>
-          </div>
-        </div>
-
-        {/* Social links */}
-        <div className={`flex justify-center gap-4 ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
-          {[
-            { name: "Adriele", url: "https://www.linkedin.com/in/adrieleornellas/" },
-            { name: "Péricles", url: "https://www.linkedin.com/in/olipericles/" },
-            { name: "Luã", url: "https://www.linkedin.com/in/luaamota/" },
-          ].map((person, i) => (
-            <a
-              key={i}
-              href={person.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-card border border-border rounded-full text-sm hover:border-primary/50 hover:text-primary transition-colors"
-            >
-              {person.name}
-            </a>
-          ))}
         </div>
       </div>
 

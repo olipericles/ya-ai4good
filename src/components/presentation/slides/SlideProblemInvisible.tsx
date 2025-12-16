@@ -54,10 +54,16 @@ const SlideProblemInvisible = ({ isActive, transition }: SlideProblemInvisiblePr
         </div>
 
         {/* Quote */}
-        <blockquote className={`text-xl md:text-2xl text-foreground/70 italic max-w-3xl mx-auto ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
-          "Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou.
-          <span className="text-foreground font-medium not-italic"> Não é falta de esforço. É falta de ferramenta.</span>"
-        </blockquote>
+        <div className={`max-w-3xl mx-auto ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
+          <blockquote className="border-l-4 border-primary pl-6 py-2 text-left">
+            <p className="text-lg sm:text-xl md:text-2xl text-foreground/70 italic">
+              "Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou.
+            </p>
+            <p className="text-lg sm:text-xl md:text-2xl text-primary font-semibold mt-2">
+              Não é falta de esforço. É falta de ferramenta."
+            </p>
+          </blockquote>
+        </div>
       </div>
 
       {/* Animated background */}
