@@ -12,13 +12,13 @@ interface SlideSolutionProps {
 const SlideSolution = ({ isActive, transition }: SlideSolutionProps) => {
   return (
     <SlideContainer isActive={isActive} transition={transition}>
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 items-center">
         {/* Left - Phone mockup */}
         <div className={`relative ${isActive ? 'animate-slide-right' : 'opacity-0'}`}>
-          <div className="relative mx-auto w-72 md:w-80">
-            <img 
-              src={whatsappMockup} 
-              alt="Conversa no WhatsApp com Yá" 
+          <div className="relative mx-auto w-48 sm:w-72 md:w-80">
+            <img
+              src={whatsappMockup}
+              alt="Conversa no WhatsApp com Yá"
               className="w-full h-auto rounded-[2rem] shadow-2xl"
             />
             {/* Glow effect */}
@@ -27,13 +27,13 @@ const SlideSolution = ({ isActive, transition }: SlideSolutionProps) => {
         </div>
 
         {/* Right - Description */}
-        <div className={`space-y-8 ${isActive ? 'animate-slide-left' : 'opacity-0'}`}>
+        <div className={`space-y-4 sm:space-y-8 ${isActive ? 'animate-slide-left' : 'opacity-0'}`}>
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <img src={personaImage} alt="Persona Yá" className="h-16 md:h-20 rounded-full object-cover aspect-square" />
-              <h2 className="text-4xl md:text-5xl font-black">Yá</h2>
+              <img src={personaImage} alt="Persona Yá" className="h-12 sm:h-16 md:h-20 rounded-full object-cover aspect-square" />
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black">Yá</h2>
             </div>
-            <p className="text-2xl md:text-3xl text-primary font-semibold">
+            <p className="text-xl sm:text-2xl md:text-3xl text-primary font-semibold">
               Sua parceira financeira no WhatsApp
             </p>
           </div>
