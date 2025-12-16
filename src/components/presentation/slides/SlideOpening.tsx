@@ -1,5 +1,6 @@
 import SlideContainer from "../SlideContainer";
 import AnimatedNumber from "../AnimatedNumber";
+import HoverInfo from "@/components/ui/HoverInfo";
 import yaLogo from "@/assets/ya-logo.png";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
@@ -25,16 +26,33 @@ const SlideOpening = ({ isActive, transition }: SlideOpeningProps) => {
         {/* Main number */}
         <div className={`${isActive ? 'animate-fade-up delay-200' : 'opacity-0'}`}>
           <h1 className="text-5xl sm:text-7xl md:text-9xl font-black text-gradient tracking-tight">
-            <AnimatedNumber value={11} isActive={isActive} /> milhões
+            <HoverInfo tooltip={
+              <span>
+                <strong>Fonte:</strong> IBGE/PNAD 2023<br />
+                <a href="https://www.ibge.gov.br" target="_blank" rel="noopener" className="text-primary underline">Ver dados oficiais →</a>
+              </span>
+            }>
+              <AnimatedNumber value={11} isActive={isActive} /> milhões
+            </HoverInfo>
           </h1>
         </div>
 
         {/* Subtitle */}
         <p className={`text-base sm:text-xl md:text-3xl text-foreground/80 max-w-3xl mx-auto leading-relaxed ${isActive ? 'animate-fade-up delay-400' : 'opacity-0'}`}>
-          de lares chefiados por <span className="text-primary font-semibold">mães solo</span> no Brasil.
+          de lares chefiados por{" "}
+          <HoverInfo
+            tooltip="Mulheres que são referência única do domicílio com filhos menores de 18 anos"
+            className="text-primary font-semibold"
+          >
+            mães solo
+          </HoverInfo>{" "}
+          no Brasil.
           <br />
           <span className="text-muted-foreground text-sm sm:text-lg md:text-xl">
-            Mais do que a população inteira de Portugal.
+            Mais do que a população inteira de{" "}
+            <HoverInfo tooltip="10,4 milhões de habitantes (Eurostat 2023) — comparativo para dimensionar o número">
+              Portugal
+            </HoverInfo>.
           </span>
         </p>
       </div>
