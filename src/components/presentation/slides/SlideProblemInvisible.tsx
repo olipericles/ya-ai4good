@@ -17,25 +17,25 @@ const SlideProblemInvisible = ({ isActive, transition }: SlideProblemInvisiblePr
 
   return (
     <SlideContainer isActive={isActive} transition={transition}>
-      <div className="space-y-12 text-center">
+      <div className="space-y-6 sm:space-y-12 text-center">
         {/* Main question */}
         <div className={`space-y-4 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-7xl font-black">
+          <h2 className="text-3xl sm:text-4xl md:text-7xl font-black">
             Para onde foi o <span className="text-gradient">dinheiro</span>?
           </h2>
-          <p className="text-2xl md:text-3xl text-foreground/60">
+          <p className="text-lg sm:text-2xl md:text-3xl text-foreground/60">
             O maior inimigo não é a conta grande
           </p>
         </div>
 
         {/* Invisible costs */}
         <div className={`${isActive ? 'animate-fade-up delay-100' : 'opacity-0'}`}>
-          <div className="inline-block bg-card border border-primary/30 rounded-2xl p-8 md:p-10">
-            <p className="text-2xl md:text-4xl font-bold text-primary mb-8">
+          <div className="inline-block bg-card border border-primary/30 rounded-2xl p-4 sm:p-8 md:p-10">
+            <p className="text-xl sm:text-2xl md:text-4xl font-bold text-primary mb-4 sm:mb-8">
               É o gasto invisível
             </p>
-            
-            <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-10">
               {invisibleCosts.map((cost, index) => (
                 <div
                   key={index}
@@ -55,7 +55,7 @@ const SlideProblemInvisible = ({ isActive, transition }: SlideProblemInvisiblePr
 
         {/* Quote */}
         <blockquote className={`text-xl md:text-2xl text-foreground/70 italic max-w-3xl mx-auto ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
-          "Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou. 
+          "Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou.
           <span className="text-foreground font-medium not-italic"> Não é falta de esforço. É falta de ferramenta.</span>"
         </blockquote>
       </div>

@@ -38,9 +38,9 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
 
   return (
     <SlideContainer isActive={isActive} transition={transition}>
-      <div className="space-y-12">
+      <div className="space-y-6 sm:space-y-12">
         {/* Title */}
-        <h2 className={`text-3xl md:text-5xl font-bold text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
+        <h2 className={`text-2xl sm:text-3xl md:text-5xl font-bold text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
           Visibilidade em <span className="text-gradient">3 Passos</span> Simples
         </h2>
 
@@ -49,7 +49,7 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
           {steps.map((step, index) => (
             <div key={index} className="flex items-center">
               <div
-                className={`relative bg-card border border-border rounded-2xl p-6 md:p-8 w-72 hover:border-primary/50 transition-all duration-300 ${isActive ? `animate-scale-in ${step.delay}` : 'opacity-0'}`}
+                className={`relative bg-card border border-border rounded-2xl p-4 sm:p-6 md:p-8 w-full sm:w-72 hover:border-primary/50 transition-all duration-300 ${isActive ? `animate-scale-in ${step.delay}` : 'opacity-0'}`}
               >
                 {/* Step number */}
                 <div className={`absolute -top-4 left-6 px-3 py-1 rounded-full bg-gradient-to-r ${step.color} text-white text-sm font-bold`}>

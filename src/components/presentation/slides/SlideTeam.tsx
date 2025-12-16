@@ -35,35 +35,35 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
 
   return (
     <SlideContainer isActive={isActive} transition={transition}>
-      <div className="space-y-12">
+      <div className="space-y-6 sm:space-y-12">
         {/* Title */}
         <div className={`text-center space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
-          <h2 className="text-3xl md:text-5xl font-bold">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold">
             Da <span className="text-gradient">periferia de Salvador</span> pro Brasil
           </h2>
-          <p className="text-foreground/60 text-lg md:text-xl">
+          <p className="text-foreground/60 text-sm sm:text-lg md:text-xl">
             Conhecemos essa realidade porque viemos dela.
           </p>
         </div>
 
         {/* Team cards */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {team.map((member, index) => (
             <div
               key={index}
               className={`group relative ${isActive ? `animate-scale-in ${member.delay}` : 'opacity-0'}`}
             >
-              <div className="bg-card border border-border rounded-2xl p-6 md:p-8 text-center hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
+              <div className="bg-card border border-border rounded-2xl p-4 sm:p-6 md:p-8 text-center hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
                 {/* Gradient top bar */}
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${member.gradient}`} />
 
                 {/* Avatar placeholder */}
-                <div className={`w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br ${member.gradient} mx-auto mb-6 flex items-center justify-center text-3xl md:text-4xl font-bold text-white`}>
+                <div className={`w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br ${member.gradient} mx-auto mb-4 sm:mb-6 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl font-bold text-white`}>
                   {member.name.split(' ').map(n => n[0]).join('')}
                 </div>
 
                 {/* Name and role */}
-                <h3 className="text-xl md:text-2xl font-bold mb-2">{member.name}</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">{member.name}</h3>
                 <p className="text-foreground/60 text-sm md:text-base mb-4">{member.role}</p>
 
                 {/* LinkedIn button */}
@@ -84,7 +84,7 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
         {/* Quote */}
         <blockquote className={`text-center max-w-3xl mx-auto ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
           <p className="text-lg md:text-xl text-foreground/80 italic">
-            "A gente não estudou esse problema num paper — a gente viveu do lado dele. 
+            "A gente não estudou esse problema num paper — a gente viveu do lado dele.
             Estamos construindo a ferramenta que a gente queria que existisse pra elas."
           </p>
         </blockquote>
