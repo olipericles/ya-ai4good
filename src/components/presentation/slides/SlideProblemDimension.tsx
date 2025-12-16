@@ -48,7 +48,7 @@ const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionPr
           <div className="bg-gradient-to-r from-secondary/20 via-primary/20 to-secondary/20 rounded-2xl p-4 sm:p-6 md:p-8 border border-primary/20">
             <p className="text-center text-base sm:text-xl md:text-2xl">
               <span className="text-primary font-bold">90%</span> do aumento na última década:
-              <span className="text-secondary font-semibold"> mulheres negras e pardas</span>
+              <span className="text-secondary font-semibold"> mulheres pretas e pardas</span>
             </p>
           </div>
         </div>
