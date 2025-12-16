@@ -66,7 +66,6 @@ const SlideSolution = ({ isActive, transition }: SlideSolutionProps) => {
               </div>
             ))}
           </div>
-          </div>
         </div>
       </div>
     </SlideContainer>
