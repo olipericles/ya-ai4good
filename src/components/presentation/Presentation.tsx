@@ -20,10 +20,10 @@ const Presentation = () => {
   const goToSlide = useCallback((index: number) => {
     if (isTransitioning) return;
     if (index < 0 || index >= TOTAL_SLIDES) return;
-    
+
     setIsTransitioning(true);
     setCurrentSlide(index);
-    
+
     setTimeout(() => {
       setIsTransitioning(false);
     }, 500);
@@ -60,9 +60,8 @@ const Presentation = () => {
   }, [nextSlide, prevSlide, goToSlide]);
 
   return (
-    <div 
-      className="relative w-full h-screen bg-background overflow-hidden cursor-pointer"
-      onClick={nextSlide}
+    <div
+      className="relative w-full h-screen bg-background overflow-hidden"
     >
       {/* Slides with varied dramatic transitions */}
       <div className="absolute inset-0">
@@ -84,9 +83,8 @@ const Presentation = () => {
           e.stopPropagation();
           prevSlide();
         }}
-        className={`absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-card/80 border border-border backdrop-blur-sm hover:bg-primary/20 hover:border-primary/50 transition-all ${
-          currentSlide === 0 ? "opacity-30 pointer-events-none" : "opacity-100"
-        }`}
+        className={`absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-card/80 border border-border backdrop-blur-sm hover:bg-primary/20 hover:border-primary/50 transition-all ${currentSlide === 0 ? "opacity-30 pointer-events-none" : "opacity-100"
+          }`}
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6" />
@@ -97,9 +95,8 @@ const Presentation = () => {
           e.stopPropagation();
           nextSlide();
         }}
-        className={`absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-card/80 border border-border backdrop-blur-sm hover:bg-primary/20 hover:border-primary/50 transition-all ${
-          currentSlide === TOTAL_SLIDES - 1 ? "opacity-30 pointer-events-none" : "opacity-100"
-        }`}
+        className={`absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-card/80 border border-border backdrop-blur-sm hover:bg-primary/20 hover:border-primary/50 transition-all ${currentSlide === TOTAL_SLIDES - 1 ? "opacity-30 pointer-events-none" : "opacity-100"
+          }`}
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />
@@ -114,11 +111,10 @@ const Presentation = () => {
               e.stopPropagation();
               goToSlide(index);
             }}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentSlide
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide
                 ? "w-8 bg-primary"
                 : "bg-foreground/20 hover:bg-foreground/40"
-            }`}
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
