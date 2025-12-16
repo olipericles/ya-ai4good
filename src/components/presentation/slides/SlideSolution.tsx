@@ -1,5 +1,5 @@
 import SlideContainer from "../SlideContainer";
-import yaLogo from "@/assets/ya-logo.png";
+import personaImage from "@/assets/persona-image.jpeg";
 import whatsappMockup from "@/assets/whatsapp-mockup.png";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
@@ -30,7 +30,7 @@ const SlideSolution = ({ isActive, transition }: SlideSolutionProps) => {
         <div className={`space-y-8 ${isActive ? 'animate-slide-left' : 'opacity-0'}`}>
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <img src={yaLogo} alt="Yá" className="h-12 md:h-16" />
+              <img src={personaImage} alt="Persona Yá" className="h-16 md:h-20 rounded-full object-cover aspect-square" />
               <h2 className="text-4xl md:text-5xl font-black">Yá</h2>
             </div>
             <p className="text-2xl md:text-3xl text-primary font-semibold">
