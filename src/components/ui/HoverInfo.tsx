@@ -57,7 +57,6 @@ const HoverInfo = ({ children, tooltip, className = "" }: HoverInfoProps) => {
             aria-describedby={isVisible ? "hover-tooltip" : undefined}
         >
             {children}
-            <span className="ml-0.5 text-primary/60 text-[0.7em]">ⓘ</span>
 
             {isVisible && (
                 <div

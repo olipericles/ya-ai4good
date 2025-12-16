@@ -26,15 +26,18 @@ const SlideOpening = ({ isActive, transition }: SlideOpeningProps) => {
         {/* Main number */}
         <div className={`${isActive ? 'animate-fade-up delay-200' : 'opacity-0'}`}>
           <h1 className="text-5xl sm:text-7xl md:text-9xl font-black text-gradient tracking-tight">
+            <AnimatedNumber value={11} isActive={isActive} /> milhões
+          </h1>
+          <p className="text-sm text-foreground/50 mt-2">
             <HoverInfo tooltip={
               <span>
                 <strong>Fonte:</strong> IBGE/PNAD 2023<br />
                 <a href="https://www.ibge.gov.br" target="_blank" rel="noopener" className="text-primary underline">Ver dados oficiais →</a>
               </span>
             }>
-              <AnimatedNumber value={11} isActive={isActive} /> milhões
+              Fonte: IBGE 2023
             </HoverInfo>
-          </h1>
+          </p>
         </div>
 
         {/* Subtitle */}
@@ -50,7 +53,7 @@ const SlideOpening = ({ isActive, transition }: SlideOpeningProps) => {
           <br />
           <span className="text-muted-foreground text-sm sm:text-lg md:text-xl">
             Mais do que a população inteira de{" "}
-            <HoverInfo tooltip="10,4 milhões de habitantes (Eurostat 2023) — comparativo para dimensionar o número">
+            <HoverInfo tooltip="10,4 milhões de habitantes (Eurostat 2023)">
               Portugal
             </HoverInfo>.
           </span>
