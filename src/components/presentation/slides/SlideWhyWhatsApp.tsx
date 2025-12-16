@@ -2,13 +2,16 @@ import SlideContainer from "../SlideContainer";
 import AnimatedNumber from "../AnimatedNumber";
 import { MessageCircle } from "lucide-react";
 
+type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+
 interface SlideWhyWhatsAppProps {
   isActive: boolean;
+  transition?: TransitionType;
 }
 
-const SlideWhyWhatsApp = ({ isActive }: SlideWhyWhatsAppProps) => {
+const SlideWhyWhatsApp = ({ isActive, transition }: SlideWhyWhatsAppProps) => {
   return (
-    <SlideContainer isActive={isActive}>
+    <SlideContainer isActive={isActive} transition={transition}>
       <div className="text-center space-y-12">
         {/* Title */}
         <h2 className={`text-3xl md:text-5xl font-bold ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

@@ -2,11 +2,14 @@ import SlideContainer from "../SlideContainer";
 import { Check, X } from "lucide-react";
 import yaLogo from "@/assets/ya-logo.png";
 
+type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+
 interface SlideDifferentialProps {
   isActive: boolean;
+  transition?: TransitionType;
 }
 
-const SlideDifferential = ({ isActive }: SlideDifferentialProps) => {
+const SlideDifferential = ({ isActive, transition }: SlideDifferentialProps) => {
   const comparisons = [
     { 
       criteria: "Onde", 
@@ -31,7 +34,7 @@ const SlideDifferential = ({ isActive }: SlideDifferentialProps) => {
   ];
 
   return (
-    <SlideContainer isActive={isActive}>
+    <SlideContainer isActive={isActive} transition={transition}>
       <div className="space-y-10">
         {/* Title */}
         <h2 className={`text-3xl md:text-5xl font-bold text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

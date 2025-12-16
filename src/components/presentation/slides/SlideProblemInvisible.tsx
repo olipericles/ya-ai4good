@@ -1,11 +1,14 @@
 import SlideContainer from "../SlideContainer";
 import { CreditCard, ShoppingBag, Receipt } from "lucide-react";
 
+type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+
 interface SlideProblemInvisibleProps {
   isActive: boolean;
+  transition?: TransitionType;
 }
 
-const SlideProblemInvisible = ({ isActive }: SlideProblemInvisibleProps) => {
+const SlideProblemInvisible = ({ isActive, transition }: SlideProblemInvisibleProps) => {
   const invisibleCosts = [
     { icon: CreditCard, label: "Taxa que veio sem avisar", delay: "delay-200" },
     { icon: ShoppingBag, label: "Lanche de R$12 que virou R$200", delay: "delay-400" },
@@ -13,7 +16,7 @@ const SlideProblemInvisible = ({ isActive }: SlideProblemInvisibleProps) => {
   ];
 
   return (
-    <SlideContainer isActive={isActive}>
+    <SlideContainer isActive={isActive} transition={transition}>
       <div className="space-y-12 text-center">
         {/* Main question */}
         <div className={`space-y-4 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

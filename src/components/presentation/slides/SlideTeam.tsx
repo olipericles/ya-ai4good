@@ -1,11 +1,14 @@
 import SlideContainer from "../SlideContainer";
 import { Linkedin } from "lucide-react";
 
+type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+
 interface SlideTeamProps {
   isActive: boolean;
+  transition?: TransitionType;
 }
 
-const SlideTeam = ({ isActive }: SlideTeamProps) => {
+const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
   const team = [
     {
       name: "Adriele Ornellas",
@@ -31,7 +34,7 @@ const SlideTeam = ({ isActive }: SlideTeamProps) => {
   ];
 
   return (
-    <SlideContainer isActive={isActive}>
+    <SlideContainer isActive={isActive} transition={transition}>
       <div className="space-y-12">
         {/* Title */}
         <div className={`text-center space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

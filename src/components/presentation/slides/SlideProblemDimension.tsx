@@ -1,11 +1,14 @@
 import SlideContainer from "../SlideContainer";
 import AnimatedNumber from "../AnimatedNumber";
 
+type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+
 interface SlideProblemDimensionProps {
   isActive: boolean;
+  transition?: TransitionType;
 }
 
-const SlideProblemDimension = ({ isActive }: SlideProblemDimensionProps) => {
+const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionProps) => {
   const stats = [
     { value: 64, suffix: "%", label: "vivem em situação de pobreza", delay: "delay-100" },
     { value: 39, suffix: "%", label: "menos renda que homens casados com filhos", delay: "delay-300" },
@@ -13,7 +16,7 @@ const SlideProblemDimension = ({ isActive }: SlideProblemDimensionProps) => {
   ];
 
   return (
-    <SlideContainer isActive={isActive}>
+    <SlideContainer isActive={isActive} transition={transition}>
       <div className="space-y-12">
         {/* Title */}
         <h2 className={`text-3xl md:text-5xl font-bold text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

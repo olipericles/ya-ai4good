@@ -2,13 +2,16 @@ import SlideContainer from "../SlideContainer";
 import yaLogo from "@/assets/ya-logo.png";
 import { Heart } from "lucide-react";
 
+type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+
 interface SlideClosingProps {
   isActive: boolean;
+  transition?: TransitionType;
 }
 
-const SlideClosing = ({ isActive }: SlideClosingProps) => {
+const SlideClosing = ({ isActive, transition }: SlideClosingProps) => {
   return (
-    <SlideContainer isActive={isActive}>
+    <SlideContainer isActive={isActive} transition={transition}>
       <div className="text-center space-y-12">
         {/* Logo with glow */}
         <div className={`relative inline-block ${isActive ? 'animate-scale-in' : 'opacity-0'}`}>

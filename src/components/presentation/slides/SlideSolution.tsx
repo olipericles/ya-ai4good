@@ -1,13 +1,16 @@
 import SlideContainer from "../SlideContainer";
 import yaLogo from "@/assets/ya-logo.png";
 
+type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+
 interface SlideSolutionProps {
   isActive: boolean;
+  transition?: TransitionType;
 }
 
-const SlideSolution = ({ isActive }: SlideSolutionProps) => {
+const SlideSolution = ({ isActive, transition }: SlideSolutionProps) => {
   return (
-    <SlideContainer isActive={isActive}>
+    <SlideContainer isActive={isActive} transition={transition}>
       <div className="grid md:grid-cols-2 gap-12 items-center">
         {/* Left - Phone mockup */}
         <div className={`relative ${isActive ? 'animate-slide-right' : 'opacity-0'}`}>
