@@ -52,20 +52,19 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
     {
       status: "pending",
       icon: Clock,
-      text: "Ambiente seguro e com perspectiva para ~2 filhos/mãe",
+      text: "Dados agregados para políticas públicas",
       delay: "delay-400"
     },
     {
       status: "pending",
       icon: Clock,
-      text: "Impacto geracional: redução da pobreza e desigualdade",
+      text: "Ambiente seguro e com perspectiva para ~2 filhos/mãe",
       delay: "delay-450"
     },
     {
       status: "pending",
       icon: Clock,
-      text: "📊 Dados agregados para políticas públicas",
-      highlight: true,
+      text: "Impacto geracional: redução da pobreza e desigualdade",
       delay: "delay-500"
     },
   ];
