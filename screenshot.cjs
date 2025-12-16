@@ -14,7 +14,7 @@ const puppeteer = require('puppeteer');
 
     for (let i = 1; i <= 10; i++) {
         await new Promise(r => setTimeout(r, 600));
-        await page.screenshot({ path: `/projetos/ai4good/ya-ai4good/desktop_slide${i}.png` });
+        await page.screenshot({ path: `/projetos/ai4good/ya-ai4good/img/desktop/slide${i}.png` });
         console.log(`Desktop slide ${i} captured`);
         if (i < 10) await page.keyboard.press('ArrowRight');
     }
@@ -25,11 +25,11 @@ const puppeteer = require('puppeteer');
 
     for (let i = 1; i <= 10; i++) {
         await new Promise(r => setTimeout(r, 600));
-        await page.screenshot({ path: `/projetos/ai4good/ya-ai4good/mobile_slide${i}.png` });
+        await page.screenshot({ path: `/projetos/ai4good/ya-ai4good/img/mobile/slide${i}.png` });
         console.log(`Mobile slide ${i} captured`);
         if (i < 10) await page.keyboard.press('ArrowRight');
     }
 
     await browser.close();
-    console.log('All screenshots done!');
+    console.log('All screenshots saved to img/desktop and img/mobile!');
 })();
