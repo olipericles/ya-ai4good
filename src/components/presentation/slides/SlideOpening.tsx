@@ -31,11 +31,11 @@ const SlideOpening = ({ isActive, transition }: SlideOpeningProps) => {
           <p className="text-sm text-foreground/50 mt-2">
             <HoverInfo tooltip={
               <span>
-                <strong>Fonte:</strong> IBGE/PNAD 2023<br />
-                <a href="https://www.ibge.gov.br" target="_blank" rel="noopener" className="text-primary underline">Ver dados oficiais →</a>
+                <strong>Fonte:</strong> FGV/IBRE — PNAD Contínua 2022<br />
+                <a href="https://blogdoibre.fgv.br/posts/maes-solo-no-mercado-de-trabalho" target="_blank" rel="noopener" className="text-primary underline">Ver artigo completo →</a>
               </span>
             }>
-              Fonte: IBGE 2023
+              Fonte: FGV/IBRE 2022
             </HoverInfo>
           </p>
         </div>

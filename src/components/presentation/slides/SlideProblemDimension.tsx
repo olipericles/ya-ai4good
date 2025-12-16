@@ -23,14 +23,14 @@ const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionPr
       suffix: "%",
       label: "menos renda que homens casados com filhos",
       delay: "delay-300",
-      tooltip: "Comparativo de renda média mensal — Fonte: PNAD Contínua 2023"
+      tooltip: "Rendimento 39% inferior — Fonte: FGV/IBRE com base na PNAD Contínua 2022"
     },
     {
       value: 72,
       suffix: "%",
       label: "enfrentam essa jornada sozinhas",
       delay: "delay-500",
-      tooltip: "Sem rede de apoio familiar ou institucional — Fonte: FGV Social"
+      tooltip: "72,4% vivem só com filhos, sem rede de apoio — Fonte: FGV/IBRE PNAD 2022"
     },
   ];
 
@@ -69,7 +69,7 @@ const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionPr
           <div className="bg-gradient-to-r from-secondary/20 via-primary/20 to-secondary/20 rounded-2xl p-4 sm:p-6 md:p-8 border border-primary/20">
             <p className="text-center text-base sm:text-xl md:text-2xl">
               E esse número só cresce.{" "}
-              <HoverInfo tooltip="Crescimento 2012-2022 — o problema está acelerando, não diminuindo. Fonte: IPEA Retrato das Desigualdades">
+              <HoverInfo tooltip="Crescimento 2012-2022 — Fonte: FGV/IBRE com base na PNAD Contínua">
                 <span className="text-primary font-bold">90%</span>
               </HoverInfo>{" "}
               do aumento na última década:
