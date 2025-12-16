@@ -149,7 +149,7 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
           <div className="bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 rounded-2xl p-4 sm:p-6 text-center">
             <p className="text-lg sm:text-xl md:text-2xl font-bold">
               <span className="text-foreground/60">Próximo:</span>{" "}
-              <span className="text-gradient">Piloto com 50 mães em Salvador</span>
+              <span className="text-gradient">Piloto com 50 mães → dados reais de impacto</span>
             </p>
           </div>
         </div>
