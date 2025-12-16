@@ -40,6 +40,9 @@ const SlideClosing = ({ isActive, transition }: SlideClosingProps) => {
             <span className="text-sm sm:text-lg font-medium">Uma IA que cuida de quem cuida de todo mundo</span>
             <Heart className="w-6 h-6 animate-pulse" fill="currentColor" />
           </div>
+          <p className="mt-3 text-xs sm:text-sm text-foreground/50 max-w-lg mx-auto">
+            Dados que podem guiar políticas públicas para quem mais precisa.
+          </p>
         </div>
 
         {/* CTA */}

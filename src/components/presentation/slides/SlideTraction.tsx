@@ -61,6 +61,13 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
       text: "Impacto geracional: redução da pobreza e desigualdade",
       delay: "delay-450"
     },
+    {
+      status: "pending",
+      icon: Clock,
+      text: "📊 Dados agregados para políticas públicas",
+      highlight: true,
+      delay: "delay-500"
+    },
   ];
 
   return (
