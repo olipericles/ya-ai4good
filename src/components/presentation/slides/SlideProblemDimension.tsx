@@ -68,7 +68,8 @@ const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionPr
         <div className={`relative ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
           <div className="bg-gradient-to-r from-secondary/20 via-primary/20 to-secondary/20 rounded-2xl p-4 sm:p-6 md:p-8 border border-primary/20">
             <p className="text-center text-base sm:text-xl md:text-2xl">
-              <HoverInfo tooltip="Crescimento de 2012-2022 — Fonte: IPEA Retrato das Desigualdades">
+              E esse número só cresce.{" "}
+              <HoverInfo tooltip="Crescimento 2012-2022 — o problema está acelerando, não diminuindo. Fonte: IPEA Retrato das Desigualdades">
                 <span className="text-primary font-bold">90%</span>
               </HoverInfo>{" "}
               do aumento na última década:
