@@ -1,5 +1,5 @@
 import SlideContainer from "../SlideContainer";
-import { Check, RefreshCw, Clock } from "lucide-react";
+import { Check, RefreshCw, Clock, Star } from "lucide-react";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
 
@@ -13,39 +13,47 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
     {
       status: "done",
       icon: Check,
-      text: "Protótipo funcional no WhatsApp",
+      text: "Selecionados AI4Good 2025 (8 de 167)",
+      highlight: true,
       delay: "delay-100"
     },
     {
       status: "done",
       icon: Check,
-      text: "Selecionados AI4Good 2026 (8 de 167)",
-      highlight: true,
+      text: "Pesquisa com mães solo em campo",
       delay: "delay-200"
     },
     {
-      status: "progress",
-      icon: RefreshCw,
-      text: "Pesquisa com mães solo em campo",
+      status: "done",
+      icon: Check,
+      text: "Protótipo funcional no WhatsApp",
       delay: "delay-300"
     },
     {
-      status: "pending",
-      icon: Clock,
-      text: "Piloto com 50 usuárias em Salvador",
+      status: "progress",
+      icon: Star,
+      text: "DemoDay",
+      highlight: true,
+      current: true,
       delay: "delay-400"
     },
     {
       status: "pending",
       icon: Clock,
-      text: "Parcerias com CRAS e ONGs",
+      text: "Piloto com 20 beta testers (vieram da pesquisa)",
       delay: "delay-500"
+    },
+    {
+      status: "pending",
+      icon: Clock,
+      text: "Parcerias e escala",
+      delay: "delay-600"
     },
   ];
 
   return (
     <SlideContainer isActive={isActive} transition={transition}>
-      <div className="space-y-6 sm:space-y-12">
+      <div className="space-y-6 sm:space-y-10">
         {/* Title */}
         <h2 className={`text-2xl sm:text-3xl md:text-5xl font-bold text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
           Tração e <span className="text-gradient">Próximos Passos</span>
@@ -56,40 +64,43 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
           {/* Vertical line */}
           <div className="absolute left-4 sm:left-6 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-muted" />
 
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-3 sm:space-y-4">
             {milestones.map((milestone, index) => {
               const Icon = milestone.icon;
               const statusColors = {
                 done: "bg-primary text-primary-foreground",
-                progress: "bg-secondary text-secondary-foreground animate-pulse",
+                progress: "bg-secondary text-secondary-foreground ring-4 ring-secondary/30",
                 pending: "bg-muted text-muted-foreground",
               };
 
               return (
                 <div
                   key={index}
-                  className={`relative flex items-start gap-4 sm:gap-6 pl-12 sm:pl-16 md:pl-20 ${isActive ? `animate-slide-left ${milestone.delay}` : 'opacity-0'}`}
+                  className={`relative flex items-start gap-3 sm:gap-4 pl-10 sm:pl-14 md:pl-18 ${isActive ? `animate-slide-left ${milestone.delay}` : 'opacity-0'}`}
                   style={{ animationDelay: `${100 + index * 100}ms` }}
                 >
                   {/* Icon circle */}
                   <div
-                    className={`absolute left-0 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center ${statusColors[milestone.status as keyof typeof statusColors]}`}
+                    className={`absolute left-0 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center ${statusColors[milestone.status as keyof typeof statusColors]}`}
                   >
-                    <Icon className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8" />
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                   </div>
 
                   {/* Content */}
                   <div
-                    className={`flex-1 bg-card border rounded-xl p-5 md:p-6 ${milestone.highlight
+                    className={`flex-1 bg-card border rounded-xl p-3 sm:p-4 ${milestone.current
+                      ? "border-secondary bg-secondary/10 ring-2 ring-secondary/50"
+                      : milestone.highlight
                         ? "border-primary/50 bg-primary/5"
                         : "border-border"
                       }`}
                   >
-                    <p className={`text-lg md:text-xl ${milestone.highlight ? "font-semibold text-primary" : "text-foreground/80"}`}>
+                    <p className={`text-sm sm:text-base md:text-lg ${milestone.current ? "font-bold text-secondary" : milestone.highlight ? "font-semibold text-primary" : "text-foreground/80"}`}>
                       {milestone.text}
+                      {milestone.current && <span className="ml-2 text-xs sm:text-sm">← Estamos aqui!</span>}
                     </p>
-                    {milestone.highlight && (
-                      <span className="inline-block mt-2 px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">
+                    {milestone.highlight && !milestone.current && (
+                      <span className="inline-block mt-1 px-2 py-0.5 bg-primary/20 text-primary text-xs rounded-full">
                         🏆 Validação Externa
                       </span>
                     )}
