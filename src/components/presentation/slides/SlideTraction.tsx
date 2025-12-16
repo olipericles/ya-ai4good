@@ -87,7 +87,7 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
 
                   {isCurrent && (
                     <span className="text-xs bg-secondary/20 text-secondary px-2 py-1 rounded-full whitespace-nowrap font-medium">
-                      Você está aqui!
+                      Nós estamos aqui!
                     </span>
                   )}
                 </div>
