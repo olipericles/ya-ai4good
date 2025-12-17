@@ -6,14 +6,13 @@ import SlideProblemInvisible from "./slides/SlideProblemInvisible";
 import SlideSolution from "./slides/SlideSolution";
 import SlideHowItWorks from "./slides/SlideHowItWorks";
 import SlideWhyWhatsApp from "./slides/SlideWhyWhatsApp";
-import SlideDifferential from "./slides/SlideDifferential";
 import SlideTraction from "./slides/SlideTraction";
 import SlideTeam from "./slides/SlideTeam";
 import SlideClosing from "./slides/SlideClosing";
 
-const TOTAL_SLIDES = 10;
+const TOTAL_SLIDES = 9;
 
-const Presentation = () => {
+const PresentationV2 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -37,7 +36,6 @@ const Presentation = () => {
     goToSlide(currentSlide - 1);
   }, [currentSlide, goToSlide]);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight" || e.key === " " || e.key === "Enter") {
@@ -60,10 +58,8 @@ const Presentation = () => {
   }, [nextSlide, prevSlide, goToSlide]);
 
   return (
-    <div
-      className="relative w-full h-screen bg-background overflow-hidden"
-    >
-      {/* Slides with varied dramatic transitions */}
+    <div className="relative w-full h-screen bg-background overflow-hidden">
+      {/* Slides - 9 total (removed SlideDifferential) */}
       <div className="absolute inset-0">
         <SlideOpening isActive={currentSlide === 0} transition="fade-zoom" />
         <SlideProblemDimension isActive={currentSlide === 1} transition="slide-up" />
@@ -71,10 +67,9 @@ const Presentation = () => {
         <SlideSolution isActive={currentSlide === 3} transition="blur-scale" />
         <SlideHowItWorks isActive={currentSlide === 4} transition="slide-left" />
         <SlideWhyWhatsApp isActive={currentSlide === 5} transition="fade-zoom" />
-        <SlideDifferential isActive={currentSlide === 6} transition="slide-right" />
-        <SlideTraction isActive={currentSlide === 7} transition="zoom-rotate" />
-        <SlideTeam isActive={currentSlide === 8} transition="blur-scale" />
-        <SlideClosing isActive={currentSlide === 9} transition="fade-zoom" />
+        <SlideTraction isActive={currentSlide === 6} transition="zoom-rotate" />
+        <SlideTeam isActive={currentSlide === 7} transition="blur-scale" />
+        <SlideClosing isActive={currentSlide === 8} transition="fade-zoom" />
       </div>
 
       {/* Navigation arrows */}
@@ -112,8 +107,8 @@ const Presentation = () => {
               goToSlide(index);
             }}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide
-                ? "w-8 bg-primary"
-                : "bg-foreground/20 hover:bg-foreground/40"
+              ? "w-8 bg-primary"
+              : "bg-foreground/20 hover:bg-foreground/40"
               }`}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -131,4 +126,4 @@ const Presentation = () => {
   );
 };
 
-export default Presentation;
+export default PresentationV2;
