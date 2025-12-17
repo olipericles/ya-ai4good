@@ -1,6 +1,18 @@
 import SlideContainer from "../SlideContainer";
 import { Users, TrendingUp, Database } from "lucide-react";
 
+// Import mother photos
+import mae1 from "@/assets/maes/1.jpeg";
+import mae2 from "@/assets/maes/2.jpeg";
+import mae3 from "@/assets/maes/3.jpeg";
+import mae4 from "@/assets/maes/4.jpeg";
+import mae5 from "@/assets/maes/5.jpeg";
+import mae6 from "@/assets/maes/6.jpeg";
+import mae7 from "@/assets/maes/7.jpeg";
+import mae8 from "@/assets/maes/8.jpeg";
+import mae9 from "@/assets/maes/9.jpeg";
+import mae10 from "@/assets/maes/10.jpeg";
+
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
 
 interface SlideTractionProps {
@@ -9,23 +21,18 @@ interface SlideTractionProps {
 }
 
 const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
-  // Placeholder bubbles for mother photos - larger sizes with slide-down animation
+  // 10 bubbles with mother photos - sizes increased by 20%
   const bubbles = [
-    { id: 1, top: "2%", left: "3%", size: "w-16 h-16", animDelay: "0s" },
-    { id: 2, top: "18%", left: "8%", size: "w-14 h-14", animDelay: "1s" },
-    { id: 3, top: "35%", left: "2%", size: "w-18 h-18", animDelay: "2s" },
-    { id: 4, top: "52%", left: "6%", size: "w-15 h-15", animDelay: "3s" },
-    { id: 5, top: "68%", left: "1%", size: "w-14 h-14", animDelay: "4s" },
-    { id: 6, top: "82%", left: "7%", size: "w-16 h-16", animDelay: "5s" },
-    { id: 7, top: "5%", right: "5%", size: "w-15 h-15", animDelay: "0.5s" },
-    { id: 8, top: "20%", right: "2%", size: "w-17 h-17", animDelay: "1.5s" },
-    { id: 9, top: "38%", right: "7%", size: "w-14 h-14", animDelay: "2.5s" },
-    { id: 10, top: "55%", right: "3%", size: "w-16 h-16", animDelay: "3.5s" },
-    { id: 11, top: "70%", right: "1%", size: "w-15 h-15", animDelay: "4.5s" },
-    { id: 12, top: "85%", right: "6%", size: "w-14 h-14", animDelay: "5.5s" },
-    { id: 13, top: "92%", left: "12%", size: "w-12 h-12", animDelay: "6s" },
-    { id: 14, top: "8%", right: "12%", size: "w-12 h-12", animDelay: "6.5s" },
-    { id: 15, top: "95%", right: "10%", size: "w-13 h-13", animDelay: "7s" },
+    { id: 1, photo: mae1, top: "3%", left: "3%", size: 77, animDelay: "0s" },
+    { id: 2, photo: mae2, top: "22%", left: "1%", size: 86, animDelay: "1s" },
+    { id: 3, photo: mae3, top: "42%", left: "4%", size: 72, animDelay: "2s" },
+    { id: 4, photo: mae4, top: "62%", left: "2%", size: 82, animDelay: "3s" },
+    { id: 5, photo: mae5, top: "82%", left: "5%", size: 77, animDelay: "4s" },
+    { id: 6, photo: mae6, top: "8%", right: "4%", size: 82, animDelay: "0.5s" },
+    { id: 7, photo: mae7, top: "28%", right: "1%", size: 77, animDelay: "1.5s" },
+    { id: 8, photo: mae8, top: "48%", right: "5%", size: 86, animDelay: "2.5s" },
+    { id: 9, photo: mae9, top: "68%", right: "2%", size: 72, animDelay: "3.5s" },
+    { id: 10, photo: mae10, top: "88%", right: "6%", size: 77, animDelay: "4.5s" },
   ];
 
   return (
@@ -35,17 +42,21 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
         {bubbles.map((bubble) => (
           <div
             key={bubble.id}
-            className={`absolute rounded-full bg-gradient-to-br from-primary/25 to-secondary/25 border border-primary/40 flex items-center justify-center text-sm font-bold text-foreground/50 animate-slide-down ${isActive ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute rounded-full overflow-hidden border-2 border-primary/50 animate-slide-down ${isActive ? 'opacity-100' : 'opacity-0'}`}
             style={{
               top: bubble.top,
               left: bubble.left,
               right: bubble.right,
-              width: bubble.size.includes('18') ? '72px' : bubble.size.includes('17') ? '68px' : bubble.size.includes('16') ? '64px' : bubble.size.includes('15') ? '60px' : bubble.size.includes('14') ? '56px' : bubble.size.includes('13') ? '52px' : '48px',
-              height: bubble.size.includes('18') ? '72px' : bubble.size.includes('17') ? '68px' : bubble.size.includes('16') ? '64px' : bubble.size.includes('15') ? '60px' : bubble.size.includes('14') ? '56px' : bubble.size.includes('13') ? '52px' : '48px',
+              width: `${bubble.size}px`,
+              height: `${bubble.size}px`,
               animationDelay: bubble.animDelay,
             }}
           >
-            {bubble.id}
+            <img
+              src={bubble.photo}
+              alt={`Mãe ${bubble.id}`}
+              className="w-full h-full object-cover"
+            />
           </div>
         ))}
       </div>
