@@ -14,7 +14,7 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
       <div className="flex flex-col h-full gap-6 sm:gap-8">
         {/* Title */}
         <h2 className={`text-2xl sm:text-3xl md:text-5xl font-bold text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
-          Do <span className="text-gradient">Dado</span> ao <span className="text-gradient">Impacto</span>
+          Feito <span className="text-gradient">COM</span> elas, <span className="text-gradient">PARA</span> elas
         </h2>
 
         {/* Two blocks */}
@@ -42,9 +42,11 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
             </ul>
           </div>
 
-          {/* Arrow */}
-          <div className={`flex justify-center ${isActive ? 'animate-fade-in delay-400' : 'opacity-0'}`}>
-            <ArrowDown className="w-8 h-8 text-primary/50" />
+          {/* Arrow + Subtitle */}
+          <div className={`flex flex-col items-center gap-2 ${isActive ? 'animate-fade-in delay-400' : 'opacity-0'}`}>
+            <ArrowDown className="w-6 h-6 text-primary/50" />
+            <span className="text-sm sm:text-base text-foreground/60 font-medium">Do Dado ao Impacto</span>
+            <ArrowDown className="w-6 h-6 text-primary/50" />
           </div>
 
           {/* Block 2 - O que isso pode gerar */}
