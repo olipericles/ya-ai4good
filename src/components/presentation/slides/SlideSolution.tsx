@@ -1,6 +1,7 @@
 import SlideContainer from "../SlideContainer";
 import personaImage from "@/assets/persona-image.jpeg";
 import whatsappMockup from "@/assets/whatsapp-mockup.png";
+import yaLogo from "@/assets/ya-logo.png";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
 
@@ -31,7 +32,7 @@ const SlideSolution = ({ isActive, transition }: SlideSolutionProps) => {
           <div className="space-y-2 sm:space-y-4">
             <div className="flex items-center gap-3 sm:gap-4">
               <img src={personaImage} alt="Persona Yá" className="h-10 sm:h-12 md:h-20 rounded-full object-cover aspect-square" />
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-black">Yá</h2>
+              <img src={yaLogo} alt="Yá" className="h-10 sm:h-12 md:h-16" />
             </div>
             <p className="text-lg sm:text-xl md:text-3xl text-primary font-semibold">
               Sua parceira financeira no WhatsApp

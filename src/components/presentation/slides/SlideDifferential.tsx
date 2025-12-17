@@ -52,9 +52,8 @@ const SlideDifferential = ({ isActive, transition }: SlideDifferentialProps) => 
               <span className="text-foreground/60 font-medium text-base sm:text-lg">Outros</span>
             </div>
             <div className="p-4 sm:p-5 text-center border-l border-primary/50 bg-primary/5">
-              <div className="flex items-center justify-center gap-2">
-                <img src={yaLogo} alt="Yá" className="h-5 sm:h-6" />
-                <span className="text-primary font-bold text-base sm:text-lg">Yá</span>
+              <div className="flex items-center justify-center">
+                <img src={yaLogo} alt="Yá" className="h-6 sm:h-8" />
               </div>
             </div>
           </div>
