@@ -48,11 +48,11 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
   return (
     <SlideContainer isActive={isActive} transition={transition}>
       {/* Background bubbles layer - more visible */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden">
         {bubbles.map((bubble) => (
           <div
             key={bubble.id}
-            className={`absolute rounded-full overflow-hidden border-2 border-primary/70 shadow-lg animate-slide-down ${isActive ? 'opacity-90' : 'opacity-0'}`}
+            className={`absolute rounded-full overflow-hidden border-2 border-primary/70 shadow-lg animate-slide-down transition-all duration-300 cursor-pointer hover:opacity-100 hover:scale-110 hover:border-primary hover:shadow-xl hover:z-20 ${isActive ? 'opacity-70' : 'opacity-0'}`}
             style={{
               top: bubble.top,
               left: bubble.left,
