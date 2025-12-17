@@ -78,7 +78,7 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
 
         {/* Subtitle */}
         <div className={`flex justify-center ${isActive ? 'animate-fade-in delay-400' : 'opacity-0'}`}>
-          <h3 className="text-lg sm:text-xl md:text-2xl font-bold">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold">
             Do <span className="text-gradient">Dado</span> ao <span className="text-gradient">Impacto</span>
           </h3>
         </div>
