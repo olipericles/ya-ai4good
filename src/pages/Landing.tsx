@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { Heart, ArrowRight } from "lucide-react";
+import { Heart } from "lucide-react";
 import yaLogo from "@/assets/ya-logo.png";
 
 const Landing = () => {
@@ -28,24 +27,6 @@ const Landing = () => {
                         </p>
                         <Heart className="w-5 h-5 animate-pulse" fill="currentColor" />
                     </div>
-                </div>
-
-                {/* Version links */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-400">
-                    <Link
-                        to="/v1"
-                        className="group flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all"
-                    >
-                        <span className="text-lg font-medium">Versão Dev</span>
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link
-                        to="/v2"
-                        className="group flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 transition-all"
-                    >
-                        <span className="text-lg font-medium">Versão Produção</span>
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
                 </div>
             </div>
 
