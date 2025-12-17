@@ -58,11 +58,11 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
             </ul>
           </div>
 
-          {/* Arrow + Subtitle */}
-          <div className={`flex items-center justify-center gap-3 ${isActive ? 'animate-fade-in delay-400' : 'opacity-0'}`}>
-            <ArrowDown className="w-5 h-5 text-primary/50" />
-            <span className="text-sm text-foreground/60 font-medium">Do Dado ao Impacto</span>
-            <ArrowDown className="w-5 h-5 text-primary/50" />
+          {/* Subtitle */}
+          <div className={`flex justify-center ${isActive ? 'animate-fade-in delay-400' : 'opacity-0'}`}>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold">
+              Do <span className="text-gradient">Dado</span> ao <span className="text-gradient">Impacto</span>
+            </h3>
           </div>
 
           {/* Block 2 - O que isso pode gerar */}
