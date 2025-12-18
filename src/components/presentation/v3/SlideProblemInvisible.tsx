@@ -20,7 +20,7 @@ const SlideProblemInvisible = ({ isActive, transition }: SlideProblemInvisiblePr
       <div className="space-y-6 sm:space-y-12 text-center">
         {/* Main question */}
         <div className={`space-y-4 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
-          <h2 className="text-3xl sm:text-4xl md:text-7xl font-black">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black">
             Para onde foi o <span className="text-gradient">dinheiro</span>?
           </h2>
           <p className="text-lg sm:text-2xl md:text-3xl text-foreground/60">
@@ -31,7 +31,7 @@ const SlideProblemInvisible = ({ isActive, transition }: SlideProblemInvisiblePr
         {/* Invisible costs */}
         <div className={`${isActive ? 'animate-fade-up delay-100' : 'opacity-0'}`}>
           <div className="inline-block bg-card border border-primary/30 rounded-2xl p-4 sm:p-8 md:p-10">
-            <p className="text-xl sm:text-2xl md:text-4xl font-bold text-primary mb-4 sm:mb-8">
+            <p className="text-xl sm:text-3xl md:text-5xl font-bold text-primary mb-4 sm:mb-8">
               É o gasto invisível
             </p>
 
@@ -41,10 +41,10 @@ const SlideProblemInvisible = ({ isActive, transition }: SlideProblemInvisiblePr
                   key={index}
                   className={`flex flex-col items-center gap-3 ${isActive ? `animate-scale-in ${cost.delay}` : 'opacity-0'}`}
                 >
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-muted flex items-center justify-center">
-                    <cost.icon className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+                  <div className="w-18 h-18 md:w-24 md:h-24 rounded-full bg-muted flex items-center justify-center">
+                    <cost.icon className="w-9 h-9 md:w-12 md:h-12 text-primary" />
                   </div>
-                  <span className="text-sm md:text-base text-foreground/70 max-w-32 text-center">
+                  <span className="text-sm md:text-xl text-foreground/70 max-w-xs text-center">
                     {cost.label}
                   </span>
                 </div>
@@ -59,7 +59,7 @@ const SlideProblemInvisible = ({ isActive, transition }: SlideProblemInvisiblePr
             <p className="text-lg sm:text-xl md:text-2xl text-foreground/70 italic">
               "Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou.
             </p>
-            <p className="text-lg sm:text-xl md:text-2xl text-primary font-semibold mt-2">
+            <p className="text-lg sm:text-xl md:text-3xl text-primary font-semibold mt-4">
               Não é falta de esforço. É falta de ferramenta."
             </p>
           </blockquote>

@@ -20,16 +20,16 @@ const SlideDemo = ({ isActive, transition }: SlideDemoProps) => {
             <div className="flex flex-col items-center justify-center h-full gap-8 md:gap-12">
                 {/* Title */}
                 <div className={`text-center space-y-4 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
-                    <h2 className="text-3xl md:text-5xl font-bold">
+                    <h2 className="text-3xl md:text-5xl font-black">
                         Experimente a <span className="text-gradient">Yá</span> agora!
                     </h2>
-                    <p className="text-lg md:text-xl text-foreground/60">
+                    <p className="text-base md:text-xl text-foreground/60">
                         Escaneie o QR Code ou clique no botão para começar
                     </p>
                 </div>
 
                 {/* QR Code and Action */}
-                <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 w-full max-w-5xl">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-32 w-full max-w-6xl">
                     {/* QR Code Container */}
                     <div className={`relative group ${isActive ? 'animate-scale-in delay-200' : 'opacity-0'}`}>
                         <div className="absolute -inset-4 bg-primary/20 blur-2xl rounded-[3rem] group-hover:bg-primary/30 transition-all duration-500" />
@@ -37,7 +37,7 @@ const SlideDemo = ({ isActive, transition }: SlideDemoProps) => {
                             <img
                                 src={qrCodeUrl}
                                 alt="WhatsApp QR Code"
-                                className="w-48 h-48 md:w-64 md:h-64 rounded-xl shadow-inner bg-white p-2"
+                                className="w-56 h-56 md:w-80 md:h-80 rounded-2xl shadow-inner bg-white p-4"
                             />
                             <div className="absolute top-0 right-0 p-3">
                                 <div className="w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg">
@@ -49,23 +49,23 @@ const SlideDemo = ({ isActive, transition }: SlideDemoProps) => {
 
                     {/* Action Column */}
                     <div className={`flex flex-col items-center md:items-start gap-6 md:gap-8 max-w-sm ${isActive ? 'animate-fade-up delay-400' : 'opacity-0'}`}>
-                        <div className="space-y-4 text-center md:text-left">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-sm font-medium">
-                                <span className="relative flex h-2 w-2">
+                        <div className="space-y-6 text-center md:text-left">
+                            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-base font-bold">
+                                <span className="relative flex h-3 w-3">
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+                                    <span className="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span>
                                 </span>
                                 Demo em Tempo Real
                             </div>
-                            <h3 className="text-2xl font-bold">Inicie sua conversa</h3>
-                            <p className="text-foreground/70 leading-relaxed">
+                            <h3 className="text-2xl md:text-5xl font-black">Inicie sua conversa</h3>
+                            <p className="text-base md:text-xl text-foreground/70 leading-relaxed max-w-md">
                                 Nossa IA está pronta para te ouvir, entender suas necessidades e mostrar como cuidamos de quem cuida.
                             </p>
                         </div>
 
                         <Button
                             size="lg"
-                            className="w-full sm:w-auto h-16 px-8 text-xl font-bold rounded-2xl gap-3 shadow-xl bg-[#25D366] hover:bg-[#128C7E] text-white border-none"
+                            className="w-full sm:w-auto h-20 px-12 text-2xl font-black rounded-3xl gap-4 shadow-2xl bg-[#25D366] hover:bg-[#128C7E] text-white border-none transition-all hover:scale-105 active:scale-95"
                             asChild
                         >
                             <a href={whatsappLink} target="_blank" rel="noopener noreferrer">

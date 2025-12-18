@@ -19,13 +19,13 @@ const SlideOpening = ({ isActive, transition }: SlideOpeningProps) => {
           <img
             src={yaLogo}
             alt="Yá Logo"
-            className="h-12 sm:h-16 md:h-20 object-contain"
+            className="h-14 sm:h-20 md:h-28 object-contain"
           />
         </div>
 
         {/* Main number */}
         <div className={`${isActive ? 'animate-fade-up delay-200' : 'opacity-0'}`}>
-          <h1 className="text-5xl sm:text-7xl md:text-9xl font-black text-gradient tracking-tight">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-gradient tracking-tight">
             <AnimatedNumber value={11} isActive={isActive} /> milhões
           </h1>
           <p className="text-sm text-foreground/50 mt-2">
@@ -51,7 +51,7 @@ const SlideOpening = ({ isActive, transition }: SlideOpeningProps) => {
           </HoverInfo>{" "}
           no Brasil.
           <br />
-          <span className="text-muted-foreground text-sm sm:text-lg md:text-xl">
+          <span className="text-base sm:text-xl md:text-2xl">
             Mais do que a população inteira de{" "}
             <HoverInfo tooltip="10,4 milhões de habitantes (Eurostat 2023)">
               Portugal

@@ -38,7 +38,7 @@ const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionPr
     <SlideContainer isActive={isActive} transition={transition}>
       <div className="space-y-6 sm:space-y-12">
         {/* Title */}
-        <h2 className={`text-2xl sm:text-3xl md:text-5xl font-bold text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
+        <h2 className={`text-3xl sm:text-4xl md:text-6xl font-bold text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
           A Falta de <span className="text-gradient">Estrutura</span>, Não de Esforço
         </h2>
 
@@ -47,9 +47,9 @@ const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionPr
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`bg-card border border-border/50 rounded-2xl p-4 sm:p-8 text-center hover:border-primary/50 transition-all duration-300 ${isActive ? `animate-scale-in ${stat.delay}` : 'opacity-0'}`}
+              className={`bg-card border border-border/50 rounded-2xl p-5 sm:p-9 md:p-10 text-center hover:border-primary/50 transition-all duration-300 ${isActive ? `animate-scale-in ${stat.delay}` : 'opacity-0'}`}
             >
-              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-primary mb-2 sm:mb-4">
+              <div className="text-5xl sm:text-6xl md:text-7xl font-black text-primary mb-3 sm:mb-4">
                 <HoverInfo tooltip={stat.tooltip}>
                   <AnimatedNumber
                     value={stat.value}
@@ -59,7 +59,7 @@ const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionPr
                   />
                 </HoverInfo>
               </div>
-              <p className="text-foreground/70 text-sm sm:text-lg">{stat.label}</p>
+              <p className="text-foreground/70 text-sm sm:text-lg md:text-xl">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -67,12 +67,13 @@ const SlideProblemDimension = ({ isActive, transition }: SlideProblemDimensionPr
         {/* Highlight */}
         <div className={`relative ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
           <div className="bg-gradient-to-r from-secondary/20 via-primary/20 to-secondary/20 rounded-2xl p-4 sm:p-6 md:p-8 border border-primary/20">
-            <p className="text-center text-base sm:text-xl md:text-2xl">
+            <p className="text-center text-base sm:text-xl md:text-3xl leading-snug">
               E esse número só cresce.{" "}
               <HoverInfo tooltip="Crescimento 2012-2022 — Fonte: FGV/IBRE com base na PNAD Contínua">
                 <span className="text-primary font-bold">90%</span>
               </HoverInfo>{" "}
               do aumento na última década:
+              <br className="hidden md:block" />
               <span className="text-secondary font-semibold"> mulheres pretas e pardas</span>
             </p>
           </div>

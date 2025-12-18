@@ -44,11 +44,11 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
       <div className="space-y-6 sm:space-y-12">
         {/* Title */}
         <div className={`text-center space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold">
             Da <span className="text-gradient">periferia de Salvador</span> para o mundo
           </h2>
-          <p className="text-foreground/60 text-sm sm:text-lg md:text-xl">
-            Conhecemos essa realidade porque viemos dela.
+          <p className="text-base sm:text-xl md:text-2xl text-foreground/60">
+            Quem constrói a Yá conhece a realidade de perto
           </p>
         </div>
 
@@ -59,12 +59,12 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
               key={index}
               className={`group relative ${isActive ? `animate-scale-in ${member.delay}` : 'opacity-0'}`}
             >
-              <div className="bg-card border border-border rounded-2xl p-4 sm:p-6 md:p-8 text-center hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
+              <div className={`bg-card/50 backdrop-blur-sm border border-border rounded-3xl px-3 sm:px-5 md:px-6 py-5 sm:py-6 md:py-8 flex flex-col items-center group hover:border-primary/50 transition-all duration-300 relative overflow-hidden`}>
                 {/* Gradient top bar */}
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${member.gradient}`} />
 
                 {/* Avatar with photo */}
-                <div className={`w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 sm:mb-6 overflow-hidden ring-4 ring-offset-2 ring-offset-background ring-primary/20`}>
+                <div className={`w-20 h-20 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full mx-auto mb-4 sm:mb-6 overflow-hidden ring-4 ring-offset-2 ring-offset-background ring-primary/20`}>
                   <img
                     src={member.photo}
                     alt={member.name}
@@ -73,18 +73,18 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
                 </div>
 
                 {/* Name and role */}
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">{member.name}</h3>
-                <p className="text-foreground/60 text-sm md:text-base mb-4">{member.role}</p>
+                <h3 className="text-lg sm:text-2xl font-bold group-hover:text-primary transition-colors">{member.name}</h3>
+                <p className="text-sm sm:text-lg text-foreground/60 mb-3 sm:mb-4">{member.role}</p>
 
                 {/* LinkedIn button */}
                 <a
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2]/20 transition-colors"
+                  className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2]/20 transition-colors"
                 >
-                  <Linkedin className="w-5 h-5" />
-                  <span className="text-sm font-medium">LinkedIn</span>
+                  <Linkedin className="w-6 h-6" />
+                  <span className="text-base sm:text-xl font-bold">LinkedIn</span>
                 </a>
               </div>
             </div>
@@ -92,7 +92,7 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
         </div>
 
         {/* Quote */}
-        <p className={`text-center max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-foreground/60 italic ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
+        <p className={`text-center max-w-4xl mx-auto text-xl sm:text-2xl md:text-3xl text-foreground/70 italic font-medium ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
           "A gente não estudou esse problema num paper — a gente viveu do lado dele."
         </p>
       </div>

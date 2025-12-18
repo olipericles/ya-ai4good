@@ -49,7 +49,7 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
         <div className="flex flex-col h-full justify-center gap-6 md:gap-8">
           {/* Title with WhatsApp */}
           <div className={`text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold">
               Como funciona no <span className="text-[#25D366]">WhatsApp</span>
             </h2>
           </div>
@@ -59,14 +59,14 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <div className="flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#25D366] flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#25D366] flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 md:w-8 md:h-8 text-white" />
                   </div>
                   <div>
-                    <span className="text-2xl md:text-3xl font-black text-[#25D366]">
+                    <span className="text-2xl md:text-4xl font-black text-[#25D366]">
                       <AnimatedNumber value={98} suffix="%" isActive={isActive} />
                     </span>
-                    <p className="text-xs text-foreground/60">acessam pelo celular</p>
+                    <p className="text-xs md:text-base text-foreground/60">acessam pelo celular</p>
                   </div>
                 </div>
               </TooltipTrigger>
@@ -80,10 +80,10 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <div className="flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform">
-                  <span className="text-2xl md:text-3xl font-black text-[#25D366]">
+                  <span className="text-2xl md:text-4xl font-black text-[#25D366]">
                     <AnimatedNumber value={91} suffix="%" isActive={isActive} duration={1800} />
                   </span>
-                  <p className="text-xs text-foreground/60 max-w-20">usam WhatsApp todo dia</p>
+                  <p className="text-xs md:text-base text-foreground/60 max-w-xs">usam WhatsApp todo dia</p>
                 </div>
               </TooltipTrigger>
               <TooltipContent side="bottom" className="bg-card border border-border p-3 max-w-xs">
@@ -99,7 +99,7 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
             {steps.map((step, index) => (
               <div key={index} className="flex flex-col md:flex-row items-center">
                 <div
-                  className={`relative bg-card border border-border rounded-2xl p-4 sm:p-5 w-full max-w-[280px] md:w-56 hover:border-primary/50 transition-all duration-300 ${isActive ? `animate-scale-in ${step.delay}` : 'opacity-0'}`}
+                  className={`relative bg-card border border-border rounded-3xl p-5 sm:p-8 w-full max-w-[340px] md:w-72 md:h-56 flex flex-col justify-center hover:border-primary/50 transition-all duration-300 ${isActive ? `animate-scale-in ${step.delay}` : 'opacity-0'}`}
                 >
                   {/* Step number */}
                   <div className={`absolute -top-3 left-5 px-3 py-0.5 rounded-full bg-gradient-to-r ${step.color} text-white text-xs font-bold`}>
@@ -108,29 +108,29 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
 
                   <div className="pt-1 space-y-3">
                     {/* Icons */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-3">
                       {step.icons.map((Icon, iconIndex) => (
                         <div
                           key={iconIndex}
-                          className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center"
+                          className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center"
                         >
-                          <Icon className="w-4 h-4 text-primary" />
+                          <Icon className="w-5 h-5 text-primary" />
                         </div>
                       ))}
                     </div>
 
                     {/* Text */}
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-bold">{step.title}</h3>
-                      <p className="text-xs sm:text-sm text-foreground/60">{step.subtitle}</p>
+                    <div className="space-y-1">
+                      <h3 className="text-lg sm:text-2xl font-bold">{step.title}</h3>
+                      <p className="text-sm sm:text-lg text-foreground/60">{step.subtitle}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Arrow between steps */}
                 {index < steps.length - 1 && (
-                  <div className={`hidden md:flex mx-3 ${isActive ? `animate-fade-in ${steps[index + 1].delay}` : 'opacity-0'}`}>
-                    <ArrowRight className="w-5 h-5 text-primary/50" />
+                  <div className={`hidden md:flex mx-4 ${isActive ? `animate-fade-in ${steps[index + 1].delay}` : 'opacity-0'}`}>
+                    <ArrowRight className="w-6 h-6 text-primary/50" />
                   </div>
                 )}
               </div>
@@ -139,8 +139,8 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
 
           {/* Bottom quote */}
           <div className={`text-center ${isActive ? 'animate-fade-up delay-500' : 'opacity-0'}`}>
-            <p className="inline-block text-sm sm:text-base md:text-lg text-foreground/60">
-              A gente não pede pra mudarem de vida — <span className="text-[#25D366] font-semibold">a gente entra na vida delas.</span>
+            <p className="inline-block text-base sm:text-xl md:text-2xl text-foreground/70">
+              A gente não pede pra mudarem de vida — <span className="text-[#25D366] font-bold">a gente entra na vida delas.</span>
             </p>
           </div>
         </div>
