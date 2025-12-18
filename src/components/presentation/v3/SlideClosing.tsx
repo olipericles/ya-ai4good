@@ -49,8 +49,8 @@ const SlideClosing = ({ isActive, transition }: SlideClosingProps) => {
         </div>
 
         {/* Presenter Credit */}
-        <div className={`${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
-          <div className="inline-block bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-4 sm:p-6 border border-primary/20 mt-4">
+        <div className={`${isActive ? 'animate-fade-up delay-700' : 'opacity-0 text-center'}`}>
+          <div className="inline-block bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-4 sm:p-6 border border-primary/20 mt-4 text-center">
             <p className="text-xl sm:text-2xl font-bold text-gradient mb-1">
               Obrigada!
             </p>
