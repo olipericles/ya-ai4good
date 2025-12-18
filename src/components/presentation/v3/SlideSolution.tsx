@@ -1,6 +1,6 @@
 import SlideContainer from "./SlideContainer";
 import personaImage from "@/assets/persona-image-v2.jpg";
-import whatsappMockup from "@/assets/whatsapp-chat-demo-audio-v2.jpg";
+import whatsappMockup from "@/assets/whatsapp-chat-demo-iphone.png";
 import yaLogo from "@/assets/ya-logo.png";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
@@ -20,10 +20,10 @@ const SlideSolution = ({ isActive, transition }: SlideSolutionProps) => {
             <img
               src={whatsappMockup}
               alt="Conversa no WhatsApp com Yá"
-              className="w-full h-auto rounded-[2rem] shadow-2xl"
+              className="w-full h-auto"
             />
             {/* Glow effect */}
-            <div className="absolute -inset-4 bg-primary/20 rounded-[4rem] blur-2xl -z-10"></div>
+            <div className="absolute inset-4 bg-primary/20 rounded-[4rem] blur-3xl -z-10 shadow-emerald-500/20 shadow-2xl"></div>
           </div>
         </div>
 
