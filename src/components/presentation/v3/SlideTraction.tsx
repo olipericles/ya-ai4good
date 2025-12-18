@@ -116,15 +116,15 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
           <ul className="space-y-3">
             <li className="flex items-start gap-3 text-base sm:text-lg">
               <Database className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
-              <span>Dados agregados sobre padrões de gasto em famílias vulneráveis</span>
+              <span>Tecnologia que tira as mães solo da <strong>invisibilidade estatística</strong></span>
             </li>
             <li className="flex items-start gap-3 text-base sm:text-lg">
               <Database className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
-              <span>Insumo para políticas públicas municipais</span>
+              <span>Insumo real para <strong>políticas públicas de justiça social</strong></span>
             </li>
             <li className="flex items-start gap-3 text-base sm:text-lg">
               <Database className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
-              <span>Menos estresse → melhor ambiente para <strong>22 milhões de crianças</strong></span>
+              <span>Combate ao estresse tóxico para <strong>22 milhões de crianças</strong></span>
             </li>
           </ul>
         </div>
