@@ -1,4 +1,4 @@
-import SlideContainer from "../SlideContainer";
+import SlideContainer from "./SlideContainer";
 import yaLogo from "@/assets/ya-logo.png";
 import { Heart } from "lucide-react";
 
