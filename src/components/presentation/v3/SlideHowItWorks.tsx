@@ -55,7 +55,7 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
           </div>
 
           {/* Stats row */}
-          <div className={`flex justify-center items-center gap-6 md:gap-12 ${isActive ? 'animate-scale-in delay-100' : 'opacity-0'}`}>
+          <div className={`flex justify-center items-center gap-6 md:gap-12 relative z-20 ${isActive ? 'animate-scale-in delay-100' : 'opacity-0'}`}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <div className="flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform">
