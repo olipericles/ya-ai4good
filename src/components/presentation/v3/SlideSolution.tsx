@@ -17,13 +17,17 @@ const SlideSolution = ({ isActive, transition }: SlideSolutionProps) => {
         {/* Left - Phone mockup - hidden on very small screens */}
         <div className={`relative hidden sm:block ${isActive ? 'animate-slide-right' : 'opacity-0'}`}>
           <div className="relative mx-auto w-48 sm:w-72 md:w-80">
-            <img
-              src={whatsappMockup}
-              alt="Conversa no WhatsApp com Yá"
-              className="w-full h-auto"
-            />
+            {/* The phone container with cropping */}
+            <div className="rounded-[3rem] overflow-hidden shadow-2xl relative z-10 border border-white/10">
+              <img
+                src={whatsappMockup}
+                alt="Conversa no WhatsApp com Yá"
+                className="w-full h-auto scale-[1.02]" // Subtle scale to ensure it fills the rounding
+              />
+            </div>
+
             {/* Glow effect */}
-            <div className="absolute inset-4 bg-primary/20 rounded-[4rem] blur-3xl -z-10 shadow-emerald-500/20 shadow-2xl"></div>
+            <div className="absolute inset-0 bg-primary/20 rounded-[4rem] blur-3xl -z-10 shadow-emerald-500/20 shadow-2xl"></div>
           </div>
         </div>
 
