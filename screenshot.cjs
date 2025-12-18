@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const page = await browser.newPage();
 
     // Try port 5173 first (default vite dev), fallback to 5174
-    const baseUrl = 'http://localhost:8081';
+    const baseUrl = 'http://localhost:8080/v2';
 
     // Desktop screenshots of all slides
     await page.setViewport({ width: 1280, height: 720 });
