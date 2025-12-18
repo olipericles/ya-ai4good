@@ -9,8 +9,9 @@ import SlideDifferential from "./v3/SlideDifferential";
 import SlideTraction from "./v3/SlideTraction";
 import SlideTeam from "./v3/SlideTeam";
 import SlideClosing from "./v3/SlideClosing";
+import SlideDemo from "./v3/SlideDemo";
 
-// V3: 9 slides
+// V3: 10 slides
 // 1. Opening
 // 2. Problem Dimension
 // 3. Problem Invisible
@@ -20,8 +21,9 @@ import SlideClosing from "./v3/SlideClosing";
 // 7. Traction (with photos)
 // 8. Team
 // 9. Closing
+// 10. Demo (QR Code + WhatsApp link)
 
-const TOTAL_SLIDES = 9;
+const TOTAL_SLIDES = 10;
 
 const PresentationV3 = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -81,6 +83,7 @@ const PresentationV3 = () => {
                 <SlideTraction isActive={currentSlide === 6} transition="zoom-rotate" />
                 <SlideTeam isActive={currentSlide === 7} transition="blur-scale" />
                 <SlideClosing isActive={currentSlide === 8} transition="fade-zoom" />
+                <SlideDemo isActive={currentSlide === 9} transition="slide-up" />
             </div>
 
             {/* Navigation arrows */}
