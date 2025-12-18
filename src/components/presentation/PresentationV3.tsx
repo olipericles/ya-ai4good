@@ -134,10 +134,6 @@ const PresentationV3 = () => {
                 {currentSlide + 1} / {TOTAL_SLIDES}
             </div>
 
-            {/* Version badge */}
-            <div className="absolute top-4 right-4 z-50 px-2 py-1 text-xs bg-secondary/20 text-secondary border border-secondary/30 rounded-full">
-                v3
-            </div>
 
             {/* Background gradient */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--primary)/0.1),transparent_50%)] pointer-events-none" />
