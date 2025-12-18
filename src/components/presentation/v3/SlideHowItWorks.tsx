@@ -54,20 +54,16 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
             </h2>
           </div>
 
-          {/* Stats row */}
+          {/* Stats row with pulsing WhatsApp icon in center */}
           <div className={`flex justify-center items-center gap-6 md:gap-12 relative z-20 ${isActive ? 'animate-scale-in delay-100' : 'opacity-0'}`}>
+            {/* Left stat - 98% */}
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform">
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#25D366] flex items-center justify-center">
-                    <MessageCircle className="w-6 h-6 md:w-8 md:h-8 text-white" />
-                  </div>
-                  <div>
-                    <span className="text-2xl md:text-4xl font-black text-[#25D366]">
-                      <AnimatedNumber value={98} suffix="%" isActive={isActive} />
-                    </span>
-                    <p className="text-xs md:text-base text-foreground/60">acessam pelo celular</p>
-                  </div>
+                <div className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform">
+                  <span className="text-3xl md:text-6xl font-black text-[#25D366]">
+                    <AnimatedNumber value={98} suffix="%" isActive={isActive} />
+                  </span>
+                  <p className="text-xs md:text-base text-foreground/60 text-center">acessam internet pelo<br />celular</p>
                 </div>
               </TooltipTrigger>
               <TooltipContent side="bottom" className="bg-card border border-border p-3 max-w-xs">
@@ -77,13 +73,25 @@ const SlideHowItWorks = ({ isActive, transition }: SlideHowItWorksProps) => {
               </TooltipContent>
             </Tooltip>
 
+            {/* Central pulsing WhatsApp icon */}
+            <div className="relative flex items-center justify-center">
+              {/* Outer glow ring */}
+              <div className="absolute w-24 h-24 md:w-32 md:h-32 rounded-full bg-[#25D366]/20 animate-pulse" />
+              <div className="absolute w-20 h-20 md:w-28 md:h-28 rounded-full bg-[#25D366]/30 animate-pulse" style={{ animationDelay: '0.2s' }} />
+              {/* Main icon */}
+              <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg shadow-[#25D366]/40">
+                <MessageCircle className="w-8 h-8 md:w-12 md:h-12 text-white" />
+              </div>
+            </div>
+
+            {/* Right stat - 91% */}
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform">
-                  <span className="text-2xl md:text-4xl font-black text-[#25D366]">
+                <div className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform">
+                  <span className="text-3xl md:text-6xl font-black text-[#25D366]">
                     <AnimatedNumber value={91} suffix="%" isActive={isActive} duration={1800} />
                   </span>
-                  <p className="text-xs md:text-base text-foreground/60 max-w-xs">usam WhatsApp todo dia</p>
+                  <p className="text-xs md:text-base text-foreground/60 text-center">usam WhatsApp todos<br />os dias</p>
                 </div>
               </TooltipTrigger>
               <TooltipContent side="bottom" className="bg-card border border-border p-3 max-w-xs">

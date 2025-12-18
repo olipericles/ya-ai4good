@@ -16,8 +16,9 @@ const SlideClosing = ({ isActive, transition }: SlideClosingProps) => {
 
         {/* Impact numbers - above logo */}
         <div className={`text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
-          <p className="text-lg sm:text-2xl md:text-3xl text-foreground/60 lowercase tracking-wide">
-            Cuidando de quem <span className="text-primary font-bold">cuida</span>.
+          <p className="text-xl sm:text-2xl md:text-3xl">
+            <span className="text-gradient font-bold">11 milhões</span> de mães.{" "}
+            <span className="text-gradient font-bold">22 milhões</span> de crianças.
           </p>
         </div>
 
@@ -26,36 +27,34 @@ const SlideClosing = ({ isActive, transition }: SlideClosingProps) => {
           <img
             src={yaLogo}
             alt="Yá Logo"
-            className="h-12 sm:h-16 md:h-20 object-contain"
+            className="h-24 sm:h-32 md:h-48 object-contain mx-auto"
           />
           <div className="absolute inset-0 bg-primary/30 blur-[80px] -z-10 rounded-full" />
         </div>
 
         {/* Main message */}
         <div className={`text-center space-y-4 sm:space-y-6 ${isActive ? 'animate-fade-up delay-300' : 'opacity-0'}`}>
-          <p className="text-base sm:text-lg md:text-xl text-foreground/50">
-            Apresentação por <span className="text-primary font-semibold">Cofilia</span>
-            <br />
-            Dezembro 2024
-          </p>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold">
+            Yá: <span className="text-gradient">mãe</span>, em yorubá.
+          </h2>
         </div>
 
         {/* Tagline */}
         <div className={`${isActive ? 'animate-fade-in delay-500' : 'opacity-0'}`}>
-          <div className="inline-flex items-center gap-4 text-primary">
-            <Heart className="w-6 h-6 sm:w-10 sm:h-10 animate-pulse" fill="currentColor" />
-            <span className="text-lg sm:text-2xl md:text-3xl font-bold italic">Uma IA que cuida de quem cuida de todo mundo</span>
-            <Heart className="w-6 h-6 sm:w-10 sm:h-10 animate-pulse" fill="currentColor" />
+          <div className="inline-flex items-center gap-3 text-primary">
+            <Heart className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" fill="currentColor" />
+            <span className="text-base sm:text-lg md:text-xl font-medium">Uma IA que cuida de quem cuida de todo mundo</span>
+            <Heart className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" fill="currentColor" />
           </div>
         </div>
 
         {/* Presenter Credit */}
         <div className={`${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
-          <div className="inline-block bg-gradient-to-r from-primary/10 to-secondary/10 rounded-3xl p-6 sm:p-10 border border-primary/20 mt-8 text-center shadow-xl backdrop-blur-sm">
-            <p className="text-3xl sm:text-5xl font-black text-gradient mb-2">
+          <div className="inline-block bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-4 sm:p-6 border border-primary/20 mt-4">
+            <p className="text-xl sm:text-2xl font-bold text-gradient mb-1">
               Obrigada!
             </p>
-            <p className="text-foreground/70 text-lg sm:text-2xl font-medium">
+            <p className="text-foreground/60 text-sm sm:text-base">
               Adriele Ornellas — Apresentadora
             </p>
           </div>
