@@ -43,13 +43,13 @@ const SlideContainer = ({ children, className, isActive, transition = "blur-scal
   return (
     <div
       className={cn(
-        "absolute inset-0 flex items-center justify-center p-4 sm:p-8 md:p-16 transition-all duration-1000 ease-out",
+        "absolute inset-0 flex items-center justify-center p-4 sm:p-6 md:p-8 transition-all duration-1000 ease-out",
         isActive ? `${styles.active} z-10` : `${styles.inactive} z-0 pointer-events-none`,
         className
       )}
     >
       <div className={cn(
-        "w-full max-w-6xl mx-auto transition-all duration-1000 delay-200",
+        "w-full max-w-7xl mx-auto transition-all duration-1000 delay-200",
         isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       )}>
         {children}

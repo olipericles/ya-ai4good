@@ -43,7 +43,7 @@ const SlideDifferential = ({ isActive, transition }: SlideDifferentialProps) => 
       <div className="flex flex-col h-full justify-center gap-6 md:gap-8">
         {/* Title */}
         <div className={`text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold">
             Por que <span className="text-gradient">Yá</span> é diferente?
           </h2>
         </div>
@@ -52,28 +52,28 @@ const SlideDifferential = ({ isActive, transition }: SlideDifferentialProps) => 
         <div className={`bg-card/80 border border-border rounded-2xl overflow-hidden ${isActive ? 'animate-scale-in delay-200' : 'opacity-0'}`}>
           {/* Table Header */}
           <div className="grid grid-cols-3 bg-muted/50 border-b border-border">
-            <div className="p-3 sm:p-4 text-center font-semibold text-foreground/70 text-sm sm:text-base">
+            <div className="p-3 sm:p-5 text-center font-bold text-foreground/70 text-base sm:text-lg">
               Critério
             </div>
-            <div className="p-3 sm:p-4 flex items-center justify-center gap-2 border-x border-border">
+            <div className="p-3 sm:p-5 flex items-center justify-center gap-3 border-x border-border">
               {/* Competitor logos */}
               <img
                 src="https://poupa.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpig.e63ad011.png&w=256&q=75"
                 alt="Poupa.ai"
-                className="h-6 sm:h-8 object-contain"
+                className="h-7 sm:h-10 object-contain"
               />
-              <span className="text-foreground/50">/</span>
+              <span className="text-foreground/50 text-xl">/</span>
               <img
                 src="https://granazen.com/_next/image?url=%2Flogo.png&w=256&q=75"
                 alt="GranaZen"
-                className="h-6 sm:h-8 object-contain"
+                className="h-7 sm:h-10 object-contain"
               />
             </div>
-            <div className="p-3 sm:p-4 flex items-center justify-center">
+            <div className="p-3 sm:p-5 flex items-center justify-center">
               <img
                 src={yaLogo}
                 alt="Yá"
-                className="h-8 sm:h-10 object-contain"
+                className="h-9 sm:h-12 md:h-14 object-contain"
               />
             </div>
           </div>
@@ -86,20 +86,20 @@ const SlideDifferential = ({ isActive, transition }: SlideDifferentialProps) => 
               style={{ animationDelay: isActive ? `${300 + index * 100}ms` : '0ms' }}
             >
               {/* Criteria */}
-              <div className="p-3 sm:p-4 flex items-center">
-                <span className="font-medium text-sm sm:text-base text-foreground/80">{row.criteria}</span>
+              <div className="p-3 sm:p-5 flex items-center">
+                <span className="font-semibold text-base sm:text-xl text-foreground/80">{row.criteria}</span>
               </div>
 
               {/* Competitors */}
-              <div className="p-3 sm:p-4 flex items-center gap-2 border-x border-border bg-destructive/5">
-                <X className="w-4 h-4 sm:w-5 sm:h-5 text-destructive shrink-0" />
-                <span className="text-xs sm:text-sm text-foreground/60">{row.competitors}</span>
+              <div className="p-3 sm:p-5 flex items-center gap-3 border-x border-border bg-destructive/5">
+                <X className="w-4 h-4 sm:w-6 sm:h-6 text-destructive shrink-0" />
+                <span className="text-sm sm:text-lg text-foreground/60">{row.competitors}</span>
               </div>
 
               {/* Yá */}
-              <div className="p-3 sm:p-4 flex items-center gap-2 bg-primary/5">
-                <Check className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0" />
-                <span className="text-xs sm:text-sm text-foreground/80 font-medium">{row.ya}</span>
+              <div className="p-3 sm:p-5 flex items-center gap-3 bg-primary/5">
+                <Check className="w-4 h-4 sm:w-6 sm:h-6 text-primary shrink-0" />
+                <span className="text-sm sm:text-lg text-foreground/80 font-bold">{row.ya}</span>
               </div>
             </div>
           ))}
@@ -107,8 +107,8 @@ const SlideDifferential = ({ isActive, transition }: SlideDifferentialProps) => 
 
         {/* Bottom message */}
         <div className={`text-center ${isActive ? 'animate-fade-up delay-700' : 'opacity-0'}`}>
-          <p className="text-sm sm:text-base md:text-lg text-foreground/60">
-            Não é só mais um app de finanças — <span className="text-primary font-semibold">é uma ferramenta de impacto social.</span>
+          <p className="text-base sm:text-xl md:text-2xl text-foreground/70 italic">
+            Não é só mais um app de finanças — <span className="text-primary font-bold">é uma ferramenta de impacto social.</span>
           </p>
         </div>
       </div>
