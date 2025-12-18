@@ -25,24 +25,24 @@ interface SlideTractionProps {
 }
 
 const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
-  // 14 bubbles with mother photos - more visible (less transparency)
+  // 14 bubbles with mother photos - 15% larger and moved to the edges
   const bubbles = [
-    // Left side - 7 bubbles (adjusted positions to stay visible)
-    { id: 1, photo: mae1, top: "3%", left: "1%", size: 80, animDelay: "0s" },
-    { id: 2, photo: mae2, top: "15%", left: "4%", size: 70, animDelay: "0.8s" },
-    { id: 3, photo: mae3, top: "28%", left: "0%", size: 85, animDelay: "1.6s" },
-    { id: 4, photo: mae4, top: "42%", left: "3%", size: 75, animDelay: "2.4s" },
-    { id: 5, photo: mae5, top: "56%", left: "1%", size: 80, animDelay: "3.2s" },
-    { id: 6, photo: mae6, top: "70%", left: "5%", size: 70, animDelay: "4s" },
-    { id: 7, photo: mae7, top: "84%", left: "2%", size: 75, animDelay: "4.8s" },
-    // Right side - 7 bubbles (adjusted positions to stay visible)
-    { id: 8, photo: mae8, top: "5%", right: "1%", size: 75, animDelay: "0.4s" },
-    { id: 9, photo: mae9, top: "18%", right: "5%", size: 80, animDelay: "1.2s" },
-    { id: 10, photo: mae10, top: "31%", right: "0%", size: 72, animDelay: "2s" },
-    { id: 11, photo: mae11, top: "45%", right: "3%", size: 90, animDelay: "2.8s" },
-    { id: 12, photo: mae12, top: "59%", right: "0%", size: 78, animDelay: "3.6s" },
-    { id: 13, photo: mae13, top: "73%", right: "4%", size: 68, animDelay: "4.4s" },
-    { id: 14, photo: mae14, top: "87%", right: "1%", size: 75, animDelay: "5.2s" },
+    // Left side - 7 bubbles (moved further to the edges)
+    { id: 1, photo: mae1, top: "3%", left: "0%", size: 92, animDelay: "0s" },
+    { id: 2, photo: mae2, top: "15%", left: "2%", size: 81, animDelay: "0.8s" },
+    { id: 3, photo: mae3, top: "28%", left: "-1%", size: 98, animDelay: "1.6s" },
+    { id: 4, photo: mae4, top: "42%", left: "1%", size: 86, animDelay: "2.4s" },
+    { id: 5, photo: mae5, top: "56%", left: "0%", size: 92, animDelay: "3.2s" },
+    { id: 6, photo: mae6, top: "70%", left: "3%", size: 81, animDelay: "4s" },
+    { id: 7, photo: mae7, top: "84%", left: "1%", size: 86, animDelay: "4.8s" },
+    // Right side - 7 bubbles (moved further to the edges)
+    { id: 8, photo: mae8, top: "5%", right: "0%", size: 86, animDelay: "0.4s" },
+    { id: 9, photo: mae9, top: "18%", right: "2%", size: 92, animDelay: "1.2s" },
+    { id: 10, photo: mae10, top: "31%", right: "-1%", size: 83, animDelay: "2s" },
+    { id: 11, photo: mae11, top: "45%", right: "1%", size: 104, animDelay: "2.8s" },
+    { id: 12, photo: mae12, top: "59%", right: "0%", size: 90, animDelay: "3.6s" },
+    { id: 13, photo: mae13, top: "73%", right: "3%", size: 78, animDelay: "4.4s" },
+    { id: 14, photo: mae14, top: "87%", right: "1%", size: 86, animDelay: "5.2s" },
   ];
 
   return (
@@ -52,7 +52,7 @@ const SlideTraction = ({ isActive, transition }: SlideTractionProps) => {
         {bubbles.map((bubble) => (
           <div
             key={bubble.id}
-            className={`absolute rounded-full overflow-hidden border-2 border-primary/70 shadow-lg animate-slide-down transition-all duration-300 cursor-pointer hover:opacity-100 hover:scale-110 hover:border-primary hover:shadow-xl hover:z-20 ${isActive ? 'opacity-70' : 'opacity-0'}`}
+            className={`absolute rounded-full overflow-hidden border-2 border-primary/70 shadow-lg animate-slide-down transition-all duration-300 cursor-pointer hover:opacity-100 hover:scale-110 hover:border-primary hover:shadow-xl hover:z-20 ${isActive ? 'opacity-80' : 'opacity-0'}`}
             style={{
               top: bubble.top,
               left: bubble.left,
