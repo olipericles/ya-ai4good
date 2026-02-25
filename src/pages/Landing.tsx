@@ -1,9 +1,18 @@
-import { Heart } from "lucide-react";
+import { Heart, LogIn } from "lucide-react";
 import yaLogo from "@/assets/ya-logo.png";
 
 const Landing = () => {
     return (
         <div className="min-h-screen bg-background flex flex-col items-center justify-center p-8">
+            {/* Login Button - Fixed top right */}
+            <a
+                href="/dashboard/"
+                className="fixed top-6 right-6 z-50 flex items-center gap-2 px-4 py-2 bg-primary/20 hover:bg-primary/30 border border-primary/30 rounded-full text-primary font-medium transition-all hover:scale-105"
+            >
+                <LogIn className="w-4 h-4" />
+                <span className="hidden sm:inline">Entrar</span>
+            </a>
+
             {/* Background glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
