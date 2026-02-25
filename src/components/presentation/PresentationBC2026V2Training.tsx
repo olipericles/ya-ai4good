@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { ChevronLeft, ChevronRight, Clock, Volume2, User } from "lucide-react";
 import SlideWaiting, { SLIDE_WAITING_STEPS } from "./bc2026v2/SlideWaiting";
 import SlideImpact, { SLIDE_IMPACT_STEPS } from "./bc2026v2/SlideImpact";
@@ -10,6 +10,8 @@ import SlideScaleV2, { SLIDE_SCALE_V2_STEPS } from "./bc2026v2/SlideScaleV2";
 import SlidePath, { SLIDE_PATH_STEPS } from "./bc2026v2/SlidePath";
 import SlideTeamV2, { SLIDE_TEAM_V2_STEPS } from "./bc2026v2/SlideTeamV2";
 import SlideQRCode, { SLIDE_QRCODE_STEPS } from "./bc2026v2/SlideQRCode";
+import roteiroRaw from "@/assets/roteiro-v2.md?raw";
+import { parseRoteiro } from "@/lib/parseRoteiro";
 
 const STEPS_PER_SLIDE = [
     SLIDE_WAITING_STEPS, SLIDE_IMPACT_STEPS, SLIDE_PROBLEM_V2_STEPS,
@@ -19,138 +21,8 @@ const STEPS_PER_SLIDE = [
 
 const TOTAL_SLIDES = STEPS_PER_SLIDE.length;
 
-const SCRIPTS = [
-    {
-        title: "SLIDE 0 — Tela de Espera",
-        time: "—",
-        speaker: "Ninguém",
-        notes: "Logo Yá + slogan. Time caminha ao palco.",
-        script: `[Slide automático, sem narração]\n\nTime se posiciona no palco.`,
-    },
-    {
-        title: "SLIDE 1 — Impacto",
-        time: "~45s",
-        speaker: "Adriele",
-        notes: "Tom pessoal, olhar para a plateia.",
-        script: `"Minha prima cria dois filhos sozinha. Minha vizinha, três. A mãe da minha melhor amiga criou quatro. Eu cresci cercada de mulheres que faziam milagre com pouco, e que no fim do mês não sabiam explicar pra onde o dinheiro tinha ido.
-
-(clique → 11 milhões) Essas mulheres são 11 milhões de brasileiras. (clique → Portugal) Mais do que a população inteira de Portugal. (clique → 90%) E 90% desse crescimento na última década são mulheres negras.
-
-Isso não é estatística pra mim. É a foto da minha família."`,
-    },
-    {
-        title: "SLIDE 2 — O Problema Invisível",
-        time: "~40s",
-        speaker: "Adriele",
-        notes: "Tom de empatia. Frase final é a revelação.",
-        script: `"O maior inimigo não é a conta grande. É o gasto invisível.
-
-(clique) A taxa que veio sem avisar. (clique) O lanche de 12 reais que virou 200 no mês. (clique) O remédio de emergência de madrugada.
-
-Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou. E não é falta de esforço.
-
-(clique → revelação) É falta de ferramenta."`,
-    },
-    {
-        title: "SLIDE 3 — A Solução",
-        time: "~45s",
-        speaker: "Luã",
-        notes: "Transição: Adriele → Luã. 'É falta de ferramenta' → 'A Yá é...'",
-        script: `"A Yá é uma assistente financeira que vive onde nossa usuária já vive: no WhatsApp.
-
-(clique) Ela manda um áudio dizendo 'gastei 50 no mercado', manda foto do cupom, ou simplesmente digita. A IA transcreve, categoriza e organiza.
-
-(clique) Sem app pra baixar. Sem formulário. Sem fricção.
-
-(clique) 97% das pessoas de baixa renda acessam internet pelo celular. 91% usam WhatsApp todo dia. A gente não pede pra mudarem de vida, a gente entra na vida delas."`,
-    },
-    {
-        title: "SLIDE 4 — O Teste",
-        time: "~40s",
-        speaker: "Luã → Péricles",
-        notes: "Luã faz ponte, Péricles detalha.",
-        script: `Luã:
-"Mas a gente não veio aqui só com ideia. A gente veio com dados."
-
-Péricles (assume):
-"Em fevereiro de 2026, rodamos um piloto de 2 semanas com 18 mães em Salvador.
-
-10 fizeram cadastro. 5 se engajaram de verdade, registrando gastos consistentemente. E 2 relataram transformação real na forma como enxergam suas finanças."`,
-    },
-    {
-        title: "SLIDE 5 — As Vozes",
-        time: "~60s",
-        speaker: "Péricles → Adriele",
-        notes: "⚠️ CORAÇÃO DO PITCH. Falar mais devagar. Deixar as citações respirarem.",
-        script: `Péricles:
-"E o que essas mães nos disseram mudou tudo."
-
-Adriele (assume):
-(clique → citação 1) "Uma delas me disse: 'Eu achava que o problema era o salário. Era o delivery.'
-
-(clique → contexto) Ela descobriu que gastava mais de 300 reais por mês em delivery que não percebia. Redirecionou pra compras no mercado.
-
-(clique → citação 2) Outra me disse: 'Pela primeira vez em 3 anos, sobrou 50 reais no fim do mês.'
-
-50 reais. Pode parecer pouco. Mas pra quem nunca sobrou nada, é o começo de uma reserva. É dignidade."`,
-    },
-    {
-        title: "SLIDE 6 — Escalar o Sucesso",
-        time: "~50s",
-        speaker: "Péricles",
-        notes: "🎯 Tom de CONQUISTA. Usar 'investimento', não 'custo por mãe'.",
-        script: `(clique → coluna esquerda) "A gente tá muito feliz. Porque em apenas duas semanas, com custo praticamente zero, a gente mudou a vida de duas pessoas. Duas mães que pela primeira vez conseguiram enxergar pra onde o dinheiro ia.
-
-(clique → coluna direita) Agora imagina o que a gente pode fazer em seis meses. Com mil mães.
-
-A tecnologia já existe. O produto já funciona. A gente só precisa de escala."`,
-    },
-    {
-        title: "SLIDE 7 — O Caminho",
-        time: "~40s",
-        speaker: "Péricles",
-        notes: "Tom muda: de conquista para reflexão aberta. CTA sutil.",
-        script: `"Sabemos o resultado que conseguimos. Sabemos o custo para chegar a mil.
-
-(clique) O próximo passo é encontrar essas mil mães. Talvez integrando com CRAS. (clique) Talvez com ONGs e associações que já atendem essa população. (clique) Talvez através de políticas públicas que já existem.
-
-O WhatsApp já tá lá. A mãe já tá lá. A Yá já funciona. (clique) A gente só precisa do caminho até elas.
-
-E se alguém aqui puder nos ajudar a encontrar esse caminho, a gente vai adorar essa conversa."`,
-    },
-    {
-        title: "SLIDE 8 — Nós",
-        time: "~50s",
-        speaker: "Todos (Jogral)",
-        notes: "⚠️ Precisa ensaiar o jogral. Alternativa: Adriele fecha sozinha.",
-        script: `Adriele: "Somos Adriele..."
-Luã: "...Luã..."
-Péricles: "...e Péricles."
-
-Adriele: "Três pessoas da periferia de Salvador."
-Péricles: "A gente não estudou esse problema num paper."
-
-TODOS JUNTOS: "A gente viveu do lado dele."
-
-(pausa de 2 segundos)
-
-Adriele:
-"Yá significa mãe, em yorubá. São 11 milhões de mães. 22 milhões de crianças. A gente não tá só ajudando elas a controlar dinheiro. A gente tá tentando quebrar um ciclo."
-
-(pausa)
-
-"Obrigada."`,
-    },
-    {
-        title: "SLIDE 9 — QR Code",
-        time: "—",
-        speaker: "Ninguém",
-        notes: "Slide silencioso. QR Code visível para a plateia.",
-        script: `[Slide de encerramento]\n\nDeixar o QR Code visível. Serve de fundo durante aplausos e perguntas.`,
-    },
-];
-
 const PresentationBC2026V2Training = () => {
+    const SCRIPTS = useMemo(() => parseRoteiro(roteiroRaw), []);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [currentStep, setCurrentStep] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
