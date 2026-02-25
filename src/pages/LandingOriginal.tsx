@@ -44,7 +44,7 @@ const LandingOriginal = () => {
                         <a href="#equipe" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Equipe</a>
                     </nav>
                     <a
-                        href="https://wa.me/5571999046199?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
+                        href="https://wa.me/5571992433141?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
                         target="_blank"
                         rel="noreferrer"
                         className="px-4 py-2 rounded-full bg-gradient-hero text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
@@ -84,7 +84,7 @@ const LandingOriginal = () => {
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-500">
                         <a
-                            href="https://wa.me/5571999046199?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
+                            href="https://wa.me/5571992433141?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
                             target="_blank"
                             rel="noreferrer"
                             className="px-8 py-3 rounded-xl bg-gradient-hero text-primary-foreground font-semibold hover:opacity-90 transition-opacity shadow-lg"
@@ -287,7 +287,7 @@ const LandingOriginal = () => {
                     <h2 className="text-3xl sm:text-4xl font-bold mb-8">Faça parte dessa transformação</h2>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a
-                            href="https://wa.me/5571999046199?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
+                            href="https://wa.me/5571992433141?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
                             target="_blank"
                             rel="noreferrer"
                             className="px-8 py-4 rounded-xl bg-gradient-hero text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg"
