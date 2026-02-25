@@ -1,73 +1,49 @@
-# Welcome to your Lovable project
+# Yá — Assistente Financeiro para Mães Solo
 
-## Project info
+> **"Yá" significa "mãe" em Yorubá.** Uma IA que cuida de quem cuida de todo mundo.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+🏆 **Top 3 [AI4Good 2026](https://www.brazilconference.org/)** — Harvard & MIT | Top 3 entre 188 projetos do Brasil
 
-## How can I edit this code?
+## O que é
 
-There are several ways of editing your application.
+Assistente financeiro via WhatsApp para **11 milhões** de mães solo brasileiras. OCR de cupom fiscal, análise por áudio, insights personalizados — tudo na linguagem delas, sem julgamento.
 
-**Use Lovable**
+## Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- **Frontend**: React + TypeScript + Vite + Tailwind CSS + shadcn/ui
+- **Assistente**: WhatsApp Business API + IA conversacional
+- **Deploy**: Lovable (frontend) + Docker (backend/dashboard)
 
-Changes made via Lovable will be committed automatically to this repo.
+## Rotas
 
-**Use your preferred IDE**
+| Rota | Descrição |
+|------|-----------|
+| `/` | Landing page |
+| `/vBC2026` | Pitch deck — Brazil Conference 2026 |
+| `/vBC2026t` | Pitch deck — versão treino |
+| `/vBC2026op` | Pitch deck — one page (scroll) |
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Desenvolvimento local
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+git clone https://github.com/olipericles/ya-ai4good.git
+cd ya-ai4good
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Equipe
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+| Nome | Papel | LinkedIn |
+|------|-------|----------|
+| **Péricles Oliveira** | IA & Estratégia | [linkedin.com/in/olipericles](https://www.linkedin.com/in/olipericles/) |
+| **Adriele Ornellas** | Pessoas & Comunidades | [linkedin.com/in/adrieleornellas](https://www.linkedin.com/in/adrieleornellas/) |
+| **Luã Mota** | Software & Dados | [linkedin.com/in/lua-mota](https://www.linkedin.com/in/lua-mota/) |
 
-**Use GitHub Codespaces**
+## Contato
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+📧 s.olipericles@gmail.com
 
-## What technologies are used for this project?
+---
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+*Projeto AI4Good 2026 — Todos os direitos reservados.*
