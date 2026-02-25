@@ -55,7 +55,7 @@ const LandingOriginal = () => {
             </header>
 
             {/* Hero */}
-            <section className="relative py-20 sm:py-28 overflow-hidden">
+            <section className="relative py-12 sm:py-16 overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--primary)/0.15),transparent_60%)] pointer-events-none" />
                 <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
                     <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 text-sm font-semibold text-primary mb-8 animate-fade-up">
@@ -102,7 +102,7 @@ const LandingOriginal = () => {
             </section>
 
             {/* O Problema */}
-            <section id="problema" className="py-20 sm:py-28">
+            <section id="problema" className="py-12 sm:py-16">
                 <div className="max-w-5xl mx-auto px-6">
                     <div className="text-center mb-12">
                         <span className="text-xs uppercase tracking-widest text-primary font-semibold">O Problema</span>
@@ -129,7 +129,7 @@ const LandingOriginal = () => {
             </section>
 
             {/* A Solução */}
-            <section id="solucao" className="py-20 sm:py-28 bg-card/30">
+            <section id="solucao" className="py-12 sm:py-16 bg-card/30">
                 <div className="max-w-5xl mx-auto px-6">
                     <div className="text-center mb-12">
                         <span className="text-xs uppercase tracking-widest text-primary font-semibold">A Solução</span>
@@ -169,7 +169,7 @@ const LandingOriginal = () => {
             </section>
 
             {/* Diferenciais */}
-            <section id="diferenciais" className="py-20 sm:py-28">
+            <section id="diferenciais" className="py-12 sm:py-16">
                 <div className="max-w-5xl mx-auto px-6">
                     <div className="text-center mb-12">
                         <span className="text-xs uppercase tracking-widest text-primary font-semibold">Diferenciais</span>
@@ -208,7 +208,7 @@ const LandingOriginal = () => {
             </section>
 
             {/* Impacto */}
-            <section id="impacto" className="py-20 sm:py-28 bg-card/30">
+            <section id="impacto" className="py-12 sm:py-16 bg-card/30">
                 <div className="max-w-5xl mx-auto px-6">
                     <div className="text-center mb-12">
                         <span className="text-xs uppercase tracking-widest text-primary font-semibold">Impacto</span>
@@ -229,14 +229,14 @@ const LandingOriginal = () => {
             </section>
 
             {/* Jornada */}
-            <section className="py-20 sm:py-28">
+            <section className="py-12 sm:py-16">
                 <div className="max-w-5xl mx-auto px-6">
                     <div className="text-center mb-12">
                         <span className="text-xs uppercase tracking-widest text-primary font-semibold">Nossa Trajetória</span>
                         <h2 className="text-3xl sm:text-4xl font-bold mt-3">Jornada no AI4Good</h2>
                     </div>
 
-                    <div className="max-w-lg mx-auto bg-card border border-border rounded-2xl overflow-hidden flex items-center hover:border-primary/30 transition-colors">
+                    <div className="max-w-2xl mx-auto bg-card border border-border rounded-2xl overflow-hidden flex items-center hover:border-primary/30 transition-colors">
                         <div className="p-6 flex flex-col items-center gap-2 bg-muted/30">
                             <img src="/img/ya-qrcode.png" alt="QR Code Demo" className="w-44 h-44 object-contain rounded-lg bg-white p-2" />
                             <span className="text-xs font-bold text-primary uppercase tracking-wider">Demo ao Vivo</span>
@@ -250,7 +250,7 @@ const LandingOriginal = () => {
             </section>
 
             {/* Equipe */}
-            <section id="equipe" className="py-20 sm:py-28 bg-card/30">
+            <section id="equipe" className="py-12 sm:py-16 bg-card/30">
                 <div className="max-w-5xl mx-auto px-6">
                     <div className="text-center mb-12">
                         <span className="text-xs uppercase tracking-widest text-primary font-semibold">Equipe</span>
@@ -277,7 +277,7 @@ const LandingOriginal = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="py-20 sm:py-28">
+            <section className="py-12 sm:py-16">
                 <div className="max-w-3xl mx-auto px-6 text-center">
                     <div className="inline-flex items-center gap-2 text-primary mb-6">
                         <Heart className="w-5 h-5 animate-pulse" fill="currentColor" />
