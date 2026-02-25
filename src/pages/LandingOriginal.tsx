@@ -1,6 +1,13 @@
 import { useEffect } from "react";
 import { Heart } from "lucide-react";
 import yaLogo from "@/assets/ya_logo_branco.svg";
+import equipePericles from "@/assets/equipe-pericles-real.png";
+import equipeAdriele from "@/assets/equipe-adriele-real.png";
+import equipeLua from "@/assets/equipe-lua-real.png";
+import yaWhatsappMockup from "@/assets/ya-whatsapp-mockup.jpg";
+import logoPoupa from "@/assets/logo-poupa.png";
+import logoGranazen from "@/assets/logo-granazen.png";
+import yaQrcode from "@/assets/ya-qrcode.png";
 
 const LandingOriginal = () => {
     useEffect(() => {
@@ -12,9 +19,9 @@ const LandingOriginal = () => {
     }, []);
 
     const team = [
-        { name: "Péricles Oliveira", role: "Estrategista de IA e Negócios", img: "/img/equipe-pericles-real.png", linkedin: "https://www.linkedin.com/in/olipericles/" },
-        { name: "Adriele Ornellas", role: "Especialista em Pessoas e Comunidades", img: "/img/equipe-adriele-real.png", linkedin: "https://www.linkedin.com/in/adrieleornellas/" },
-        { name: "Luã Mota", role: "Arquiteto de Software", img: "/img/equipe-lua-real.png", linkedin: "https://www.linkedin.com/in/lua-mota/" },
+        { name: "Péricles Oliveira", role: "Estrategista de IA e Negócios", img: equipePericles, linkedin: "https://www.linkedin.com/in/olipericles/" },
+        { name: "Adriele Ornellas", role: "Especialista em Pessoas e Comunidades", img: equipeAdriele, linkedin: "https://www.linkedin.com/in/adrieleornellas/" },
+        { name: "Luã Mota", role: "Arquiteto de Software", img: equipeLua, linkedin: "https://www.linkedin.com/in/lua-mota/" },
     ];
 
     const stats = [
@@ -142,7 +149,7 @@ const LandingOriginal = () => {
                     <div className="flex flex-col md:flex-row items-center gap-12">
                         <div className="flex-shrink-0">
                             <img
-                                src="/img/ya-whatsapp-mockup.jpg"
+                                src={yaWhatsappMockup}
                                 alt="Conversa com assistente Yá no WhatsApp"
                                 className="rounded-2xl shadow-lg border border-border max-w-[300px] w-full"
                             />
@@ -183,9 +190,9 @@ const LandingOriginal = () => {
                                     <th className="text-left p-4 font-semibold text-foreground">Critério</th>
                                     <th className="p-4 font-semibold text-foreground">
                                         <div className="flex items-center justify-center gap-2">
-                                            <img src="/img/logo-poupa.png" alt="Poupa.ai" className="h-5" />
+                                            <img src={logoPoupa} alt="Poupa.ai" className="h-5" />
                                             /
-                                            <img src="/img/logo-granazen.png" alt="GranaZen" className="h-5" />
+                                            <img src={logoGranazen} alt="GranaZen" className="h-5" />
                                         </div>
                                     </th>
                                     <th className="p-4 font-semibold bg-primary/10 border-t-2 border-primary">
@@ -238,7 +245,7 @@ const LandingOriginal = () => {
 
                     <div className="max-w-2xl mx-auto bg-card border border-border rounded-2xl overflow-hidden flex items-center hover:border-primary/30 transition-colors">
                         <div className="p-6 flex flex-col items-center gap-2 bg-muted/30">
-                            <img src="/img/ya-qrcode.png" alt="QR Code Demo" className="w-44 h-44 object-contain rounded-lg bg-white p-2" />
+                            <img src={yaQrcode} alt="QR Code Demo" className="w-44 h-44 object-contain rounded-lg bg-white p-2" />
                             <span className="text-xs font-bold text-primary uppercase tracking-wider">Demo ao Vivo</span>
                         </div>
                         <div className="p-6">
