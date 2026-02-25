@@ -1,8 +1,8 @@
 import SlideContainer from "../SlideContainer";
 import { Linkedin } from "lucide-react";
-import adrielePhoto from "@/assets/adriele.png";
-import periclesPhoto from "@/assets/pericles.png";
-import luaPhoto from "@/assets/lua.png";
+import adrielePhoto from "@/assets/equipe-adriele-real.png";
+import periclesPhoto from "@/assets/equipe-pericles-real.png";
+import luaPhoto from "@/assets/equipe-lua-real.png";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
 
