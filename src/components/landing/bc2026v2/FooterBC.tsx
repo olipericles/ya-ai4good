@@ -19,7 +19,7 @@ const FooterBC = () => {
 
                 <div className="pt-8 border-t border-border/5">
                     <p className="text-xs text-muted-foreground/50">
-                        Desenvolvido por <span className="hover:text-primary transition-colors cursor-default">Praxis Agência</span>
+                        Desenvolvido por <span className="hover:text-primary transition-colors cursor-default">Equipe Yá</span>
                     </p>
                 </div>
             </div>
