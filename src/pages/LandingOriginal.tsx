@@ -238,7 +238,7 @@ const LandingOriginal = () => {
 
                     <div className="max-w-lg mx-auto bg-card border border-border rounded-2xl overflow-hidden flex items-center hover:border-primary/30 transition-colors">
                         <div className="p-6 flex flex-col items-center gap-2 bg-muted/30">
-                            <img src="/img/ya-qrcode.png" alt="QR Code Demo" className="w-32 h-32 object-contain rounded-lg bg-white p-1" />
+                            <img src="/img/ya-qrcode.png" alt="QR Code Demo" className="w-44 h-44 object-contain rounded-lg bg-white p-2" />
                             <span className="text-xs font-bold text-primary uppercase tracking-wider">Demo ao Vivo</span>
                         </div>
                         <div className="p-6">
