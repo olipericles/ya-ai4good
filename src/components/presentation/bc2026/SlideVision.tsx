@@ -1,5 +1,4 @@
 import SlideContainer from "./SlideContainer";
-
 import { Building2, Users, FileText, Globe } from "lucide-react";
 
 interface SlideVisionProps {
@@ -9,43 +8,54 @@ interface SlideVisionProps {
 
 const SlideVision = ({ isActive, transition = "zoom-rotate" }: SlideVisionProps) => {
     const pillars = [
-        { icon: Building2, label: "Integração com CRAS", emoji: "🏛️" },
-        { icon: Users, label: "Parcerias com ONGs", emoji: "🤝" },
-        { icon: FileText, label: "Políticas públicas", emoji: "📋" },
-        { icon: Globe, label: "Escala nacional", emoji: "🌎" },
+        { icon: Building2, label: "Integração com CRAS", delay: "delay-200" },
+        { icon: Users, label: "Parcerias com ONGs", delay: "delay-300" },
+        { icon: FileText, label: "Políticas públicas", delay: "delay-400" },
+        { icon: Globe, label: "Escala nacional", delay: "delay-500" },
     ];
 
     return (
         <SlideContainer isActive={isActive} transition={transition}>
-            <div className="text-center space-y-10">
+            <div className="space-y-6 sm:space-y-10 text-center">
                 {/* Header */}
-                <div className="space-y-4">
-                    <h2 className="text-5xl md:text-7xl font-bold text-primary">
-                        1.000 mães em 6 meses
+                <div className={`space-y-4 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
+                    <h2 className="text-4xl sm:text-6xl md:text-8xl font-black">
+                        <span className="text-gradient">1.000</span> mães
                     </h2>
+                    <p className="text-lg sm:text-xl md:text-2xl text-foreground/60">
+                        em 6 meses
+                    </p>
                 </div>
 
                 {/* Pillars */}
-                <div className="flex flex-wrap justify-center gap-6 md:gap-10 mt-10">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto">
                     {pillars.map((pillar, index) => (
                         <div
                             key={index}
-                            className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 min-w-[140px]"
+                            className={`bg-card border border-border/50 rounded-2xl p-4 sm:p-6 flex flex-col items-center gap-3 hover:border-primary/50 transition-all duration-300 ${isActive ? `animate-scale-in ${pillar.delay}` : 'opacity-0'}`}
                         >
-                            <span className="text-4xl md:text-5xl">{pillar.emoji}</span>
-                            <p className="text-sm md:text-base text-foreground/80 font-medium">{pillar.label}</p>
+                            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                                <pillar.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+                            </div>
+                            <p className="text-sm sm:text-base text-foreground/80 font-medium">{pillar.label}</p>
                         </div>
                     ))}
                 </div>
 
                 {/* Quote */}
-                <div className="mt-12 p-6 md:p-8 rounded-3xl bg-primary/10 border border-primary/30 max-w-3xl mx-auto">
-                    <p className="text-xl md:text-2xl text-foreground font-medium">
-                        "Assistente Social Digital: o WhatsApp já tá lá. A mãe já tá lá.
-                        <span className="text-primary font-bold"> Só faltava a Yá.</span>"
-                    </p>
+                <div className={`${isActive ? 'animate-fade-up delay-600' : 'opacity-0'}`}>
+                    <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 rounded-2xl p-4 sm:p-6 md:p-8 max-w-3xl mx-auto">
+                        <p className="text-lg sm:text-xl md:text-2xl text-foreground font-medium leading-relaxed">
+                            "Assistente Social Digital: o WhatsApp já tá lá. A mãe já tá lá.
+                            <span className="text-primary font-bold"> Só faltava a Yá.</span>"
+                        </p>
+                    </div>
                 </div>
             </div>
+
+            {/* Background elements */}
+            <div className="hidden sm:block absolute top-20 right-20 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="hidden sm:block absolute bottom-20 left-20 w-48 h-48 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
         </SlideContainer>
     );
 };
