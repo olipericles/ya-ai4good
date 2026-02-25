@@ -1,5 +1,5 @@
 import SlideContainer, { type SlideMode } from "./SlideContainer";
-import yaLogo from "@/assets/ya-logo.png";
+import yaLogo from "@/assets/ya_logo_branco.svg";
 import { Heart } from "lucide-react";
 
 interface SlideClosingProps {

@@ -1,5 +1,5 @@
 import { Heart, LogIn } from "lucide-react";
-import yaLogo from "@/assets/ya-logo.png";
+import yaLogo from "@/assets/ya_logo_branco.svg";
 
 const Landing = () => {
     return (

@@ -1,7 +1,7 @@
 import SlideContainer, { type SlideMode } from "./SlideContainer";
 import AnimatedNumber from "../AnimatedNumber";
 import HoverInfo from "@/components/ui/HoverInfo";
-import yaLogo from "@/assets/ya-logo.png";
+import yaLogo from "@/assets/ya_logo_branco.svg";
 
 interface SlideOpeningProps {
     isActive: boolean;
