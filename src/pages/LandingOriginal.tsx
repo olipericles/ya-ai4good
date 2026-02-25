@@ -44,7 +44,7 @@ const LandingOriginal = () => {
                         <a href="#equipe" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Equipe</a>
                     </nav>
                     <a
-                        href="https://wa.me/5571999999999"
+                        href="https://wa.me/5571999046199?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
                         target="_blank"
                         rel="noreferrer"
                         className="px-4 py-2 rounded-full bg-gradient-hero text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
@@ -84,7 +84,7 @@ const LandingOriginal = () => {
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-500">
                         <a
-                            href="https://wa.me/5571999999999"
+                            href="https://wa.me/5571999046199?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
                             target="_blank"
                             rel="noreferrer"
                             className="px-8 py-3 rounded-xl bg-gradient-hero text-primary-foreground font-semibold hover:opacity-90 transition-opacity shadow-lg"
@@ -238,12 +238,12 @@ const LandingOriginal = () => {
 
                     <div className="max-w-lg mx-auto bg-card border border-border rounded-2xl overflow-hidden flex items-center hover:border-primary/30 transition-colors">
                         <div className="p-6 flex flex-col items-center gap-2 bg-muted/30">
-                            <img src="/img/ya-qrcode.png" alt="QR Code Demo" className="w-32 h-32" />
+                            <img src="/img/ya-qrcode.png" alt="QR Code Demo" className="w-32 h-32 object-contain rounded-lg bg-white p-1" />
                             <span className="text-xs font-bold text-primary uppercase tracking-wider">Demo ao Vivo</span>
                         </div>
                         <div className="p-6">
                             <h3 className="font-bold text-lg mb-2">AI4Good 2026 — Top 3</h3>
-                            <p className="text-muted-foreground text-sm">Top 3 entre 167 projetos de todo o Brasil. Em processo de seleção para a Brazil Conference.</p>
+                            <p className="text-muted-foreground text-sm">Top 3 entre 188 projetos de todo o Brasil. Em processo de seleção para a Brazil Conference.</p>
                         </div>
                     </div>
                 </div>
@@ -287,7 +287,7 @@ const LandingOriginal = () => {
                     <h2 className="text-3xl sm:text-4xl font-bold mb-8">Faça parte dessa transformação</h2>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a
-                            href="https://wa.me/5571999999999"
+                            href="https://wa.me/5571999046199?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
                             target="_blank"
                             rel="noreferrer"
                             className="px-8 py-4 rounded-xl bg-gradient-hero text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg"
@@ -295,7 +295,7 @@ const LandingOriginal = () => {
                             🤱 Quero Participar como Mãe
                         </a>
                         <a
-                            href="mailto:ya.ai4good@gmail.com"
+                            href="mailto:s.olipericles@gmail.com"
                             className="px-8 py-4 rounded-xl border border-border bg-card text-foreground font-semibold text-lg hover:border-primary/30 transition-colors"
                         >
                             🤝 Quero ser Parceiro
@@ -311,10 +311,9 @@ const LandingOriginal = () => {
                         <div>
                             <div className="flex items-center gap-3 mb-4">
                                 <img src={yaLogo} alt="Yá" className="h-10" />
-                                <span className="text-xl font-bold">Yá</span>
                             </div>
                             <p className="text-sm text-muted-foreground">
-                                Projeto AI4Good 2026 — Assistente financeiro para mães solo brasileiras. Top 3 entre 167 projetos.
+                                Projeto AI4Good 2026 — Assistente financeiro para mães solo brasileiras. Top 3 entre 188 projetos.
                             </p>
                         </div>
                         <div>
@@ -329,7 +328,7 @@ const LandingOriginal = () => {
                         <div>
                             <h4 className="font-semibold mb-3">Contato</h4>
                             <p className="text-sm text-muted-foreground">Salvador, Bahia</p>
-                            <p className="text-sm text-muted-foreground">ya.ai4good@gmail.com</p>
+                            <p className="text-sm text-muted-foreground">s.olipericles@gmail.com</p>
                         </div>
                     </div>
                     <div className="border-t border-border pt-6 text-center">
