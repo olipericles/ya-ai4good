@@ -1,10 +1,8 @@
-import { useEffect, useRef } from "react";
-import "./LandingOriginal.css";
+import { useEffect } from "react";
+import { Heart } from "lucide-react";
+import yaLogo from "@/assets/ya-logo.png";
 
 const LandingOriginal = () => {
-    const formMaesRef = useRef<HTMLFormElement>(null);
-    const formParceirosRef = useRef<HTMLFormElement>(null);
-
     useEffect(() => {
         document.title = "Yá | Assistente Financeiro para Mães Solo | AI4Good 2026";
         const meta = document.querySelector('meta[name="description"]');
@@ -13,154 +11,157 @@ const LandingOriginal = () => {
         }
     }, []);
 
-    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>, endpoint: string) => {
-        e.preventDefault();
-        const form = e.currentTarget;
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-        const originalText = btn.innerHTML;
+    const team = [
+        { name: "Péricles Oliveira", role: "Estrategista de IA e Negócios", img: "/img/equipe-pericles-real.png", linkedin: "https://www.linkedin.com/in/olipericles/" },
+        { name: "Adriele Ornellas", role: "Especialista em Pessoas e Comunidades", img: "/img/equipe-adriele-real.png", linkedin: "https://www.linkedin.com/in/adrieleornellas/" },
+        { name: "Luã Mota", role: "Arquiteto de Software", img: "/img/equipe-lua-real.png", linkedin: "https://www.linkedin.com/in/lua-mota/" },
+    ];
 
-        try {
-            btn.innerHTML = "Enviando...";
-            btn.disabled = true;
-            const response = await fetch(endpoint, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
-            });
-            const result = await response.json();
-            if (response.ok) {
-                alert(result.message || "Enviado com sucesso!");
-                form.reset();
-            } else {
-                alert("Erro ao enviar: " + (result.detail || "Tente novamente."));
-            }
-        } catch {
-            alert("Erro de conexão. Tente novamente mais tarde.");
-        } finally {
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-        }
-    };
+    const stats = [
+        { value: "64%", label: "vivem em situação de pobreza" },
+        { value: "39%", label: "menos renda que homens casados com filhos" },
+        { value: "72%", label: "enfrentam essa jornada sozinhas" },
+    ];
+
+    const differentials = [
+        { label: "Output", other: "Responde só em texto", ya: "🎙️ Responde em áudio" },
+        { label: "Tom", other: "Genérico", ya: "💬 Linguagem acessível" },
+        { label: "Foco", other: "Classe média", ya: "👩‍👧 Mães solo" },
+        { label: "Impacto", other: "Individual", ya: "📊 Dados para políticas públicas" },
+        { label: "Comunidade", other: "Não possui", ya: "🤝 Rede de apoio entre usuárias" },
+    ];
 
     return (
-        <div className="landing-original">
-            {/* Google Fonts */}
-            <link
-                href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
-                rel="stylesheet"
-            />
-
+        <div className="min-h-screen bg-background text-foreground">
             {/* Header */}
-            <header className="lo-header">
-                <div className="lo-container">
-                    <nav>
-                        <ul>
-                            <li><a href="#problema">O Problema</a></li>
-                            <li><a href="#solucao">A Solução</a></li>
-                            <li><a href="#impacto">Impacto</a></li>
-                            <li><a href="#equipe">Equipe</a></li>
-                        </ul>
+            <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
+                <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+                    <img src={yaLogo} alt="Yá" className="h-8 object-contain" />
+                    <nav className="hidden md:flex items-center gap-6">
+                        <a href="#problema" className="text-sm text-muted-foreground hover:text-foreground transition-colors">O Problema</a>
+                        <a href="#solucao" className="text-sm text-muted-foreground hover:text-foreground transition-colors">A Solução</a>
+                        <a href="#impacto" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Impacto</a>
+                        <a href="#equipe" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Equipe</a>
                     </nav>
-                    <a href="#participe" className="lo-btn-cta">Participar do Piloto</a>
+                    <a
+                        href="https://wa.me/5571999999999"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-4 py-2 rounded-full bg-gradient-hero text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
+                    >
+                        Fale Conosco
+                    </a>
                 </div>
             </header>
 
             {/* Hero */}
-            <section className="lo-hero">
-                <div className="lo-container" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <div className="lo-hero-badge">🏆 Top 3 AI4Good 2026 — Harvard & MIT</div>
+            <section className="relative py-20 sm:py-28 overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--primary)/0.15),transparent_60%)] pointer-events-none" />
+                <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+                    <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 text-sm font-semibold text-primary mb-8 animate-fade-up">
+                        🏆 Top 3 AI4Good 2026 — Harvard & MIT
+                    </div>
 
-                    <img src="/img/ya-logo.png" alt="Yá" style={{ height: 120, marginBottom: "2rem" }} />
+                    <img src={yaLogo} alt="Yá Logo" className="h-24 sm:h-32 object-contain mx-auto mb-8 animate-fade-up delay-100" />
 
-                    <h1>
-                        Consciência financeira na palma da mão
+                    <h1 className="text-3xl sm:text-5xl md:text-6xl font-black leading-tight mb-6 animate-fade-up delay-200">
+                        Consciência financeira na{" "}
+                        <span className="text-gradient">palma da mão</span>
                         <br />para quem mais precisa.
                     </h1>
 
-                    <p className="lo-hero-subtitle" style={{ textAlign: "center", marginBottom: "0.5rem", color: "white" }}>
-                        <strong style={{ fontSize: "2rem" }}>11 milhões</strong> de lares chefiados por mães solo no Brasil.
-                        <br /><small style={{ opacity: 0.9 }}>Mais do que a população inteira de Portugal.</small>
+                    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 animate-fade-up delay-300">
+                        <span className="text-gradient font-bold text-2xl sm:text-3xl">11 milhões</span>{" "}
+                        de lares chefiados por mães solo no Brasil.
                     </p>
-                    <p style={{ textAlign: "center", margin: "0.5rem 0 1.5rem", color: "white" }}>
-                        <small style={{ opacity: 0.7 }}>
-                            Fonte: FGV/IBRE — PNAD Contínua 2022 ·{" "}
-                            <a href="https://blogdoibre.fgv.br/posts/maes-solo-no-mercado-de-trabalho" target="_blank" rel="noreferrer" style={{ color: "#90cdf4", textDecoration: "underline" }}>
-                                Ver artigo completo →
-                            </a>
-                        </small>
+                    <p className="text-sm text-muted-foreground mb-8 animate-fade-up delay-300">
+                        Mais do que a população inteira de Portugal.
                     </p>
 
-                    <p style={{ margin: "2rem 0", color: "rgba(255, 255, 255, 0.8)", fontStyle: "italic" }}>
+                    <p className="text-foreground/60 italic mb-10 animate-fade-up delay-400">
                         "Yá significa 'mãe' em Yorubá. Um nome que carrega ancestralidade e acolhimento."
                     </p>
 
-                    <div className="lo-hero-cta-group">
-                        <a href="#participe" className="lo-btn-cta">Quero Participar do Piloto</a>
-                        <a href="#solucao" className="lo-btn-secondary">Conhecer o Projeto ↓</a>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-500">
+                        <a
+                            href="https://wa.me/5571999999999"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="px-8 py-3 rounded-xl bg-gradient-hero text-primary-foreground font-semibold hover:opacity-90 transition-opacity shadow-lg"
+                        >
+                            Quero Participar do Piloto
+                        </a>
+                        <a
+                            href="#solucao"
+                            className="px-8 py-3 rounded-xl border border-border bg-card/50 backdrop-blur-sm text-foreground font-medium hover:bg-card transition-colors"
+                        >
+                            Conhecer o Projeto ↓
+                        </a>
                     </div>
                 </div>
             </section>
 
             {/* O Problema */}
-            <section id="problema" className="lo-section">
-                <div className="lo-container">
-                    <div className="lo-section-header">
-                        <span className="lo-section-label">O Problema</span>
-                        <h2 className="lo-section-title">O Peso Invisível</h2>
+            <section id="problema" className="py-20 sm:py-28">
+                <div className="max-w-5xl mx-auto px-6">
+                    <div className="text-center mb-12">
+                        <span className="text-xs uppercase tracking-widest text-primary font-semibold">O Problema</span>
+                        <h2 className="text-3xl sm:text-4xl font-bold mt-3">O Peso Invisível</h2>
                     </div>
 
-                    <div className="lo-quote-box">
-                        <blockquote>
+                    <div className="bg-gradient-hero rounded-2xl p-8 sm:p-12 mb-12 relative overflow-hidden">
+                        <div className="absolute inset-0 bg-primary/20 blur-[80px] pointer-events-none" />
+                        <blockquote className="relative z-10 text-lg sm:text-2xl font-medium italic text-center text-primary-foreground leading-relaxed">
                             "Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou.
                             <br /><strong>Não é falta de esforço. É falta de ferramenta."</strong>
                         </blockquote>
                     </div>
 
-                    <div className="lo-problem-stats">
-                        <div className="lo-stat-card">
-                            <div className="lo-stat-value">64%</div>
-                            <div className="lo-stat-label">vivem em situação de pobreza</div>
-                        </div>
-                        <div className="lo-stat-card">
-                            <div className="lo-stat-value">39%</div>
-                            <div className="lo-stat-label">menos renda que homens casados com filhos</div>
-                        </div>
-                        <div className="lo-stat-card">
-                            <div className="lo-stat-value">72%</div>
-                            <div className="lo-stat-label">enfrentam essa jornada sozinhas</div>
-                        </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        {stats.map((stat) => (
+                            <div key={stat.label} className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary/30 transition-colors">
+                                <div className="text-4xl sm:text-5xl font-black text-gradient mb-2">{stat.value}</div>
+                                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
             {/* A Solução */}
-            <section id="solucao" className="lo-section lo-section-alt">
-                <div className="lo-container">
-                    <div className="lo-section-header">
-                        <span className="lo-section-label">A Solução</span>
-                        <h2 className="lo-section-title">Como funciona no WhatsApp</h2>
-                        <p className="lo-section-subtitle">
-                            Onde <strong>98%</strong> acessam a internet e <strong>91%</strong> estão presentes todos os dias.
+            <section id="solucao" className="py-20 sm:py-28 bg-card/30">
+                <div className="max-w-5xl mx-auto px-6">
+                    <div className="text-center mb-12">
+                        <span className="text-xs uppercase tracking-widest text-primary font-semibold">A Solução</span>
+                        <h2 className="text-3xl sm:text-4xl font-bold mt-3">Como funciona no WhatsApp</h2>
+                        <p className="text-muted-foreground mt-3 max-w-lg mx-auto">
+                            Onde <strong className="text-foreground">98%</strong> acessam a internet e <strong className="text-foreground">91%</strong> estão presentes todos os dias.
                         </p>
                     </div>
 
-                    <div className="lo-solution-flex">
-                        <div className="lo-solution-mockup">
-                            <img src="/img/ya-whatsapp-mockup.jpg" alt="Conversa com assistente Yá no WhatsApp" />
+                    <div className="flex flex-col md:flex-row items-center gap-12">
+                        <div className="flex-shrink-0">
+                            <img
+                                src="/img/ya-whatsapp-mockup.jpg"
+                                alt="Conversa com assistente Yá no WhatsApp"
+                                className="rounded-2xl shadow-lg border border-border max-w-[300px] w-full"
+                            />
                         </div>
 
-                        <div className="lo-solution-features">
-                            <div className="lo-solution-feature">
-                                <div className="icon">📸</div>
-                                <h3>Cupom Fiscal</h3>
-                                <p>Tirou foto do cupom fiscal, a Yá lê com OCR e registra os gastos automaticamente. <strong>2 segundos.</strong></p>
+                        <div className="flex-1 space-y-8">
+                            <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-colors">
+                                <div className="text-3xl mb-3">📸</div>
+                                <h3 className="text-lg font-bold mb-2">Cupom Fiscal</h3>
+                                <p className="text-muted-foreground">
+                                    Tirou foto do cupom fiscal, a Yá lê com OCR e registra os gastos automaticamente. <strong className="text-foreground">2 segundos.</strong>
+                                </p>
                             </div>
-                            <div className="lo-solution-feature">
-                                <div className="icon">🎙️</div>
-                                <h3>Áudio Natural</h3>
-                                <p>Manda um áudio perguntando sobre a semana, recebe insights personalizados. <strong>Sem precisar digitar.</strong></p>
+                            <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-colors">
+                                <div className="text-3xl mb-3">🎙️</div>
+                                <h3 className="text-lg font-bold mb-2">Áudio Natural</h3>
+                                <p className="text-muted-foreground">
+                                    Manda um áudio perguntando sobre a semana, recebe insights personalizados. <strong className="text-foreground">Sem precisar digitar.</strong>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -168,113 +169,106 @@ const LandingOriginal = () => {
             </section>
 
             {/* Diferenciais */}
-            <section id="diferenciais" className="lo-section">
-                <div className="lo-container">
-                    <div className="lo-section-header">
-                        <span className="lo-section-label">Diferenciais</span>
-                        <h2 className="lo-section-title">Por que a Yá é diferente?</h2>
+            <section id="diferenciais" className="py-20 sm:py-28">
+                <div className="max-w-5xl mx-auto px-6">
+                    <div className="text-center mb-12">
+                        <span className="text-xs uppercase tracking-widest text-primary font-semibold">Diferenciais</span>
+                        <h2 className="text-3xl sm:text-4xl font-bold mt-3">Por que a Yá é diferente?</h2>
                     </div>
 
-                    <table className="lo-comparison-table">
-                        <thead>
-                            <tr>
-                                <th style={{ width: "25%", textAlign: "left" }}>Critério</th>
-                                <th style={{ width: "37.5%" }}>
-                                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-                                        <img src="/img/logo-poupa.png" alt="Poupa.ai" style={{ height: 24 }} />
-                                        /
-                                        <img src="/img/logo-granazen.png" alt="GranaZen" style={{ height: 24 }} />
-                                    </div>
-                                </th>
-                                <th style={{ width: "37.5%", background: "#c2410c", color: "white", borderTop: "4px solid #9a3412" }}>
-                                    <img src="/img/ya-logo.png" alt="Yá" style={{ height: 32 }} />
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {[
-                                { label: "Output", other: "Responde só em texto", ya: "🎙️ Responde em áudio" },
-                                { label: "Tom", other: "Genérico", ya: "💬 Linguagem acessível" },
-                                { label: "Foco", other: "Classe média", ya: "👩‍👧 Mães solo" },
-                                { label: "Impacto", other: "Individual", ya: "📊 Dados para políticas públicas" },
-                                { label: "Comunidade", other: "Não possui", ya: "🤝 Rede de apoio entre usuárias" },
-                            ].map((row) => (
-                                <tr key={row.label}>
-                                    <td style={{ textAlign: "left", fontWeight: 600 }}>{row.label}</td>
-                                    <td>{row.other}</td>
-                                    <td style={{ background: "rgba(194, 65, 12, 0.1)", color: "#9a3412", fontWeight: 700 }}>{row.ya}</td>
+                    <div className="overflow-x-auto rounded-xl border border-border">
+                        <table className="w-full text-sm">
+                            <thead>
+                                <tr className="bg-muted/50">
+                                    <th className="text-left p-4 font-semibold text-foreground">Critério</th>
+                                    <th className="p-4 font-semibold text-foreground">
+                                        <div className="flex items-center justify-center gap-2">
+                                            <img src="/img/logo-poupa.png" alt="Poupa.ai" className="h-5" />
+                                            /
+                                            <img src="/img/logo-granazen.png" alt="GranaZen" className="h-5" />
+                                        </div>
+                                    </th>
+                                    <th className="p-4 font-semibold bg-primary/10 border-t-2 border-primary">
+                                        <img src={yaLogo} alt="Yá" className="h-7 mx-auto" />
+                                    </th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {differentials.map((row) => (
+                                    <tr key={row.label} className="border-t border-border hover:bg-card/50 transition-colors">
+                                        <td className="p-4 font-semibold text-foreground">{row.label}</td>
+                                        <td className="p-4 text-center text-muted-foreground">{row.other}</td>
+                                        <td className="p-4 text-center bg-primary/5 text-primary font-semibold">{row.ya}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
             {/* Impacto */}
-            <section id="impacto" className="lo-section lo-section-alt">
-                <div className="lo-container">
-                    <div className="lo-section-header">
-                        <span className="lo-section-label">Impacto</span>
-                        <h2 className="lo-section-title">Impacto que vai além do individual</h2>
+            <section id="impacto" className="py-20 sm:py-28 bg-card/30">
+                <div className="max-w-5xl mx-auto px-6">
+                    <div className="text-center mb-12">
+                        <span className="text-xs uppercase tracking-widest text-primary font-semibold">Impacto</span>
+                        <h2 className="text-3xl sm:text-4xl font-bold mt-3">Impacto que vai além do individual</h2>
                     </div>
 
-                    <div className="lo-impact-highlight">
-                        <div className="lo-big-number">30M+</div>
-                        <div className="lo-big-label">de vidas impactadas</div>
-                        <p style={{ marginTop: "1rem", color: "white" }}>
-                            Pesquisa realizada com 23 mães solo de Salvador. 18 mães já pediram para participar do piloto.
-                        </p>
+                    <div className="bg-gradient-hero rounded-2xl p-10 sm:p-16 text-center relative overflow-hidden">
+                        <div className="absolute inset-0 bg-secondary/10 blur-[100px] pointer-events-none" />
+                        <div className="relative z-10">
+                            <div className="text-5xl sm:text-7xl font-black text-accent mb-2">30M+</div>
+                            <div className="text-xl text-primary-foreground font-medium mb-4">de vidas impactadas</div>
+                            <p className="text-primary-foreground/80 max-w-lg mx-auto">
+                                Pesquisa realizada com 23 mães solo de Salvador. 18 mães já pediram para participar do piloto.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Jornada AI4Good */}
-            <section id="jornada" className="lo-section">
-                <div className="lo-container">
-                    <div className="lo-section-header">
-                        <span className="lo-section-label">Nossa Trajetória</span>
-                        <h2 className="lo-section-title">Jornada no AI4Good</h2>
+            {/* Jornada */}
+            <section className="py-20 sm:py-28">
+                <div className="max-w-5xl mx-auto px-6">
+                    <div className="text-center mb-12">
+                        <span className="text-xs uppercase tracking-widest text-primary font-semibold">Nossa Trajetória</span>
+                        <h2 className="text-3xl sm:text-4xl font-bold mt-3">Jornada no AI4Good</h2>
                     </div>
 
-                    <div className="lo-journey-badge-card">
-                        <div className="lo-journey-badge-img">
-                            <img src="/img/ya-qrcode.png" alt="QR Code Demo" style={{ width: 140, height: 140, marginBottom: "0.5rem" }} />
-                            <span style={{ fontSize: "0.8rem", color: "#666", fontWeight: 700 }}>DEMO AO VIVO</span>
+                    <div className="max-w-lg mx-auto bg-card border border-border rounded-2xl overflow-hidden flex items-center hover:border-primary/30 transition-colors">
+                        <div className="p-6 flex flex-col items-center gap-2 bg-muted/30">
+                            <img src="/img/ya-qrcode.png" alt="QR Code Demo" className="w-32 h-32" />
+                            <span className="text-xs font-bold text-primary uppercase tracking-wider">Demo ao Vivo</span>
                         </div>
-                        <div className="lo-journey-badge-content">
-                            <h3>AI4Good 2026 — Top 3</h3>
-                            <p>Top 3 entre 167 projetos de todo o Brasil. Em processo de seleção para a Brazil Conference.</p>
+                        <div className="p-6">
+                            <h3 className="font-bold text-lg mb-2">AI4Good 2026 — Top 3</h3>
+                            <p className="text-muted-foreground text-sm">Top 3 entre 167 projetos de todo o Brasil. Em processo de seleção para a Brazil Conference.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Equipe */}
-            <section id="equipe" className="lo-section lo-section-alt">
-                <div className="lo-container">
-                    <div className="lo-section-header">
-                        <span className="lo-section-label">Equipe</span>
-                        <h2 className="lo-section-title">Quem está por trás</h2>
+            <section id="equipe" className="py-20 sm:py-28 bg-card/30">
+                <div className="max-w-5xl mx-auto px-6">
+                    <div className="text-center mb-12">
+                        <span className="text-xs uppercase tracking-widest text-primary font-semibold">Equipe</span>
+                        <h2 className="text-3xl sm:text-4xl font-bold mt-3">Quem está por trás</h2>
                     </div>
 
-                    <div className="lo-team-grid">
-                        {[
-                            { name: "Péricles Oliveira", role: "Estrategista de IA e Negócios", img: "/img/equipe-pericles-real.png", linkedin: "https://www.linkedin.com/in/olipericles/" },
-                            { name: "Adriele Ornellas", role: "Especialista em Pessoas e Comunidades", img: "/img/equipe-adriele-real.png", linkedin: "https://www.linkedin.com/in/adrieleornellas/" },
-                            { name: "Luã Mota", role: "Arquiteto de Software", img: "/img/equipe-lua-real.png", linkedin: "https://www.linkedin.com/in/lua-mota/" },
-                        ].map((member) => (
-                            <div className="lo-team-card" key={member.name}>
-                                <div><img src={member.img} alt={member.name} /></div>
-                                <div className="lo-team-info">
-                                    <h3>{member.name}</h3>
-                                    <p>{member.role}</p>
-                                    <div className="lo-team-social">
-                                        <a href={member.linkedin} target="_blank" rel="noreferrer" title="LinkedIn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
-                                            </svg>
-                                        </a>
-                                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        {team.map((member) => (
+                            <div key={member.name} className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary/30 transition-colors group">
+                                <img src={member.img} alt={member.name} className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+                                <div className="p-5 text-center">
+                                    <h3 className="font-bold text-lg">{member.name}</h3>
+                                    <p className="text-primary text-sm font-medium mb-3">{member.role}</p>
+                                    <a href={member.linkedin} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" className="inline">
+                                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
                         ))}
@@ -282,102 +276,64 @@ const LandingOriginal = () => {
                 </div>
             </section>
 
-            {/* Participe */}
-            <section id="participe" className="lo-section">
-                <div className="lo-container">
-                    <div className="lo-section-header">
-                        <span className="lo-section-label">Participe</span>
-                        <h2 className="lo-section-title">Faça parte dessa transformação</h2>
-                        <p className="lo-section-subtitle">Duas formas de participar:</p>
+            {/* CTA Section */}
+            <section className="py-20 sm:py-28">
+                <div className="max-w-3xl mx-auto px-6 text-center">
+                    <div className="inline-flex items-center gap-2 text-primary mb-6">
+                        <Heart className="w-5 h-5 animate-pulse" fill="currentColor" />
+                        <span className="text-lg font-medium">Uma IA que cuida de quem cuida de todo mundo</span>
+                        <Heart className="w-5 h-5 animate-pulse" fill="currentColor" />
                     </div>
-
-                    <div className="lo-participate-grid">
-                        <div className="lo-participate-card">
-                            <h3>🤱 Para Mães Solo</h3>
-                            <p>Quer testar o assistente? Estamos selecionando participantes para o piloto. É gratuito, simples e seus dados ficam seguros.</p>
-                            <form ref={formMaesRef} onSubmit={(e) => handleFormSubmit(e, "/api/forms/submit/maes")}>
-                                <div className="lo-form-group">
-                                    <label htmlFor="mae-nome">Nome</label>
-                                    <input type="text" id="mae-nome" name="nome" placeholder="Seu nome" required />
-                                </div>
-                                <div className="lo-form-group">
-                                    <label htmlFor="mae-whatsapp">WhatsApp</label>
-                                    <input type="tel" id="mae-whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required />
-                                </div>
-                                <div className="lo-form-group">
-                                    <label htmlFor="mae-filhos">Quantos filhos você tem?</label>
-                                    <select id="mae-filhos" name="filhos" required>
-                                        <option value="">Selecione</option>
-                                        <option value="1">1 filho(a)</option>
-                                        <option value="2">2 filhos(as)</option>
-                                        <option value="3+">3 ou mais</option>
-                                    </select>
-                                </div>
-                                <button type="submit" className="lo-btn-cta" style={{ width: "100%" }}>Quero Participar</button>
-                            </form>
-                        </div>
-
-                        <div className="lo-participate-card">
-                            <h3>🤝 Para Parceiros</h3>
-                            <p>ONGs, Empresas ou Voluntários que querem ajudar a levar a educação financeira para mais mulheres.</p>
-                            <form ref={formParceirosRef} onSubmit={(e) => handleFormSubmit(e, "/api/forms/submit/parceiros")}>
-                                <div className="lo-form-group">
-                                    <label htmlFor="parceiro-nome">Nome / Organização</label>
-                                    <input type="text" id="parceiro-nome" name="nome" placeholder="Nome" required />
-                                </div>
-                                <div className="lo-form-group">
-                                    <label htmlFor="parceiro-email">Email</label>
-                                    <input type="email" id="parceiro-email" name="email" placeholder="email@exemplo.com" required />
-                                </div>
-                                <div className="lo-form-group">
-                                    <label htmlFor="parceiro-tipo">Como pode ajudar?</label>
-                                    <select id="parceiro-tipo" name="tipo" required>
-                                        <option value="">Selecione</option>
-                                        <option value="mentoria">Mentoria</option>
-                                        <option value="investimento">Investimento / Doação</option>
-                                        <option value="divulgacao">Divulgação</option>
-                                        <option value="outros">Outros</option>
-                                    </select>
-                                </div>
-                                <button type="submit" className="lo-btn-cta" style={{ width: "100%", background: "var(--color-primary)", color: "white" }}>
-                                    Entrar em Contato
-                                </button>
-                            </form>
-                        </div>
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-8">Faça parte dessa transformação</h2>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a
+                            href="https://wa.me/5571999999999"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="px-8 py-4 rounded-xl bg-gradient-hero text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg"
+                        >
+                            🤱 Quero Participar como Mãe
+                        </a>
+                        <a
+                            href="mailto:ya.ai4good@gmail.com"
+                            className="px-8 py-4 rounded-xl border border-border bg-card text-foreground font-semibold text-lg hover:border-primary/30 transition-colors"
+                        >
+                            🤝 Quero ser Parceiro
+                        </a>
                     </div>
                 </div>
             </section>
 
             {/* Footer */}
-            <footer className="lo-footer">
-                <div className="lo-container">
-                    <div className="lo-footer-grid">
+            <footer className="border-t border-border py-12 bg-card/50">
+                <div className="max-w-5xl mx-auto px-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                         <div>
-                            <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
-                                <img src="/img/ya-logo.png" alt="Yá" style={{ height: 48, filter: "brightness(0) invert(1)" }} />
-                                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.5rem", fontWeight: 700, color: "white" }}>Yá</span>
+                            <div className="flex items-center gap-3 mb-4">
+                                <img src={yaLogo} alt="Yá" className="h-10" />
+                                <span className="text-xl font-bold">Yá</span>
                             </div>
-                            <p>Projeto AI4Good 2026 — Assistente financeiro para mães solo brasileiras. Top 3 entre 167 projetos, em processo de seleção para a Brazil Conference.</p>
+                            <p className="text-sm text-muted-foreground">
+                                Projeto AI4Good 2026 — Assistente financeiro para mães solo brasileiras. Top 3 entre 167 projetos.
+                            </p>
                         </div>
-
                         <div>
-                            <h4>Navegação</h4>
-                            <ul>
-                                <li><a href="#">Início</a></li>
-                                <li><a href="#problema">O Problema</a></li>
-                                <li><a href="#solucao">A Solução</a></li>
-                                <li><a href="#equipe">Equipe</a></li>
+                            <h4 className="font-semibold mb-3">Navegação</h4>
+                            <ul className="space-y-2 text-sm text-muted-foreground">
+                                <li><a href="#" className="hover:text-foreground transition-colors">Início</a></li>
+                                <li><a href="#problema" className="hover:text-foreground transition-colors">O Problema</a></li>
+                                <li><a href="#solucao" className="hover:text-foreground transition-colors">A Solução</a></li>
+                                <li><a href="#equipe" className="hover:text-foreground transition-colors">Equipe</a></li>
                             </ul>
                         </div>
-
                         <div>
-                            <h4>Contato</h4>
-                            <p>Salvador, Bahia</p>
-                            <p>ya.ai4good@gmail.com</p>
+                            <h4 className="font-semibold mb-3">Contato</h4>
+                            <p className="text-sm text-muted-foreground">Salvador, Bahia</p>
+                            <p className="text-sm text-muted-foreground">ya.ai4good@gmail.com</p>
                         </div>
                     </div>
-                    <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "2rem", textAlign: "center" }}>
-                        <p>© 2026 Yá — AI4Good. Todos os direitos reservados.</p>
+                    <div className="border-t border-border pt-6 text-center">
+                        <p className="text-xs text-muted-foreground">© 2026 Yá — AI4Good. Todos os direitos reservados.</p>
                     </div>
                 </div>
             </footer>
