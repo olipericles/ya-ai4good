@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Heart } from "lucide-react";
 import yaLogo from "@/assets/ya_logo_branco.svg";
-import equipePericles from "@/assets/equipe-pericles-real.png";
-import equipeAdriele from "@/assets/equipe-adriele-real.png";
-import equipeLua from "@/assets/equipe-lua-real.png";
+import equipePericles from "@/assets/equipe-pericles.png";
+import equipeAdriele from "@/assets/equipe-adriele.png";
+import equipeLua from "@/assets/equipe-lua.png";
 import yaWhatsappMockup from "@/assets/ya-whatsapp-mockup.jpg";
 import logoPoupa from "@/assets/logo-poupa.png";
 import logoGranazen from "@/assets/logo-granazen.png";

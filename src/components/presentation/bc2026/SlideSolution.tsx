@@ -1,6 +1,6 @@
 import SlideContainer, { type SlideMode } from "./SlideContainer";
 import personaImage from "@/assets/persona-image-v2.jpg";
-import whatsappMockup from "@/assets/whatsapp-chat-demo-iphone.png";
+import whatsappMockup from "@/assets/ya-whatsapp-mockup.jpg";
 import yaLogo from "@/assets/ya_logo_branco.svg";
 
 interface SlideSolutionProps {
