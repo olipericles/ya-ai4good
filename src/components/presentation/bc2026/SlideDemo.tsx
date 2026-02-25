@@ -8,16 +8,17 @@ interface SlideDemoProps {
     isActive: boolean;
     transition?: TransitionType;
     mode?: SlideMode;
+    slideNumber?: number;
 }
 
-const SlideDemo = ({ isActive, transition = "slide-up", mode }: SlideDemoProps) => {
+const SlideDemo = ({ isActive, transition = "slide-up", mode, slideNumber = 10 }: SlideDemoProps) => {
     const whatsappNumber = "557199046199";
     const initialMessage = encodeURIComponent("Oii, quero experimentar!");
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${initialMessage}`;
     const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(whatsappLink)}`;
 
     return (
-        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode} slideNumber={slideNumber}>
             <div className="flex flex-col items-center justify-center h-full gap-8 md:gap-12">
                 {/* Title */}
                 <div className={`text-center space-y-4 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

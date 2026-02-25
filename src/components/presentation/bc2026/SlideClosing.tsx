@@ -6,11 +6,12 @@ interface SlideClosingProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
     mode?: SlideMode;
+    slideNumber?: number;
 }
 
-const SlideClosing = ({ isActive, transition = "fade-zoom", mode }: SlideClosingProps) => {
+const SlideClosing = ({ isActive, transition = "fade-zoom", mode, slideNumber = 9 }: SlideClosingProps) => {
     return (
-        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode} slideNumber={slideNumber}>
             <div className="flex flex-col items-center justify-center h-full gap-8 sm:gap-12 md:gap-16">
                 {/* Impact numbers */}
                 <div className={`text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

@@ -5,9 +5,10 @@ interface SlideTestProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
     mode?: SlideMode;
+    slideNumber?: number;
 }
 
-const SlideTest = ({ isActive, transition = "zoom-rotate", mode }: SlideTestProps) => {
+const SlideTest = ({ isActive, transition = "zoom-rotate", mode, slideNumber = 4 }: SlideTestProps) => {
     const funnelSteps = [
         { value: 18, label: "mães", sublabel: "convidadas", delay: "delay-100" },
         { value: 10, label: "cadastros", sublabel: "(56%)", delay: "delay-200" },
@@ -16,7 +17,7 @@ const SlideTest = ({ isActive, transition = "zoom-rotate", mode }: SlideTestProp
     ];
 
     return (
-        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode} slideNumber={slideNumber}>
             <div className="space-y-6 sm:space-y-10 text-center">
                 {/* Header */}
                 <div className={`space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

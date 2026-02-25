@@ -5,9 +5,10 @@ interface SlideProblemProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
     mode?: SlideMode;
+    slideNumber?: number;
 }
 
-const SlideProblem = ({ isActive, transition = "slide-up", mode }: SlideProblemProps) => {
+const SlideProblem = ({ isActive, transition = "slide-up", mode, slideNumber = 2 }: SlideProblemProps) => {
     const problems = [
         { icon: CreditCard, label: "Taxa surpresa", delay: "delay-200" },
         { icon: Pill, label: "Remédio de emergência", delay: "delay-300" },
@@ -18,7 +19,7 @@ const SlideProblem = ({ isActive, transition = "slide-up", mode }: SlideProblemP
     ];
 
     return (
-        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode} slideNumber={slideNumber}>
             <div className="space-y-6 sm:space-y-10 text-center">
                 {/* Main question */}
                 <div className={`space-y-4 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

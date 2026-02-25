@@ -6,11 +6,12 @@ interface SlideScaleProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
     mode?: SlideMode;
+    slideNumber?: number;
 }
 
-const SlideScale = ({ isActive, transition = "slide-left", mode }: SlideScaleProps) => {
+const SlideScale = ({ isActive, transition = "slide-left", mode, slideNumber = 6 }: SlideScaleProps) => {
     return (
-        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode} slideNumber={slideNumber}>
             <div className="space-y-6 sm:space-y-10 text-center">
                 {/* Header */}
                 <div className={`space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

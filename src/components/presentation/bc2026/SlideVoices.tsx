@@ -5,11 +5,12 @@ interface SlideVoicesProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
     mode?: SlideMode;
+    slideNumber?: number;
 }
 
-const SlideVoices = ({ isActive, transition = "fade-zoom", mode }: SlideVoicesProps) => {
+const SlideVoices = ({ isActive, transition = "fade-zoom", mode, slideNumber = 5 }: SlideVoicesProps) => {
     return (
-        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode} slideNumber={slideNumber}>
             <div className="space-y-6 sm:space-y-10 text-center">
                 {/* Header */}
                 <div className={`space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

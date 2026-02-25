@@ -8,9 +8,10 @@ interface SlideTeamProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
     mode?: SlideMode;
+    slideNumber?: number;
 }
 
-const SlideTeam = ({ isActive, transition = "blur-scale", mode }: SlideTeamProps) => {
+const SlideTeam = ({ isActive, transition = "blur-scale", mode, slideNumber = 8 }: SlideTeamProps) => {
     const team = [
         {
             name: "Péricles Oliveira",
@@ -39,7 +40,7 @@ const SlideTeam = ({ isActive, transition = "blur-scale", mode }: SlideTeamProps
     ];
 
     return (
-        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode} slideNumber={slideNumber}>
             <div className="space-y-6 sm:space-y-12">
                 {/* Title */}
                 <div className={`text-center space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

@@ -5,9 +5,10 @@ interface SlideVisionProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
     mode?: SlideMode;
+    slideNumber?: number;
 }
 
-const SlideVision = ({ isActive, transition = "zoom-rotate", mode }: SlideVisionProps) => {
+const SlideVision = ({ isActive, transition = "zoom-rotate", mode, slideNumber = 7 }: SlideVisionProps) => {
     const pillars = [
         { icon: Building2, label: "Integração com CRAS", delay: "delay-200" },
         { icon: Users, label: "Parcerias com ONGs", delay: "delay-300" },
@@ -16,7 +17,7 @@ const SlideVision = ({ isActive, transition = "zoom-rotate", mode }: SlideVision
     ];
 
     return (
-        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode} slideNumber={slideNumber}>
             <div className="space-y-6 sm:space-y-10 text-center">
                 {/* Header */}
                 <div className={`space-y-4 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

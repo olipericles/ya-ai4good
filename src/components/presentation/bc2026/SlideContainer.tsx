@@ -11,6 +11,7 @@ interface SlideContainerProps {
     isActive: boolean;
     transition?: TransitionType;
     mode?: SlideMode;
+    slideNumber?: number;
 }
 
 const transitionStyles: Record<TransitionType, { active: string; inactive: string }> = {
@@ -40,12 +41,19 @@ const transitionStyles: Record<TransitionType, { active: string; inactive: strin
     },
 };
 
-const SlideContainer = ({ children, className, isActive, transition = "blur-scale", mode = "slide" }: SlideContainerProps) => {
+const SlideContainer = ({ children, className, isActive, transition = "blur-scale", mode = "slide", slideNumber }: SlideContainerProps) => {
     const styles = transitionStyles[transition];
+
+    const badge = slideNumber ? (
+        <div className="absolute top-4 left-4 z-50 w-10 h-10 rounded-full bg-primary/90 backdrop-blur-sm border border-primary-foreground/20 flex items-center justify-center shadow-lg">
+            <span className="text-sm font-bold text-primary-foreground">{slideNumber}</span>
+        </div>
+    ) : null;
 
     if (mode === "section") {
         return (
             <section className={cn("relative min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8", className)}>
+                {badge}
                 <div className="w-full max-w-7xl mx-auto">
                     {children}
                 </div>
@@ -61,6 +69,7 @@ const SlideContainer = ({ children, className, isActive, transition = "blur-scal
                 className
             )}
         >
+            {badge}
             <div className={cn(
                 "w-full max-w-7xl mx-auto transition-all duration-1000 delay-200",
                 isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"

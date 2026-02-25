@@ -7,11 +7,12 @@ interface SlideSolutionProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
     mode?: SlideMode;
+    slideNumber?: number;
 }
 
-const SlideSolution = ({ isActive, transition = "blur-scale", mode }: SlideSolutionProps) => {
+const SlideSolution = ({ isActive, transition = "blur-scale", mode, slideNumber = 3 }: SlideSolutionProps) => {
     return (
-        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode} slideNumber={slideNumber}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 items-center">
                 {/* Left - Phone mockup */}
                 <div className={`relative hidden sm:block ${isActive ? 'animate-slide-right' : 'opacity-0'}`}>

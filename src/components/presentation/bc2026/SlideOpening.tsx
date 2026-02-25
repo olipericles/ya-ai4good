@@ -7,11 +7,12 @@ interface SlideOpeningProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
     mode?: SlideMode;
+    slideNumber?: number;
 }
 
-const SlideOpening = ({ isActive, transition = "fade-zoom", mode }: SlideOpeningProps) => {
+const SlideOpening = ({ isActive, transition = "fade-zoom", mode, slideNumber = 1 }: SlideOpeningProps) => {
     return (
-        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode} slideNumber={slideNumber}>
             <div className="text-center space-y-6 sm:space-y-10">
                 {/* Logo */}
                 <div className={`flex justify-center ${isActive ? 'animate-fade-in' : 'opacity-0'}`}>
