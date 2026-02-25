@@ -1,12 +1,13 @@
-import SlideContainer from "./SlideContainer";
+import SlideContainer, { type SlideMode } from "./SlideContainer";
 import { Building2, Users, FileText, Globe } from "lucide-react";
 
 interface SlideVisionProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+    mode?: SlideMode;
 }
 
-const SlideVision = ({ isActive, transition = "zoom-rotate" }: SlideVisionProps) => {
+const SlideVision = ({ isActive, transition = "zoom-rotate", mode }: SlideVisionProps) => {
     const pillars = [
         { icon: Building2, label: "Integração com CRAS", delay: "delay-200" },
         { icon: Users, label: "Parcerias com ONGs", delay: "delay-300" },
@@ -15,7 +16,7 @@ const SlideVision = ({ isActive, transition = "zoom-rotate" }: SlideVisionProps)
     ];
 
     return (
-        <SlideContainer isActive={isActive} transition={transition}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
             <div className="space-y-6 sm:space-y-10 text-center">
                 {/* Header */}
                 <div className={`space-y-4 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

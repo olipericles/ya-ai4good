@@ -1,14 +1,15 @@
-import SlideContainer from "./SlideContainer";
+import SlideContainer, { type SlideMode } from "./SlideContainer";
 import yaLogo from "@/assets/ya-logo.png";
 
 interface SlideVoicesProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+    mode?: SlideMode;
 }
 
-const SlideVoices = ({ isActive, transition = "fade-zoom" }: SlideVoicesProps) => {
+const SlideVoices = ({ isActive, transition = "fade-zoom", mode }: SlideVoicesProps) => {
     return (
-        <SlideContainer isActive={isActive} transition={transition}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
             <div className="space-y-6 sm:space-y-10 text-center">
                 {/* Header */}
                 <div className={`space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

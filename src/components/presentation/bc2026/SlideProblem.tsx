@@ -1,12 +1,13 @@
-import SlideContainer from "./SlideContainer";
+import SlideContainer, { type SlideMode } from "./SlideContainer";
 import { CreditCard, Pill, Bike, TrendingUp, Store, Receipt } from "lucide-react";
 
 interface SlideProblemProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+    mode?: SlideMode;
 }
 
-const SlideProblem = ({ isActive, transition = "slide-up" }: SlideProblemProps) => {
+const SlideProblem = ({ isActive, transition = "slide-up", mode }: SlideProblemProps) => {
     const problems = [
         { icon: CreditCard, label: "Taxa surpresa", delay: "delay-200" },
         { icon: Pill, label: "Remédio de emergência", delay: "delay-300" },
@@ -17,7 +18,7 @@ const SlideProblem = ({ isActive, transition = "slide-up" }: SlideProblemProps) 
     ];
 
     return (
-        <SlideContainer isActive={isActive} transition={transition}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
             <div className="space-y-6 sm:space-y-10 text-center">
                 {/* Main question */}
                 <div className={`space-y-4 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

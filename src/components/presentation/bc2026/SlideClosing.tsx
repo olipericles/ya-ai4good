@@ -1,15 +1,16 @@
-import SlideContainer from "./SlideContainer";
+import SlideContainer, { type SlideMode } from "./SlideContainer";
 import yaLogo from "@/assets/ya-logo.png";
 import { Heart } from "lucide-react";
 
 interface SlideClosingProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+    mode?: SlideMode;
 }
 
-const SlideClosing = ({ isActive, transition = "fade-zoom" }: SlideClosingProps) => {
+const SlideClosing = ({ isActive, transition = "fade-zoom", mode }: SlideClosingProps) => {
     return (
-        <SlideContainer isActive={isActive} transition={transition}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
             <div className="flex flex-col items-center justify-center h-full gap-8 sm:gap-12 md:gap-16">
                 {/* Impact numbers */}
                 <div className={`text-center ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

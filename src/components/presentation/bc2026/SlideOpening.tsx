@@ -1,4 +1,4 @@
-import SlideContainer from "./SlideContainer";
+import SlideContainer, { type SlideMode } from "./SlideContainer";
 import AnimatedNumber from "../AnimatedNumber";
 import HoverInfo from "@/components/ui/HoverInfo";
 import yaLogo from "@/assets/ya-logo.png";
@@ -6,11 +6,12 @@ import yaLogo from "@/assets/ya-logo.png";
 interface SlideOpeningProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+    mode?: SlideMode;
 }
 
-const SlideOpening = ({ isActive, transition = "fade-zoom" }: SlideOpeningProps) => {
+const SlideOpening = ({ isActive, transition = "fade-zoom", mode }: SlideOpeningProps) => {
     return (
-        <SlideContainer isActive={isActive} transition={transition}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
             <div className="text-center space-y-6 sm:space-y-10">
                 {/* Logo */}
                 <div className={`flex justify-center ${isActive ? 'animate-fade-in' : 'opacity-0'}`}>

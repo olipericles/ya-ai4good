@@ -1,4 +1,4 @@
-import SlideContainer from "./SlideContainer";
+import SlideContainer, { type SlideMode } from "./SlideContainer";
 import personaImage from "@/assets/persona-image-v2.jpg";
 import whatsappMockup from "@/assets/whatsapp-chat-demo-iphone.png";
 import yaLogo from "@/assets/ya-logo.png";
@@ -6,11 +6,12 @@ import yaLogo from "@/assets/ya-logo.png";
 interface SlideSolutionProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+    mode?: SlideMode;
 }
 
-const SlideSolution = ({ isActive, transition = "blur-scale" }: SlideSolutionProps) => {
+const SlideSolution = ({ isActive, transition = "blur-scale", mode }: SlideSolutionProps) => {
     return (
-        <SlideContainer isActive={isActive} transition={transition}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 items-center">
                 {/* Left - Phone mockup */}
                 <div className={`relative hidden sm:block ${isActive ? 'animate-slide-right' : 'opacity-0'}`}>

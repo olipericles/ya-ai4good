@@ -3,11 +3,14 @@ import { cn } from "@/lib/utils";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
 
+export type SlideMode = "slide" | "section";
+
 interface SlideContainerProps {
     children: ReactNode;
     className?: string;
     isActive: boolean;
     transition?: TransitionType;
+    mode?: SlideMode;
 }
 
 const transitionStyles: Record<TransitionType, { active: string; inactive: string }> = {
@@ -37,8 +40,18 @@ const transitionStyles: Record<TransitionType, { active: string; inactive: strin
     },
 };
 
-const SlideContainer = ({ children, className, isActive, transition = "blur-scale" }: SlideContainerProps) => {
+const SlideContainer = ({ children, className, isActive, transition = "blur-scale", mode = "slide" }: SlideContainerProps) => {
     const styles = transitionStyles[transition];
+
+    if (mode === "section") {
+        return (
+            <section className={cn("relative min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8", className)}>
+                <div className="w-full max-w-7xl mx-auto">
+                    {children}
+                </div>
+            </section>
+        );
+    }
 
     return (
         <div

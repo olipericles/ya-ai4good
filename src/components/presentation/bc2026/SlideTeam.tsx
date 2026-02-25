@@ -1,4 +1,4 @@
-import SlideContainer from "./SlideContainer";
+import SlideContainer, { type SlideMode } from "./SlideContainer";
 import { Linkedin } from "lucide-react";
 import adrielePhoto from "@/assets/adriele.png";
 import periclesPhoto from "@/assets/pericles.png";
@@ -7,9 +7,10 @@ import luaPhoto from "@/assets/lua.png";
 interface SlideTeamProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+    mode?: SlideMode;
 }
 
-const SlideTeam = ({ isActive, transition = "blur-scale" }: SlideTeamProps) => {
+const SlideTeam = ({ isActive, transition = "blur-scale", mode }: SlideTeamProps) => {
     const team = [
         {
             name: "Péricles Oliveira",
@@ -38,7 +39,7 @@ const SlideTeam = ({ isActive, transition = "blur-scale" }: SlideTeamProps) => {
     ];
 
     return (
-        <SlideContainer isActive={isActive} transition={transition}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
             <div className="space-y-6 sm:space-y-12">
                 {/* Title */}
                 <div className={`text-center space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>

@@ -1,15 +1,16 @@
-import SlideContainer from "./SlideContainer";
+import SlideContainer, { type SlideMode } from "./SlideContainer";
 import AnimatedNumber from "../AnimatedNumber";
 import { ArrowRight } from "lucide-react";
 
 interface SlideScaleProps {
     isActive: boolean;
     transition?: "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
+    mode?: SlideMode;
 }
 
-const SlideScale = ({ isActive, transition = "slide-left" }: SlideScaleProps) => {
+const SlideScale = ({ isActive, transition = "slide-left", mode }: SlideScaleProps) => {
     return (
-        <SlideContainer isActive={isActive} transition={transition}>
+        <SlideContainer isActive={isActive} transition={transition} mode={mode}>
             <div className="space-y-6 sm:space-y-10 text-center">
                 {/* Header */}
                 <div className={`space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
