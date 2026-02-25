@@ -1,5 +1,5 @@
 import SlideContainer from "./SlideContainer";
-import personaImage from "@/assets/persona-image-alt.jpg";
+import personaImage from "@/assets/persona-image-768x768.jpg";
 import whatsappMockup from "@/assets/ya-whatsapp-mockup.jpg";
 import yaLogo from "@/assets/ya_logo_branco.svg";
 

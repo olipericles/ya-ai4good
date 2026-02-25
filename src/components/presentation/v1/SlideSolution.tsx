@@ -1,5 +1,5 @@
 import SlideContainer from "./SlideContainer";
-import personaImage from "@/assets/persona-image-larg.jpeg";
+import personaImage from "@/assets/persona-image-1408x768.jpeg";
 import whatsappMockup from "@/assets/whatsapp-mockup.png";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
