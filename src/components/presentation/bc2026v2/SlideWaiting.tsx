@@ -13,7 +13,7 @@ export const SLIDE_WAITING_STEPS = 0;
 const SlideWaiting = ({ isActive, mode, slideNumber }: SlideWaitingProps) => {
     return (
         <SlideContainerV2 isActive={isActive} mode={mode} slideNumber={slideNumber}>
-            <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-background">
+            <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center text-center px-4">
                 {/* Efeitos de Fundo (Partículas Orgânicas Baseadas no Screenshot espalhadas pela container inteiro) */}
                 <div className="absolute top-[10%] left-[15%] w-1.5 h-1.5 rounded-full bg-[#E55B3C] blur-[1px] opacity-80" />
                 <div className="absolute top-[25%] right-[20%] w-2 h-2 rounded-full bg-[#8B3A8B] blur-[1px] opacity-80" />
