@@ -48,18 +48,21 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
         const hBase = window.innerWidth < 640 ? 50 : 70;
 
         // IDs 14-17 são repetições para fechar 18 no começo.
-        // A partir do passo 2 (Engajadas), elas somem para sobrar apenas as 14 originais ("sumindo as 4 repetidas").
-        if (effectiveStep >= 2 && id >= 14) {
-            const exp = getExplosion(id);
-            return { x: exp.x, y: exp.y, scale: 0, opacity: 0 };
+        // A partir do passo 1 (Cadastro), elas somem, dando lugar apenas às 14 mães originais.
+        if (effectiveStep >= 1 && id >= 14) {
+            // Em vez de voarem, elas "encolhem e somem" exatamente onde estavam no passo 0
+            const row = id < 9 ? 0 : 1;
+            const col = id < 9 ? id : id - 9;
+            const x = (col - 4) * wBase;
+            const y = row === 0 ? -hBase / 2 : hBase / 2;
+            return { x, y, scale: 0, opacity: 0, isDiscarded: true };
         }
 
-        // Determinar exatamente a QUE PASSO essa bolha foi descartada para fixar sua posição lateral.
-        // Passo 1 descarta: 10, 11, 12, 13 (e as repetidas 14, 15, 16, 17 que sumirão no passo 2)
+        // Determinar exatamente a QUE PASSO essa bolha foi descartada para saber se ela já flutua nas laterais.
+        // Passo 1 descarta: 10, 11, 12, 13
         // Passo 2 descarta: 5, 6, 7, 8, 9
         // Passo 3 descarta: 2, 3, 4
-
-        const isDiscardedAtStep1 = id >= 10 && id <= 17;
+        const isDiscardedAtStep1 = id >= 10 && id <= 13;
         const isDiscardedAtStep2 = id >= 5 && id <= 9;
         const isDiscardedAtStep3 = id >= 2 && id <= 4;
 
@@ -69,24 +72,25 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
             (effectiveStep >= 3 && isDiscardedAtStep3);
 
         if (isCurrentlyDiscarded) {
-            // Bolha descartada flutuando na lateral
-            // Usamos o ID para garantir que a bolha vá para o MEsmo lugar e NÃO SE MOVA MAIS nos passos seguintes
+            // Bolha descartada "subindo" para flutuar nas laterais do card principal.
+            // O card principal fica ~200px acima do centro da área de bolhas.
             const isLeft = id % 2 === 0;
+            // Cálculo de índice para distribuir bem as 6 bolhas de cada lado, de cima para baixo
+            // 6 bolhas por lado: índices 0 a 5.
+            const sideIndex = isLeft ? (12 - id) / 2 : (13 - id) / 2;
 
-            // Espalhamento vertical determinístico baseado no ID (de -150 a +150 aprox)
-            const yVariant = (Math.sin(id * 7.3) * 120);
-            const y = yVariant;
+            const isMobile = window.innerWidth < 640;
+            const xEdge = isMobile ? (window.innerWidth / 2 - 20) : 320;
+            // Centro vertical do Card (aprox -220px a partir do container das bolhas)
+            const yCenter = isMobile ? -180 : -220;
+            // Distância vertical entre as bolhas no pilar lateral
+            const ySpacing = isMobile ? 35 : 55;
 
-            // Posição X grudada na margem, com leve variação orgânica
-            const edgeOffset = window.innerWidth < 640 ? window.innerWidth / 2 - 20 : window.innerWidth / 2 - 120;
-            const xOrganic = Math.cos(id * 11.5) * 40;
+            const x = isLeft ? -xEdge : xEdge;
+            const y = yCenter + (sideIndex - 2.5) * ySpacing;
 
-            // As bolhas do passo 1 ficam mais na ponta, as do passo 2/3 podem ficar um pouquinho mais pro miolo
-            const depthOffset = isDiscardedAtStep1 ? 0 : (isDiscardedAtStep2 ? 40 : 80);
-
-            const x = isLeft ? -(edgeOffset - depthOffset) + xOrganic : (edgeOffset - depthOffset) + xOrganic;
-
-            return { x, y, scale: 0.75, opacity: 0.4 };
+            // Ficam um pouquinho menores e mais transparentes para dar foco ao meio
+            return { x, y, scale: 0.65, opacity: 0.5, isDiscarded: true };
         }
 
         // Visible states (Main Funnel)
