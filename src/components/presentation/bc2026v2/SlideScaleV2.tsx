@@ -1,7 +1,6 @@
 import SlideContainerV2, { type SlideMode } from "./SlideContainerV2";
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
-import AnimatedNumber from "../AnimatedNumber";
+import { ArrowRight, Check, Target } from "lucide-react";
 
 interface SlideScaleV2Props {
     isActive: boolean;
@@ -15,46 +14,42 @@ export const SLIDE_SCALE_V2_STEPS = 2;
 const SlideScaleV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideScaleV2Props) => {
     const showAll = mode === "section";
 
+    const done = [
+        { label: "Mães no piloto", value: "18" },
+        { label: "Custo", value: "Zero" },
+        { label: "Transformadas", value: "2" },
+    ];
+
+    const future = [
+        { label: "Meta", value: "1.000" },
+        { label: "Investimento", value: "$3.000" },
+        { label: "Projeção (~11%)", value: "~110" },
+    ];
+
     return (
         <SlideContainerV2 isActive={isActive} mode={mode} slideNumber={slideNumber}>
-            <div className="space-y-6 sm:space-y-10 text-center">
-                {/* Header */}
-                <div className={`space-y-2 ${isActive ? 'animate-fade-up' : 'opacity-0'}`}>
-                    <h2 className="text-3xl sm:text-5xl md:text-7xl font-black">
-                        Escalar o <span className="text-gradient">Sucesso</span>
-                    </h2>
-                    <p className="text-lg sm:text-xl md:text-2xl text-foreground/60">
-                        Mudamos a vida de 2. Queremos mudar a vida de 1.000.
-                    </p>
-                </div>
+            <div className="flex flex-col items-center text-center space-y-8 max-w-5xl mx-auto">
+                <h2 className="text-3xl sm:text-5xl md:text-7xl font-black text-foreground">
+                    Escalar o <span className="text-gradient">Sucesso</span>
+                </h2>
 
-                {/* Comparison columns */}
-                <div className="flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-12">
-                    {/* Left column - What we did */}
+                <div className="flex flex-col md:flex-row items-center gap-6 w-full">
+                    {/* Column 1 — Done */}
                     <div className={cn(
-                        "transition-all duration-700 ease-out",
+                        "flex-1 transition-all duration-700 ease-out",
                         (showAll || step >= 1) ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
                     )}>
-                        <div className="bg-card border border-border/50 rounded-3xl p-5 sm:p-8 min-w-[260px] sm:min-w-[300px] hover:border-primary/50 transition-all duration-300">
-                            <h3 className="text-lg sm:text-xl font-bold text-foreground/60 mb-6">O que já fizemos</h3>
-                            <div className="space-y-4">
-                                <div className="text-center">
-                                    <p className="text-4xl sm:text-5xl font-black text-foreground">
-                                        <AnimatedNumber value={18} suffix="" isActive={isActive} />
-                                    </p>
-                                    <p className="text-sm sm:text-base text-muted-foreground">mães</p>
+                        <div className="bg-card border border-border/50 rounded-3xl p-6 space-y-4 hover:border-primary/50 transition-all duration-300">
+                            <h3 className="text-lg font-semibold text-foreground/60 flex items-center justify-center gap-2">
+                                <Check className="w-5 h-5 text-green-500" />
+                                O que já fizemos
+                            </h3>
+                            {done.map((item, i) => (
+                                <div key={i} className="flex justify-between items-center p-3 bg-muted/20 rounded-lg">
+                                    <span className="text-sm text-muted-foreground">{item.label}</span>
+                                    <span className="text-xl font-bold text-foreground">{item.value}</span>
                                 </div>
-                                <div className="text-center">
-                                    <p className="text-lg sm:text-xl font-semibold text-primary">Custo zero</p>
-                                    <p className="text-sm text-muted-foreground">beta gratuito</p>
-                                </div>
-                                <div className="text-center">
-                                    <p className="text-4xl sm:text-5xl font-black text-primary">
-                                        <AnimatedNumber value={2} suffix="" isActive={isActive} />
-                                    </p>
-                                    <p className="text-sm sm:text-base text-muted-foreground">transformadas (11%)</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
@@ -63,30 +58,26 @@ const SlideScaleV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideScaleV2Pro
                         "transition-all duration-500",
                         (showAll || step >= 2) ? "opacity-100" : "opacity-0"
                     )}>
-                        <ArrowRight className="w-8 h-8 md:w-12 md:h-12 text-primary rotate-90 md:rotate-0" />
+                        <ArrowRight className="w-10 h-10 text-primary hidden md:block" />
+                        <ArrowRight className="w-10 h-10 text-primary rotate-90 md:hidden" />
                     </div>
 
-                    {/* Right column - Goals */}
+                    {/* Column 2 — Future */}
                     <div className={cn(
-                        "transition-all duration-700 ease-out delay-200",
+                        "flex-1 transition-all duration-700 ease-out delay-200",
                         (showAll || step >= 2) ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
                     )}>
-                        <div className="bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/30 rounded-3xl p-5 sm:p-8 min-w-[260px] sm:min-w-[300px] hover:border-primary/50 transition-all duration-300">
-                            <h3 className="text-lg sm:text-xl font-bold text-primary mb-6">Onde queremos chegar</h3>
-                            <div className="space-y-4">
-                                <div className="text-center">
-                                    <p className="text-4xl sm:text-5xl font-black text-foreground">1.000</p>
-                                    <p className="text-sm sm:text-base text-muted-foreground">mães</p>
+                        <div className="bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/30 rounded-3xl p-6 space-y-4 hover:border-primary/50 transition-all duration-300">
+                            <h3 className="text-lg font-semibold text-primary flex items-center justify-center gap-2">
+                                <Target className="w-5 h-5" />
+                                Onde queremos chegar
+                            </h3>
+                            {future.map((item, i) => (
+                                <div key={i} className="flex justify-between items-center p-3 bg-primary/5 rounded-lg">
+                                    <span className="text-sm text-muted-foreground">{item.label}</span>
+                                    <span className="text-xl font-bold text-primary">{item.value}</span>
                                 </div>
-                                <div className="text-center">
-                                    <p className="text-lg sm:text-xl font-semibold text-primary">~R$ 5</p>
-                                    <p className="text-sm text-muted-foreground">por mãe/mês</p>
-                                </div>
-                                <div className="text-center">
-                                    <p className="text-4xl sm:text-5xl font-black text-primary">~110</p>
-                                    <p className="text-sm sm:text-base text-muted-foreground">transformadas (projeção)</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
