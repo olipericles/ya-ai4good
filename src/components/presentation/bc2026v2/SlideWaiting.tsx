@@ -23,7 +23,7 @@ const SlideWaiting = ({ isActive, mode, slideNumber }: SlideWaitingProps) => {
                 {/* Brilho Suave de Fundo Centralizado (Baseado no Screenshot) */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#E55B3C]/5 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-                <div className="flex flex-col items-center justify-center space-y-12 z-10 w-full max-w-5xl">
+                <div className="flex flex-col items-center justify-center space-y-16 z-10 w-full max-w-7xl px-8">
                     {/* Logo Yá Centrale */}
                     <div className="my-2 flex justify-center drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                         <img src={yaLogo} alt="Yá Logo" className="h-32 sm:h-40 md:h-52 object-contain" />

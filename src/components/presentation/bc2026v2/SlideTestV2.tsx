@@ -154,9 +154,20 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
 
                 {/* Face Bubbles Area */}
                 <div className="relative w-full h-[150px] sm:h-[180px]">
+                    {/* Add a subtle global keyframe for the floating effect if not in CSS, 
+                        or we can just use tailwind animate-pulse/bounce. Let's create a custom inline floating animation 
+                        by wrapping the bubble in an oscillating div when it's discarded. */}
+                    <style>{`
+                        @keyframes custom-float {
+                            0%, 100% { transform: translateY(0); }
+                            50% { transform: translateY(-15px); }
+                        }
+                    `}</style>
+
                     {bubbles.map((bubble) => {
                         const transform = getBubbleTransform(bubble.id, step, showAll);
                         const isHero = transform.scale >= 1.8;
+                        const isDiscarded = transform.isDiscarded;
 
                         return (
                             <div
@@ -167,14 +178,25 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
                                     opacity: transform.opacity,
                                 }}
                                 className={cn(
-                                    "absolute top-1/2 left-1/2 -ml-5 -mt-5 sm:-ml-7 sm:-mt-7 w-10 h-10 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 shadow-lg",
-                                    isHero ? "border-primary shadow-primary/50 z-20" : "border-border shadow-black/20 z-10"
+                                    "absolute top-1/2 left-1/2 -ml-5 -mt-5 sm:-ml-7 sm:-mt-7 w-10 h-10 sm:w-14 sm:h-14 z-10",
+                                    isDiscarded ? "pointer-events-none" : ""
                                 )}
                             >
-                                <img src={bubble.avatar} alt="Mãe" className="w-full h-full object-cover grayscale opacity-80" />
-                                {isHero && (
-                                    <div className="absolute inset-0 bg-primary/20 mix-blend-overlay" />
-                                )}
+                                <div
+                                    className={cn(
+                                        "w-full h-full rounded-full overflow-hidden border-2 shadow-lg transition-colors duration-500",
+                                        isHero ? "border-primary shadow-primary/50" : "border-border shadow-black/20"
+                                    )}
+                                    style={{
+                                        // Aplica a animação de flutuar apenas quando descartada, com delays intercalados
+                                        animation: isDiscarded ? `custom-float ${3 + (bubble.id % 3)}s ease-in-out infinite ${bubble.id * 0.2}s` : 'none'
+                                    }}
+                                >
+                                    <img src={bubble.avatar} alt="Mãe" className="w-full h-full object-cover grayscale opacity-80" />
+                                    {isHero && (
+                                        <div className="absolute inset-0 bg-primary/20 mix-blend-overlay" />
+                                    )}
+                                </div>
                             </div>
                         );
                     })}
