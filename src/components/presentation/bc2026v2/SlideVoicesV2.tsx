@@ -25,9 +25,13 @@ const SlideVoicesV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideVoicesV2P
                         "transition-all duration-1000 ease-in-out absolute inset-0 flex items-center justify-center",
                         (showAll || step === 1) ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 pointer-events-none -z-10"
                     )}>
-                        <blockquote className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground leading-tight tracking-tight">
-                            "Eu achava que o problema era o salário.<br />
-                            <span className="text-primary">Era o delivery.</span>"
+                        <blockquote className="space-y-4">
+                            <p className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground leading-tight tracking-tight">
+                                "Eu achava que o problema era o salário.
+                            </p>
+                            <p className="text-4xl sm:text-5xl md:text-7xl font-black leading-tight tracking-tight">
+                                <span className="text-gradient">Era o delivery.</span>"
+                            </p>
                         </blockquote>
                     </div>
 
@@ -36,13 +40,20 @@ const SlideVoicesV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideVoicesV2P
                         "transition-all duration-1000 ease-in-out absolute inset-0 flex items-center justify-center",
                         (showAll || step >= 2) ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 pointer-events-none -z-10"
                     )}>
-                        <blockquote className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground leading-tight tracking-tight">
-                            "Pela primeira vez em 3 anos,<br />
-                            <span className="text-primary">sobrou R$50</span> no fim do mês."
+                        <blockquote className="space-y-4">
+                            <p className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground leading-tight tracking-tight">
+                                "Pela primeira vez em 3 anos,
+                            </p>
+                            <p className="text-4xl sm:text-5xl md:text-7xl font-black leading-tight tracking-tight">
+                                <span className="text-gradient">sobrou R$50</span> no fim do mês."
+                            </p>
                         </blockquote>
                     </div>
                 </div>
             </div>
+
+            {/* Background glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
         </SlideContainerV2>
     );
 };
