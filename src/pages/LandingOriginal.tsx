@@ -261,48 +261,80 @@ const LandingOriginal = () => {
                                 return (
                                     <div key={idx} className="relative flex flex-col sm:flex-row items-center sm:justify-between group">
 
-                                        {/* Lado Esquerdo (Vazio no mobile, Data/Texto no desktop dependendo da linha) */}
-                                        <div className={`hidden sm:block sm:w-[45%] text-right ${isLeftSide ? '' : 'sm:order-2 sm:text-left'}`}>
-                                            <div className="bg-card/40 border border-border rounded-xl p-5 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 relative overflow-hidden backdrop-blur-sm shadow-sm group-hover:shadow-md group-hover:-translate-y-1">
-                                                {isHighlighted && <div className="absolute inset-0 bg-primary/10 blur-xl pointer-events-none" />}
-
-                                                <div className="flex items-center gap-3 mb-2 justify-end sm:justify-start">
-                                                    {isHighlighted && step.badge && (
-                                                        <span className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-primary text-primary-foreground ${isLeftSide ? 'order-first sm:order-last' : ''}`}>
-                                                            {step.badge}
+                                        <div className={`hidden sm:flex sm:w-full items-center justify-between`}>
+                                            {/* Lado Esquerdo */}
+                                            <div className={`w-[45%] flex justify-end ${!isLeftSide ? 'invisible' : ''}`}>
+                                                <div className="bg-card/40 border border-border rounded-xl p-5 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 relative overflow-hidden backdrop-blur-sm shadow-sm group-hover:shadow-md group-hover:-translate-y-1 w-full max-w-md text-right">
+                                                    {isHighlighted && <div className="absolute inset-0 bg-primary/10 blur-xl pointer-events-none" />}
+                                                    <div className="flex items-center gap-3 mb-2 justify-end">
+                                                        {isHighlighted && step.badge && (
+                                                            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-primary text-primary-foreground">
+                                                                {step.badge}
+                                                            </span>
+                                                        )}
+                                                        <span className={`text-sm font-medium ${isHighlighted ? 'text-primary' : 'text-muted-foreground'}`}>
+                                                            {step.date}
                                                         </span>
-                                                    )}
-                                                    <span className={`text-sm font-medium ${isHighlighted ? 'text-primary' : 'text-muted-foreground'}`}>
-                                                        {step.date}
-                                                    </span>
+                                                    </div>
+                                                    <h3 className="text-lg font-bold mb-1 text-foreground">{step.title}</h3>
+                                                    <p className="text-sm text-muted-foreground">{step.desc}</p>
                                                 </div>
-                                                <h3 className="text-lg font-bold mb-1 text-foreground">{step.title}</h3>
-                                                <p className="text-sm text-muted-foreground">{step.desc}</p>
+                                            </div>
+
+                                            {/* Ponto Central Desktop */}
+                                            <div className="absolute left-1/2 -ml-[11px] flex items-center justify-center z-10">
+                                                <div className={`w-[22px] h-[22px] rounded-full border-4 border-background 
+                                                    ${isHighlighted
+                                                        ? 'bg-primary shadow-[0_0_15px_4px_rgba(226,107,88,0.4)] animate-pulse'
+                                                        : 'bg-muted-foreground/30 shadow-none'
+                                                    }`}
+                                                />
+                                            </div>
+
+                                            {/* Lado Direito */}
+                                            <div className={`w-[45%] flex justify-start ${isLeftSide ? 'invisible' : ''}`}>
+                                                <div className={`bg-card/40 border border-border rounded-xl p-5 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 relative overflow-hidden backdrop-blur-sm shadow-sm group-hover:shadow-md group-hover:-translate-y-1 w-full max-w-md text-left ${isHighlighted && 'border-primary/50'}`}>
+                                                    {isHighlighted && <div className="absolute inset-0 bg-primary/10 blur-xl pointer-events-none" />}
+                                                    <div className="flex items-center gap-3 mb-2 justify-start">
+                                                        <span className={`text-sm font-medium ${isHighlighted ? 'text-primary' : 'text-muted-foreground'}`}>
+                                                            {step.date}
+                                                        </span>
+                                                        {isHighlighted && step.badge && (
+                                                            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-primary text-primary-foreground">
+                                                                {step.badge}
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    <h3 className="text-lg font-bold mb-1 text-foreground">{step.title}</h3>
+                                                    <p className="text-sm text-muted-foreground">{step.desc}</p>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        {/* Ponto Central */}
-                                        <div className="absolute left-0 sm:left-1/2 sm:-ml-[15px] flex items-center justify-center sm:order-1">
-                                            <div className={`w-[22px] h-[22px] rounded-full border-4 border-background z-10 
-                                                ${isHighlighted
-                                                    ? 'bg-primary shadow-[0_0_15px_4px_rgba(226,107,88,0.4)] animate-pulse'
-                                                    : 'bg-muted-foreground/30 shadow-none'
-                                                }`}
-                                            />
-                                        </div>
+                                        {/* Mobile View */}
+                                        <div className="sm:hidden relative w-full flex">
+                                            {/* Ponto Central Mobile */}
+                                            <div className="absolute left-0 -ml-[11px] mt-6 flex flex-col items-center justify-center z-10 h-full">
+                                                <div className={`w-[22px] h-[22px] rounded-full border-4 border-background 
+                                                    ${isHighlighted
+                                                        ? 'bg-primary shadow-[0_0_15px_4px_rgba(226,107,88,0.4)] animate-pulse'
+                                                        : 'bg-muted-foreground/30 shadow-none'
+                                                    }`}
+                                                />
+                                            </div>
 
-                                        {/* Mobile View & Lado Direito Desktop */}
-                                        <div className={`pl-12 w-full sm:pl-0 sm:w-[45%] text-left ${isLeftSide ? 'sm:order-2' : ''} ${!isLeftSide && 'sm:hidden'}`}>
-                                            <div className={`sm:hidden bg-card/40 border border-border rounded-xl p-5 hover:border-primary/30 transition-all duration-300 relative overflow-hidden backdrop-blur-sm ${isHighlighted && 'border-primary/50'}`}>
-                                                {isHighlighted && <div className="absolute inset-0 bg-primary/10 blur-xl pointer-events-none" />}
-                                                <div className="flex items-center gap-3 mb-2">
-                                                    <span className={`text-sm font-medium ${isHighlighted ? 'text-primary' : 'text-muted-foreground'}`}>{step.date}</span>
-                                                    {isHighlighted && step.badge && (
-                                                        <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-primary text-primary-foreground">{step.badge}</span>
-                                                    )}
+                                            <div className="pl-8 w-full">
+                                                <div className={`bg-card/40 border border-border rounded-xl p-5 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 relative overflow-hidden backdrop-blur-sm shadow-sm w-full text-left ${isHighlighted && 'border-primary/50'}`}>
+                                                    {isHighlighted && <div className="absolute inset-0 bg-primary/10 blur-xl pointer-events-none" />}
+                                                    <div className="flex items-center gap-3 mb-2">
+                                                        <span className={`text-sm font-medium ${isHighlighted ? 'text-primary' : 'text-muted-foreground'}`}>{step.date}</span>
+                                                        {isHighlighted && step.badge && (
+                                                            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-primary text-primary-foreground">{step.badge}</span>
+                                                        )}
+                                                    </div>
+                                                    <h3 className="text-lg font-bold mb-1">{step.title}</h3>
+                                                    <p className="text-sm text-muted-foreground">{step.desc}</p>
                                                 </div>
-                                                <h3 className="text-lg font-bold mb-1">{step.title}</h3>
-                                                <p className="text-sm text-muted-foreground">{step.desc}</p>
                                             </div>
                                         </div>
 
