@@ -1,4 +1,4 @@
-# Roteiro V2 — Yá, Brazil Conference 2026 (6:30 min)
+# Roteiro V2 — Yá, Brazil Conference 2026
 
 Versão para **3 apresentadores** (Adriele, Luã, Péricles) com navegação por sub-steps. Fonte única de verdade para a rota `/v2BC2026t`.
 

@@ -1,4 +1,4 @@
-# Roteiro V1 — Yá, Brazil Conference 2026 (6:30 min)
+# Roteiro V1 — Yá, Brazil Conference 2026
 
 Versão para **1 apresentadora** (Adriele). Fonte única de verdade para a rota `/vBC2026t`.
 

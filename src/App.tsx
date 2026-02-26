@@ -13,6 +13,8 @@ import IndexBC2026Training from "./pages/IndexBC2026Training";
 import IndexBC2026V2 from "./pages/IndexBC2026V2";
 import IndexBC2026V2Training from "./pages/IndexBC2026V2Training";
 import IndexBC2026V2OnePage from "./pages/IndexBC2026V2OnePage";
+import IndexBC2026Script from "./pages/IndexBC2026Script";
+import IndexBC2026V2Script from "./pages/IndexBC2026V2Script";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +36,8 @@ const App = () => (
           <Route path="/v2BC2026" element={<IndexBC2026V2 />} />
           <Route path="/v2BC2026t" element={<IndexBC2026V2Training />} />
           <Route path="/v2BC2026op" element={<IndexBC2026V2OnePage />} />
+          <Route path="/vBC2026s" element={<IndexBC2026Script />} />
+          <Route path="/v2BC2026s" element={<IndexBC2026V2Script />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
