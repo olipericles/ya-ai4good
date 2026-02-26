@@ -244,15 +244,72 @@ const LandingOriginal = () => {
             {/* Jornada */}
             <section className="py-12 sm:py-16">
                 <div className="max-w-5xl mx-auto px-6">
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-16">
                         <span className="text-xs uppercase tracking-widest text-primary font-semibold">{t.journey.badge}</span>
-                        <h2 className="text-3xl sm:text-4xl font-bold mt-3">{t.journey.title}</h2>
+                        <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-4">{t.journey.title}</h2>
+                        <p className="text-muted-foreground max-w-2xl mx-auto">{t.journey.subtitle}</p>
                     </div>
 
-                    <div className="max-w-2xl mx-auto bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/30 transition-colors">
-                        <div className="p-8 text-center sm:text-left">
-                            <h3 className="font-bold text-lg mb-2">{t.journey.cardTitle}</h3>
-                            <p className="text-muted-foreground text-sm">{t.journey.cardDesc}</p>
+                    <div className="max-w-3xl mx-auto relative px-4 sm:px-0">
+                        {/* Linha vertical conectora */}
+                        <div className="absolute left-[27px] sm:left-1/2 top-4 bottom-4 w-px bg-gradient-to-b from-primary/50 via-border to-primary/50 sm:-ml-px" />
+
+                        <div className="relative space-y-12">
+                            {t.journey.steps.map((step, idx) => {
+                                const isHighlighted = step.highlight;
+                                const isLeftSide = idx % 2 === 0;
+
+                                return (
+                                    <div key={idx} className="relative flex flex-col sm:flex-row items-center sm:justify-between group">
+
+                                        {/* Lado Esquerdo (Vazio no mobile, Data/Texto no desktop dependendo da linha) */}
+                                        <div className={`hidden sm:block sm:w-[45%] text-right ${isLeftSide ? '' : 'sm:order-2 sm:text-left'}`}>
+                                            <div className="bg-card/40 border border-border rounded-xl p-5 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 relative overflow-hidden backdrop-blur-sm shadow-sm group-hover:shadow-md group-hover:-translate-y-1">
+                                                {isHighlighted && <div className="absolute inset-0 bg-primary/10 blur-xl pointer-events-none" />}
+
+                                                <div className="flex items-center gap-3 mb-2 justify-end sm:justify-start">
+                                                    {isHighlighted && step.badge && (
+                                                        <span className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-primary text-primary-foreground ${isLeftSide ? 'order-first sm:order-last' : ''}`}>
+                                                            {step.badge}
+                                                        </span>
+                                                    )}
+                                                    <span className={`text-sm font-medium ${isHighlighted ? 'text-primary' : 'text-muted-foreground'}`}>
+                                                        {step.date}
+                                                    </span>
+                                                </div>
+                                                <h3 className="text-lg font-bold mb-1 text-foreground">{step.title}</h3>
+                                                <p className="text-sm text-muted-foreground">{step.desc}</p>
+                                            </div>
+                                        </div>
+
+                                        {/* Ponto Central */}
+                                        <div className="absolute left-0 sm:left-1/2 sm:-ml-[15px] flex items-center justify-center sm:order-1">
+                                            <div className={`w-[22px] h-[22px] rounded-full border-4 border-background z-10 
+                                                ${isHighlighted
+                                                    ? 'bg-primary shadow-[0_0_15px_4px_rgba(226,107,88,0.4)] animate-pulse'
+                                                    : 'bg-muted-foreground/30 shadow-none'
+                                                }`}
+                                            />
+                                        </div>
+
+                                        {/* Mobile View & Lado Direito Desktop */}
+                                        <div className={`pl-12 w-full sm:pl-0 sm:w-[45%] text-left ${isLeftSide ? 'sm:order-2' : ''} ${!isLeftSide && 'sm:hidden'}`}>
+                                            <div className={`sm:hidden bg-card/40 border border-border rounded-xl p-5 hover:border-primary/30 transition-all duration-300 relative overflow-hidden backdrop-blur-sm ${isHighlighted && 'border-primary/50'}`}>
+                                                {isHighlighted && <div className="absolute inset-0 bg-primary/10 blur-xl pointer-events-none" />}
+                                                <div className="flex items-center gap-3 mb-2">
+                                                    <span className={`text-sm font-medium ${isHighlighted ? 'text-primary' : 'text-muted-foreground'}`}>{step.date}</span>
+                                                    {isHighlighted && step.badge && (
+                                                        <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-primary text-primary-foreground">{step.badge}</span>
+                                                    )}
+                                                </div>
+                                                <h3 className="text-lg font-bold mb-1">{step.title}</h3>
+                                                <p className="text-sm text-muted-foreground">{step.desc}</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>

@@ -71,9 +71,34 @@ export const translations = {
         journey: {
             badge: "Nossa Trajetória",
             title: "Jornada no AI4Good",
-            demoBadge: "Demo ao Vivo",
-            cardTitle: "AI4Good 2026 — Top 3",
-            cardDesc: "Top 3 entre 188 projetos de todo o Brasil. Em processo de seleção para a Brazil Conference."
+            subtitle: "De Salvador para Harvard e MIT, representando 11 milhões de mães solo brasileiras",
+            steps: [
+                {
+                    date: "Dez/2025",
+                    title: "Inscrição no AI4Good 2026",
+                    desc: "Programa da Brazil Conference (parceria Harvard e MIT)",
+                    highlight: false
+                },
+                {
+                    date: "Jan/2026",
+                    title: "Top 3 entre 188 projetos",
+                    desc: "Selecionado entre iniciativas de todo o Brasil",
+                    highlight: false
+                },
+                {
+                    date: "Fev/2026",
+                    title: "Início do piloto",
+                    desc: "Testes práticos com mães solo em Salvador",
+                    highlight: false
+                },
+                {
+                    date: "Mar/2026",
+                    title: "Brazil Conference",
+                    desc: "Apresentação em Boston (24-31 de março)",
+                    highlight: true,
+                    badge: "Próximo"
+                }
+            ]
         },
         team: {
             badge: "Equipe",
@@ -170,9 +195,34 @@ export const translations = {
         journey: {
             badge: "Our Trajectory",
             title: "Journey at AI4Good",
-            demoBadge: "Live Demo",
-            cardTitle: "AI4Good 2026 — Top 3",
-            cardDesc: "Top 3 among 188 projects from all over Brazil. In the selection process for the Brazil Conference."
+            subtitle: "From Salvador to Harvard and MIT, representing 11 million Brazilian single mothers",
+            steps: [
+                {
+                    date: "Dec/2025",
+                    title: "Application to AI4Good 2026",
+                    desc: "Brazil Conference Program (Harvard and MIT partnership)",
+                    highlight: false
+                },
+                {
+                    date: "Jan/2026",
+                    title: "Top 3 among 188 projects",
+                    desc: "Selected from initiatives across Brazil",
+                    highlight: false
+                },
+                {
+                    date: "Feb/2026",
+                    title: "Pilot phase begins",
+                    desc: "Practical testing with single mothers in Salvador",
+                    highlight: false
+                },
+                {
+                    date: "Mar/2026",
+                    title: "Brazil Conference",
+                    desc: "Presentation in Boston (March 24-31)",
+                    highlight: true,
+                    badge: "Next"
+                }
+            ]
         },
         team: {
             badge: "Team",
