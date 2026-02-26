@@ -24,13 +24,6 @@ const SlideWaiting = ({ isActive, mode, slideNumber }: SlideWaitingProps) => {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#E55B3C]/5 blur-[120px] rounded-full pointer-events-none -z-10" />
 
                 <div className="flex flex-col items-center justify-center space-y-12 z-10 w-full max-w-5xl">
-                    {/* Linha de Cima: "11 milhões... 22 milhões" */}
-                    <div className="space-y-2">
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground/90 tracking-tight">
-                            <span className="text-[#e26b58] font-bold">11 milhões</span> de mães. <span className="text-[#a04e8d] font-bold">22 milhões</span> de crianças.
-                        </h2>
-                    </div>
-
                     {/* Logo Yá Centrale */}
                     <div className="my-2 flex justify-center drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                         <img src={yaLogo} alt="Yá Logo" className="h-32 sm:h-40 md:h-52 object-contain" />
@@ -39,11 +32,6 @@ const SlideWaiting = ({ isActive, mode, slideNumber }: SlideWaitingProps) => {
                     {/* "Yá: mãe, em yorubá" */}
                     <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
                         Yá: <span className="text-[#a04e8d]">mãe</span>, em yorubá.
-                    </p>
-
-                    {/* "Uma IA que cuida de quem cuida de todo mundo" com corações */}
-                    <p className="text-lg sm:text-xl md:text-[22px] text-[#e26b58] font-medium max-w-2xl mx-auto flex items-center justify-center gap-3">
-                        <span>🧡</span> Uma IA que cuida de quem cuida de todo mundo <span>🧡</span>
                     </p>
                 </div>
             </div>

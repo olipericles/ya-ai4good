@@ -34,12 +34,17 @@ const SlideQRCode = ({ isActive, mode, slideNumber }: SlideQRCodeProps) => {
                     />
                 </div>
 
-                {/* Tagline */}
-                <div className="inline-flex items-center gap-3 text-primary">
-                    <Heart className="w-5 h-5 animate-pulse" fill="currentColor" />
-                    <span className="text-base sm:text-lg font-medium">Uma IA que cuida de quem cuida de todo mundo</span>
-                    <Heart className="w-5 h-5 animate-pulse" fill="currentColor" />
+                {/* Estatísticas Movidas da SlideWaiting */}
+                <div className="space-y-2 mt-4">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-foreground/90 tracking-tight">
+                        <span className="text-[#e26b58] font-bold">11 milhões</span> de mães. <span className="text-[#a04e8d] font-bold">22 milhões</span> de crianças.
+                    </h2>
                 </div>
+
+                {/* Slogan Origonal Modificado pra incluir os emojis */}
+                <p className="text-lg sm:text-xl md:text-[22px] text-[#e26b58] font-medium max-w-2xl mx-auto flex items-center justify-center gap-3">
+                    <span>🧡</span> Uma IA que cuida de quem cuida de todo mundo <span>🧡</span>
+                </p>
 
                 <div className="text-sm text-muted-foreground pt-4 border-t border-border">
                     <p>Adriele Ornellas · Péricles Oliveira · Luã Mota</p>
