@@ -8,7 +8,7 @@ interface SlideTestV2Props {
     step?: number;
 }
 
-export const SLIDE_TEST_V2_STEPS = 0;
+export const SLIDE_TEST_V2_STEPS = 3;
 
 const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props) => {
     const showAll = mode === "section";
