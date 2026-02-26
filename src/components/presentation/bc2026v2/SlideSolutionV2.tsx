@@ -1,6 +1,6 @@
 import SlideContainerV2, { type SlideMode } from "./SlideContainerV2";
 import { cn } from "@/lib/utils";
-import yaWhatsappMockup from "@/assets/ya-whatsapp-mockup.jpg";
+import yaWhatsappMockup from "@/assets/images/ya-whatsapp-mockup.jpg";
 
 interface SlideSolutionV2Props {
     isActive: boolean;

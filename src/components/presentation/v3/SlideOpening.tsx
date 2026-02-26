@@ -1,7 +1,7 @@
 import SlideContainer from "./SlideContainer";
 import AnimatedNumber from "../AnimatedNumber";
 import HoverInfo from "@/components/ui/HoverInfo";
-import yaLogo from "@/assets/ya_logo_branco.svg";
+import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
 

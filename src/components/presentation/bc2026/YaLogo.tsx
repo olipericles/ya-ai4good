@@ -1,4 +1,4 @@
-import yaLogo from "@/assets/ya_logo_branco.svg";
+import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 interface YaLogoProps {
     className?: string;

@@ -1,8 +1,8 @@
 import SlideContainerV2, { type SlideMode } from "./SlideContainerV2";
 import { Linkedin } from "lucide-react";
-import equipeAdriele from "@/assets/equipe-adriele.png";
-import equipePericles from "@/assets/equipe-pericles.png";
-import equipeLua from "@/assets/equipe-lua.png";
+import equipeAdriele from "@/assets/team/equipe-adriele.png";
+import equipePericles from "@/assets/team/equipe-pericles.png";
+import equipeLua from "@/assets/team/equipe-lua.png";
 
 interface SlideTeamV2Props {
     isActive: boolean;

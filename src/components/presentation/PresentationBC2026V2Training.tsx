@@ -10,7 +10,7 @@ import SlideScaleV2, { SLIDE_SCALE_V2_STEPS } from "./bc2026v2/SlideScaleV2";
 import SlidePath, { SLIDE_PATH_STEPS } from "./bc2026v2/SlidePath";
 import SlideTeamV2, { SLIDE_TEAM_V2_STEPS } from "./bc2026v2/SlideTeamV2";
 import SlideQRCode, { SLIDE_QRCODE_STEPS } from "./bc2026v2/SlideQRCode";
-import roteiroRaw from "@/assets/roteiro-v2.md?raw";
+import roteiroRaw from "@/assets/docs/roteiro-v2.md?raw";
 import { parseRoteiro } from "@/lib/parseRoteiro";
 
 const STEPS_PER_SLIDE = [

@@ -1,7 +1,7 @@
 import SlideContainer from "../SlideContainer";
-import personaImage from "@/assets/persona-image-1408x768.jpeg";
-import whatsappMockup from "@/assets/whatsapp-mockup.png";
-import yaLogo from "@/assets/ya_logo_branco.svg";
+import personaImage from "@/assets/images/persona-image-1408x768.jpeg";
+import whatsappMockup from "@/assets/images/whatsapp-mockup.png";
+import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
 

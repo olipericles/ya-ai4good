@@ -1,6 +1,6 @@
 import SlideContainerV2, { type SlideMode } from "./SlideContainerV2";
-import yaLogo from "@/assets/ya_logo_branco.svg";
-import yaQrcode from "@/assets/ya-qrcode.png";
+import yaLogo from "@/assets/logos/ya_logo_branco.svg";
+import yaQrcode from "@/assets/logos/ya-qrcode.png";
 import { Heart } from "lucide-react";
 
 interface SlideQRCodeProps {

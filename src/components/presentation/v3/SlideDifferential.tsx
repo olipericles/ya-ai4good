@@ -1,6 +1,6 @@
 import SlideContainer from "./SlideContainer";
 import { X, Check } from "lucide-react";
-import yaLogo from "@/assets/ya_logo_branco.svg";
+import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 type TransitionType = "fade-zoom" | "slide-left" | "slide-right" | "slide-up" | "zoom-rotate" | "blur-scale";
 

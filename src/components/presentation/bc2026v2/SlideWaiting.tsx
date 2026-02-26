@@ -1,5 +1,5 @@
 import SlideContainerV2, { type SlideMode } from "./SlideContainerV2";
-import yaLogo from "@/assets/ya_logo_branco.svg";
+import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 interface SlideWaitingProps {
     isActive: boolean;

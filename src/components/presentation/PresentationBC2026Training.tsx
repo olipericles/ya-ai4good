@@ -10,7 +10,7 @@ import SlideVision from "./bc2026/SlideVision";
 import SlideTeam from "./bc2026/SlideTeam";
 import SlideClosing from "./bc2026/SlideClosing";
 import SlideDemo from "./bc2026/SlideDemo";
-import roteiroRaw from "@/assets/roteiro-v1.md?raw";
+import roteiroRaw from "@/assets/docs/roteiro-v1.md?raw";
 import { parseRoteiro } from "@/lib/parseRoteiro";
 
 
