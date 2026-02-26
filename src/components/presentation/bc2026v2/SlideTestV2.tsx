@@ -54,28 +54,39 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
             return { x: exp.x, y: exp.y, scale: 0, opacity: 0 };
         }
 
-        // Determinar quais bolhas foram "descartadas" do funil principal para flutuar nas laterais
-        let discardedIds: number[] = [];
-        if (effectiveStep === 1) discardedIds = [10, 11, 12, 13, 14, 15, 16, 17];
-        if (effectiveStep === 2) discardedIds = [5, 6, 7, 8, 9, 10, 11, 12, 13];
-        if (effectiveStep === 3) discardedIds = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+        // Determinar exatamente a QUE PASSO essa bolha foi descartada para fixar sua posição lateral.
+        // Passo 1 descarta: 10, 11, 12, 13 (e as repetidas 14, 15, 16, 17 que sumirão no passo 2)
+        // Passo 2 descarta: 5, 6, 7, 8, 9
+        // Passo 3 descarta: 2, 3, 4
 
-        const discardedIdx = discardedIds.indexOf(id);
+        const isDiscardedAtStep1 = id >= 10 && id <= 17;
+        const isDiscardedAtStep2 = id >= 5 && id <= 9;
+        const isDiscardedAtStep3 = id >= 2 && id <= 4;
 
-        if (discardedIdx !== -1) {
+        const isCurrentlyDiscarded =
+            (effectiveStep >= 1 && isDiscardedAtStep1) ||
+            (effectiveStep >= 2 && isDiscardedAtStep2) ||
+            (effectiveStep >= 3 && isDiscardedAtStep3);
+
+        if (isCurrentlyDiscarded) {
             // Bolha descartada flutuando na lateral
-            const isLeft = discardedIdx % 2 === 0;
-            const sideIndex = Math.floor(discardedIdx / 2);
-            const totalOnThisSide = Math.ceil(discardedIds.length / 2);
+            // Usamos o ID para garantir que a bolha vá para o MEsmo lugar e NÃO SE MOVA MAIS nos passos seguintes
+            const isLeft = id % 2 === 0;
 
-            const edgeOffset = window.innerWidth < 640 ? window.innerWidth / 2 - 30 : 380;
-            const xOrganic = Math.sin(id * 14.2) * 20; // variação orgânica
-            const x = isLeft ? -edgeOffset + xOrganic : edgeOffset + xOrganic;
+            // Espalhamento vertical determinístico baseado no ID (de -150 a +150 aprox)
+            const yVariant = (Math.sin(id * 7.3) * 120);
+            const y = yVariant;
 
-            const ySpacing = window.innerWidth < 640 ? 40 : 50;
-            const y = (sideIndex - (totalOnThisSide - 1) / 2) * ySpacing;
+            // Posição X grudada na margem, com leve variação orgânica
+            const edgeOffset = window.innerWidth < 640 ? window.innerWidth / 2 - 20 : window.innerWidth / 2 - 120;
+            const xOrganic = Math.cos(id * 11.5) * 40;
 
-            return { x, y, scale: 0.8, opacity: 0.6 };
+            // As bolhas do passo 1 ficam mais na ponta, as do passo 2/3 podem ficar um pouquinho mais pro miolo
+            const depthOffset = isDiscardedAtStep1 ? 0 : (isDiscardedAtStep2 ? 40 : 80);
+
+            const x = isLeft ? -(edgeOffset - depthOffset) + xOrganic : (edgeOffset - depthOffset) + xOrganic;
+
+            return { x, y, scale: 0.75, opacity: 0.4 };
         }
 
         // Visible states (Main Funnel)
