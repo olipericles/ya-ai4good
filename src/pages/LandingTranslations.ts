@@ -73,15 +73,21 @@ export const translations = {
             title: "Jornada no AI4Good",
             steps: [
                 {
-                    date: "Dez/2025",
+                    date: "Nov/2025",
                     title: "Inscrição no AI4Good 2026",
                     desc: "Programa da Brazil Conference (parceria Harvard e MIT)",
                     highlight: false
                 },
                 {
+                    date: "Dez/2025",
+                    title: "Top 8 entre 188 projetos",
+                    desc: "Selecionado na primeira fase do programa",
+                    highlight: false
+                },
+                {
                     date: "Jan/2026",
-                    title: "Top 3 entre 188 projetos",
-                    desc: "Selecionado entre iniciativas de todo o Brasil",
+                    title: "Top 3 e Resultado Final",
+                    desc: "Finalista entre as melhores iniciativas do Brasil",
                     highlight: false
                 },
                 {
@@ -196,15 +202,21 @@ export const translations = {
             title: "Journey at AI4Good",
             steps: [
                 {
-                    date: "Dec/2025",
+                    date: "Nov/2025",
                     title: "Application to AI4Good 2026",
                     desc: "Brazil Conference Program (Harvard and MIT partnership)",
                     highlight: false
                 },
                 {
+                    date: "Dec/2025",
+                    title: "Top 8 among 188 projects",
+                    desc: "Selected in the first phase of the program",
+                    highlight: false
+                },
+                {
                     date: "Jan/2026",
-                    title: "Top 3 among 188 projects",
-                    desc: "Selected from initiatives across Brazil",
+                    title: "Top 3 & Final Results",
+                    desc: "Finalist among the best initiatives in Brazil",
                     highlight: false
                 },
                 {
