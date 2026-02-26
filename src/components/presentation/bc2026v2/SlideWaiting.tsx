@@ -13,22 +13,29 @@ export const SLIDE_WAITING_STEPS = 0;
 const SlideWaiting = ({ isActive, mode, slideNumber }: SlideWaitingProps) => {
     return (
         <SlideContainerV2 isActive={isActive} mode={mode} slideNumber={slideNumber}>
-            <div className="flex flex-col items-center justify-center text-center space-y-8">
-                {/* Logo grande com pulse e glow */}
-                <div className="relative animate-pulse">
-                    <img src={yaLogo} alt="Yá" className="w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64" />
+            <div className="flex flex-col items-center justify-center text-center space-y-10 min-h-[60vh]">
+                {/* Stats */}
+                <div className="space-y-2">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground">
+                        11M mães. <span className="text-gradient">22M crianças.</span>
+                    </h2>
+                </div>
+
+                {/* Logo com pulse e glow */}
+                <div className="relative animate-pulse my-8 flex justify-center">
+                    <img src={yaLogo} alt="Yá Logo" className="w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 object-contain" />
                     <div className="absolute inset-0 bg-primary/30 blur-[80px] -z-10 rounded-full" />
                 </div>
 
-                {/* Slogan */}
-                <div className="space-y-3">
-                    <p className="text-3xl sm:text-4xl md:text-5xl font-light">
-                        Yá: <span className="text-gradient">mãe</span>, em yorubá.
-                    </p>
-                    <p className="text-xl sm:text-2xl md:text-3xl text-foreground/60 max-w-2xl">
-                        A assistente que cuida de quem cuida de todo mundo.
-                    </p>
-                </div>
+                {/* Meaning */}
+                <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground font-light">
+                    <span className="text-primary font-semibold tracking-wide">mãe</span>, em yorubá
+                </p>
+
+                {/* Tagline */}
+                <p className="text-lg sm:text-xl md:text-2xl text-foreground/80 max-w-2xl mx-auto">
+                    A assistente que cuida de quem cuida de todo mundo.
+                </p>
             </div>
 
             {/* Background elements */}
