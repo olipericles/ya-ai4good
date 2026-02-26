@@ -29,8 +29,6 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
             id: i,
             avatar: getAvatar(i),
             activeAtStep,
-            x: Math.random() * 80 - 40,
-            y: Math.random() * 40 - 20,
         };
     });
 
@@ -38,9 +36,67 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
     const labels = ["Mães contatadas", "Fizeram cadastro", "Engajadas de verdade", "Transformação real"];
     const currentLabel = showAll ? labels[3] : labels[step] || labels[0];
 
+    // Posições de "explosão" determinísticas para as bolhas que somem
+    const getExplosion = (id: number) => ({
+        x: Math.sin(id * 4.5) * 300,
+        y: Math.cos(id * 3.2) * 300,
+    });
+
+    const getBubbleTransform = (id: number, stepPhase: number, showAll: boolean) => {
+        const effectiveStep = showAll ? 3 : Math.min(stepPhase, 3);
+        const wBase = window.innerWidth < 640 ? 45 : 60; // espaçamento adaptativo mobile/desktop
+        const hBase = window.innerWidth < 640 ? 50 : 70;
+
+        // Hidden state
+        if (
+            (effectiveStep === 1 && id >= 10) ||
+            (effectiveStep === 2 && id >= 5) ||
+            (effectiveStep === 3 && id >= 2)
+        ) {
+            const exp = getExplosion(id);
+            return { x: exp.x, y: exp.y, scale: 0, opacity: 0 };
+        }
+
+        // Visible states
+        if (effectiveStep === 0) {
+            // 9 top, 9 bottom
+            const row = id < 9 ? 0 : 1;
+            const col = id < 9 ? id : id - 9;
+            const x = (col - 4) * wBase;
+            const y = row === 0 ? -hBase / 2 : hBase / 2;
+            return { x, y, scale: 1, opacity: 1 };
+        }
+
+        if (effectiveStep === 1) {
+            // 5 top, 5 bottom
+            const row = id < 5 ? 0 : 1;
+            const col = id < 5 ? id : id - 5;
+            const x = (col - 2) * wBase * 1.2;
+            const y = row === 0 ? -hBase / 2 : hBase / 2;
+            return { x, y, scale: 1.15, opacity: 1 };
+        }
+
+        if (effectiveStep === 2) {
+            // 2 top, 3 bottom (Olympic rings)
+            const row = id < 2 ? 0 : 1;
+            let x = 0;
+            if (row === 0) {
+                x = (id - 0.5) * wBase * 1.5;
+            } else {
+                x = (id - 2 - 1) * wBase * 1.5;
+            }
+            const y = row === 0 ? -hBase / 2 : hBase / 2;
+            return { x, y, scale: 1.3, opacity: 1 };
+        }
+
+        // Step 3
+        const x = id === 0 ? -wBase * 1.2 : wBase * 1.2;
+        return { x, y: 0, scale: 1.8, opacity: 1 };
+    };
+
     return (
         <SlideContainerV2 isActive={isActive} mode={mode} slideNumber={slideNumber}>
-            <div className="flex flex-col items-center justify-center h-full text-center space-y-12 max-w-4xl mx-auto">
+            <div className="flex flex-col items-center justify-center h-full text-center space-y-12 max-w-4xl mx-auto overflow-hidden">
                 <div className="space-y-2">
                     <h2 className="text-3xl sm:text-5xl md:text-7xl font-black text-foreground">
                         O <span className="text-gradient">Teste</span>
@@ -61,33 +117,31 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
                 </div>
 
                 {/* Face Bubbles Area */}
-                <div className="relative w-full h-[60px] sm:h-[80px] flex justify-center items-center">
-                    <div className="relative w-full max-w-3xl flex flex-wrap justify-center gap-2 sm:gap-4 transition-all duration-1000">
-                        {bubbles.map((bubble) => {
-                            const isVisible = showAll ? bubble.activeAtStep >= 3 : step <= bubble.activeAtStep;
-                            const isHero = isVisible && bubble.activeAtStep === 3;
+                <div className="relative w-full h-[150px] sm:h-[180px]">
+                    {bubbles.map((bubble) => {
+                        const transform = getBubbleTransform(bubble.id, step, showAll);
+                        const isHero = transform.scale >= 1.8;
 
-                            return (
-                                <div
-                                    key={bubble.id}
-                                    style={{
-                                        transition: `all ${500 + Math.random() * 500}ms cubic-bezier(0.4, 0, 0.2, 1)`,
-                                        transform: isVisible ? `translate(0px, 0px) scale(${isHero && (showAll || step === 3) ? 1.4 : 1})` : `translate(${bubble.x}px, ${bubble.y}px) scale(0)`,
-                                        opacity: isVisible ? 1 : 0,
-                                    }}
-                                    className={cn(
-                                        "w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 shadow-lg",
-                                        isHero && (showAll || step === 3) ? "border-primary shadow-primary/50 z-20" : "border-border shadow-black/20 z-10"
-                                    )}
-                                >
-                                    <img src={bubble.avatar} alt="Mãe" className="w-full h-full object-cover grayscale opacity-80" />
-                                    {isHero && (showAll || step === 3) && (
-                                        <div className="absolute inset-0 bg-primary/20 mix-blend-overlay" />
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
+                        return (
+                            <div
+                                key={bubble.id}
+                                style={{
+                                    transition: `all ${500 + bubble.id * 20}ms cubic-bezier(0.34, 1.56, 0.64, 1)`,
+                                    transform: `translate(calc(-50% + ${transform.x}px), calc(-50% + ${transform.y}px)) scale(${transform.scale})`,
+                                    opacity: transform.opacity,
+                                }}
+                                className={cn(
+                                    "absolute top-1/2 left-1/2 -ml-5 -mt-5 sm:-ml-7 sm:-mt-7 w-10 h-10 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 shadow-lg",
+                                    isHero ? "border-primary shadow-primary/50 z-20" : "border-border shadow-black/20 z-10"
+                                )}
+                            >
+                                <img src={bubble.avatar} alt="Mãe" className="w-full h-full object-cover grayscale opacity-80" />
+                                {isHero && (
+                                    <div className="absolute inset-0 bg-primary/20 mix-blend-overlay" />
+                                )}
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </SlideContainerV2>
