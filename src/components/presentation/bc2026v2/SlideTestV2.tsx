@@ -184,8 +184,8 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
                             >
                                 <div
                                     className={cn(
-                                        "w-full h-full rounded-full overflow-hidden border-2 shadow-lg transition-colors duration-500",
-                                        isHero ? "border-primary shadow-primary/50" : "border-border shadow-black/20"
+                                        "relative w-full h-full rounded-full overflow-hidden border-2 shadow-lg transition-colors duration-500",
+                                        isHero ? "border-primary shadow-[0_0_20px_10px_rgba(226,107,88,0.2)]" : "border-border shadow-black/20"
                                     )}
                                     style={{
                                         // Aplica a animação de flutuar apenas quando descartada, com delays intercalados

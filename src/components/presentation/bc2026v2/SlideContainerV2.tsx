@@ -22,7 +22,7 @@ const SlideContainerV2 = ({ children, className, isActive, mode = "slide", slide
         return (
             <section className={cn("relative min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8", className)}>
                 {badge}
-                <div className="w-full max-w-7xl mx-auto">
+                <div className="w-full max-w-none mx-auto">
                     {children}
                 </div>
             </section>
@@ -39,7 +39,7 @@ const SlideContainerV2 = ({ children, className, isActive, mode = "slide", slide
         >
             {badge}
             <div className={cn(
-                "w-full max-w-7xl mx-auto transition-all duration-700 delay-200",
+                "w-full max-w-none mx-auto transition-all duration-700 delay-200",
                 isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}>
                 {children}
