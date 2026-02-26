@@ -27,18 +27,25 @@ const SlidePath = ({ isActive, mode, slideNumber, step = 0 }: SlidePathProps) =>
                     Como chegar a mil mães?
                 </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 w-full relative pt-4">
+                    {/* Linha conectora de fundo (só em telas md+) */}
+                    <div className="hidden sm:block absolute top-[50%] left-10 right-10 h-0.5 border-t-2 border-dashed border-primary/30 -z-10" />
+
                     {paths.map((path, i) => (
                         <div
                             key={i}
                             className={cn(
-                                "flex flex-col items-center gap-3 p-6 bg-card/50 border border-border rounded-2xl backdrop-blur-sm transition-all duration-700 ease-out",
+                                "flex flex-col items-center gap-4 p-6 w-full sm:w-1/3 transition-all duration-700 ease-out relative",
                                 (showAll || step >= i + 1) ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
                             )}
                         >
-                            <path.icon className="w-10 h-10 text-primary" />
-                            <h3 className="text-lg font-bold text-foreground">{path.label}</h3>
-                            <p className="text-sm text-muted-foreground">{path.desc}</p>
+                            <div className="w-20 h-20 rounded-full border-2 border-dashed border-primary flex items-center justify-center bg-background z-10">
+                                <path.icon className="w-8 h-8 text-primary" />
+                            </div>
+                            <div className="space-y-1">
+                                <h3 className="text-lg font-bold text-foreground">{path.label}</h3>
+                                <p className="text-sm text-muted-foreground">{path.desc}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

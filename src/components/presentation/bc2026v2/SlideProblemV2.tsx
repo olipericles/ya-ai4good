@@ -15,19 +15,25 @@ const SlideProblemV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideProblemV
     const showAll = mode === "section";
 
     const items = [
-        { icon: Receipt, text: "A taxa que veio sem avisar", delay: "" },
-        { icon: ShoppingBag, text: "O lanche de R$12 que virou R$200 no mês", delay: "delay-100" },
-        { icon: Pill, text: "O remédio de emergência de madrugada", delay: "delay-200" },
+        { icon: Receipt, text: "Taxa surpresa", delay: "" },
+        { icon: ShoppingBag, text: "R$12 → R$200/mês", delay: "delay-100" },
+        { icon: Pill, text: "Remédio de madrugada", delay: "delay-200" },
     ];
 
     return (
         <SlideContainerV2 isActive={isActive} mode={mode} slideNumber={slideNumber}>
             <div className="flex flex-col items-center justify-center text-center space-y-8 max-w-4xl mx-auto">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+                <h2 className={cn(
+                    "text-2xl sm:text-3xl md:text-4xl font-bold text-foreground transition-opacity duration-1000",
+                    (!showAll && step >= 4) ? "opacity-30" : "opacity-100"
+                )}>
                     Pra onde foi o dinheiro?
                 </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+                <div className={cn(
+                    "grid grid-cols-1 sm:grid-cols-3 gap-4 w-full transition-all duration-1000",
+                    (!showAll && step >= 4) ? "opacity-20 scale-95 blur-[2px]" : "opacity-100 scale-100 blur-0"
+                )}>
                     {items.map((item, i) => (
                         <div
                             key={i}
@@ -38,7 +44,7 @@ const SlideProblemV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideProblemV
                             )}
                         >
                             <item.icon className="w-8 h-8 text-destructive/80" />
-                            <p className="text-base sm:text-lg text-foreground font-medium">{item.text}</p>
+                            <p className="text-xl sm:text-2xl text-foreground font-semibold">{item.text}</p>
                         </div>
                     ))}
                 </div>

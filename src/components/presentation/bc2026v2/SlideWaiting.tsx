@@ -21,10 +21,10 @@ const SlideWaiting = ({ isActive, mode, slideNumber }: SlideWaitingProps) => {
 
                 {/* Slogan */}
                 <div className="space-y-3">
-                    <p className="text-xl sm:text-2xl md:text-3xl font-light text-primary">
+                    <p className="text-3xl sm:text-4xl md:text-5xl font-light text-primary">
                         Yá: mãe, em yorubá.
                     </p>
-                    <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-lg">
+                    <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground max-w-2xl">
                         A assistente que cuida de quem cuida de todo mundo.
                     </p>
                 </div>

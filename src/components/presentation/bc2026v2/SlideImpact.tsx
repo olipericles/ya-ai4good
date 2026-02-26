@@ -26,12 +26,9 @@ const SlideImpact = ({ isActive, mode, slideNumber, step = 0 }: SlideImpactProps
                         "transition-all duration-700 ease-out",
                         (showAll || step >= 1) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                     )}>
-                        <div className="bg-card/50 border border-border rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
-                            <p className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary">
-                                11 milhões
-                            </p>
-                            <p className="text-lg sm:text-xl text-muted-foreground mt-2">
-                                de lares chefiados por mães solo no Brasil
+                        <div className="bg-card/50 border border-border rounded-2xl p-6 sm:p-8 backdrop-blur-sm flex items-center justify-center">
+                            <p className="text-6xl sm:text-7xl md:text-8xl font-black text-primary">
+                                11 MILHÕES
                             </p>
                         </div>
                     </div>
@@ -41,9 +38,9 @@ const SlideImpact = ({ isActive, mode, slideNumber, step = 0 }: SlideImpactProps
                         "transition-all duration-700 ease-out delay-100",
                         (showAll || step >= 2) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                     )}>
-                        <div className="bg-card/50 border border-border rounded-2xl p-6 backdrop-blur-sm">
-                            <p className="text-xl sm:text-2xl text-foreground font-semibold">
-                                Mais do que a população inteira de <span className="text-primary">Portugal</span>
+                        <div className="bg-card/50 border border-border rounded-2xl p-6 backdrop-blur-sm flex items-center justify-center">
+                            <p className="text-3xl sm:text-4xl text-foreground font-semibold">
+                                Mais pessoas que <span className="text-primary font-bold">PORTUGAL</span>
                             </p>
                         </div>
                     </div>
@@ -53,9 +50,12 @@ const SlideImpact = ({ isActive, mode, slideNumber, step = 0 }: SlideImpactProps
                         "transition-all duration-700 ease-out delay-200",
                         (showAll || step >= 3) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                     )}>
-                        <div className="bg-primary/10 border-2 border-primary rounded-2xl p-6 backdrop-blur-sm">
-                            <p className="text-xl sm:text-2xl text-primary font-bold">
-                                90% do crescimento na última década: mulheres negras
+                        <div className="bg-primary/10 border-2 border-primary rounded-2xl p-6 backdrop-blur-sm flex flex-col items-center justify-center">
+                            <p className="text-4xl sm:text-5xl border-b-2 border-primary/30 pb-2 text-primary font-extrabold">
+                                90%
+                            </p>
+                            <p className="text-xl sm:text-2xl text-primary/80 font-medium uppercase tracking-wider mt-2">
+                                Mulheres Negras
                             </p>
                         </div>
                     </div>

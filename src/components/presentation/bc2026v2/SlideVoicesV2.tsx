@@ -9,54 +9,37 @@ interface SlideVoicesV2Props {
     step?: number;
 }
 
-export const SLIDE_VOICES_V2_STEPS = 3;
+export const SLIDE_VOICES_V2_STEPS = 2;
 
 const SlideVoicesV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideVoicesV2Props) => {
     const showAll = mode === "section";
 
     return (
         <SlideContainerV2 isActive={isActive} mode={mode} slideNumber={slideNumber}>
-            <div className="flex flex-col items-center justify-center text-center space-y-10 max-w-3xl mx-auto">
-                <h2 className="text-xl sm:text-2xl text-muted-foreground font-light tracking-wide uppercase">
-                    As Vozes
-                </h2>
+            <div className="flex flex-col items-center justify-center text-center h-full max-w-5xl mx-auto px-4">
+                <div className="relative w-full">
+                    <Quote className="w-16 h-16 sm:w-24 sm:h-24 text-primary/10 absolute -top-8 sm:-top-16 left-0 sm:-left-8 -z-10" />
 
-                {/* Citation 1 */}
-                <div className={cn(
-                    "transition-all duration-1000 ease-out",
-                    (showAll || step >= 1) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                )}>
-                    <div className="relative">
-                        <Quote className="w-8 h-8 text-primary/30 absolute -top-4 -left-4" />
-                        <blockquote className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-snug">
-                            "Eu achava que o problema era o salário. <span className="text-primary">Era o delivery.</span>"
+                    {/* Citation 1 (Visible on Step 1) */}
+                    <div className={cn(
+                        "transition-all duration-1000 ease-in-out absolute inset-0 flex items-center justify-center",
+                        (showAll || step === 1) ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 pointer-events-none -z-10"
+                    )}>
+                        <blockquote className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground leading-tight tracking-tight">
+                            "Eu achava que o problema era o salário.<br />
+                            <span className="text-primary">Era o delivery.</span>"
                         </blockquote>
                     </div>
-                </div>
 
-                {/* Context */}
-                <div className={cn(
-                    "transition-all duration-700 ease-out delay-200",
-                    (showAll || step >= 2) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                )}>
-                    <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-                        Ela descobriu que gastava mais de <span className="text-foreground font-semibold">R$300/mês</span> em delivery que não percebia. Redirecionou pra compras no mercado.
-                    </p>
-                </div>
-
-                {/* Citation 2 */}
-                <div className={cn(
-                    "transition-all duration-1000 ease-out delay-300",
-                    (showAll || step >= 3) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                )}>
-                    <div className="relative mt-4">
-                        <Quote className="w-8 h-8 text-primary/30 absolute -top-4 -left-4" />
-                        <blockquote className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-snug">
-                            "Pela primeira vez em 3 anos, <span className="text-primary">sobrou R$50</span> no fim do mês."
+                    {/* Citation 2 (Visible on Step 2+) */}
+                    <div className={cn(
+                        "transition-all duration-1000 ease-in-out absolute inset-0 flex items-center justify-center",
+                        (showAll || step >= 2) ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 pointer-events-none -z-10"
+                    )}>
+                        <blockquote className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground leading-tight tracking-tight">
+                            "Pela primeira vez em 3 anos,<br />
+                            <span className="text-primary">sobrou R$50</span> no fim do mês."
                         </blockquote>
-                        <p className="text-base sm:text-lg text-muted-foreground mt-4">
-                            50 reais. Pra quem nunca sobrou nada, é o começo de uma reserva. <span className="text-foreground font-semibold">É dignidade.</span>
-                        </p>
                     </div>
                 </div>
             </div>

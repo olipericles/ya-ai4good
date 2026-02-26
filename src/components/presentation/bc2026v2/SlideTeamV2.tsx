@@ -68,6 +68,16 @@ const SlideTeamV2 = ({ isActive, mode, slideNumber }: SlideTeamV2Props) => {
                     </p>
                 </div>
 
+                {/* Contacts */}
+                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 pt-4 text-sm sm:text-base text-muted-foreground">
+                    <a href="https://instagram.com/ya.ai4good" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
+                        📱 @ya.ai4good
+                    </a>
+                    <a href="mailto:s.olipericles@gmail.com" className="hover:text-primary transition-colors flex items-center gap-2">
+                        📧 s.olipericles@gmail.com
+                    </a>
+                </div>
+
             </div>
         </SlideContainerV2>
     );
