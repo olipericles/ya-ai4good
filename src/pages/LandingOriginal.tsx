@@ -249,12 +249,8 @@ const LandingOriginal = () => {
                         <h2 className="text-3xl sm:text-4xl font-bold mt-3">{t.journey.title}</h2>
                     </div>
 
-                    <div className="max-w-2xl mx-auto bg-card border border-border rounded-2xl overflow-hidden flex items-center hover:border-primary/30 transition-colors">
-                        <div className="p-6 flex flex-col items-center gap-2 bg-muted/30">
-                            <img src={yaQrcode} alt="QR Code Demo" className="w-44 h-44 object-contain rounded-lg bg-white p-2" />
-                            <span className="text-xs font-bold text-primary uppercase tracking-wider text-center">{t.journey.demoBadge}</span>
-                        </div>
-                        <div className="p-6">
+                    <div className="max-w-2xl mx-auto bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/30 transition-colors">
+                        <div className="p-8 text-center sm:text-left">
                             <h3 className="font-bold text-lg mb-2">{t.journey.cardTitle}</h3>
                             <p className="text-muted-foreground text-sm">{t.journey.cardDesc}</p>
                         </div>
