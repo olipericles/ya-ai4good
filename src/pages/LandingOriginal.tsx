@@ -246,8 +246,7 @@ const LandingOriginal = () => {
                 <div className="max-w-5xl mx-auto px-6">
                     <div className="text-center mb-16">
                         <span className="text-xs uppercase tracking-widest text-primary font-semibold">{t.journey.badge}</span>
-                        <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-4">{t.journey.title}</h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto">{t.journey.subtitle}</p>
+                        <h2 className="text-3xl sm:text-4xl font-bold mt-3">{t.journey.title}</h2>
                     </div>
 
                     <div className="max-w-3xl mx-auto relative px-4 sm:px-0">

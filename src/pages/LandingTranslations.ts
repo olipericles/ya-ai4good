@@ -71,7 +71,6 @@ export const translations = {
         journey: {
             badge: "Nossa Trajetória",
             title: "Jornada no AI4Good",
-            subtitle: "De Salvador para Harvard e MIT, representando 11 milhões de mães solo brasileiras",
             steps: [
                 {
                     date: "Dez/2025",
@@ -195,7 +194,6 @@ export const translations = {
         journey: {
             badge: "Our Trajectory",
             title: "Journey at AI4Good",
-            subtitle: "From Salvador to Harvard and MIT, representing 11 million Brazilian single mothers",
             steps: [
                 {
                     date: "Dec/2025",
