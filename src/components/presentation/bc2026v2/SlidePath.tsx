@@ -1,6 +1,6 @@
 import SlideContainerV2, { type SlideMode } from "./SlideContainerV2";
 import { cn } from "@/lib/utils";
-import { Building, Users, Landmark, Handshake } from "lucide-react";
+import { Building2, Users, FileText, Globe, Handshake } from "lucide-react";
 
 interface SlidePathProps {
     isActive: boolean;
@@ -14,55 +14,64 @@ export const SLIDE_PATH_STEPS = 4;
 const SlidePath = ({ isActive, mode, slideNumber, step = 0 }: SlidePathProps) => {
     const showAll = mode === "section";
 
-    const paths = [
-        { icon: Building, label: "CRAS", desc: "Centros de Referência de Assistência Social" },
-        { icon: Users, label: "ONGs e associações", desc: "Comunidades que já atendem essa população" },
-        { icon: Landmark, label: "Políticas públicas", desc: "Programas governamentais existentes" },
+    const pillars = [
+        { icon: Building2, label: "Integração com CRAS", delay: "delay-200" },
+        { icon: Users, label: "Parcerias com ONGs", delay: "delay-300" },
+        { icon: FileText, label: "Políticas públicas", delay: "delay-400" },
+        { icon: Globe, label: "Escala nacional", delay: "delay-500" },
     ];
 
     return (
         <SlideContainerV2 isActive={isActive} mode={mode} slideNumber={slideNumber}>
-            <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-                    Como chegar a mil mães?
-                </h2>
+            <div className="space-y-6 sm:space-y-10 text-center">
+                {/* Header */}
+                <div className={cn(
+                    "space-y-4 transition-all duration-700",
+                    (showAll || step >= 1) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                )}>
+                    <h2 className="text-4xl sm:text-6xl md:text-8xl font-black">
+                        <span className="text-gradient">1.000</span> mães
+                    </h2>
+                    <p className="text-lg sm:text-xl md:text-2xl text-foreground/60">
+                        em 6 meses
+                    </p>
+                </div>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 w-full relative pt-4">
-                    {/* Linha conectora de fundo (só em telas md+) */}
-                    <div className="hidden sm:block absolute top-[50%] left-10 right-10 h-0.5 border-t-2 border-dashed border-primary/30 -z-10" />
-
-                    {paths.map((path, i) => (
+                {/* Pillars */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto">
+                    {pillars.map((pillar, index) => (
                         <div
-                            key={i}
+                            key={index}
                             className={cn(
-                                "flex flex-col items-center gap-4 p-6 w-full sm:w-1/3 transition-all duration-700 ease-out relative",
-                                (showAll || step >= i + 1) ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
+                                "bg-card border border-border/50 rounded-2xl p-4 sm:p-6 flex flex-col items-center gap-3 hover:border-primary/50 transition-all duration-300",
+                                (showAll || step >= index + 1) ? "opacity-100 scale-100" : "opacity-0 scale-90"
                             )}
                         >
-                            <div className="w-20 h-20 rounded-full border-2 border-dashed border-primary flex items-center justify-center bg-background z-10">
-                                <path.icon className="w-8 h-8 text-primary" />
+                            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                                <pillar.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                             </div>
-                            <div className="space-y-1">
-                                <h3 className="text-lg font-bold text-foreground">{path.label}</h3>
-                                <p className="text-sm text-muted-foreground">{path.desc}</p>
-                            </div>
+                            <p className="text-sm sm:text-base text-foreground/80 font-medium">{pillar.label}</p>
                         </div>
                     ))}
                 </div>
 
-                {/* Closing thought */}
+                {/* Quote */}
                 <div className={cn(
-                    "transition-all duration-1000 ease-out delay-300",
+                    "transition-all duration-1000 ease-out",
                     (showAll || step >= 4) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 )}>
-                    <div className="flex items-center gap-3 bg-primary/10 border border-primary/30 rounded-2xl p-6 max-w-2xl mx-auto">
-                        <Handshake className="w-8 h-8 text-primary flex-shrink-0" />
-                        <p className="text-base sm:text-lg text-foreground text-left">
-                            A gente só precisa do caminho até elas. E se alguém aqui puder nos ajudar, <span className="text-primary font-semibold">a gente vai adorar essa conversa.</span>
+                    <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 rounded-2xl p-4 sm:p-6 md:p-8 max-w-3xl mx-auto">
+                        <p className="text-lg sm:text-xl md:text-2xl text-foreground font-medium leading-relaxed">
+                            "Assistente Social Digital: o WhatsApp já tá lá. A mãe já tá lá.
+                            <span className="text-primary font-bold"> Só faltava a Yá.</span>"
                         </p>
                     </div>
                 </div>
             </div>
+
+            {/* Background elements */}
+            <div className="hidden sm:block absolute top-20 right-20 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="hidden sm:block absolute bottom-20 left-20 w-48 h-48 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
         </SlideContainerV2>
     );
 };
