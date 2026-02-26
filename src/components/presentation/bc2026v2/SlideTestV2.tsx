@@ -47,24 +47,45 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
         const wBase = window.innerWidth < 640 ? 45 : 60; // espaçamento adaptativo mobile/desktop
         const hBase = window.innerWidth < 640 ? 50 : 70;
 
-        // Hidden state
-        if (
-            (effectiveStep === 1 && id >= 10) ||
-            (effectiveStep === 2 && id >= 5) ||
-            (effectiveStep === 3 && id >= 2)
-        ) {
+        // IDs 14-17 são repetições para fechar 18 no começo.
+        // A partir do passo 2 (Engajadas), elas somem para sobrar apenas as 14 originais ("sumindo as 4 repetidas").
+        if (effectiveStep >= 2 && id >= 14) {
             const exp = getExplosion(id);
             return { x: exp.x, y: exp.y, scale: 0, opacity: 0 };
         }
 
-        // Visible states
+        // Determinar quais bolhas foram "descartadas" do funil principal para flutuar nas laterais
+        let discardedIds: number[] = [];
+        if (effectiveStep === 1) discardedIds = [10, 11, 12, 13, 14, 15, 16, 17];
+        if (effectiveStep === 2) discardedIds = [5, 6, 7, 8, 9, 10, 11, 12, 13];
+        if (effectiveStep === 3) discardedIds = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+
+        const discardedIdx = discardedIds.indexOf(id);
+
+        if (discardedIdx !== -1) {
+            // Bolha descartada flutuando na lateral
+            const isLeft = discardedIdx % 2 === 0;
+            const sideIndex = Math.floor(discardedIdx / 2);
+            const totalOnThisSide = Math.ceil(discardedIds.length / 2);
+
+            const edgeOffset = window.innerWidth < 640 ? window.innerWidth / 2 - 30 : 380;
+            const xOrganic = Math.sin(id * 14.2) * 20; // variação orgânica
+            const x = isLeft ? -edgeOffset + xOrganic : edgeOffset + xOrganic;
+
+            const ySpacing = window.innerWidth < 640 ? 40 : 50;
+            const y = (sideIndex - (totalOnThisSide - 1) / 2) * ySpacing;
+
+            return { x, y, scale: 0.8, opacity: 0.6 };
+        }
+
+        // Visible states (Main Funnel)
         if (effectiveStep === 0) {
             // 9 top, 9 bottom
             const row = id < 9 ? 0 : 1;
             const col = id < 9 ? id : id - 9;
             const x = (col - 4) * wBase;
             const y = row === 0 ? -hBase / 2 : hBase / 2;
-            return { x, y, scale: 1, opacity: 1 };
+            return { x, y, scale: 1.0, opacity: 1 };
         }
 
         if (effectiveStep === 1) {
@@ -89,14 +110,14 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
             return { x, y, scale: 1.3, opacity: 1 };
         }
 
-        // Step 3
+        // Step 3 (2 Heroes)
         const x = id === 0 ? -wBase * 1.2 : wBase * 1.2;
         return { x, y: 0, scale: 1.8, opacity: 1 };
     };
 
     return (
         <SlideContainerV2 isActive={isActive} mode={mode} slideNumber={slideNumber}>
-            <div className="flex flex-col items-center justify-center h-full text-center space-y-12 max-w-4xl mx-auto overflow-hidden">
+            <div className="flex flex-col items-center justify-center h-full text-center space-y-12 max-w-5xl mx-auto overflow-hidden">
                 <div className="space-y-2">
                     <h2 className="text-3xl sm:text-5xl md:text-7xl font-black text-foreground">
                         O <span className="text-gradient">Teste</span>
@@ -126,7 +147,7 @@ const SlideTestV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideTestV2Props
                             <div
                                 key={bubble.id}
                                 style={{
-                                    transition: `all ${500 + bubble.id * 20}ms cubic-bezier(0.34, 1.56, 0.64, 1)`,
+                                    transition: `all ${1000 + bubble.id * 40}ms cubic-bezier(0.34, 1.56, 0.64, 1)`,
                                     transform: `translate(calc(-50% + ${transform.x}px), calc(-50% + ${transform.y}px)) scale(${transform.scale})`,
                                     opacity: transform.opacity,
                                 }}
