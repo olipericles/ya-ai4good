@@ -93,7 +93,7 @@ export const translations = {
                 {
                     date: "Mar/2026",
                     title: "Brazil Conference",
-                    desc: "Apresentação em Boston (24-31 de março)",
+                    desc: "Apresentação em Boston",
                     highlight: true,
                     badge: "Próximo"
                 }
@@ -216,7 +216,7 @@ export const translations = {
                 {
                     date: "Mar/2026",
                     title: "Brazil Conference",
-                    desc: "Presentation in Boston (March 24-31)",
+                    desc: "Presentation in Boston",
                     highlight: true,
                     badge: "Next"
                 }
