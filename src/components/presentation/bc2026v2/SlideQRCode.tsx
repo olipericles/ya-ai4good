@@ -29,18 +29,11 @@ const SlideQRCode = ({ isActive, mode, slideNumber }: SlideQRCodeProps) => {
                     />
                 </div>
 
-                <a
-                    href="https://wa.me/5571992433241?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline text-base sm:text-lg"
-                >
-                    wa.me/5571992433241
-                </a>
 
-                <div className="text-sm text-muted-foreground space-y-1 pt-4 border-t border-border">
+
+
+                <div className="text-sm text-muted-foreground pt-4 border-t border-border">
                     <p>Adriele Ornellas · Péricles Oliveira · Luã Mota</p>
-                    <p>📧 s.olipericles@gmail.com</p>
                 </div>
             </div>
         </SlideContainerV2>

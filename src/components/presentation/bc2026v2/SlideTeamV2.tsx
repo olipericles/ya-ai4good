@@ -68,9 +68,6 @@ const SlideTeamV2 = ({ isActive, mode, slideNumber }: SlideTeamV2Props) => {
                     </p>
                 </div>
 
-                <p className="text-sm text-muted-foreground">
-                    📧 s.olipericles@gmail.com
-                </p>
             </div>
         </SlideContainerV2>
     );
