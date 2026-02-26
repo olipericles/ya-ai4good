@@ -14,15 +14,15 @@ const SlideWaiting = ({ isActive, mode, slideNumber }: SlideWaitingProps) => {
     return (
         <SlideContainerV2 isActive={isActive} mode={mode} slideNumber={slideNumber}>
             <div className="flex flex-col items-center justify-center text-center space-y-8">
-                {/* Logo with glow */}
-                <div className={`relative ${isActive ? 'animate-scale-in' : 'opacity-0'}`}>
-                    <img src={yaLogo} alt="Yá" className="w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 animate-pulse-slow" />
+                {/* Logo grande com pulse e glow */}
+                <div className="relative animate-pulse">
+                    <img src={yaLogo} alt="Yá" className="w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64" />
                     <div className="absolute inset-0 bg-primary/30 blur-[80px] -z-10 rounded-full" />
                 </div>
 
                 {/* Slogan */}
-                <div className={`space-y-4 ${isActive ? 'animate-fade-up delay-300' : 'opacity-0'}`}>
-                    <p className="text-3xl sm:text-4xl md:text-5xl font-bold">
+                <div className="space-y-3">
+                    <p className="text-3xl sm:text-4xl md:text-5xl font-light">
                         Yá: <span className="text-gradient">mãe</span>, em yorubá.
                     </p>
                     <p className="text-xl sm:text-2xl md:text-3xl text-foreground/60 max-w-2xl">
