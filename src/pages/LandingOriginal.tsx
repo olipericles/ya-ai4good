@@ -302,7 +302,7 @@ const LandingOriginal = () => {
                             🤱 Quero Participar como Mãe
                         </a>
                         <a
-                            href="mailto:s.olipericles@gmail.com"
+                            href="mailto:ya.ai4good@gmail.com"
                             className="px-8 py-4 rounded-xl border border-border bg-card text-foreground font-semibold text-lg hover:border-primary/30 transition-colors"
                         >
                             🤝 Quero ser Parceiro
@@ -335,7 +335,7 @@ const LandingOriginal = () => {
                         <div>
                             <h4 className="font-semibold mb-3">Contato</h4>
                             <p className="text-sm text-muted-foreground">Salvador, Bahia</p>
-                            <p className="text-sm text-muted-foreground">s.olipericles@gmail.com</p>
+                            <p className="text-sm text-muted-foreground">ya.ai4good@gmail.com</p>
                         </div>
                     </div>
                     <div className="border-t border-border pt-6 text-center">

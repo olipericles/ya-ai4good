@@ -73,8 +73,8 @@ const SlideTeamV2 = ({ isActive, mode, slideNumber }: SlideTeamV2Props) => {
                     <a href="https://instagram.com/ya.ai4good" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
                         📱 @ya.ai4good
                     </a>
-                    <a href="mailto:s.olipericles@gmail.com" className="hover:text-primary transition-colors flex items-center gap-2">
-                        📧 s.olipericles@gmail.com
+                    <a href="mailto:ya.ai4good@gmail.com" className="hover:text-primary transition-colors flex items-center gap-2">
+                        📧 ya.ai4good@gmail.com
                     </a>
                 </div>
 
