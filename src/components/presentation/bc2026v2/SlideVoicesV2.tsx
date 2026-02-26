@@ -9,7 +9,7 @@ interface SlideVoicesV2Props {
     step?: number;
 }
 
-export const SLIDE_VOICES_V2_STEPS = 2;
+export const SLIDE_VOICES_V2_STEPS = 1;
 
 const SlideVoicesV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideVoicesV2Props) => {
     const showAll = mode === "section";
@@ -20,10 +20,10 @@ const SlideVoicesV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideVoicesV2P
                 <div className="relative w-full">
                     <Quote className="w-16 h-16 sm:w-24 sm:h-24 text-primary/10 absolute -top-8 sm:-top-16 left-0 sm:-left-8 -z-10" />
 
-                    {/* Citation 1 (Visible on Step 1) */}
+                    {/* Citation 1 (Visible on Step 0) */}
                     <div className={cn(
                         "transition-all duration-1000 ease-in-out absolute inset-0 flex items-center justify-center",
-                        (showAll || step === 1) ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 pointer-events-none -z-10"
+                        (showAll || step === 0) ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 pointer-events-none -z-10"
                     )}>
                         <blockquote className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground leading-tight tracking-tight">
                             "Eu achava que o problema era o salário.<br />
@@ -31,10 +31,10 @@ const SlideVoicesV2 = ({ isActive, mode, slideNumber, step = 0 }: SlideVoicesV2P
                         </blockquote>
                     </div>
 
-                    {/* Citation 2 (Visible on Step 2+) */}
+                    {/* Citation 2 (Visible on Step 1+) */}
                     <div className={cn(
                         "transition-all duration-1000 ease-in-out absolute inset-0 flex items-center justify-center",
-                        (showAll || step >= 2) ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 pointer-events-none -z-10"
+                        (showAll || step >= 1) ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 pointer-events-none -z-10"
                     )}>
                         <blockquote className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground leading-tight tracking-tight">
                             "Pela primeira vez em 3 anos,<br />
