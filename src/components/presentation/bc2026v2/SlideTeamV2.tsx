@@ -17,21 +17,21 @@ const SlideTeamV2 = ({ isActive, mode, slideNumber }: SlideTeamV2Props) => {
     const team = [
         {
             name: "Adriele Ornellas",
-            role: "Pesquisa e Comunicação",
+            role: "Pessoas e Comunidades",
             photo: equipeAdriele,
             linkedin: "https://www.linkedin.com/in/adrieleornellas/",
             gradient: "from-primary to-primary/60",
         },
         {
             name: "Péricles Oliveira",
-            role: "Estratégia e IA",
+            role: "Estratégia e Produto",
             photo: equipePericles,
             linkedin: "https://www.linkedin.com/in/olipericles/",
             gradient: "from-secondary to-secondary/60",
         },
         {
             name: "Luã Mota",
-            role: "Design e Dados",
+            role: "Software e Dados",
             photo: equipeLua,
             linkedin: "https://www.linkedin.com/in/lua-mota/",
             gradient: "from-accent to-accent/60",
