@@ -109,9 +109,9 @@ export const translations = {
             badge: "Equipe",
             title: "Quem está por trás",
             roles: {
-                pericles: "Estrategista de IA e Negócios",
-                adriele: "Especialista em Pessoas e Comunidades",
-                lua: "Arquiteto de Software"
+                pericles: "Estratégia e Produto",
+                adriele: "Pessoas e Comunidades",
+                lua: "Software e Dados"
             }
         },
         cta: {
@@ -238,9 +238,9 @@ export const translations = {
             badge: "Team",
             title: "Who is behind it",
             roles: {
-                pericles: "AI & Business Strategist",
-                adriele: "People & Communities Expert",
-                lua: "Software Architect"
+                pericles: "Strategy & Product",
+                adriele: "People & Communities",
+                lua: "Software & Data"
             }
         },
         cta: {
