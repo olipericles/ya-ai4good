@@ -354,19 +354,19 @@ const LandingOriginal = () => {
                         <h2 className="text-3xl sm:text-4xl font-bold mt-3">{t.team.title}</h2>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-4xl mx-auto mt-16">
                         {team.map((member) => (
-                            <div key={member.name} className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary/30 transition-colors group">
-                                <img src={member.img} alt={member.name} className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
-                                <div className="p-5 text-center">
-                                    <h3 className="font-bold text-lg">{member.name}</h3>
-                                    <p className="text-primary text-sm font-medium mb-3">{member.role}</p>
-                                    <a href={member.linkedin} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" className="inline">
-                                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
-                                        </svg>
-                                    </a>
-                                </div>
+                            <div key={member.name} className="flex flex-col items-center group">
+                                <a href={member.linkedin} target="_blank" rel="noreferrer" className="w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-card bg-card shadow-xl group-hover:border-primary/50 group-hover:shadow-[0_0_30px_rgba(226,107,88,0.2)] transition-all duration-300 block">
+                                    <img src={member.img} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                </a>
+                                <h3 className="font-bold text-xl mb-1 text-foreground">{member.name}</h3>
+                                <p className="text-primary text-sm font-medium mb-4">{member.role}</p>
+                                <a href={member.linkedin} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-2 bg-card rounded-full border border-border hover:border-primary/30" aria-label={`LinkedIn de ${member.name}`}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" className="inline">
+                                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                                    </svg>
+                                </a>
                             </div>
                         ))}
                     </div>
