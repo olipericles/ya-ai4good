@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Heart, Globe } from "lucide-react";
+import { Heart, Globe, Lock, Unlock, X, ChevronRight, PlayCircle, FileText } from "lucide-react";
 import { translations } from "./LandingTranslations";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import equipePericles from "@/assets/team/equipe-pericles.png";
@@ -12,6 +12,10 @@ import yaQrcode from "@/assets/logos/ya-qrcode.png";
 
 const LandingV5 = () => {
     const [lang, setLang] = useState<"pt" | "en">("pt");
+    const [showPitchModal, setShowPitchModal] = useState(false);
+    const [pitchPassword, setPitchPassword] = useState("");
+    const [isPitchAuth, setIsPitchAuth] = useState(false);
+    const [pitchError, setPitchError] = useState(false);
     const t = translations[lang];
 
     useEffect(() => {
@@ -47,6 +51,23 @@ const LandingV5 = () => {
         setLang(prev => prev === "pt" ? "en" : "pt");
     };
 
+    const handlePitchLogin = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (pitchPassword.toLowerCase() === "ai4good") {
+            setIsPitchAuth(true);
+            setPitchError(false);
+        } else {
+            setPitchError(true);
+        }
+    };
+
+    const pitchVersions = [
+        { name: "V1 (BC2026)", base: "/vBC2026", training: "/vBC2026t", script: "/vBC2026s" },
+        { name: "V2 (Neo-Brutal)", base: "/v2BC2026", training: "/v2BC2026t", script: "/v2BC2026s" },
+        { name: "V3 (Animated)", base: "/v3BC2026", training: "/v3BC2026t", script: "/v3BC2026s" },
+        { name: "V4 (Premium)", base: "/v4BC2026", training: "/v4BC2026t", script: "/v4BC2026s" }
+    ];
+
     return (
         <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
             {/* Header */}
@@ -58,6 +79,9 @@ const LandingV5 = () => {
                         <a href="#solucao" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t.nav.solution}</a>
                         <a href="#impacto" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t.nav.impact}</a>
                         <a href="#equipe" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t.nav.team}</a>
+                        <button onClick={() => setShowPitchModal(true)} className="text-sm font-bold text-primary hover:text-secondary transition-colors flex items-center gap-1">
+                            <Lock className="w-3 h-3" /> Pitch Deck
+                        </button>
                     </nav>
                     <div className="flex items-center gap-3 relative">
                         {/* Language Toggle */}
@@ -447,6 +471,69 @@ const LandingV5 = () => {
                     </div>
                 </div>
             </footer>
+
+            {/* Pitch Deck Modal */}
+            {showPitchModal && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-all duration-300">
+                    <div className="bg-[#0a0a0a] border border-white/10 rounded-[2rem] p-8 max-w-2xl w-full shadow-2xl relative animate-fade-up">
+                        <button
+                            onClick={() => { setShowPitchModal(false); setPitchPassword(""); setPitchError(false); setIsPitchAuth(false); }}
+                            className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors"
+                        >
+                            <X className="w-6 h-6" />
+                        </button>
+
+                        <div className="mb-8">
+                            <h2 className="text-3xl font-black text-white mb-2 flex items-center gap-3">
+                                {isPitchAuth ? <Unlock className="w-8 h-8 text-primary" /> : <Lock className="w-8 h-8 text-white/50" />}
+                                Pitch Deck Access
+                            </h2>
+                            <p className="text-white/60 font-mono text-sm uppercase tracking-widest">
+                                {isPitchAuth ? "Acesso liberado aos assets" : "Área restrita. Insira a senha."}
+                            </p>
+                        </div>
+
+                        {!isPitchAuth ? (
+                            <form onSubmit={handlePitchLogin} className="space-y-4">
+                                <div>
+                                    <input
+                                        type="password"
+                                        value={pitchPassword}
+                                        onChange={(e) => setPitchPassword(e.target.value)}
+                                        placeholder="Senha"
+                                        className={`w-full bg-white/5 border ${pitchError ? 'border-red-500' : 'border-white/10 focus:border-primary'} rounded-xl px-6 py-4 text-white font-mono outline-none transition-colors`}
+                                        autoFocus
+                                    />
+                                    {pitchError && <span className="text-red-500 text-xs font-mono mt-2 ml-2 block uppercase">* Senha incorreta</span>}
+                                </div>
+                                <button type="submit" className="w-full bg-gradient-hero text-white font-black px-6 py-4 rounded-xl uppercase tracking-widest hover:scale-[1.02] transition-transform">
+                                    Entrar
+                                </button>
+                            </form>
+                        ) : (
+                            <div className="space-y-4 animate-fade-in">
+                                {pitchVersions.map((v, i) => (
+                                    <div key={i} className="flex flex-col sm:flex-row items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 gap-4 hover:bg-white/10 transition-colors">
+                                        <span className="font-bold text-lg text-white">{v.name}</span>
+                                        <div className="flex gap-2 w-full sm:w-auto">
+                                            <a href={v.base} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                                <PlayCircle className="w-4 h-4" /> Final
+                                            </a>
+                                            <a href={v.training} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                                <ChevronRight className="w-4 h-4" /> Treino
+                                            </a>
+                                            <a href={v.script} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                                <FileText className="w-4 h-4" /> Script
+                                            </a>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 };
