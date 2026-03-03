@@ -84,9 +84,9 @@ const LandingV5 = () => {
 
             {/* Hero V5 / V4 Aesthetic */}
             <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-[#0A0A0A] text-white">
-                {/* Intense Soft Glows Background */}
-                <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-primary/20 rounded-full blur-[140px] pointer-events-none mix-blend-screen" />
-                <div className="absolute bottom-1/4 right-1/4 w-[40vw] h-[40vw] bg-accent/20 rounded-full blur-[140px] pointer-events-none mix-blend-screen" />
+                {/* Subtle Background Glows to preserve text legibility */}
+                <div className="absolute top-1/4 left-1/4 w-[50vw] h-[50vw] bg-secondary/10 rounded-full blur-[180px] pointer-events-none" />
+                <div className="absolute bottom-1/4 right-1/4 w-[40vw] h-[40vw] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
 
                 <div className="max-w-6xl mx-auto px-6 text-center relative z-10 w-full">
                     {/* Badge */}
