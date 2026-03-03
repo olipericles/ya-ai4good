@@ -25,8 +25,8 @@ const SlideTestV4 = ({ isActive, step = 0 }: SlideTestV4Props) => {
 
     const getBubbleTransform = (id: number, stepPhase: number) => {
         const effectiveStep = Math.min(stepPhase, 3);
-        const wBase = window.innerWidth < 640 ? 55 : 85; // Made the base spacing wider globally
-        const hBase = window.innerWidth < 640 ? 60 : 90; // Made the base vertical wider globally
+        const wBase = window.innerWidth < 640 ? 65 : 100;
+        const hBase = window.innerWidth < 640 ? 70 : 110;
 
         const isCurrentlyDiscarded =
             (effectiveStep >= 1 && id >= 10 && id <= 13) ||
@@ -38,37 +38,37 @@ const SlideTestV4 = ({ isActive, step = 0 }: SlideTestV4Props) => {
             // 6 bubbles max per side. id values discarded: 2 to 13.
             const sideIndex = isLeft ? (12 - id) / 2 : (13 - id) / 2;
             const isMobile = window.innerWidth < 640;
-            const xEdge = isMobile ? (window.innerWidth / 2 - 30) : 380;
+            const xEdge = isMobile ? (window.innerWidth / 2 - 30) : 480;
             const yCenter = isMobile ? -180 : -220;
-            const ySpacing = isMobile ? 45 : 75; // More spacing for bigger bubbles on the side
+            const ySpacing = isMobile ? 55 : 85;
 
-            // Maintain a larger scale when discarded compared to old 0.65.
-            return { x: isLeft ? -xEdge : xEdge, y: yCenter + (sideIndex - 2.5) * ySpacing, scale: 0.9, opacity: 0.6, isDiscarded: true };
+            // Maintain a larger scale when discarded
+            return { x: isLeft ? -xEdge : xEdge, y: yCenter + (sideIndex - 2.5) * ySpacing, scale: 1.1, opacity: 0.6, isDiscarded: true };
         }
 
         if (effectiveStep === 0) {
             // 7 top, 7 bottom
             const row = id < 7 ? 0 : 1;
             const col = id < 7 ? id : id - 7;
-            return { x: (col - 3) * wBase, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 1.2, opacity: 1 };
+            return { x: (col - 3) * wBase, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 1.4, opacity: 1 };
         }
 
         if (effectiveStep === 1) {
             // 5 top, 5 bottom
             const row = id < 5 ? 0 : 1;
             const col = id < 5 ? id : id - 5;
-            return { x: (col - 2) * wBase * 1.2, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 1.4, opacity: 1 };
+            return { x: (col - 2) * wBase * 1.2, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 1.7, opacity: 1 };
         }
 
         if (effectiveStep === 2) {
             // 2 top, 3 bottom
             const row = id < 2 ? 0 : 1;
             const x = row === 0 ? (id - 0.5) * wBase * 1.5 : (id - 3) * wBase * 1.5;
-            return { x, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 1.6, opacity: 1 };
+            return { x, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 2.0, opacity: 1 };
         }
 
         // Hero state
-        return { x: id === 0 ? -wBase * 1.2 : wBase * 1.2, y: 0, scale: 2.2, opacity: 1 };
+        return { x: id === 0 ? -wBase * 1.2 : wBase * 1.2, y: 0, scale: 2.8, opacity: 1 };
     };
 
     return (
