@@ -1,4 +1,4 @@
-import { type SlideMode } from "../bc2026v2/SlideContainer";
+import { type SlideMode } from "../bc2026v2/SlideContainerV2";
 import { Quote } from "lucide-react";
 
 interface SlideVoicesV4Props {

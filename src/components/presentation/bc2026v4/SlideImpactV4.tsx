@@ -1,4 +1,4 @@
-import { type SlideMode } from "../bc2026v3/SlideContainerV2";
+import { type SlideMode } from "../bc2026v2/SlideContainerV2";
 
 interface SlideImpactV4Props {
     isActive: boolean;

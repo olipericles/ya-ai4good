@@ -1,4 +1,4 @@
-import { type SlideMode } from "../bc2026v2/SlideContainer";
+import { type SlideMode } from "../bc2026v2/SlideContainerV2";
 import { ArrowRight, Check, Target } from "lucide-react";
 
 interface SlideScaleV4Props {
