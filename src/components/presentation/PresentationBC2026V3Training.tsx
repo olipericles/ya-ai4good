@@ -1,0 +1,193 @@
+import { useState, useEffect, useCallback, useMemo } from "react";
+import { ChevronLeft, ChevronRight, Clock, Volume2, User } from "lucide-react";
+
+import SlideOpeningV3, { SLIDE_OPENING_V3_STEPS } from "./bc2026v3/SlideOpeningV3";
+import SlideImpactV3, { SLIDE_IMPACT_V3_STEPS } from "./bc2026v3/SlideImpactV3";
+import SlideProblemV3, { SLIDE_PROBLEM_V3_STEPS } from "./bc2026v3/SlideProblemV3";
+import SlideSolutionV3, { SLIDE_SOLUTION_V3_STEPS } from "./bc2026v3/SlideSolutionV3";
+import SlideTestV3, { SLIDE_TEST_V3_STEPS } from "./bc2026v3/SlideTestV3";
+import SlideVoicesV3, { SLIDE_VOICES_V3_STEPS } from "./bc2026v3/SlideVoicesV3";
+import SlideScaleV3, { SLIDE_SCALE_V3_STEPS } from "./bc2026v3/SlideScaleV3";
+import SlidePathV3, { SLIDE_PATH_V3_STEPS } from "./bc2026v3/SlidePathV3";
+import SlideVisionV3, { SLIDE_VISION_V3_STEPS } from "./bc2026v3/SlideVisionV3";
+import SlideTeamV3, { SLIDE_TEAM_V3_STEPS } from "./bc2026v3/SlideTeamV3";
+import SlideClosingV3, { SLIDE_CLOSING_V3_STEPS } from "./bc2026v3/SlideClosingV3";
+import SlideDemoV3, { SLIDE_DEMO_V3_STEPS } from "./bc2026v3/SlideDemoV3";
+
+import roteiroRaw from "@/assets/docs/roteiro-v2.md?raw";
+import { parseRoteiro } from "@/lib/parseRoteiro";
+
+const STEPS_PER_SLIDE = [
+    SLIDE_OPENING_V3_STEPS, // 0: Waiting/Opening
+    SLIDE_IMPACT_V3_STEPS,  // 1: Impact
+    SLIDE_PROBLEM_V3_STEPS, // 2: Problem
+    SLIDE_SOLUTION_V3_STEPS,// 3: Solution
+    SLIDE_TEST_V3_STEPS,    // 4: Test
+    SLIDE_VOICES_V3_STEPS,  // 5: Voices
+    SLIDE_SCALE_V3_STEPS,   // 6: Scale
+    SLIDE_PATH_V3_STEPS,    // 7: Path
+    SLIDE_VISION_V3_STEPS,  // 8: Vision
+    SLIDE_TEAM_V3_STEPS,    // 9: Team
+    SLIDE_CLOSING_V3_STEPS, // 10: Closing
+    SLIDE_DEMO_V3_STEPS,    // 11: Demo
+];
+
+const TOTAL_SLIDES = STEPS_PER_SLIDE.length;
+
+const PresentationBC2026V3Training = () => {
+    const SCRIPTS = useMemo(() => parseRoteiro(roteiroRaw), []);
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+
+    const goToSlide = useCallback((index: number) => {
+        if (isTransitioning) return;
+        if (index < 0 || index >= TOTAL_SLIDES) return;
+        setIsTransitioning(true);
+        setCurrentSlide(index);
+        setCurrentStep(0);
+        setTimeout(() => setIsTransitioning(false), 500);
+    }, [isTransitioning]);
+
+    const next = useCallback(() => {
+        if (isTransitioning) return;
+        const maxSteps = STEPS_PER_SLIDE[currentSlide];
+        if (currentStep < maxSteps) {
+            setCurrentStep(prev => prev + 1);
+        } else {
+            goToSlide(currentSlide + 1);
+        }
+    }, [currentSlide, currentStep, isTransitioning, goToSlide]);
+
+    const prev = useCallback(() => {
+        if (isTransitioning) return;
+        if (currentStep > 0) {
+            setCurrentStep(prev => prev - 1);
+        } else if (currentSlide > 0) {
+            const prevSlideIndex = currentSlide - 1;
+            setIsTransitioning(true);
+            setCurrentSlide(prevSlideIndex);
+            setCurrentStep(STEPS_PER_SLIDE[prevSlideIndex]);
+            setTimeout(() => setIsTransitioning(false), 500);
+        }
+    }, [currentSlide, currentStep, isTransitioning]);
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "ArrowRight" || e.key === " " || e.key === "Enter") {
+                e.preventDefault(); next();
+            } else if (e.key === "ArrowLeft") {
+                e.preventDefault(); prev();
+            } else if (e.key === "Home") {
+                e.preventDefault(); goToSlide(0);
+            } else if (e.key === "End") {
+                e.preventDefault(); goToSlide(TOTAL_SLIDES - 1);
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [next, prev, goToSlide]);
+
+    const currentScript = SCRIPTS[currentSlide] || {
+        title: `SLIDE ${currentSlide} — (Sem script na V2)`,
+        time: "—",
+        speaker: "Equipe",
+        notes: "",
+        script: "Este slide não possui correspondente no roteiro V2 original."
+    };
+
+    return (
+        <div className="relative w-full h-screen bg-[#0A0A0A] overflow-hidden flex">
+            {/* Slide area — 60% */}
+            <div className="relative w-[60%] h-full">
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <SlideOpeningV3 isActive={currentSlide === 0} step={currentStep} />
+                    <SlideImpactV3 isActive={currentSlide === 1} step={currentStep} />
+                    <SlideProblemV3 isActive={currentSlide === 2} step={currentStep} />
+                    <SlideSolutionV3 isActive={currentSlide === 3} step={currentStep} />
+                    <SlideTestV3 isActive={currentSlide === 4} step={currentStep} />
+                    <SlideVoicesV3 isActive={currentSlide === 5} step={currentStep} />
+                    <SlideScaleV3 isActive={currentSlide === 6} step={currentStep} />
+                    <SlidePathV3 isActive={currentSlide === 7} step={currentStep} />
+                    <SlideVisionV3 isActive={currentSlide === 8} step={currentStep} />
+                    <SlideTeamV3 isActive={currentSlide === 9} step={currentStep} />
+                    <SlideClosingV3 isActive={currentSlide === 10} step={currentStep} />
+                    <SlideDemoV3 isActive={currentSlide === 11} step={currentStep} />
+                </div>
+
+                {/* Navigation */}
+                <button
+                    onClick={(e) => { e.stopPropagation(); prev(); }}
+                    className={`absolute left-4 top-1/2 -translate-y-1/2 z-50 p-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm hover:bg-primary/20 text-white transition-all ${currentSlide === 0 && currentStep === 0 ? "opacity-30 pointer-events-none" : "opacity-100"}`}
+                >
+                    <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                    onClick={(e) => { e.stopPropagation(); next(); }}
+                    className={`absolute right-4 top-1/2 -translate-y-1/2 z-50 p-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm hover:bg-primary/20 text-white transition-all ${currentSlide === TOTAL_SLIDES - 1 ? "opacity-30 pointer-events-none" : "opacity-100"}`}
+                >
+                    <ChevronRight className="w-5 h-5" />
+                </button>
+
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1.5">
+                    {Array.from({ length: TOTAL_SLIDES }).map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={(e) => { e.stopPropagation(); goToSlide(index); }}
+                            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${index === currentSlide ? "w-6 bg-primary" : "bg-white/20 hover:bg-white/40"}`}
+                        />
+                    ))}
+                </div>
+            </div>
+
+            {/* Script panel — 40% */}
+            <div className="w-[40%] h-full bg-card border-l border-border p-6 overflow-y-auto">
+                <div className="mb-6">
+                    <div className="flex items-center justify-between mb-2">
+                        <h2 className="text-xl font-bold text-foreground">{currentScript.title}</h2>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <Clock className="w-4 h-4" />
+                            <span>{currentScript.time}</span>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 mb-3 p-2 rounded-lg bg-muted/30">
+                        <User className="w-4 h-4 text-primary" />
+                        <span className="text-sm font-medium text-primary">{currentScript.speaker}</span>
+                    </div>
+
+                    {currentScript.notes && (
+                        <div className="flex items-start gap-2 p-3 rounded-lg bg-primary/10 border border-primary/30">
+                            <Volume2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                            <p className="text-sm text-primary font-medium">{currentScript.notes}</p>
+                        </div>
+                    )}
+                </div>
+
+                <div className="space-y-4">
+                    <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Roteiro</h3>
+                    <div className="text-foreground leading-relaxed whitespace-pre-line text-base">
+                        {currentScript.script}
+                    </div>
+                </div>
+
+                {/* Step indicator */}
+                {STEPS_PER_SLIDE[currentSlide] > 0 && (
+                    <div className="mt-6 p-3 rounded-lg bg-muted/30 border border-border">
+                        <p className="text-xs text-muted-foreground">
+                            Sub-step: <span className="text-primary font-bold">{currentStep}</span> / {STEPS_PER_SLIDE[currentSlide]}
+                        </p>
+                    </div>
+                )}
+
+                <div className="mt-8 pt-4 border-t border-border">
+                    <p className="text-xs text-muted-foreground text-center">
+                        🔒 Versão de treino V3 • {currentSlide} / {TOTAL_SLIDES - 1}
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default PresentationBC2026V3Training;

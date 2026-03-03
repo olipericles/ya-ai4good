@@ -15,6 +15,12 @@ import IndexBC2026V2Training from "./pages/IndexBC2026V2Training";
 import IndexBC2026V2OnePage from "./pages/IndexBC2026V2OnePage";
 import IndexBC2026Script from "./pages/IndexBC2026Script";
 import IndexBC2026V2Script from "./pages/IndexBC2026V2Script";
+import IndexBC2026V3Training from "./pages/IndexBC2026V3Training";
+import IndexBC2026V4Training from "./pages/IndexBC2026V4Training";
+import IndexBC2026V3Script from "./pages/IndexBC2026V3Script";
+import IndexBC2026V4Script from "./pages/IndexBC2026V4Script";
+import PresentationBC2026V3 from "./components/presentation/PresentationBC2026V3";
+import PresentationBC2026V4 from "./components/presentation/PresentationBC2026V4";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +44,12 @@ const App = () => (
           <Route path="/v2BC2026op" element={<IndexBC2026V2OnePage />} />
           <Route path="/vBC2026s" element={<IndexBC2026Script />} />
           <Route path="/v2BC2026s" element={<IndexBC2026V2Script />} />
+          <Route path="/v3BC2026" element={<PresentationBC2026V3 />} />
+          <Route path="/v3BC2026t" element={<IndexBC2026V3Training />} />
+          <Route path="/v3BC2026s" element={<IndexBC2026V3Script />} />
+          <Route path="/v4BC2026" element={<PresentationBC2026V4 />} />
+          <Route path="/v4BC2026t" element={<IndexBC2026V4Training />} />
+          <Route path="/v4BC2026s" element={<IndexBC2026V4Script />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
