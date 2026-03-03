@@ -13,32 +13,20 @@ export const SLIDE_TEST_V4_STEPS = 3;
 const SlideTestV4 = ({ isActive, step = 0 }: SlideTestV4Props) => {
     if (!isActive) return null;
 
-    // The identical avatar matching logic from V2
-    const getAvatar = (i: number) => {
-        const id = (i % 14) + 1;
-        return new URL(`../../../assets/maes/${id}.jpeg`, import.meta.url).href;
-    };
-
-    const bubbles = Array.from({ length: 18 }).map((_, i) => ({
+    // The exact 14 real avatars
+    const bubbles = Array.from({ length: 14 }).map((_, i) => ({
         id: i,
-        avatar: getAvatar(i),
+        avatar: new URL(`../../../assets/maes/${i + 1}.jpeg`, import.meta.url).href,
     }));
 
-    const currentNumber = step === 0 ? 18 : step === 1 ? 10 : step === 2 ? 5 : 2;
+    const currentNumber = step === 0 ? 14 : step === 1 ? 10 : step === 2 ? 5 : 2;
     const labels = ["Mães contatadas", "Fizeram cadastro", "Engajadas de verdade", "Transformação real"];
     const currentLabel = labels[step] || labels[0];
 
-    // Ported V2 transform logic but cleanly merged
     const getBubbleTransform = (id: number, stepPhase: number) => {
         const effectiveStep = Math.min(stepPhase, 3);
-        const wBase = window.innerWidth < 640 ? 45 : 60;
-        const hBase = window.innerWidth < 640 ? 50 : 70;
-
-        if (effectiveStep >= 1 && id >= 14) {
-            const row = id < 9 ? 0 : 1;
-            const col = id < 9 ? id : id - 9;
-            return { x: (col - 4) * wBase, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 0, opacity: 0, isDiscarded: true };
-        }
+        const wBase = window.innerWidth < 640 ? 55 : 85; // Made the base spacing wider globally
+        const hBase = window.innerWidth < 640 ? 60 : 90; // Made the base vertical wider globally
 
         const isCurrentlyDiscarded =
             (effectiveStep >= 1 && id >= 10 && id <= 13) ||
@@ -47,34 +35,40 @@ const SlideTestV4 = ({ isActive, step = 0 }: SlideTestV4Props) => {
 
         if (isCurrentlyDiscarded) {
             const isLeft = id % 2 === 0;
+            // 6 bubbles max per side. id values discarded: 2 to 13.
             const sideIndex = isLeft ? (12 - id) / 2 : (13 - id) / 2;
             const isMobile = window.innerWidth < 640;
-            const xEdge = isMobile ? (window.innerWidth / 2 - 20) : 320;
+            const xEdge = isMobile ? (window.innerWidth / 2 - 30) : 380;
             const yCenter = isMobile ? -180 : -220;
-            const ySpacing = isMobile ? 35 : 55;
+            const ySpacing = isMobile ? 45 : 75; // More spacing for bigger bubbles on the side
 
-            return { x: isLeft ? -xEdge : xEdge, y: yCenter + (sideIndex - 2.5) * ySpacing, scale: 0.65, opacity: 0.5, isDiscarded: true };
+            // Maintain a larger scale when discarded compared to old 0.65.
+            return { x: isLeft ? -xEdge : xEdge, y: yCenter + (sideIndex - 2.5) * ySpacing, scale: 0.9, opacity: 0.6, isDiscarded: true };
         }
 
         if (effectiveStep === 0) {
-            const row = id < 9 ? 0 : 1;
-            const col = id < 9 ? id : id - 9;
-            return { x: (col - 4) * wBase, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 1.0, opacity: 1 };
+            // 7 top, 7 bottom
+            const row = id < 7 ? 0 : 1;
+            const col = id < 7 ? id : id - 7;
+            return { x: (col - 3) * wBase, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 1.2, opacity: 1 };
         }
 
         if (effectiveStep === 1) {
+            // 5 top, 5 bottom
             const row = id < 5 ? 0 : 1;
             const col = id < 5 ? id : id - 5;
-            return { x: (col - 2) * wBase * 1.2, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 1.15, opacity: 1 };
+            return { x: (col - 2) * wBase * 1.2, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 1.4, opacity: 1 };
         }
 
         if (effectiveStep === 2) {
+            // 2 top, 3 bottom
             const row = id < 2 ? 0 : 1;
             const x = row === 0 ? (id - 0.5) * wBase * 1.5 : (id - 3) * wBase * 1.5;
-            return { x, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 1.3, opacity: 1 };
+            return { x, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 1.6, opacity: 1 };
         }
 
-        return { x: id === 0 ? -wBase * 1.2 : wBase * 1.2, y: 0, scale: 1.8, opacity: 1 };
+        // Hero state
+        return { x: id === 0 ? -wBase * 1.2 : wBase * 1.2, y: 0, scale: 2.2, opacity: 1 };
     };
 
     return (
