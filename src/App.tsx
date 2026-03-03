@@ -33,7 +33,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingOriginal />} />
+          <Route path="/" element={<LandingV5 />} />
+          <Route path="/original" element={<LandingOriginal />} />
           <Route path="/v1" element={<Index />} />
           <Route path="/v2" element={<IndexV2 />} />
           <Route path="/v3" element={<IndexV3 />} />
@@ -51,7 +52,7 @@ const App = () => (
           <Route path="/v4BC2026" element={<PresentationBC2026V4 />} />
           <Route path="/v4BC2026t" element={<IndexBC2026V4Training />} />
           <Route path="/v4BC2026s" element={<IndexBC2026V4Script />} />
-          <Route path="/v5" element={<LandingV5 />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
