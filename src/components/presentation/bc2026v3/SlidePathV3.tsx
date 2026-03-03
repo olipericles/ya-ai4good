@@ -1,4 +1,4 @@
-import { type SlideMode } from "./SlideContainerV2";
+import { type SlideMode } from "../bc2026v2/SlideContainerV2";
 import { Building, Users, Landmark, Handshake } from "lucide-react";
 
 interface SlidePathV3Props {

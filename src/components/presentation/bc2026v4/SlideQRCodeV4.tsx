@@ -1,4 +1,4 @@
-import { type SlideMode } from "../bc2026v2/SlideContainer";
+import { type SlideMode } from "../bc2026v2/SlideContainerV2";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import yaQrcode from "@/assets/logos/ya-qrcode.png";
 

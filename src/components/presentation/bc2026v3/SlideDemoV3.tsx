@@ -1,4 +1,4 @@
-import { type SlideMode } from "./SlideContainerV2";
+import { type SlideMode } from "../bc2026v2/SlideContainerV2";
 import { MessageCircle, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

@@ -1,4 +1,4 @@
-import { type SlideMode } from "./SlideContainerV2";
+import { type SlideMode } from "../bc2026v2/SlideContainerV2";
 import { Building2, Users, FileText, Globe } from "lucide-react";
 
 interface SlideVisionV3Props {
