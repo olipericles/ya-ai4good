@@ -15,6 +15,14 @@ const Dashboard = () => {
     const [userName, setUserName] = useState<string | null>(localStorage.getItem('ya_username'));
     const [userPhone, setUserPhone] = useState<string | null>(localStorage.getItem('ya_userphone'));
 
+    // Automatically redirect users to their specific parameterized dashboard URL if they hit the naked route.
+    // This ensures that any bookmarks or PWAs initiated on this page correctly capture their /dashboard/7199... path.
+    useEffect(() => {
+        if (token && role === 'user' && userPhone && !phone) {
+            navigate(`/dashboard/${userPhone}`, { replace: true });
+        }
+    }, [token, role, userPhone, phone, navigate]);
+
     const handleLoginSuccess = (newToken: string, newRole: 'user' | 'admin', id?: number, name?: string, newPhone?: string) => {
         localStorage.setItem('ya_token', newToken);
         localStorage.setItem('ya_role', newRole);
@@ -87,7 +95,7 @@ const Dashboard = () => {
                     <div className="w-full">
                         {role === 'user' && userId && userName && (
                             <>
-                                <PWAPrompt />
+                                {phone && <PWAPrompt />}
                                 <DashboardUser
                                     userId={userId}
                                     userName={userName}
