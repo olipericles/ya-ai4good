@@ -62,10 +62,10 @@ const LandingV5 = () => {
     };
 
     const pitchVersions = [
-        { name: "V1 (BC2026)", base: "/vBC2026", training: "/vBC2026t", script: "/vBC2026s", op: "/vBC2026op" },
-        { name: "V2 (Neo-Brutal)", base: "/v2BC2026", training: "/v2BC2026t", script: "/v2BC2026s", op: "/v2BC2026op" },
-        { name: "V3 (Animated)", base: "/v3BC2026", training: "/v3BC2026t", script: "/v3BC2026s", op: "/v3BC2026op" },
-        { name: "V4 (Premium)", base: "/v4BC2026", training: "/v4BC2026t", script: "/v4BC2026s", op: "/v4BC2026op" }
+        { name: "V1", base: "/vBC2026", training: "/vBC2026t", script: "/vBC2026s", op: "/vBC2026op" },
+        { name: "V2", base: "/v2BC2026", training: "/v2BC2026t", script: "/v2BC2026s", op: "/v2BC2026op" },
+        { name: "V3", base: "/v3BC2026", training: "/v3BC2026t", script: "/v3BC2026s", op: "/v3BC2026op" },
+        { name: "V4", base: "/v4BC2026", training: "/v4BC2026t", script: "/v4BC2026s", op: "/v4BC2026op" }
     ];
 
     return (

@@ -4,7 +4,7 @@ import roteiroV2 from "@/assets/docs/roteiro-v2.md?raw";
 const IndexBC2026V2Script = () => {
     return (
         <ScriptViewer
-            title="Script V2 — PresentationBC2026V2"
+            title="Script V2"
             markdownContent={roteiroV2}
         />
     );

@@ -5,7 +5,7 @@ const IndexBC2026V4Script = () => {
     // V4 is essentially identical in logical progression to V2 script logic
     return (
         <ScriptViewer
-            title="Script V4 (Híbrido) — PresentationBC2026V4"
+            title="Script V4"
             markdownContent={roteiroV2}
         />
     );

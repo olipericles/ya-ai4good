@@ -5,7 +5,7 @@ const IndexBC2026V3Script = () => {
     // V3 doesn't have an explicitly rewritten roteiro, so we use V2 as baseline
     return (
         <ScriptViewer
-            title="Script V3 — PresentationBC2026V3"
+            title="Script V3"
             markdownContent={roteiroV2}
         />
     );
