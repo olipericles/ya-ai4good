@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { Search, Loader2, ArrowLeft, Terminal, Bot, Server, Shield, ExternalLink } from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
+import { Search, Loader2, ArrowLeft, Terminal, Bot, Server, Shield, Users, Activity, ExternalLink } from "lucide-react";
+import { BarChart, Bar, ResponsiveContainer, Tooltip as RechartsTooltip, XAxis } from "recharts";
 
 interface DashboardAdminProps {
     adminToken: string;
@@ -107,6 +108,33 @@ export default function DashboardAdmin({ adminToken }: DashboardAdminProps) {
         (u.user_phone || '').includes(search)
     );
 
+    // Compute admin metrics for the idle dashboard
+    const adminMetrics = useMemo(() => {
+        if (!users.length) return null;
+
+        const total = users.length;
+        const today = new Date().toDateString();
+        const activeToday = users.filter(u => new Date(u.last_activity).toDateString() === today).length;
+
+        // Simple activity grouped by month/day for a mini-chart
+        const activityMap: Record<string, number> = {};
+        users.forEach(u => {
+            const dateKey = new Date(u.last_activity).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+            activityMap[dateKey] = (activityMap[dateKey] || 0) + 1;
+        });
+
+        const activityChartData = Object.entries(activityMap)
+            .map(([date, count]) => ({ date, count }))
+            .sort((a, b) => {
+                const [d1, m1] = a.date.split('/');
+                const [d2, m2] = b.date.split('/');
+                return new Date(2026, Number(m1) - 1, Number(d1)).getTime() - new Date(2026, Number(m2) - 1, Number(d2)).getTime();
+            })
+            .slice(-14); // last 14 active days
+
+        return { total, activeToday, activityChartData };
+    }, [users]);
+
     return (
         <div className="w-full max-w-[1400px] mx-auto h-[80vh] flex flex-col md:flex-row gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
 
@@ -137,8 +165,8 @@ export default function DashboardAdmin({ adminToken }: DashboardAdminProps) {
                                 key={idx}
                                 onClick={() => handleSelectUser(u.user_phone, u.user_name)}
                                 className={`p-3.5 rounded-xl cursor-pointer transition-all border ${selectedPhone === u.user_phone
-                                        ? 'bg-primary/20 border-primary/30 shadow-[0_0_15px_rgba(229,91,60,0.15)]'
-                                        : 'border-transparent hover:bg-white/[0.03] hover:border-white/5'
+                                    ? 'bg-primary/20 border-primary/30 shadow-[0_0_15px_rgba(229,91,60,0.15)]'
+                                    : 'border-transparent hover:bg-white/[0.03] hover:border-white/5'
                                     }`}
                             >
                                 <div className="flex justify-between items-baseline mb-1">
@@ -161,11 +189,77 @@ export default function DashboardAdmin({ adminToken }: DashboardAdminProps) {
             {/* Chat Area */}
             <main className="flex-1 h-full flex flex-col bg-dark-900/60 border border-white/10 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden relative">
                 {!selectedPhone ? (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none p-6 text-center">
-                        <div className="w-24 h-24 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                            <Terminal className="w-10 h-10 text-primary opacity-50" />
+                    <div className="absolute inset-0 flex flex-col p-8 md:p-12 overflow-y-auto custom-scrollbar">
+                        <div className="flex flex-col mb-10">
+                            <h1 className="text-3xl md:text-4xl font-display font-black text-white">
+                                Visão <span className="text-primary">Geral</span>
+                            </h1>
+                            <p className="text-gray-400 mt-2 font-mono text-sm tracking-wide uppercase">Métricas de Usuários Yá</p>
                         </div>
-                        <p className="text-xl font-display font-medium text-gray-400">Selecione um usuário para visualizar o histórico.</p>
+
+                        {loadingUsers ? (
+                            <div className="flex-1 flex flex-col items-center justify-center space-y-4">
+                                <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                                <p className="text-gray-400 text-sm animate-pulse">Carregando métricas...</p>
+                            </div>
+                        ) : adminMetrics ? (
+                            <div className="space-y-8 max-w-4xl w-full">
+                                {/* Top Cards */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div className="bg-dark-800/80 border border-white/5 backdrop-blur-sm p-6 rounded-3xl shadow-xl flex flex-col justify-between hover:bg-dark-800 transition-all relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-[30px] rounded-full -z-10" />
+                                        <div className="flex justify-between items-start mb-6">
+                                            <p className="text-gray-400 text-xs font-mono uppercase tracking-wider">Total de Usuárias</p>
+                                            <Users className="text-primary w-5 h-5" />
+                                        </div>
+                                        <p className="text-4xl font-display font-black text-white">{adminMetrics.total}</p>
+                                    </div>
+                                    <div className="bg-dark-800/80 border border-white/5 backdrop-blur-sm p-6 rounded-3xl shadow-xl flex flex-col justify-between hover:bg-dark-800 transition-all relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 blur-[30px] rounded-full -z-10" />
+                                        <div className="flex justify-between items-start mb-6">
+                                            <p className="text-gray-400 text-xs font-mono uppercase tracking-wider">Ativas Hoje</p>
+                                            <Activity className="text-emerald-400 w-5 h-5" />
+                                        </div>
+                                        <p className="text-4xl font-display font-black text-emerald-400">{adminMetrics.activeToday}</p>
+                                    </div>
+                                </div>
+
+                                {/* Chart Segment */}
+                                <div className="bg-dark-800/80 border border-white/5 backdrop-blur-sm p-6 md:p-8 rounded-3xl shadow-xl relative overflow-hidden">
+                                    <div className="absolute -left-10 bottom-10 w-40 h-40 bg-blue-500/5 blur-[50px] rounded-full -z-10" />
+                                    <h2 className="text-lg font-display font-bold text-white flex items-center gap-2 mb-6">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400" /> Atividade Recente
+                                    </h2>
+                                    <div className="h-48 w-full">
+                                        <ResponsiveContainer width="100%" height="100%">
+                                            <BarChart data={adminMetrics.activityChartData} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+                                                <XAxis dataKey="date" stroke="#666" fontSize={10} tickLine={false} axisLine={false} />
+                                                <RechartsTooltip
+                                                    cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                                                    content={({ active, payload }) => {
+                                                        if (active && payload && payload.length) {
+                                                            return (
+                                                                <div className="bg-dark-900/95 border border-white/10 p-3 rounded-xl shadow-2xl backdrop-blur-xl">
+                                                                    <p className="text-gray-400 text-[10px] font-mono mb-1 uppercase tracking-widest">{payload[0].payload.date}</p>
+                                                                    <p className="text-white font-bold font-mono text-sm">
+                                                                        {payload[0].value} {Number(payload[0].value) === 1 ? 'usuária' : 'usuárias'}
+                                                                    </p>
+                                                                </div>
+                                                            );
+                                                        }
+                                                        return null;
+                                                    }}
+                                                />
+                                                <Bar dataKey="count" fill="#3b82f6" radius={[4, 4, 0, 0]} maxBarSize={40} />
+                                            </BarChart>
+                                        </ResponsiveContainer>
+                                    </div>
+                                </div>
+                                <div className="text-center py-4">
+                                    <p className="text-sm font-mono text-gray-500">Selecione uma usuária no painel lateral para analisar o comportamento e o rastreamento da IA.</p>
+                                </div>
+                            </div>
+                        ) : null}
                     </div>
                 ) : (
                     <>
