@@ -79,9 +79,6 @@ const LandingV5 = () => {
                         <a href="#solucao" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t.nav.solution}</a>
                         <a href="#impacto" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t.nav.impact}</a>
                         <a href="#equipe" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t.nav.team}</a>
-                        <a href="/dashboard" className="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary hover:opacity-80 transition-opacity uppercase tracking-widest flex items-center gap-1">
-                            Entrar no Painel
-                        </a>
                         <button onClick={() => setShowPitchModal(true)} className="text-sm font-bold text-primary hover:text-secondary transition-colors flex items-center gap-1 ml-2">
                             <Lock className="w-3 h-3" /> Pitch Deck
                         </button>
@@ -104,6 +101,9 @@ const LandingV5 = () => {
                             className="hidden sm:inline-flex px-4 py-2 rounded-full bg-gradient-hero text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
                         >
                             {t.nav.contact}
+                        </a>
+                        <a href="/dashboard" className="text-sm font-bold text-white/60 hover:text-white transition-colors flex items-center gap-1 ml-1 sm:ml-2">
+                            Entrar <ChevronRight className="w-3.5 h-3.5" />
                         </a>
                     </div>
                 </div>
@@ -163,10 +163,10 @@ const LandingV5 = () => {
                             {t.hero.ctaPrimary}
                         </a>
                         <a
-                            href="/dashboard"
-                            className="px-10 py-5 rounded-full border-2 border-primary/50 bg-primary/10 text-white font-bold text-lg hover:bg-primary/20 hover:border-primary transition-all duration-300 uppercase tracking-widest flex items-center gap-2"
+                            href="#solucao"
+                            className="px-10 py-5 rounded-full border-2 border-white/20 bg-transparent text-white font-bold text-lg hover:bg-white/10 transition-colors uppercase tracking-widest"
                         >
-                            Entrar no Painel
+                            {t.hero.ctaSecondary}
                         </a>
                     </div>
                 </div>
