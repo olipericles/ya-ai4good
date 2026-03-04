@@ -32,7 +32,7 @@ const SlideTeam = ({ isActive, transition }: SlideTeamProps) => {
     {
       name: "Luã Mota",
       role: "Arquiteto de Software",
-      linkedin: "https://www.linkedin.com/in/luamota/",
+      linkedin: "https://www.linkedin.com/in/luaamota/",
       photo: luaPhoto,
       delay: "delay-500",
       gradient: "from-accent to-accent/60",

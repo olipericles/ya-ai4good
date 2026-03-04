@@ -25,7 +25,7 @@ const LandingOriginal = () => {
     const team = [
         { name: "Péricles Oliveira", role: t.team.roles.pericles, img: equipePericles, linkedin: "https://www.linkedin.com/in/olipericles/" },
         { name: "Adriele Ornellas", role: t.team.roles.adriele, img: equipeAdriele, linkedin: "https://www.linkedin.com/in/adrieleornellas/" },
-        { name: "Luã Mota", role: t.team.roles.lua, img: equipeLua, linkedin: "https://www.linkedin.com/in/luamota/" },
+        { name: "Luã Mota", role: t.team.roles.lua, img: equipeLua, linkedin: "https://www.linkedin.com/in/luaamota/" },
     ];
 
     const toggleLang = () => {

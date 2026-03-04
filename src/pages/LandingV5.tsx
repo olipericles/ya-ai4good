@@ -37,7 +37,7 @@ const LandingV5 = () => {
             name: "Luã Mota",
             role: t.team.roles.lua,
             img: equipeLua,
-            linkedin: "https://www.linkedin.com/in/luamota/"
+            linkedin: "https://www.linkedin.com/in/luaamota/"
         },
         {
             name: "Péricles Oliveira",

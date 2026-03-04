@@ -32,7 +32,7 @@ const SlideTeamV3 = ({ isActive, step = 0 }: SlideTeamV3Props) => {
         {
             name: "Luã Mota",
             role: "Software e Dados",
-            linkedin: "https://www.linkedin.com/in/luamota/",
+            linkedin: "https://www.linkedin.com/in/luaamota/",
             photo: luaPhoto,
         },
     ];

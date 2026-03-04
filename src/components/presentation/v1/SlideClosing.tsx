@@ -62,7 +62,7 @@ const SlideClosing = ({ isActive, transition }: SlideClosingProps) => {
           {[
             { name: "Adriele", url: "https://www.linkedin.com/in/adrieleornellas/" },
             { name: "Péricles", url: "https://www.linkedin.com/in/olipericles/" },
-            { name: "Luã", url: "https://www.linkedin.com/in/luamota/" },
+            { name: "Luã", url: "https://www.linkedin.com/in/luaamota/" },
           ].map((person, i) => (
             <a
               key={i}
