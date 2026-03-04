@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import yaLogo from "@/assets/logos/ya_logo_instagram.png";
+import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import DashboardLogin from "./DashboardLogin";
 import DashboardUser from "./DashboardUser";
 import DashboardAdmin from "./DashboardAdmin";

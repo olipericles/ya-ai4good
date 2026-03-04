@@ -158,7 +158,7 @@ export default function DashboardUser({ userId, userName, token }: DashboardUser
                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                             <div>
                                 <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#8B3A8B]" /> Fluxo de Caixa
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#8B3A8B]" /> O que Entra e o que Sai
                                 </h2>
                                 <p className="text-gray-400 text-xs font-mono uppercase tracking-wider mt-1">Distribuição por Categoria</p>
                             </div>
