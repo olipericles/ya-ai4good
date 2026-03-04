@@ -179,9 +179,20 @@ export default function DashboardUser({ userId, userName, token }: DashboardUser
                                         })}
                                     </Pie>
                                     <Tooltip
-                                        formatter={(value: number) => [formatCurrency(value), 'Total']}
-                                        contentStyle={{ backgroundColor: 'rgba(10, 10, 10, 0.9)', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                        itemStyle={{ color: '#fff', fontWeight: 'bold' }}
+                                        cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                                        content={({ active, payload }) => {
+                                            if (active && payload && payload.length) {
+                                                return (
+                                                    <div className="bg-dark-900/95 border border-white/10 p-4 rounded-xl shadow-2xl backdrop-blur-xl">
+                                                        <p className="text-gray-400 text-[10px] font-mono mb-1 uppercase tracking-widest">{payload[0].payload.name}</p>
+                                                        <p className="text-white font-bold font-mono text-base">
+                                                            {formatCurrency(Number(payload[0].value))}
+                                                        </p>
+                                                    </div>
+                                                );
+                                            }
+                                            return null;
+                                        }}
                                     />
                                     <Legend
                                         verticalAlign="bottom"
@@ -229,10 +240,19 @@ export default function DashboardUser({ userId, userName, token }: DashboardUser
                                         >
                                             <Tooltip
                                                 cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-                                                contentStyle={{ backgroundColor: 'rgba(10, 10, 10, 0.9)', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
-                                                itemStyle={{ color: '#fff', fontWeight: 'bold' }}
-                                                formatter={(value: number) => [formatCurrency(value), 'Valor']}
-                                                labelStyle={{ display: 'none' }}
+                                                content={({ active, payload }) => {
+                                                    if (active && payload && payload.length) {
+                                                        return (
+                                                            <div className="bg-dark-900/95 border border-white/10 p-4 rounded-xl shadow-2xl backdrop-blur-xl">
+                                                                <p className="text-gray-400 text-[10px] font-mono mb-1 uppercase tracking-widest">Valor do Lançamento</p>
+                                                                <p className="text-white font-bold font-mono text-base">
+                                                                    {formatCurrency(Number(payload[0].value))}
+                                                                </p>
+                                                            </div>
+                                                        );
+                                                    }
+                                                    return null;
+                                                }}
                                             />
                                             <Bar dataKey="valor" radius={[4, 4, 0, 0]} maxBarSize={40} />
                                         </BarChart>
