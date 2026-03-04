@@ -21,6 +21,8 @@ export default defineConfig(({ mode }) => ({
         name: 'Yá',
         short_name: 'Yá',
         description: 'Sua assistente financeira inteligente.',
+        start_url: '/dashboard',
+        scope: '/',
         theme_color: '#0A0A0A',
         background_color: '#0A0A0A',
         display: 'standalone',

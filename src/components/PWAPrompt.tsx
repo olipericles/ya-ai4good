@@ -2,36 +2,40 @@ import { useState, useEffect } from 'react';
 import { Download, X, Share, PlusSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+const DISMISS_KEY = 'ya_pwa_dismissed';
+
 export const PWAPrompt = () => {
     const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
     const [showPrompt, setShowPrompt] = useState(false);
     const [isIOS, setIsIOS] = useState(false);
 
     useEffect(() => {
+        // If the user already dismissed the prompt, don't show it again for 7 days
+        const dismissedAt = localStorage.getItem(DISMISS_KEY);
+        if (dismissedAt) {
+            const days = (Date.now() - Number(dismissedAt)) / (1000 * 60 * 60 * 24);
+            if (days < 7) return;
+        }
+
         // Check if it's iOS
         const isIosDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
         setIsIOS(isIosDevice);
 
-        // Check if already installed
+        // Check if already installed (standalone mode)
         // @ts-ignore
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone || document.referrer.includes('android-app://');
 
-        if (isStandalone) {
-            return; // Already installed, do nothing
-        }
+        if (isStandalone) return; // Already installed as PWA
 
         const handleBeforeInstallPrompt = (e: Event) => {
-            // Prevent Chrome 67 and earlier from automatically showing the prompt
             e.preventDefault();
-            // Stash the event so it can be triggered later.
             setDeferredPrompt(e);
-            // Update UI notify the user they can add to home screen
             setShowPrompt(true);
         };
 
         window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
-        // If it's iOS, we show the manual prompt automatically if not standalone after a few seconds
+        // iOS Safari doesn't fire beforeinstallprompt — show manual instructions after a delay
         if (isIosDevice && !isStandalone) {
             const timer = setTimeout(() => setShowPrompt(true), 3000);
             return () => {
@@ -43,14 +47,17 @@ export const PWAPrompt = () => {
         return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     }, []);
 
+    const handleDismiss = () => {
+        localStorage.setItem(DISMISS_KEY, String(Date.now()));
+        setShowPrompt(false);
+    };
+
     const handleInstallClick = async () => {
         if (deferredPrompt) {
-            // Show the install prompt
             deferredPrompt.prompt();
-            // Wait for the user to respond to the prompt
             const { outcome } = await deferredPrompt.userChoice;
             if (outcome === 'accepted') {
-                setShowPrompt(false);
+                handleDismiss();
             }
             setDeferredPrompt(null);
         }
@@ -64,7 +71,7 @@ export const PWAPrompt = () => {
                 <div className="absolute top-0 left-0 w-32 h-32 bg-primary/20 blur-[40px] rounded-full pointer-events-none -z-10" />
 
                 <button
-                    onClick={() => setShowPrompt(false)}
+                    onClick={handleDismiss}
                     className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
                 >
                     <X className="w-4 h-4" />
@@ -79,7 +86,7 @@ export const PWAPrompt = () => {
                             Instalar Aplicativo
                         </h3>
                         <p className="text-gray-400 text-sm leading-snug">
-                            Adicione a Yá à sua tela inicial para acessar rápido e não gastar sua internet!
+                            Adicione a Yá à sua tela inicial para acessar rápido, direto no seu painel!
                         </p>
                     </div>
                 </div>
