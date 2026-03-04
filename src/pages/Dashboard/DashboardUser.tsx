@@ -230,6 +230,7 @@ export default function DashboardUser({ userId, userName, token }: DashboardUser
                                             <Tooltip
                                                 cursor={{ fill: 'rgba(255,255,255,0.05)' }}
                                                 contentStyle={{ backgroundColor: 'rgba(10, 10, 10, 0.9)', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
+                                                itemStyle={{ color: '#fff', fontWeight: 'bold' }}
                                                 formatter={(value: number) => [formatCurrency(value), 'Valor']}
                                                 labelStyle={{ display: 'none' }}
                                             />
