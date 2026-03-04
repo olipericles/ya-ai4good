@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { ChevronLeft, ChevronRight, Clock, Volume2, User } from "lucide-react";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
-import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 import SlideWaitingV4, { SLIDE_WAITING_V4_STEPS } from "./bc2026v4/SlideWaitingV4";
 import SlideImpactV4, { SLIDE_IMPACT_V4_STEPS } from "./bc2026v4/SlideImpactV4";

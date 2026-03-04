@@ -1,5 +1,5 @@
 import { type SlideMode } from "../bc2026v2/SlideContainerV2";
-import { Building, Users, Landmark, Handshake } from "lucide-react";
+import { Building, Users, Landmark, Share2 } from "lucide-react";
 
 interface SlidePathV4Props {
     isActive: boolean;
@@ -49,17 +49,29 @@ const SlidePathV4 = ({ isActive, step = 0 }: SlidePathV4Props) => {
                 ))}
             </div>
 
-            {/* Closing thought */}
-            <div className={`mt-12 w-full transition-all duration-700 delay-300 ${step >= 4 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            {/* Closing thought: Scaling Amplified */}
+            <div className={`mt-12 w-full transition-all duration-1000 ease-out absolute bottom-12 left-0 right-0 px-[10vw] max-w-[1600px] mx-auto ${step >= 4 ? "opacity-100 scale-100" : "opacity-0 scale-[0.9] pointer-events-none"
                 }`}>
-                <div className="bg-gradient-to-r from-primary/20 to-primary/5 p-8 rounded-3xl border border-primary/30 backdrop-blur-md flex items-start sm:items-center gap-6">
-                    <div className="p-3 bg-primary/20 rounded-full shrink-0">
-                        <Handshake className="w-10 h-10 text-primary" aria-hidden="true" />
+                <div className="relative bg-gradient-to-r from-primary/20 to-[#0A1015] p-10 rounded-3xl border top-full border-primary/30 backdrop-blur-2xl flex flex-col items-center justify-center text-center overflow-hidden shadow-[0_0_50px_rgba(229,91,60,0.15)] ring-1 ring-white/10">
+
+                    {/* Background Scale Animation Effect */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-[100px] h-[100px] rounded-full border border-primary opacity-30 animate-ping" style={{ animationDuration: '3s' }} />
+                        <div className="absolute w-[300px] h-[300px] rounded-full border border-primary/50 opacity-20 animate-ping" style={{ animationDuration: '3s', animationDelay: '0.8s' }} />
+                        <div className="absolute w-[600px] h-[600px] rounded-full border border-primary/30 opacity-10 animate-ping" style={{ animationDuration: '3s', animationDelay: '1.6s' }} />
                     </div>
-                    <p className="text-xl md:text-3xl font-bold">
-                        A gente só precisa do caminho até elas. <br className="hidden md:block" />
-                        <span className="text-primary text-2xl md:text-3xl mt-1 block">E se alguém puder ajudar, vamos adorar conversar.</span>
-                    </p>
+
+                    <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto">
+                        <div className="p-4 bg-primary/20 rounded-full mb-6 ring-2 ring-primary/30 ring-offset-2 ring-offset-[#0A1015]">
+                            <Share2 className="w-8 h-8 text-primary" aria-hidden="true" />
+                        </div>
+                        <p className="text-3xl md:text-5xl font-black mb-4">
+                            Imagina o que acontece quando essa <br className="hidden md:block" /><span className="text-primary tracking-tight">tecnologia escala.</span>
+                        </p>
+                        <p className="text-lg md:text-xl text-white/70 max-w-3xl leading-relaxed">
+                            As interfaces frias e burocráticas vão ter que aprender a falar a língua das pessoas. Se você acredita que tecnologia de verdade é a que cuida de quem mais precisa, <strong className="text-white font-semibold">a gente vai adorar essa conversa.</strong>
+                        </p>
+                    </div>
                 </div>
             </div>
 
