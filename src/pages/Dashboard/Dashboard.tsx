@@ -60,8 +60,10 @@ const Dashboard = () => {
                     onClick={() => navigate('/')}
                 >
                     <img src={yaLogo} alt="Yá Logo" className="h-8 object-contain" />
-                    <div className="border-l-[2px] border-primary pl-3 hidden sm:block flex flex-col justify-center">
-                        <p className="text-[12px] font-mono text-primary uppercase tracking-[0.2em] font-bold">Meu Dinheiro</p>
+                    <div className="hidden sm:flex items-center">
+                        <p className="border-l-[2px] border-primary pl-3 text-[12px] font-mono text-primary uppercase tracking-[0.2em] font-bold leading-none">
+                            Meu Dinheiro
+                        </p>
                     </div>
                 </div>
                 <div className="flex items-center gap-4">

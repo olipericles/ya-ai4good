@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 import SlideWaitingV4, { SLIDE_WAITING_V4_STEPS } from "./bc2026v4/SlideWaitingV4";
 import SlideImpactV4, { SLIDE_IMPACT_V4_STEPS } from "./bc2026v4/SlideImpactV4";
@@ -76,9 +77,11 @@ const PresentationBC2026V4 = () => {
             {/* High-Contrast Anchor Header (Except on Intro/Outro) */}
             {currentSlide > 0 && currentSlide < TOTAL_SLIDES - 1 && (
                 <header className="absolute top-0 left-0 w-full p-8 z-50 flex justify-between items-start pointer-events-none transition-opacity duration-1000">
-                    <div className="border-l-[3px] border-primary pl-4">
-                        <h1 className="text-2xl font-black tracking-tighter uppercase leading-none">YÁ</h1>
-                        <p className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] mt-1">AI4Good 2026</p>
+                    <div className="flex items-center gap-3">
+                        <img src={yaLogo} alt="Yá Logo" className="h-8 object-contain" />
+                        <div className="hidden sm:flex items-center pl-3 border-l-[2px] border-primary">
+                            <p className="text-[12px] font-mono text-primary uppercase tracking-[0.2em] font-bold leading-none">AI4GOOD 2026</p>
+                        </div>
                     </div>
                     <div className="text-right">
                         <p className="text-xs font-mono text-white/40 uppercase tracking-widest">Confidencial</p>
