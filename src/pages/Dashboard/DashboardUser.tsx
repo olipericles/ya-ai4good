@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { ArrowUpCircle, ArrowDownCircle, Wallet, Activity, Loader2 } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis } from "recharts";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface DashboardUserProps {
     userId: number;
@@ -149,68 +150,137 @@ export default function DashboardUser({ userId, userName, token }: DashboardUser
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-                {/* Categorias - Gráfico de Rosca */}
+                {/* Categorias - Gráfico de Rosca (Tabs Separadas) */}
                 <div className="bg-dark-900/60 border border-white/5 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden flex flex-col">
                     <div className="absolute -left-10 top-10 w-40 h-40 bg-[#8B3A8B]/10 blur-[50px] rounded-full -z-10" />
-                    <h2 className="text-lg font-display font-bold text-white mb-2 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#8B3A8B]" /> Para onde meu dinheiro tá indo?
-                    </h2>
-                    <p className="text-gray-400 text-xs font-mono uppercase tracking-wider mb-6">Distribuição de Gastos e Entradas</p>
 
-                    <div className="flex-1 flex flex-col justify-center items-center min-h-[300px]">
-                        {data.categorias && data.categorias.length > 0 ? (
-                            <ResponsiveContainer width="100%" height={300}>
-                                <PieChart>
-                                    <Pie
-                                        data={data.categorias.map(c => ({ name: c.categoria || 'Sem categoria', value: Number(c.total), tipo: c.tipo }))}
-                                        cx="50%"
-                                        cy="50%"
-                                        innerRadius={80}
-                                        outerRadius={110}
-                                        paddingAngle={5}
-                                        dataKey="value"
-                                        stroke="none"
-                                    >
-                                        {data.categorias.map((entry, index) => {
-                                            // Lógica de cores baseada em tipo ou índex
-                                            const isReceita = entry.tipo === 'RECEITA';
-                                            const colors = isReceita ? ['#34d399', '#10b981', '#059669'] : ['#fb7185', '#E55B3C', '#8B3A8B', '#D4AF37', '#e11d48'];
-                                            return <Cell key={`cell-${index}`} fill={colors[index % colors.length]} className="hover:opacity-80 transition-opacity outline-none" />;
-                                        })}
-                                    </Pie>
-                                    <Tooltip
-                                        cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-                                        content={({ active, payload }) => {
-                                            if (active && payload && payload.length) {
-                                                return (
-                                                    <div className="bg-dark-900/95 border border-white/10 p-4 rounded-xl shadow-2xl backdrop-blur-xl">
-                                                        <p className="text-gray-400 text-[10px] font-mono mb-1 uppercase tracking-widest">{payload[0].payload.name}</p>
-                                                        <p className="text-white font-bold font-mono text-base">
-                                                            {formatCurrency(Number(payload[0].value))}
-                                                        </p>
-                                                    </div>
-                                                );
-                                            }
-                                            return null;
-                                        }}
-                                    />
-                                    <Legend
-                                        verticalAlign="bottom"
-                                        height={36}
-                                        iconType="circle"
-                                        formatter={(value, entry: any) => (
-                                            <span className="text-sm font-medium text-gray-300 ml-1">{value}</span>
-                                        )}
-                                    />
-                                </PieChart>
-                            </ResponsiveContainer>
-                        ) : (
-                            <div className="flex flex-col items-center justify-center space-y-3 h-full opacity-60">
-                                <PieChart className="w-16 h-16 text-gray-500" />
-                                <p className="text-gray-500 text-sm text-center">Nenhum movimento registrado.<br />Mande áudios pra Yá pra começar a ver os gráficos!</p>
+                    <Tabs defaultValue="saidas" className="w-full flex-1 flex flex-col">
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                            <div>
+                                <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#8B3A8B]" /> Fluxo de Caixa
+                                </h2>
+                                <p className="text-gray-400 text-xs font-mono uppercase tracking-wider mt-1">Distribuição por Categoria</p>
                             </div>
-                        )}
-                    </div>
+
+                            <TabsList className="bg-dark-800/80 border border-white/5 p-1 rounded-xl">
+                                <TabsTrigger value="saidas" className="rounded-lg data-[state=active]:bg-rose-500/20 data-[state=active]:text-rose-400 font-mono text-xs uppercase tracking-wider">
+                                    Saídas
+                                </TabsTrigger>
+                                <TabsTrigger value="entradas" className="rounded-lg data-[state=active]:bg-emerald-500/20 data-[state=active]:text-emerald-400 font-mono text-xs uppercase tracking-wider">
+                                    Entradas
+                                </TabsTrigger>
+                            </TabsList>
+                        </div>
+
+                        {/* Aba de Saídas */}
+                        <TabsContent value="saidas" className="flex-1 mt-0">
+                            <div className="flex flex-col justify-center items-center min-h-[250px]">
+                                {data.categorias && data.categorias.filter(c => c.tipo === 'DESPESA').length > 0 ? (
+                                    <ResponsiveContainer width="100%" height={250}>
+                                        <PieChart>
+                                            <Pie
+                                                data={data.categorias.filter(c => c.tipo === 'DESPESA').map(c => ({ name: c.categoria || 'Sem categoria', value: Number(c.total) }))}
+                                                cx="50%"
+                                                cy="50%"
+                                                innerRadius={60}
+                                                outerRadius={90}
+                                                paddingAngle={5}
+                                                dataKey="value"
+                                                stroke="none"
+                                            >
+                                                {data.categorias.filter(c => c.tipo === 'DESPESA').map((entry, index) => {
+                                                    const colors = ['#fb7185', '#E55B3C', '#8B3A8B', '#D4AF37', '#e11d48'];
+                                                    return <Cell key={`cell-${index}`} fill={colors[index % colors.length]} className="hover:opacity-80 transition-opacity outline-none" />;
+                                                })}
+                                            </Pie>
+                                            <Tooltip
+                                                cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                                                content={({ active, payload }) => {
+                                                    if (active && payload && payload.length) {
+                                                        return (
+                                                            <div className="bg-dark-900 border border-white/20 p-4 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                                                <p className="text-gray-400 text-[10px] font-mono mb-1 uppercase tracking-widest">{payload[0].payload.name}</p>
+                                                                <p className="text-white font-bold font-mono text-base">
+                                                                    {formatCurrency(Number(payload[0].value))}
+                                                                </p>
+                                                            </div>
+                                                        );
+                                                    }
+                                                    return null;
+                                                }}
+                                            />
+                                            <Legend
+                                                verticalAlign="bottom"
+                                                height={36}
+                                                iconType="circle"
+                                                formatter={(value) => <span className="text-xs font-medium text-gray-300 ml-1">{value}</span>}
+                                            />
+                                        </PieChart>
+                                    </ResponsiveContainer>
+                                ) : (
+                                    <div className="flex flex-col items-center justify-center space-y-3 h-full opacity-60">
+                                        <PieChart className="w-12 h-12 text-gray-500" />
+                                        <p className="text-gray-500 text-sm text-center">Nenhuma despesa registrada.</p>
+                                    </div>
+                                )}
+                            </div>
+                        </TabsContent>
+
+                        {/* Aba de Entradas */}
+                        <TabsContent value="entradas" className="flex-1 mt-0">
+                            <div className="flex flex-col justify-center items-center min-h-[250px]">
+                                {data.categorias && data.categorias.filter(c => c.tipo === 'RECEITA').length > 0 ? (
+                                    <ResponsiveContainer width="100%" height={250}>
+                                        <PieChart>
+                                            <Pie
+                                                data={data.categorias.filter(c => c.tipo === 'RECEITA').map(c => ({ name: c.categoria || 'Sem categoria', value: Number(c.total) }))}
+                                                cx="50%"
+                                                cy="50%"
+                                                innerRadius={60}
+                                                outerRadius={90}
+                                                paddingAngle={5}
+                                                dataKey="value"
+                                                stroke="none"
+                                            >
+                                                {data.categorias.filter(c => c.tipo === 'RECEITA').map((entry, index) => {
+                                                    const colors = ['#34d399', '#10b981', '#059669', '#6ee7b7'];
+                                                    return <Cell key={`cell-${index}`} fill={colors[index % colors.length]} className="hover:opacity-80 transition-opacity outline-none" />;
+                                                })}
+                                            </Pie>
+                                            <Tooltip
+                                                cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                                                content={({ active, payload }) => {
+                                                    if (active && payload && payload.length) {
+                                                        return (
+                                                            <div className="bg-dark-900 border border-white/20 p-4 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                                                <p className="text-gray-400 text-[10px] font-mono mb-1 uppercase tracking-widest">{payload[0].payload.name}</p>
+                                                                <p className="text-white font-bold font-mono text-base">
+                                                                    {formatCurrency(Number(payload[0].value))}
+                                                                </p>
+                                                            </div>
+                                                        );
+                                                    }
+                                                    return null;
+                                                }}
+                                            />
+                                            <Legend
+                                                verticalAlign="bottom"
+                                                height={36}
+                                                iconType="circle"
+                                                formatter={(value) => <span className="text-xs font-medium text-gray-300 ml-1">{value}</span>}
+                                            />
+                                        </PieChart>
+                                    </ResponsiveContainer>
+                                ) : (
+                                    <div className="flex flex-col items-center justify-center space-y-3 h-full opacity-60">
+                                        <PieChart className="w-12 h-12 text-gray-500" />
+                                        <p className="text-gray-500 text-sm text-center">Nenhuma entrada registrada.</p>
+                                    </div>
+                                )}
+                            </div>
+                        </TabsContent>
+                    </Tabs>
                 </div>
 
                 {/* Últimas Transações e Evolução */}
@@ -243,7 +313,7 @@ export default function DashboardUser({ userId, userName, token }: DashboardUser
                                                 content={({ active, payload }) => {
                                                     if (active && payload && payload.length) {
                                                         return (
-                                                            <div className="bg-dark-900/95 border border-white/10 p-4 rounded-xl shadow-2xl backdrop-blur-xl">
+                                                            <div className="bg-dark-900 border border-white/20 p-4 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.5)]">
                                                                 <p className="text-gray-400 text-[10px] font-mono mb-1 uppercase tracking-widest">Valor do Lançamento</p>
                                                                 <p className="text-white font-bold font-mono text-base">
                                                                     {formatCurrency(Number(payload[0].value))}
