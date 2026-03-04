@@ -4,6 +4,7 @@ import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import DashboardLogin from "./DashboardLogin";
 import DashboardUser from "./DashboardUser";
 import DashboardAdmin from "./DashboardAdmin";
+import { PWAPrompt } from "@/components/PWAPrompt";
 
 const Dashboard = () => {
     const { phone } = useParams();
@@ -41,7 +42,7 @@ const Dashboard = () => {
     // High-contrast, glassmorphic layout based on V4 concept
     return (
         <div className="relative w-full min-h-screen bg-background overflow-hidden text-white font-sans selection:bg-primary selection:text-black">
-
+            <PWAPrompt />
             {/* V4 Glow and Particles Background */}
             <div className="fixed inset-0 w-full h-full flex flex-col items-center justify-center text-center px-4 pointer-events-none z-0">
                 <div className="absolute top-[10%] left-[15%] w-1.5 h-1.5 rounded-full bg-primary blur-[1px] opacity-80" />

@@ -25,8 +25,6 @@ import LandingV5 from "./pages/LandingV5";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
-import { PWAPrompt } from "@/components/PWAPrompt";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -34,7 +32,6 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <PWAPrompt />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingV5 />} />
