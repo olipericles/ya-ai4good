@@ -32,7 +32,7 @@ const SlideTeam = ({ isActive, transition = "blur-scale", mode, slideNumber = 8 
         {
             name: "Luã Mota",
             role: "Arquiteto de Software",
-            linkedin: "https://www.linkedin.com/in/luaamota/",
+            linkedin: "https://www.linkedin.com/in/luamota/",
             photo: luaPhoto,
             delay: "delay-500",
             gradient: "from-accent to-accent/60",
