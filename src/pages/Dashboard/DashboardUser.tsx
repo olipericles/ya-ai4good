@@ -93,7 +93,7 @@ export default function DashboardUser({ userId, userName, token }: DashboardUser
                 <h1 className="text-3xl md:text-4xl font-display font-black tracking-tight text-white">
                     Olá, <span className="text-primary">{userName}</span>!
                 </h1>
-                <p className="text-gray-400 mt-2 font-mono text-sm tracking-wide uppercase">Seu Dashboard Financeiro</p>
+                <p className="text-gray-400 mt-2 font-mono text-sm tracking-wide uppercase">Visão Geral do Mês</p>
             </header>
 
             {/* Summary Cards */}

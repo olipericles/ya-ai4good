@@ -61,7 +61,7 @@ const Dashboard = () => {
                 >
                     <img src={yaLogo} alt="Yá Logo" className="h-8 object-contain" />
                     <div className="border-l-[2px] border-primary pl-3 hidden sm:block flex flex-col justify-center">
-                        <p className="text-[12px] font-mono text-primary uppercase tracking-[0.2em] font-bold">Dashboard</p>
+                        <p className="text-[12px] font-mono text-primary uppercase tracking-[0.2em] font-bold">Meu Dinheiro</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-4">
