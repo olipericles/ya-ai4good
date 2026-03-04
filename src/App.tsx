@@ -21,6 +21,8 @@ import IndexBC2026V3Script from "./pages/IndexBC2026V3Script";
 import IndexBC2026V4Script from "./pages/IndexBC2026V4Script";
 import PresentationBC2026V3 from "./components/presentation/PresentationBC2026V3";
 import PresentationBC2026V4 from "./components/presentation/PresentationBC2026V4";
+import IndexBC2026V3OnePage from "./pages/IndexBC2026V3OnePage";
+import IndexBC2026V4OnePage from "./pages/IndexBC2026V4OnePage";
 import LandingV5 from "./pages/LandingV5";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard/Dashboard";
@@ -49,9 +51,11 @@ const App = () => (
           <Route path="/v2BC2026s" element={<IndexBC2026V2Script />} />
           <Route path="/v3BC2026" element={<PresentationBC2026V3 />} />
           <Route path="/v3BC2026t" element={<IndexBC2026V3Training />} />
+          <Route path="/v3BC2026op" element={<IndexBC2026V3OnePage />} />
           <Route path="/v3BC2026s" element={<IndexBC2026V3Script />} />
           <Route path="/v4BC2026" element={<PresentationBC2026V4 />} />
           <Route path="/v4BC2026t" element={<IndexBC2026V4Training />} />
+          <Route path="/v4BC2026op" element={<IndexBC2026V4OnePage />} />
           <Route path="/v4BC2026s" element={<IndexBC2026V4Script />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/:phone" element={<Dashboard />} />

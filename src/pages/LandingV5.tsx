@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Heart, Globe, Lock, Unlock, X, ChevronRight, PlayCircle, FileText } from "lucide-react";
+import { Heart, Globe, Lock, Unlock, X, ChevronRight, PlayCircle, FileText, LayoutDashboard } from "lucide-react";
 import { translations } from "./LandingTranslations";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import equipePericles from "@/assets/team/equipe-pericles.png";
@@ -62,10 +62,10 @@ const LandingV5 = () => {
     };
 
     const pitchVersions = [
-        { name: "V1 (BC2026)", base: "/vBC2026", training: "/vBC2026t", script: "/vBC2026s" },
-        { name: "V2 (Neo-Brutal)", base: "/v2BC2026", training: "/v2BC2026t", script: "/v2BC2026s" },
-        { name: "V3 (Animated)", base: "/v3BC2026", training: "/v3BC2026t", script: "/v3BC2026s" },
-        { name: "V4 (Premium)", base: "/v4BC2026", training: "/v4BC2026t", script: "/v4BC2026s" }
+        { name: "V1 (BC2026)", base: "/vBC2026", training: "/vBC2026t", script: "/vBC2026s", op: "/vBC2026op" },
+        { name: "V2 (Neo-Brutal)", base: "/v2BC2026", training: "/v2BC2026t", script: "/v2BC2026s", op: "/v2BC2026op" },
+        { name: "V3 (Animated)", base: "/v3BC2026", training: "/v3BC2026t", script: "/v3BC2026s", op: "/v3BC2026op" },
+        { name: "V4 (Premium)", base: "/v4BC2026", training: "/v4BC2026t", script: "/v4BC2026s", op: "/v4BC2026op" }
     ];
 
     return (
@@ -518,15 +518,18 @@ const LandingV5 = () => {
                                 {pitchVersions.map((v, i) => (
                                     <div key={i} className="flex flex-col sm:flex-row items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 gap-4 hover:bg-white/10 transition-colors">
                                         <span className="font-bold text-lg text-white">{v.name}</span>
-                                        <div className="flex gap-2 w-full sm:w-auto">
-                                            <a href={v.base} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                        <div className="flex gap-2 w-full sm:w-auto flex-wrap justify-end">
+                                            <a href={v.base} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
                                                 <PlayCircle className="w-4 h-4" /> Final
                                             </a>
-                                            <a href={v.training} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                            <a href={v.training} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
                                                 <ChevronRight className="w-4 h-4" /> Treino
                                             </a>
-                                            <a href={v.script} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                            <a href={v.script} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
                                                 <FileText className="w-4 h-4" /> Script
+                                            </a>
+                                            <a href={v.op} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                                <LayoutDashboard className="w-4 h-4" /> OP
                                             </a>
                                         </div>
                                     </div>
