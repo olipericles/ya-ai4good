@@ -99,9 +99,6 @@ Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou.
 
 **TRANSIÇÃO Adriele → Luã:** "É falta de ferramenta" é o gancho. Luã entra imediato.
 
-⚠️ **Palco:** Desacelerar nas 3 demonstrações — "cupom amassado", "não trava, não dá erro", "voz de mulher nordestina". Deixar cada uma pousar.
-⚠️ **Design:** Dados 97%/91% como texto de apoio discreto (inferior/lateral). Mockup com cupom real.
-
 **Step 0** *(estado inicial — copy lateral visível, frame do celular OCULTO)*:
 
 "A Yá é uma assistente financeira que vive no WhatsApp.
@@ -133,12 +130,6 @@ A gente não pede pra mudarem de vida — a gente entra na vida delas."
 
 **TRANSIÇÃO Luã → Adriele:** "Veio com dados" é o gancho. Adriele conduziu a pesquisa.
 
-> ⚠️ **ATENÇÃO — DIVERGÊNCIA DE NÚMEROS:**
-> O mapa de cliques mostra 14→10→5→3. O script original dizia 18→10→5→2.
-> **Alinhar com o time qual versão é correta antes do ensaio.**
-> O script abaixo segue os números do MAPA DE CLIQUES (14→10→5→3).
-> Se os números corretos forem outros, ajustar a fala E o slide.
-
 **Luã:** "Mas a gente não veio aqui só com ideia. A gente veio com dados."
 
 **Adriele** *(assume)*:
@@ -166,7 +157,7 @@ E 3 relataram transformação real na forma como enxergam suas finanças."
 ---
 
 ## SLIDE 5: As Vozes
-**Navegação: 1 sub-step (2 estados)**
+**Navegação: 2 sub-steps (3 estados)**
 **Tempo:** ~60s | **Quem fala:** Adriele
 **Energia:** Emocional | **Velocidade:** Lenta | **Volume:** Baixo (respirar)
 
@@ -178,11 +169,13 @@ E 3 relataram transformação real na forma como enxergam suas finanças."
 
 *(pausa — transição emocional)*
 
-**(CLIQUE)** → *Step 1: revela os dois depoimentos reais de uma vez*
+**(CLIQUE)** → *Step 1: revela o primeiro depoimento*
 
 "Uma delas me disse: 'Eu achava que o problema era o salário. Era o delivery.'
 
 Ela descobriu que gastava mais de 300 reais por mês em delivery que não percebia. Redirecionou pra compras no mercado.
+
+**(CLIQUE)** → *Step 2: revela o segundo depoimento*
 
 Outra me disse: 'Pela primeira vez em 3 anos, sobrou 50 reais no fim do mês.'
 
@@ -324,32 +317,26 @@ Se alguém aqui acredita que tecnologia de verdade é a que cuida de quem mais p
 | 2 — Problema | 4 | 4 | 1 | **5** |
 | 3 — Solução | 3 | 3 | 1 | **4** |
 | 4 — Teste | 3 | 3 | 1 | **4** |
-| 5 — Vozes | 1 | 1 | 1 | **2** |
+| 5 — Vozes | 2 | 2 | 1 | **3** |
 | 6 — Escala | 1 | 1 | 1 | **2** |
 | 7 — CTA | 4 | 4 | 1 | **5** |
 | 8 — Nós | 1 | 1 | 1 | **2** |
 | 9 — QR Code | 0 | 0 | 0 | **0** |
-| **TOTAL** | | | | **29 cliques** |
+| **TOTAL** | | | | **30 cliques** |
 
-Péricles opera o clicker. São 29 cliques ao longo de ~8 minutos.
+Péricles opera o clicker. São 30 cliques ao longo de ~8 minutos.
 
 ---
 
 ## ⚠️ PONTOS DE ATENÇÃO PARA ALINHAMENTO
 
-**1. Números do Slide 4 (CRÍTICO):**
-O mapa de cliques usa 14→10→5→3. O script original dizia 18→10→5→2. Este script segue o mapa. Confirmar com o time a versão final e garantir que slide e fala batem.
-
 **2. Slide 0 — fala da Adriele:**
 "Yá significa mãe, em yorubá" agora acontece NO Slide 0, antes do primeiro CLIQUE. Não está mais no Slide 8. Adriele precisa saber que fala ANTES do time se posicionar totalmente, ou logo após se posicionar.
 
-**3. Slide 5 — depoimentos em 1 CLIQUE:**
-O mapa tem apenas 1 sub-step. Adriele fala o título "mudou tudo" no Step 0, faz o CLIQUE, e ambos os depoimentos aparecem juntos. Ela lê os dois em sequência, controlando o ritmo com a voz (não com cliques). É mais poderoso assim — sem interrupção visual.
-
-**4. Slide 7 — 4º CLIQUE sincronizado com a fala:**
+**3. Slide 7 — 4º CLIQUE sincronizado com a fala:**
 O 4º CLIQUE faz as cartas desaparecerem e a provocação surgir com efeito visual. Péricles precisa fazer a pausa, dizer "imagina o que acontece quando—" e CLICAR no momento exato pra o visual acompanhar. Ensaiar o timing desse clique específico.
 
-**5. Slide 8 — credenciais aparecem depois do jogral:**
+**4. Slide 8 — credenciais aparecem depois do jogral:**
 O CLIQUE que revela Github/LinkedIn acontece DEPOIS do "Obrigada" e dos aplausos iniciais. Não clicar antes do momento emocional terminar.
 
 ---
@@ -375,9 +362,9 @@ O CLIQUE que revela Github/LinkedIn acontece DEPOIS do "Obrigada" e dos aplausos
 | 2 — Problema | ~40s | Adriele | Intensa, crescente | 5 |
 | 3 — Solução | ~50s | Luã | Clara, moderada | 4 |
 | 4 — Teste | ~40s | Luã → Adriele | Ponte → confiante | 4 |
-| 5 — Vozes | ~60s | Adriele | Emocional, lenta | 2 |
+| 5 — Vozes | ~60s | Adriele | Emocional, lenta | 3 |
 | 6 — Escala | ~50s | Adriele → Péricles | Celebração → ambição | 2 |
 | 7 — CTA | ~45s | Péricles | Reflexiva → provocativa | 5 |
 | 8 — Nós | ~50s | Todos | Firme, unida | 2 |
 | 9 — QR Code | — | — | Curiosidade | 0 |
-| **TOTAL** | **~6min 30s + pausas ≈ 8min** | | | **29** |
+| **TOTAL** | **~6min 30s + pausas ≈ 8min** | | | **30** |
