@@ -19,7 +19,7 @@ const SlideTestV4 = ({ isActive, step = 0 }: SlideTestV4Props) => {
         avatar: new URL(`../../../assets/maes/${i + 1}.jpeg`, import.meta.url).href,
     }));
 
-    const currentNumber = step === 0 ? 14 : step === 1 ? 10 : step === 2 ? 5 : 2;
+    const currentNumber = step === 0 ? 14 : step === 1 ? 10 : step === 2 ? 5 : 3;
     const labels = ["Mães contatadas", "Fizeram cadastro", "Engajadas de verdade", "Transformação real"];
     const currentLabel = labels[step] || labels[0];
 
@@ -31,7 +31,7 @@ const SlideTestV4 = ({ isActive, step = 0 }: SlideTestV4Props) => {
         const isCurrentlyDiscarded =
             (effectiveStep >= 1 && id >= 10 && id <= 13) ||
             (effectiveStep >= 2 && id >= 5 && id <= 9) ||
-            (effectiveStep >= 3 && id >= 2 && id <= 4);
+            (effectiveStep >= 3 && id >= 3 && id <= 4);
 
         if (isCurrentlyDiscarded) {
             const isLeft = id % 2 === 0;
@@ -67,8 +67,10 @@ const SlideTestV4 = ({ isActive, step = 0 }: SlideTestV4Props) => {
             return { x, y: row === 0 ? -hBase / 2 : hBase / 2, scale: 2.0, opacity: 1 };
         }
 
-        // Hero state
-        return { x: id === 0 ? -wBase * 1.2 : wBase * 1.2, y: 0, scale: 2.8, opacity: 1 };
+        // Hero state (3 heroes)
+        if (id === 0) return { x: -wBase * 1.3, y: 0, scale: 2.5, opacity: 1 };
+        if (id === 1) return { x: 0, y: 0, scale: 2.8, opacity: 1 };
+        return { x: wBase * 1.3, y: 0, scale: 2.5, opacity: 1 }; // id === 2
     };
 
     return (

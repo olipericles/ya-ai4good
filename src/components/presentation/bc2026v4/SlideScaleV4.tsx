@@ -14,15 +14,15 @@ const SlideScaleV4 = ({ isActive, step = 0 }: SlideScaleV4Props) => {
     if (!isActive) return null;
 
     const done = [
-        { label: "Mães no piloto", value: "18" },
+        { label: "Mães no piloto", value: "14" },
         { label: "Custo", value: "Zero" },
-        { label: "Transformadas", value: "2" },
+        { label: "Transformadas", value: "3" },
     ];
 
     const future = [
         { label: "Meta", value: "1.000" },
         { label: "Investimento", value: "$3.000" },
-        { label: "Projeção (~11%)", value: "~110" },
+        { label: "Projeção (~21%)", value: "~214" },
     ];
 
     return (
