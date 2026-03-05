@@ -61,12 +61,7 @@ const LandingV5 = () => {
         }
     };
 
-    const pitchVersions = [
-        { name: "V1", base: "/vBC2026", training: "/vBC2026t", script: "/vBC2026s", op: "/vBC2026op" },
-        { name: "V2", base: "/v2BC2026", training: "/v2BC2026t", script: "/v2BC2026s", op: "/v2BC2026op" },
-        { name: "V3", base: "/v3BC2026", training: "/v3BC2026t", script: "/v3BC2026s", op: "/v3BC2026op" },
-        { name: "V4", base: "/v4BC2026", training: "/v4BC2026t", script: "/v4BC2026s", op: "/v4BC2026op" }
-    ];
+    // Single pitch version using standard route names
 
     return (
         <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
@@ -515,25 +510,23 @@ const LandingV5 = () => {
                             </form>
                         ) : (
                             <div className="space-y-4 animate-fade-in">
-                                {pitchVersions.map((v, i) => (
-                                    <div key={i} className="flex flex-col sm:flex-row items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 gap-4 hover:bg-white/10 transition-colors">
-                                        <span className="font-bold text-lg text-white">{v.name}</span>
-                                        <div className="flex gap-2 w-full sm:w-auto flex-wrap justify-end">
-                                            <a href={v.base} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
-                                                <PlayCircle className="w-4 h-4" /> Final
-                                            </a>
-                                            <a href={v.training} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
-                                                <ChevronRight className="w-4 h-4" /> Treino
-                                            </a>
-                                            <a href={v.script} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
-                                                <FileText className="w-4 h-4" /> Script
-                                            </a>
-                                            <a href={v.op} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
-                                                <LayoutDashboard className="w-4 h-4" /> OP
-                                            </a>
-                                        </div>
+                                <div className="flex flex-col sm:flex-row items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 gap-4 hover:bg-white/10 transition-colors mt-4">
+                                    <span className="font-bold text-lg text-white">Yá - Pitch Deck Oficial</span>
+                                    <div className="flex gap-2 w-full sm:w-auto flex-wrap justify-end">
+                                        <a href="/vBC2026" className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                            <PlayCircle className="w-4 h-4" /> Slides
+                                        </a>
+                                        <a href="/vBC2026t" className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                            <ChevronRight className="w-4 h-4" /> Treino
+                                        </a>
+                                        <a href="/vBC2026s" className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                            <FileText className="w-4 h-4" /> Script
+                                        </a>
+                                        <a href="/vBC2026op" className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                            <LayoutDashboard className="w-4 h-4" /> OP
+                                        </a>
                                     </div>
-                                ))}
+                                </div>
                             </div>
                         )}
                     </div>
