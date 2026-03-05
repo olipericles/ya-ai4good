@@ -75,10 +75,10 @@ const ScriptViewer = ({ markdownContent, title }: ScriptViewerProps) => {
                                 }
 
                                 // Interactive Click marker
-                                if (content.includes("////// CLIQUE") || content.includes("(CLIQUE)") || content.includes("**CLIQUE**") || content.includes("**Step")) {
+                                if (content.trim() === "CLIQUE" || content.includes("(CLIQUE)") || content.includes("**CLIQUE**") || content.includes("////// CLIQUE")) {
                                     return (
-                                        <div className="bg-primary/20 border border-primary/50 text-primary py-3 px-6 rounded-lg my-8 font-mono text-sm font-bold shadow-[0_0_15px_rgba(229,91,60,0.2)] text-center uppercase tracking-widest flex items-center justify-center gap-2">
-                                            {props.children}
+                                        <div className="bg-primary/20 border border-primary/50 text-primary py-3 px-6 rounded-lg my-8 font-mono text-sm font-bold shadow-[0_0_15px_rgba(229,91,60,0.2)] text-center uppercase flex items-center justify-center gap-2">
+                                            <span className="tracking-[0.5em] ml-[0.5em]">CLIQUE</span>
                                         </div>
                                     );
                                 }

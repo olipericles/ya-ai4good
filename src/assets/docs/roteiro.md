@@ -35,15 +35,15 @@ Alinhado ao mapa de cliques da apresentação web (rota /v2BC2026t).
 
 "Minha prima cria dois filhos sozinha. Minha vizinha, três. A mãe da minha melhor amiga criou quatro. Eu cresci cercada de mulheres que faziam milagre com pouco, e que no fim do mês não sabiam explicar pra onde o dinheiro tinha ido.
 
-////// CLIQUE — revela "11 Milhões"
+CLIQUE
 
 Essas mulheres são 11 milhões de brasileiras.
 
-////// CLIQUE — revela mapa + comparativo Portugal
+CLIQUE
 
 Mais do que a população inteira de Portugal.
 
-////// CLIQUE — revela "90% mulheres negras"
+CLIQUE
 
 E 90% desse crescimento na última década são mulheres negras.
 
@@ -51,7 +51,7 @@ Isso não é estatística pra mim. É a foto da minha família."
 
 *[Ritmo pausado. Cada frase é uma imagem. Tom íntimo na frase final.]*
 
-////// CLIQUE — avança para o Slide 2
+CLIQUE
 
 ---
 
@@ -63,15 +63,15 @@ Isso não é estatística pra mim. É a foto da minha família."
 
 "O maior inimigo não é a conta grande. É o gasto invisível.
 
-////// CLIQUE — revela "A taxa surpresa"
+CLIQUE
 
 A taxa que veio sem avisar.
 
-////// CLIQUE — revela "O lanche de 12 reais..."
+CLIQUE
 
 O lanche de 12 reais que virou 200 no mês.
 
-////// CLIQUE — revela "O remédio de madrugada"
+CLIQUE
 
 O remédio de emergência de madrugada.
 
@@ -79,13 +79,13 @@ Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou.
 
 *(pausa antes da revelação)*
 
-////// CLIQUE — tela transiciona, revela no centro "É falta de ferramenta"
+CLIQUE
 
 É falta de ferramenta."
 
 *[Convicção na frase final. É o gancho para Luã.]*
 
-////// CLIQUE — avança para o Slide 3
+CLIQUE
 
 ---
 
@@ -99,15 +99,15 @@ Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou.
 
 "A Yá é uma assistente financeira que vive no WhatsApp.
 
-////// CLIQUE — celular sobe girando para o centro — tela de interação por áudio, Carol manda cupom amassado
+CLIQUE
 
 A mãe manda um áudio dizendo 'gastei 50 no mercado', manda foto de um cupom amassado de pastel e óleo de soja, ou simplesmente digita. A IA transcreve, categoriza e organiza.
 
-////// CLIQUE — celular atualiza via esmaecimento (opacity) — tela de interação de saldo, Yá retorna com categorização + link
+CLIQUE
 
 Se ela se confunde num comando, a Yá não trava, não dá erro. Responde com paciência, na voz de uma mulher nordestina.
 
-////// CLIQUE — celular atualiza — tela da PWA dashboard (dash-carol.jpeg)
+CLIQUE
 
 Sem app pra baixar. Sem formulário. Sem fricção.
 
@@ -115,7 +115,7 @@ A gente não pede pra mudarem de vida — a gente entra na vida delas."
 
 *[Tom de orgulho pela elegância da solução.]*
 
-////// CLIQUE — avança para o Slide 4
+CLIQUE
 
 ---
 
@@ -133,21 +133,21 @@ A gente não pede pra mudarem de vida — a gente entra na vida delas."
 
 "Em fevereiro de 2026, rodamos um piloto de 2 semanas com 14 mães em Salvador.
 
-////// CLIQUE — número muda para "10", 4 bolhas descartadas — "Fizeram Cadastro"
+CLIQUE
 
 10 fizeram cadastro.
 
-////// CLIQUE — número muda para "5", bolhas voam para trás — "Engajadas"
+CLIQUE
 
 5 se engajaram de verdade, registrando gastos consistentemente.
 
-////// CLIQUE — número muda para "3", 3 hero avatars gigantes — "Transformadas reais"
+CLIQUE
 
 E 3 relataram transformação real na forma como enxergam suas finanças."
 
 *[Tom de quem viveu: "rodamos" porque ela esteve lá. Números com ritmo: 14 → 10 → 5 → 3.]*
 
-////// CLIQUE — avança para o Slide 5
+CLIQUE
 
 ---
 
@@ -163,13 +163,13 @@ E 3 relataram transformação real na forma como enxergam suas finanças."
 
 *(pausa — transição emocional)*
 
-////// CLIQUE — revela o primeiro depoimento
+CLIQUE
 
 "Uma delas me disse: 'Eu achava que o problema era o salário. Era o delivery.'
 
 Ela descobriu que gastava mais de 300 reais por mês em delivery que não percebia. Redirecionou pra compras no mercado.
 
-////// CLIQUE — revela o segundo depoimento
+CLIQUE
 
 Outra me disse: 'Pela primeira vez em 3 anos, sobrou 50 reais no fim do mês.'
 
@@ -179,7 +179,7 @@ Outra me disse: 'Pela primeira vez em 3 anos, sobrou 50 reais no fim do mês.'
 
 *[Deixar as citações respirarem. Não apressar.]*
 
-////// CLIQUE — avança para o Slide 6
+CLIQUE
 
 ---
 
@@ -195,7 +195,7 @@ Outra me disse: 'Pela primeira vez em 3 anos, sobrou 50 reais no fim do mês.'
 
 *[Tom de satisfação genuína. Adriele VIVEU isso.]*
 
-////// CLIQUE — cartão direito desliza com brilho — "Onde queremos chegar" (Meta 1.000, Projeção ~214)
+CLIQUE
 
 **Péricles** *(assume)*: "Agora imagina o que a gente pode fazer em seis meses. Com mil mães.
 
@@ -203,7 +203,7 @@ A tecnologia já existe. O produto já funciona. A gente só precisa de escala."
 
 *["Mil mães" com peso. Ritmo de três frases conclusivas.]*
 
-////// CLIQUE — avança para o Slide 7
+CLIQUE
 
 ---
 
@@ -219,15 +219,15 @@ A tecnologia já existe. O produto já funciona. A gente só precisa de escala."
 
 O próximo passo é encontrar essas mil mães.
 
-////// CLIQUE — acende cartão CRAS
+CLIQUE
 
 Talvez integrando com CRAS.
 
-////// CLIQUE — acende cartão ONGs
+CLIQUE
 
 Com ONGs.
 
-////// CLIQUE — acende cartão Políticas Públicas
+CLIQUE
 
 Com políticas públicas que já existem.
 
@@ -239,7 +239,7 @@ E se a gente consegue entregar esse nível de cuidado com tão pouco recurso —
 
 *(pausa)*
 
-////// CLIQUE — cartas desaparecem/encolhem — surge centralizado "Imagina quando essa tecnologia escala" com efeito de ondas/pings sísmicos em loop
+CLIQUE
 
 — imagina o que acontece quando essa tecnologia escala.
 
@@ -251,7 +251,7 @@ As interfaces frias e burocráticas vão ter que aprender a falar a língua das 
 
 Se alguém aqui acredita que tecnologia de verdade é a que cuida de quem mais precisa, a gente vai adorar essa conversa."
 
-////// CLIQUE — avança para o Slide 8
+CLIQUE
 
 ---
 
@@ -282,11 +282,11 @@ Se alguém aqui acredita que tecnologia de verdade é a que cuida de quem mais p
 
 *(sorriso)*
 
-////// CLIQUE — revela credenciais e links (Github, LinkedIn) + última chamada
+CLIQUE
 
 *[Slide fica estático enquanto aplausos acontecem.]*
 
-////// CLIQUE — avança para o Slide 9
+CLIQUE
 
 ---
 
