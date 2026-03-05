@@ -61,7 +61,12 @@ const SlideSolutionV4 = ({ isActive, step = 0 }: SlideSolutionV4Props) => {
                             <img
                                 src={interacaoSaldo}
                                 alt="Interação verificando Saldo"
-                                className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-700 ease-out z-20 ${step >= 2 ? "opacity-100" : "opacity-0"}`}
+                                className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-700 ease-out z-20 ${step === 2 ? "opacity-100" : "opacity-0"}`}
+                            />
+                            <img
+                                src={dashCarol}
+                                alt="Dashboard PWA"
+                                className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-700 ease-out z-30 ${step >= 3 ? "opacity-100" : "opacity-0"}`}
                             />
 
                             {/* Default placeholder just in case */}
