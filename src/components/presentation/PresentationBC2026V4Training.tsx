@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { ChevronLeft, ChevronRight, Clock, Volume2, User } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 import SlideWaitingV4, { SLIDE_WAITING_V4_STEPS } from "./bc2026v4/SlideWaitingV4";
@@ -176,8 +178,42 @@ const PresentationBC2026V4Training = () => {
 
                 <div className="space-y-4">
                     <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Roteiro</h3>
-                    <div className="text-foreground leading-relaxed whitespace-pre-line text-base">
-                        {currentScript.script}
+                    <div className="text-foreground leading-relaxed whitespace-pre-line text-base markdown-script">
+                        <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
+                            components={{
+                                p: ({ node, ...props }) => {
+                                    const content = props.children?.toString() || '';
+                                    if (content.startsWith("*[") || content.startsWith("*(")) {
+                                        return <p className="text-foreground/60 italic bg-muted/20 px-4 py-2 rounded-md border-l-2 border-muted/50 my-4" {...props} />;
+                                    }
+                                    if (content.includes("(CLIQUE)") || content.includes("**CLIQUE**") || content.includes("**Step")) {
+                                        return (
+                                            <div className="bg-primary/20 border border-primary/50 text-primary py-2 px-4 rounded-lg my-6 font-mono text-sm font-bold shadow-[0_0_15px_rgba(229,91,60,0.2)]">
+                                                {props.children}
+                                            </div>
+                                        );
+                                    }
+                                    return <p className="text-foreground leading-relaxed text-lg pt-2 mb-4" {...props} />;
+                                },
+                                em: ({ node, ...props }) => {
+                                    const t = props.children?.toString() || '';
+                                    if (t.startsWith("[") || t.startsWith("(")) {
+                                        return <span className="not-italic" {...props} />;
+                                    }
+                                    return <em className="text-foreground/60 italic" {...props} />;
+                                },
+                                strong: ({ node, ...props }) => {
+                                    const t = props.children?.toString() || '';
+                                    if (t.endsWith(":") || t === "TODOS JUNTOS:") {
+                                        return <strong className="font-bold text-primary mr-2 uppercase tracking-wide text-xs bg-primary/10 px-2 py-1 rounded" {...props} />;
+                                    }
+                                    return <strong className="font-bold text-foreground" {...props} />;
+                                }
+                            }}
+                        >
+                            {currentScript.script}
+                        </ReactMarkdown>
                     </div>
                 </div>
 
