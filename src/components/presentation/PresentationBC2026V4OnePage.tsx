@@ -15,16 +15,16 @@ const PresentationBC2026V4OnePage = () => {
             <div className="fixed inset-0 transition-colors duration-1000 z-0 bg-[#060606]" />
 
             <div className="relative z-10 font-sans selection:bg-primary selection:text-black">
-                <SlideWaitingV4 isActive={true} mode="section" slideNumber={0} />
-                <SlideImpactV4 isActive={true} mode="section" slideNumber={1} />
-                <SlideProblemV4 isActive={true} mode="section" slideNumber={2} />
-                <SlideSolutionV4 isActive={true} mode="section" slideNumber={3} />
-                <SlideTestV4 isActive={true} mode="section" slideNumber={4} />
-                <SlideVoicesV4 isActive={true} mode="section" slideNumber={5} />
-                <SlideScaleV4 isActive={true} mode="section" slideNumber={6} />
-                <SlidePathV4 isActive={true} mode="section" slideNumber={7} />
-                <SlideTeamV4 isActive={true} mode="section" slideNumber={8} />
-                <SlideQRCodeV4 isActive={true} mode="section" slideNumber={9} />
+                <SlideWaitingV4 isActive={true} mode="section" step={100} slideNumber={0} />
+                <SlideImpactV4 isActive={true} mode="section" step={100} slideNumber={1} />
+                <SlideProblemV4 isActive={true} mode="section" step={100} slideNumber={2} />
+                <SlideSolutionV4 isActive={true} mode="section" step={100} slideNumber={3} />
+                <SlideTestV4 isActive={true} mode="section" step={100} slideNumber={4} />
+                <SlideVoicesV4 isActive={true} mode="section" step={100} slideNumber={5} />
+                <SlideScaleV4 isActive={true} mode="section" step={100} slideNumber={6} />
+                <SlidePathV4 isActive={true} mode="section" step={100} slideNumber={7} />
+                <SlideTeamV4 isActive={true} mode="section" step={100} slideNumber={8} />
+                <SlideQRCodeV4 isActive={true} mode="section" step={100} slideNumber={9} />
             </div>
         </div>
     );
