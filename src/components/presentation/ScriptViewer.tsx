@@ -49,38 +49,61 @@ const ScriptViewer = ({ markdownContent, title }: ScriptViewerProps) => {
                                     );
                                 }
 
-                                if (content.startsWith("Quem fala:") || content.startsWith("**Quem fala:**")) {
-                                    const speaker = content.replace("**Quem fala:**", "").replace("Quem fala:", "").trim();
+                                if (content.includes("Quem fala:") || content.includes("**Quem fala:")) {
+                                    const match = content.match(/\*\*Quem fala:\*\*\s*(.*)/) || content.match(/Quem fala:\s*(.*)/);
+                                    const speaker = match ? match[1] : content;
                                     return (
                                         <div className="flex items-center gap-2 mb-3 p-2 rounded-lg bg-muted/30 w-full max-w-sm">
                                             <User className="w-4 h-4 text-primary" />
-                                            <span className="text-sm font-medium text-primary">{speaker}</span>
+                                            <span className="text-sm font-medium text-primary">{speaker.replace("|", "").trim()}</span>
                                         </div>
                                     );
                                 }
 
-                                if (content.startsWith("Notas:") || content.startsWith("**Notas:**")) {
-                                    const notes = content.replace("**Notas:**", "").replace("Notas:", "").trim();
+                                if (content.startsWith("Notas:") || content.startsWith("**Notas:**") || content.startsWith("⚠️") || content.includes("**Energia:**")) {
                                     return (
                                         <div className="flex items-start gap-2 p-3 rounded-lg bg-primary/10 border border-primary/30 mb-8">
                                             <Volume2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                                            <p className="text-sm text-primary font-medium">{notes}</p>
+                                            <p className="text-sm text-primary font-medium" dangerouslySetInnerHTML={{ __html: content }} />
                                         </div>
                                     );
                                 }
 
-                                // Check if this is the start of the actual script text (after the metadata)
-                                const isScriptBlock = content.includes('"') || content.includes("'") || content.includes("[");
+                                // If the paragraph is purely a transition or stage action inside *[ ]*
+                                if (content.startsWith("*[") || content.startsWith("*(")) {
+                                    return <p className="text-foreground/50 italic bg-muted/20 px-4 py-2 rounded-md border-l-2 border-muted/50 my-4" {...props} />;
+                                }
+
+                                // Interactive Click marker
+                                if (content.includes("(CLIQUE)") || content.includes("**CLIQUE**") || content.includes("**Step")) {
+                                    return (
+                                        <div className="bg-primary/20 border border-primary/50 text-primary py-2 px-4 rounded-lg my-6 font-mono text-sm font-bold shadow-[0_0_15px_rgba(229,91,60,0.2)]">
+                                            {props.children}
+                                        </div>
+                                    );
+                                }
 
                                 return (
                                     <div className="space-y-4">
-                                        {/* We only want to show the 'ROTEIRO' label once per slide, but simple implementation is fine */}
-                                        <p className="text-foreground leading-relaxed text-base pt-2" {...props} />
+                                        <p className="text-foreground leading-relaxed text-lg pt-2" {...props} />
                                     </div>
                                 );
                             },
-                            em: ({ node, ...props }) => <em className="text-foreground/60 italic" {...props} />,
-                            strong: ({ node, ...props }) => <strong className="font-bold text-foreground" {...props} />,
+                            em: ({ node, ...props }) => {
+                                const t = props.children?.toString() || '';
+                                if (t.startsWith("[") || t.startsWith("(")) {
+                                    return <span className="not-italic" {...props} />;
+                                }
+                                return <em className="text-foreground/60 italic" {...props} />;
+                            },
+                            strong: ({ node, ...props }) => {
+                                const t = props.children?.toString() || '';
+                                // Detect if it's a character name speaking ending with colon like -> "**Adriele:**"
+                                if (t.endsWith(":") || t === "TODOS JUNTOS:") {
+                                    return <strong className="font-bold text-primary mr-2 uppercase tracking-wide text-xs bg-primary/10 px-2 py-1 rounded" {...props} />;
+                                }
+                                return <strong className="font-bold text-foreground" {...props} />;
+                            },
                             hr: () => <hr className="my-12 border-border" />,
                         }}
                     >
