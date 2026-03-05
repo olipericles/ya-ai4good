@@ -189,12 +189,12 @@ const PresentationBC2026V4Training = () => {
                                     }
                                     if (content.trim() === "CLIQUE" || content.includes("(CLIQUE)") || content.includes("**CLIQUE**") || content.includes("////// CLIQUE")) {
                                         return (
-                                            <div className="bg-primary/20 border border-primary/50 text-primary py-1 px-4 rounded-lg my-2 font-mono text-sm font-bold shadow-[0_0_15px_rgba(229,91,60,0.2)] text-center uppercase flex items-center justify-center gap-2">
+                                            <div className="bg-primary/20 border border-primary/50 text-primary py-1 px-4 rounded-lg mt-1 mb-1 font-mono text-sm font-bold shadow-[0_0_15px_rgba(229,91,60,0.2)] text-center uppercase flex items-center justify-center gap-2">
                                                 <span className="tracking-[0.5em] ml-[0.5em]">CLIQUE</span>
                                             </div>
                                         );
                                     }
-                                    return <p className="text-foreground leading-relaxed text-lg pt-1 mb-1" {...props} />;
+                                    return <p className="text-foreground leading-relaxed text-lg pt-0 mb-0" {...props} />;
                                 },
                                 em: ({ node, ...props }) => {
                                     const t = props.children?.toString() || '';

@@ -34,25 +34,17 @@ Alinhado ao mapa de cliques da apresentação web (rota /v2BC2026t).
 *[estado inicial — título "O Impacto", apenas introdução emocional]*
 
 "Minha prima cria dois filhos sozinha. Minha vizinha, três. A mãe da minha melhor amiga criou quatro. Eu cresci cercada de mulheres que faziam milagre com pouco, e que no fim do mês não sabiam explicar pra onde o dinheiro tinha ido.
-
 CLIQUE
-
 Essas mulheres são 11 milhões de brasileiras.
-
 CLIQUE
-
 Mais do que a população inteira de Portugal.
-
 CLIQUE
-
 E 90% desse crescimento na última década são mulheres negras.
 
 Isso não é estatística pra mim. É a foto da minha família."
 
 *[Ritmo pausado. Cada frase é uma imagem. Tom íntimo na frase final.]*
-
 CLIQUE
-
 ---
 
 ## SLIDE 2: O Problema Invisível
@@ -62,31 +54,21 @@ CLIQUE
 *[estado inicial — "O maior inimigo é o gasto invisível"]*
 
 "O maior inimigo não é a conta grande. É o gasto invisível.
-
 CLIQUE
-
 A taxa que veio sem avisar.
-
 CLIQUE
-
 O lanche de 12 reais que virou 200 no mês.
-
 CLIQUE
-
 O remédio de emergência de madrugada.
 
 Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou. E não é falta de esforço.
 
 *(pausa antes da revelação)*
-
 CLIQUE
-
 É falta de ferramenta."
 
 *[Convicção na frase final. É o gancho para Luã.]*
-
 CLIQUE
-
 ---
 
 ## SLIDE 3: A Solução
@@ -98,25 +80,17 @@ CLIQUE
 *[estado inicial — copy lateral visível, frame do celular OCULTO]*
 
 "A Yá é uma assistente financeira que vive no WhatsApp.
-
 CLIQUE
-
 A mãe manda um áudio dizendo 'gastei 50 no mercado', manda foto de um cupom amassado de pastel e óleo de soja, ou simplesmente digita. A IA transcreve, categoriza e organiza.
-
 CLIQUE
-
 Se ela se confunde num comando, a Yá não trava, não dá erro. Responde com paciência, na voz de uma mulher nordestina.
-
 CLIQUE
-
 Sem app pra baixar. Sem formulário. Sem fricção.
 
 A gente não pede pra mudarem de vida — a gente entra na vida delas."
 
 *[Tom de orgulho pela elegância da solução.]*
-
 CLIQUE
-
 ---
 
 ## SLIDE 4: O Teste
@@ -132,23 +106,15 @@ CLIQUE
 *[estado inicial — placa com "14", circundada por 14 rostos femininos]*
 
 "Em fevereiro de 2026, rodamos um piloto de 2 semanas com 14 mães em Salvador.
-
 CLIQUE
-
 10 fizeram cadastro.
-
 CLIQUE
-
 5 se engajaram de verdade, registrando gastos consistentemente.
-
 CLIQUE
-
 E 3 relataram transformação real na forma como enxergam suas finanças."
 
 *[Tom de quem viveu: "rodamos" porque ela esteve lá. Números com ritmo: 14 → 10 → 5 → 3.]*
-
 CLIQUE
-
 ---
 
 ## SLIDE 5: As Vozes
@@ -162,15 +128,11 @@ CLIQUE
 **Adriele:** "E o que essas mães nos disseram mudou tudo."
 
 *(pausa — transição emocional)*
-
 CLIQUE
-
 "Uma delas me disse: 'Eu achava que o problema era o salário. Era o delivery.'
 
 Ela descobriu que gastava mais de 300 reais por mês em delivery que não percebia. Redirecionou pra compras no mercado.
-
 CLIQUE
-
 Outra me disse: 'Pela primeira vez em 3 anos, sobrou 50 reais no fim do mês.'
 
 *(pausa após "50 reais")*
@@ -178,9 +140,7 @@ Outra me disse: 'Pela primeira vez em 3 anos, sobrou 50 reais no fim do mês.'
 50 reais. Pode parecer pouco. Mas pra quem nunca sobrou nada, é o começo de uma reserva. É dignidade."
 
 *[Deixar as citações respirarem. Não apressar.]*
-
 CLIQUE
-
 ---
 
 ## SLIDE 6: Escalar o Sucesso
@@ -194,17 +154,13 @@ CLIQUE
 **Adriele:** "A gente tá muito feliz. Porque em apenas duas semanas, com custo praticamente zero, a gente mudou a vida de três pessoas. Três mães que pela primeira vez conseguiram enxergar pra onde o dinheiro ia."
 
 *[Tom de satisfação genuína. Adriele VIVEU isso.]*
-
 CLIQUE
-
 **Péricles** *(assume)*: "Agora imagina o que a gente pode fazer em seis meses. Com mil mães.
 
 A tecnologia já existe. O produto já funciona. A gente só precisa de escala."
 
 *["Mil mães" com peso. Ritmo de três frases conclusivas.]*
-
 CLIQUE
-
 ---
 
 ## SLIDE 7: O Caminho / CTA
@@ -218,17 +174,11 @@ CLIQUE
 "Sabemos o resultado que conseguimos. Sabemos o custo para chegar a mil.
 
 O próximo passo é encontrar essas mil mães.
-
 CLIQUE
-
 Talvez integrando com CRAS.
-
 CLIQUE
-
 Com ONGs.
-
 CLIQUE
-
 Com políticas públicas que já existem.
 
 O WhatsApp já tá lá. A mãe já tá lá. A Yá já funciona.
@@ -238,9 +188,7 @@ O WhatsApp já tá lá. A mãe já tá lá. A Yá já funciona.
 E se a gente consegue entregar esse nível de cuidado com tão pouco recurso —
 
 *(pausa)*
-
 CLIQUE
-
 — imagina o que acontece quando essa tecnologia escala.
 
 *(pausa — tom muda para provocação)*
@@ -250,9 +198,7 @@ As interfaces frias e burocráticas vão ter que aprender a falar a língua das 
 *(volta ao tom acolhedor, sorriso)*
 
 Se alguém aqui acredita que tecnologia de verdade é a que cuida de quem mais precisa, a gente vai adorar essa conversa."
-
 CLIQUE
-
 ---
 
 ## SLIDE 8: Nós
@@ -281,13 +227,9 @@ CLIQUE
 "Obrigada."
 
 *(sorriso)*
-
 CLIQUE
-
 *[Slide fica estático enquanto aplausos acontecem.]*
-
 CLIQUE
-
 ---
 
 ## SLIDE 9: QR Code
