@@ -29,7 +29,6 @@ Alinhado ao mapa de cliques da apresentação web (rota /v2BC2026t).
 
 ## SLIDE 1: Impacto
 **Tempo:** ~45s | **Quem fala:** Adriele
-**Energia:** Íntima | **Velocidade:** Pausada | **Volume:** Baixo-médio
 
 *[estado inicial — título "O Impacto", apenas introdução emocional]*
 
@@ -57,7 +56,6 @@ CLIQUE
 
 ## SLIDE 2: O Problema Invisível
 **Tempo:** ~40s | **Quem fala:** Adriele
-**Energia:** Intensa | **Velocidade:** Moderada | **Volume:** Crescente
 
 *[estado inicial — "O maior inimigo é o gasto invisível"]*
 
@@ -91,7 +89,6 @@ CLIQUE
 
 ## SLIDE 3: A Solução
 **Tempo:** ~50s | **Quem fala:** Luã
-**Energia:** Clara | **Velocidade:** Moderada | **Volume:** Médio
 
 **TRANSIÇÃO Adriele → Luã:** "É falta de ferramenta" é o gancho. Luã entra imediato.
 
@@ -121,7 +118,6 @@ CLIQUE
 
 ## SLIDE 4: O Teste
 **Tempo:** ~40s | **Quem fala:** Luã → Adriele
-**Energia:** Ponte → Confiante | **Velocidade:** Moderada | **Volume:** Médio
 
 **TRANSIÇÃO Luã → Adriele:** "Veio com dados" é o gancho. Adriele conduziu a pesquisa.
 
@@ -153,7 +149,6 @@ CLIQUE
 
 ## SLIDE 5: As Vozes
 **Tempo:** ~60s | **Quem fala:** Adriele
-**Energia:** Emocional | **Velocidade:** Lenta | **Volume:** Baixo (respirar)
 
 ⚠️ **CORAÇÃO DO PITCH.** Falar mais devagar. DIGNIDADE é a palavra mais importante do pitch inteiro.
 
@@ -185,7 +180,6 @@ CLIQUE
 
 ## SLIDE 6: Escalar o Sucesso
 **Tempo:** ~50s | **Quem fala:** Adriele → Péricles
-**Energia:** Celebração → Ambição | **Velocidade:** Crescente | **Volume:** Médio → Alto
 
 **TRANSIÇÃO Adriele → Péricles:** Adriele celebra o presente. Péricles projeta o futuro.
 
@@ -209,7 +203,6 @@ CLIQUE
 
 ## SLIDE 7: O Caminho / CTA
 **Tempo:** ~45s | **Quem fala:** Péricles
-**Energia:** Reflexiva → Provocativa → Convidativa | **Velocidade:** Moderada | **Volume:** Médio
 
 ⚠️ **Arco em 3 tempos:** confiança → provocação → convite.
 
@@ -257,7 +250,6 @@ CLIQUE
 
 ## SLIDE 8: Nós
 **Tempo:** ~50s | **Quem fala:** Todos (Jogral)
-**Energia:** Firme, unida | **Velocidade:** Pausada | **Volume:** Médio, firme
 
 ⚠️ Precisa ensaiar o jogral.
 
