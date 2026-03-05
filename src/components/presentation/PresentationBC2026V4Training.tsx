@@ -183,25 +183,32 @@ const PresentationBC2026V4Training = () => {
                             remarkPlugins={[remarkGfm]}
                             components={{
                                 p: ({ node, ...props }) => {
-                                    const content = props.children?.toString() || '';
-                                    if (content.startsWith("*[") || content.startsWith("*(")) {
-                                        return <p className="text-foreground/60 italic bg-muted/20 px-4 py-2 rounded-md border-l-2 border-muted/50 my-4" {...props} />;
-                                    }
-                                    if (content.trim() === "CLIQUE" || content.includes("(CLIQUE)") || content.includes("**CLIQUE**") || content.includes("////// CLIQUE")) {
+                                    const extractText = (n: any): string => {
+                                        if (!n) return "";
+                                        if (n.type === 'text') return n.value;
+                                        if (n.children) return n.children.map(extractText).join('');
+                                        return "";
+                                    };
+                                    const content = extractText(node).trim();
+
+                                    if (content === "CLIQUE" || content === "(CLIQUE)" || content === "**CLIQUE**" || content === "////// CLIQUE") {
                                         return (
                                             <div className="bg-muted/50 border border-white/20 text-muted-foreground py-1 px-4 rounded my-2 font-mono text-xs font-bold uppercase w-fit ml-auto">
                                                 <span className="tracking-[0.5em] ml-[0.5em]">CLIQUE</span>
                                             </div>
                                         );
                                     }
+                                    if (content.startsWith("*[") || content.startsWith("*(") || content.startsWith("[") || content.startsWith("(")) {
+                                        return (
+                                            <p className="block bg-muted/10 border-l-[3px] border-primary/40 px-4 py-3 my-4 text-sm text-foreground/50 italic rounded-r-md">
+                                                {props.children}
+                                            </p>
+                                        );
+                                    }
                                     return <p className="text-foreground leading-relaxed text-lg pt-0 mb-0" {...props} />;
                                 },
                                 em: ({ node, ...props }) => {
-                                    const t = props.children?.toString() || '';
-                                    if (t.startsWith("[") || t.startsWith("(")) {
-                                        return <span className="not-italic" {...props} />;
-                                    }
-                                    return <em className="text-foreground/60 italic" {...props} />;
+                                    return <em className="text-foreground/80 italic font-light" {...props} />;
                                 },
                                 strong: ({ node, ...props }) => {
                                     const t = props.children?.toString() || '';

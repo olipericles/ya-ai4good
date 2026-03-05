@@ -34,10 +34,13 @@ const ScriptViewer = ({ markdownContent, title }: ScriptViewerProps) => {
                                 );
                             },
                             p: ({ node, ...props }) => {
-                                const paragraphs = props.children?.toString().split('\n') || [];
-
-                                // Since react-markdown wraps everything in P, we need to carefully extract our metadata tags
-                                const content = props.children?.toString() || '';
+                                const extractText = (n: any): string => {
+                                    if (!n) return "";
+                                    if (n.type === 'text') return n.value;
+                                    if (n.children) return n.children.map(extractText).join('');
+                                    return "";
+                                };
+                                const content = extractText(node).trim();
 
                                 if (content.startsWith("Tempo:") || content.startsWith("**Tempo:**")) {
                                     const time = content.replace("**Tempo:**", "").replace("Tempo:", "").trim();
@@ -69,17 +72,19 @@ const ScriptViewer = ({ markdownContent, title }: ScriptViewerProps) => {
                                     );
                                 }
 
-                                // If the paragraph is purely a transition or stage action inside *[ ]*
-                                if (content.startsWith("*[") || content.startsWith("*(")) {
-                                    return <p className="text-foreground/50 italic bg-muted/20 px-4 py-2 rounded-md border-l-2 border-muted/50 my-4" {...props} />;
-                                }
-
-                                // Interactive Click marker
-                                if (content.trim() === "CLIQUE" || content.includes("(CLIQUE)") || content.includes("**CLIQUE**") || content.includes("////// CLIQUE")) {
+                                if (content === "CLIQUE" || content === "(CLIQUE)" || content === "**CLIQUE**" || content === "////// CLIQUE") {
                                     return (
                                         <div className="bg-muted/50 border border-white/20 text-muted-foreground py-1 px-4 rounded my-2 font-mono text-xs font-bold uppercase w-fit ml-auto">
                                             <span className="tracking-[0.5em] ml-[0.5em]">CLIQUE</span>
                                         </div>
+                                    );
+                                }
+
+                                if (content.startsWith("*[") || content.startsWith("*(") || content.startsWith("[") || content.startsWith("(")) {
+                                    return (
+                                        <p className="block bg-muted/10 border-l-[3px] border-primary/40 px-4 py-3 my-4 text-sm text-foreground/50 italic rounded-r-md">
+                                            {props.children}
+                                        </p>
                                     );
                                 }
 
@@ -90,15 +95,10 @@ const ScriptViewer = ({ markdownContent, title }: ScriptViewerProps) => {
                                 );
                             },
                             em: ({ node, ...props }) => {
-                                const t = props.children?.toString() || '';
-                                if (t.startsWith("[") || t.startsWith("(")) {
-                                    return <span className="not-italic" {...props} />;
-                                }
-                                return <em className="text-foreground/60 italic" {...props} />;
+                                return <em className="text-foreground/80 italic font-light" {...props} />;
                             },
                             strong: ({ node, ...props }) => {
                                 const t = props.children?.toString() || '';
-                                // Detect if it's a character name speaking ending with colon like -> "**Adriele:**"
                                 if (t.endsWith(":") || t === "TODOS JUNTOS:") {
                                     return <strong className="font-bold text-primary mr-2 uppercase tracking-wide text-xs bg-primary/10 px-2 py-1 rounded" {...props} />;
                                 }
@@ -111,7 +111,7 @@ const ScriptViewer = ({ markdownContent, title }: ScriptViewerProps) => {
                     </ReactMarkdown>
                 </article>
             </main>
-        </div>
+        </div >
     );
 };
 
