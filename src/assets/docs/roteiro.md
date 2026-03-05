@@ -16,7 +16,6 @@ Alinhado ao mapa de cliques da apresentação web (rota /v2BC2026t).
 ---
 
 ## SLIDE 0: Tela de Espera
-**Navegação: 0 sub-steps (1 estado + CLIQUE avança)**
 **Quem fala:** Adriele
 **Visual:** Logo da Yá em loop.
 
@@ -29,23 +28,22 @@ Alinhado ao mapa de cliques da apresentação web (rota /v2BC2026t).
 ---
 
 ## SLIDE 1: Impacto
-**Navegação: 3 sub-steps (4 estados)**
 **Tempo:** ~45s | **Quem fala:** Adriele
 **Energia:** Íntima | **Velocidade:** Pausada | **Volume:** Baixo-médio
 
-**Step 0** *(estado inicial — título "O Impacto", apenas introdução emocional)*:
+*[estado inicial — título "O Impacto", apenas introdução emocional]*
 
 "Minha prima cria dois filhos sozinha. Minha vizinha, três. A mãe da minha melhor amiga criou quatro. Eu cresci cercada de mulheres que faziam milagre com pouco, e que no fim do mês não sabiam explicar pra onde o dinheiro tinha ido.
 
-**(CLIQUE)** → *Step 1: revela "11 Milhões"*
+////// CLIQUE — revela "11 Milhões"
 
 Essas mulheres são 11 milhões de brasileiras.
 
-**(CLIQUE)** → *Step 2: revela mapa + comparativo Portugal*
+////// CLIQUE — revela mapa + comparativo Portugal
 
 Mais do que a população inteira de Portugal.
 
-**(CLIQUE)** → *Step 3: revela "90% mulheres negras"*
+////// CLIQUE — revela "90% mulheres negras"
 
 E 90% desse crescimento na última década são mulheres negras.
 
@@ -53,28 +51,27 @@ Isso não é estatística pra mim. É a foto da minha família."
 
 *[Ritmo pausado. Cada frase é uma imagem. Tom íntimo na frase final.]*
 
-**(CLIQUE)** → avança para o Slide 2
+////// CLIQUE — avança para o Slide 2
 
 ---
 
 ## SLIDE 2: O Problema Invisível
-**Navegação: 4 sub-steps (5 estados)**
 **Tempo:** ~40s | **Quem fala:** Adriele
 **Energia:** Intensa | **Velocidade:** Moderada | **Volume:** Crescente
 
-**Step 0** *(estado inicial — "O maior inimigo é o gasto invisível")*:
+*[estado inicial — "O maior inimigo é o gasto invisível"]*
 
 "O maior inimigo não é a conta grande. É o gasto invisível.
 
-**(CLIQUE)** → *Step 1: revela "A taxa surpresa"*
+////// CLIQUE — revela "A taxa surpresa"
 
 A taxa que veio sem avisar.
 
-**(CLIQUE)** → *Step 2: revela "O lanche de 12 reais..."*
+////// CLIQUE — revela "O lanche de 12 reais..."
 
 O lanche de 12 reais que virou 200 no mês.
 
-**(CLIQUE)** → *Step 3: revela "O remédio de madrugada"*
+////// CLIQUE — revela "O remédio de madrugada"
 
 O remédio de emergência de madrugada.
 
@@ -82,36 +79,35 @@ Eu já vi minha prima chorar no fim do mês sem entender como o dinheiro acabou.
 
 *(pausa antes da revelação)*
 
-**(CLIQUE)** → *Step 4: tela transiciona, revela no centro "É falta de ferramenta"*
+////// CLIQUE — tela transiciona, revela no centro "É falta de ferramenta"
 
 É falta de ferramenta."
 
 *[Convicção na frase final. É o gancho para Luã.]*
 
-**(CLIQUE)** → avança para o Slide 3
+////// CLIQUE — avança para o Slide 3
 
 ---
 
 ## SLIDE 3: A Solução
-**Navegação: 3 sub-steps (4 estados)**
 **Tempo:** ~50s | **Quem fala:** Luã
 **Energia:** Clara | **Velocidade:** Moderada | **Volume:** Médio
 
 **TRANSIÇÃO Adriele → Luã:** "É falta de ferramenta" é o gancho. Luã entra imediato.
 
-**Step 0** *(estado inicial — copy lateral visível, frame do celular OCULTO)*:
+*[estado inicial — copy lateral visível, frame do celular OCULTO]*
 
 "A Yá é uma assistente financeira que vive no WhatsApp.
 
-**(CLIQUE)** → *Step 1: celular sobe girando para o centro — tela de interação por áudio, Carol manda cupom amassado*
+////// CLIQUE — celular sobe girando para o centro — tela de interação por áudio, Carol manda cupom amassado
 
 A mãe manda um áudio dizendo 'gastei 50 no mercado', manda foto de um cupom amassado de pastel e óleo de soja, ou simplesmente digita. A IA transcreve, categoriza e organiza.
 
-**(CLIQUE)** → *Step 2: celular atualiza via esmaecimento (opacity) — tela de interação de saldo, Yá retorna com categorização + link*
+////// CLIQUE — celular atualiza via esmaecimento (opacity) — tela de interação de saldo, Yá retorna com categorização + link
 
 Se ela se confunde num comando, a Yá não trava, não dá erro. Responde com paciência, na voz de uma mulher nordestina.
 
-**(CLIQUE)** → *Step 3: celular atualiza — tela da PWA dashboard (dash-carol.jpeg)*
+////// CLIQUE — celular atualiza — tela da PWA dashboard (dash-carol.jpeg)
 
 Sem app pra baixar. Sem formulário. Sem fricção.
 
@@ -119,12 +115,11 @@ A gente não pede pra mudarem de vida — a gente entra na vida delas."
 
 *[Tom de orgulho pela elegância da solução.]*
 
-**(CLIQUE)** → avança para o Slide 4
+////// CLIQUE — avança para o Slide 4
 
 ---
 
 ## SLIDE 4: O Teste
-**Navegação: 3 sub-steps (4 estados)**
 **Tempo:** ~40s | **Quem fala:** Luã → Adriele
 **Energia:** Ponte → Confiante | **Velocidade:** Moderada | **Volume:** Médio
 
@@ -134,48 +129,47 @@ A gente não pede pra mudarem de vida — a gente entra na vida delas."
 
 **Adriele** *(assume)*:
 
-**Step 0** *(estado inicial — placa com "14", circundada por 14 rostos femininos)*:
+*[estado inicial — placa com "14", circundada por 14 rostos femininos]*
 
 "Em fevereiro de 2026, rodamos um piloto de 2 semanas com 14 mães em Salvador.
 
-**(CLIQUE)** → *Step 1: número muda para "10", 4 bolhas descartadas — "Fizeram Cadastro"*
+////// CLIQUE — número muda para "10", 4 bolhas descartadas — "Fizeram Cadastro"
 
 10 fizeram cadastro.
 
-**(CLIQUE)** → *Step 2: número muda para "5", bolhas voam para trás — "Engajadas"*
+////// CLIQUE — número muda para "5", bolhas voam para trás — "Engajadas"
 
 5 se engajaram de verdade, registrando gastos consistentemente.
 
-**(CLIQUE)** → *Step 3: número muda para "3", 3 hero avatars gigantes — "Transformadas reais"*
+////// CLIQUE — número muda para "3", 3 hero avatars gigantes — "Transformadas reais"
 
 E 3 relataram transformação real na forma como enxergam suas finanças."
 
 *[Tom de quem viveu: "rodamos" porque ela esteve lá. Números com ritmo: 14 → 10 → 5 → 3.]*
 
-**(CLIQUE)** → avança para o Slide 5
+////// CLIQUE — avança para o Slide 5
 
 ---
 
 ## SLIDE 5: As Vozes
-**Navegação: 2 sub-steps (3 estados)**
 **Tempo:** ~60s | **Quem fala:** Adriele
 **Energia:** Emocional | **Velocidade:** Lenta | **Volume:** Baixo (respirar)
 
 ⚠️ **CORAÇÃO DO PITCH.** Falar mais devagar. DIGNIDADE é a palavra mais importante do pitch inteiro.
 
-**Step 0** *(estado inicial — apenas o título)*:
+*[estado inicial — apenas o título]*
 
 **Adriele:** "E o que essas mães nos disseram mudou tudo."
 
 *(pausa — transição emocional)*
 
-**(CLIQUE)** → *Step 1: revela o primeiro depoimento*
+////// CLIQUE — revela o primeiro depoimento
 
 "Uma delas me disse: 'Eu achava que o problema era o salário. Era o delivery.'
 
 Ela descobriu que gastava mais de 300 reais por mês em delivery que não percebia. Redirecionou pra compras no mercado.
 
-**(CLIQUE)** → *Step 2: revela o segundo depoimento*
+////// CLIQUE — revela o segundo depoimento
 
 Outra me disse: 'Pela primeira vez em 3 anos, sobrou 50 reais no fim do mês.'
 
@@ -185,24 +179,23 @@ Outra me disse: 'Pela primeira vez em 3 anos, sobrou 50 reais no fim do mês.'
 
 *[Deixar as citações respirarem. Não apressar.]*
 
-**(CLIQUE)** → avança para o Slide 6
+////// CLIQUE — avança para o Slide 6
 
 ---
 
 ## SLIDE 6: Escalar o Sucesso
-**Navegação: 1 sub-step (2 estados)**
 **Tempo:** ~50s | **Quem fala:** Adriele → Péricles
 **Energia:** Celebração → Ambição | **Velocidade:** Crescente | **Volume:** Médio → Alto
 
 **TRANSIÇÃO Adriele → Péricles:** Adriele celebra o presente. Péricles projeta o futuro.
 
-**Step 0** *(estado inicial — visível apenas cartão esquerdo: "O que já fizemos" — Custo Zero, Mães 14, Transformadas 3)*:
+*[estado inicial — visível apenas cartão esquerdo: "O que já fizemos" — Custo Zero, Mães 14, Transformadas 3]*
 
 **Adriele:** "A gente tá muito feliz. Porque em apenas duas semanas, com custo praticamente zero, a gente mudou a vida de três pessoas. Três mães que pela primeira vez conseguiram enxergar pra onde o dinheiro ia."
 
 *[Tom de satisfação genuína. Adriele VIVEU isso.]*
 
-**(CLIQUE)** → *Step 1: cartão direito desliza com brilho — "Onde queremos chegar" (Meta 1.000, Projeção ~214)*
+////// CLIQUE — cartão direito desliza com brilho — "Onde queremos chegar" (Meta 1.000, Projeção ~214)
 
 **Péricles** *(assume)*: "Agora imagina o que a gente pode fazer em seis meses. Com mil mães.
 
@@ -210,32 +203,31 @@ A tecnologia já existe. O produto já funciona. A gente só precisa de escala."
 
 *["Mil mães" com peso. Ritmo de três frases conclusivas.]*
 
-**(CLIQUE)** → avança para o Slide 7
+////// CLIQUE — avança para o Slide 7
 
 ---
 
 ## SLIDE 7: O Caminho / CTA
-**Navegação: 4 sub-steps (5 estados)**
 **Tempo:** ~45s | **Quem fala:** Péricles
 **Energia:** Reflexiva → Provocativa → Convidativa | **Velocidade:** Moderada | **Volume:** Médio
 
 ⚠️ **Arco em 3 tempos:** confiança → provocação → convite.
 
-**Step 0** *(estado inicial — título "Distribuição", 3 cartas foscas)*:
+*[estado inicial — título "Distribuição", 3 cartas foscas]*
 
 "Sabemos o resultado que conseguimos. Sabemos o custo para chegar a mil.
 
 O próximo passo é encontrar essas mil mães.
 
-**(CLIQUE)** → *Step 1: acende cartão CRAS*
+////// CLIQUE — acende cartão CRAS
 
 Talvez integrando com CRAS.
 
-**(CLIQUE)** → *Step 2: acende cartão ONGs*
+////// CLIQUE — acende cartão ONGs
 
 Com ONGs.
 
-**(CLIQUE)** → *Step 3: acende cartão Políticas Públicas*
+////// CLIQUE — acende cartão Políticas Públicas
 
 Com políticas públicas que já existem.
 
@@ -247,7 +239,7 @@ E se a gente consegue entregar esse nível de cuidado com tão pouco recurso —
 
 *(pausa)*
 
-**(CLIQUE)** → *Step 4: cartas desaparecem/encolhem — surge centralizado "Imagina quando essa tecnologia escala" com efeito de ondas/pings sísmicos em loop*
+////// CLIQUE — cartas desaparecem/encolhem — surge centralizado "Imagina quando essa tecnologia escala" com efeito de ondas/pings sísmicos em loop
 
 — imagina o que acontece quando essa tecnologia escala.
 
@@ -259,18 +251,17 @@ As interfaces frias e burocráticas vão ter que aprender a falar a língua das 
 
 Se alguém aqui acredita que tecnologia de verdade é a que cuida de quem mais precisa, a gente vai adorar essa conversa."
 
-**(CLIQUE)** → avança para o Slide 8
+////// CLIQUE — avança para o Slide 8
 
 ---
 
 ## SLIDE 8: Nós
-**Navegação: 1 sub-step (2 estados)**
 **Tempo:** ~50s | **Quem fala:** Todos (Jogral)
 **Energia:** Firme, unida | **Velocidade:** Pausada | **Volume:** Médio, firme
 
 ⚠️ Precisa ensaiar o jogral.
 
-**Step 0** *(estado inicial — fotos e nomes dos fundadores + visão)*:
+*[estado inicial — fotos e nomes dos fundadores + visão]*
 
 **Adriele:** "Somos Adriele..."
 **Luã:** "...Luã..."
@@ -291,16 +282,15 @@ Se alguém aqui acredita que tecnologia de verdade é a que cuida de quem mais p
 
 *(sorriso)*
 
-**(CLIQUE)** → *Step 1: revela credenciais e links (Github, LinkedIn) + última chamada*
+////// CLIQUE — revela credenciais e links (Github, LinkedIn) + última chamada
 
 *[Slide fica estático enquanto aplausos acontecem.]*
 
-**(CLIQUE)** → avança para o Slide 9
+////// CLIQUE — avança para o Slide 9
 
 ---
 
 ## SLIDE 9: QR Code
-**Navegação: 0 sub-steps (1 estado estático)**
 **Quem fala:** —
 **Visual:** QR Code estático envolto pela aura da Yá + "Experimente a Yá agora" + "11 milhões de mães. 22 milhões de crianças." + "Uma IA que cuida de quem cuida de todo mundo."
 
