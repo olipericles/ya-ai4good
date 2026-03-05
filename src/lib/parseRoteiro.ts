@@ -20,8 +20,8 @@ export interface SlideScript {
 }
 
 export function parseRoteiro(raw: string): SlideScript[] {
-    // Split by slide headers: ### SLIDE N — Title  or  ### SLIDE N: Title
-    const slideBlocks = raw.split(/^### /m).filter(Boolean);
+    // Split by slide headers: ## SLIDE N or ### SLIDE N
+    const slideBlocks = raw.split(/^##{1,2} /m).filter(Boolean);
 
     return slideBlocks
         .filter(block => block.trim().startsWith("SLIDE"))
@@ -37,20 +37,29 @@ export function parseRoteiro(raw: string): SlideScript[] {
             // Parse metadata fields
             let time = "—";
             let speaker = "—";
-            let notes = "";
+            let notesParts: string[] = [];
             let scriptStartIndex = 1;
 
             for (let i = 1; i < lines.length; i++) {
                 const line = lines[i].trim();
 
-                if (line.startsWith("**Tempo:**")) {
-                    time = line.replace("**Tempo:**", "").trim();
+                // Handle single-line combined like "**Tempo:** ~45s | **Quem fala:** Adriele"
+                if (line.includes("**Tempo:**") || line.includes("**Quem fala:**")) {
                     scriptStartIndex = i + 1;
-                } else if (line.startsWith("**Quem fala:**")) {
-                    speaker = line.replace("**Quem fala:**", "").trim();
+                    const parts = line.split("|");
+                    for (const part of parts) {
+                        const p = part.trim();
+                        if (p.startsWith("**Tempo:**")) {
+                            time = p.replace("**Tempo:**", "").trim();
+                        } else if (p.startsWith("**Quem fala:**")) {
+                            speaker = p.replace("**Quem fala:**", "").trim();
+                        }
+                    }
+                } else if (line.startsWith("**Notas:**") || line.startsWith("**Notas de palco:**")) {
+                    notesParts.push(line.replace(/\*\*Notas( de palco)?:\*\*/, "").trim());
                     scriptStartIndex = i + 1;
-                } else if (line.startsWith("**Notas:**")) {
-                    notes = line.replace("**Notas:**", "").trim();
+                } else if (line.startsWith("**Energia:**") || line.startsWith("**Objetivo emocional:**") || line.startsWith("**Visual:**")) {
+                    notesParts.push(line);
                     scriptStartIndex = i + 1;
                 } else if (line === "" && scriptStartIndex === i) {
                     // Skip blank lines between metadata and script
@@ -61,6 +70,8 @@ export function parseRoteiro(raw: string): SlideScript[] {
                     break;
                 }
             }
+
+            const notes = notesParts.join(" | ");
 
             // Everything from scriptStartIndex onward is the script
             const script = lines
