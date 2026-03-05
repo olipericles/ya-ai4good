@@ -52,12 +52,12 @@ Péricles com o clicker (lateral técnica).
 ---
 
 ## SLIDE 0: Tela de Espera
-**Tempo:** — | **Quem fala:** Ninguém
+**Tempo:** — | **Quem fala:** Adriele
 **Visual:** Logo Yá + "Yá: mãe, em yorubá."
 
-*[Slide automático, sem narração]*
+*[Slide automático. Time caminha e se posiciona. Luã (esq), Adriele (centro), Péricles (dir).]*
 
-Time caminha e se posiciona. Luã (esq), Adriele (centro), Péricles (dir).
+**Adriele:** "Yá significa mãe, em yorubá."
 
 ---
 
@@ -241,7 +241,7 @@ Se alguém aqui acredita que tecnologia de verdade é a que cuida de quem mais p
 
 *(uníssono — pausa de 2 segundos depois)*
 
-**Adriele:** "Yá significa mãe, em yorubá. São 11 milhões de mães. 22 milhões de crianças. A gente não tá só ajudando elas a controlar dinheiro. A gente tá tentando quebrar um ciclo."
+**Adriele:** "São 11 milhões de mães. 22 milhões de crianças. A gente não tá só ajudando elas a controlar dinheiro. A gente tá tentando quebrar um ciclo."
 
 *(pausa — tom firme, olhando pra frente)*
 
