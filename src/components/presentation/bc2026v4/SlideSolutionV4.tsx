@@ -1,8 +1,8 @@
 import { type SlideMode } from "../types";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import interacaoAudio from "@/assets/images/interacao-carol-audio.jpeg";
-import interacaoCupom from "@/assets/images/interacao-carol-texto-cupom.jpeg";
 import interacaoSaldo from "@/assets/images/interacao-carol-saldo.jpeg";
+import dashCarol from "@/assets/images/dash-carol.jpeg";
 
 interface SlideSolutionV4Props {
     isActive: boolean;
@@ -60,13 +60,13 @@ const SlideSolutionV4 = ({ isActive, step = 0 }: SlideSolutionV4Props) => {
                                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out z-10 ${step === 1 ? "opacity-100" : "opacity-0"}`}
                             />
                             <img
-                                src={interacaoCupom}
-                                alt="Interação por Cupom"
+                                src={interacaoSaldo}
+                                alt="Interação verificando Saldo"
                                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out z-20 ${step === 2 ? "opacity-100" : "opacity-0"}`}
                             />
                             <img
-                                src={interacaoSaldo}
-                                alt="Interação verificando Saldo"
+                                src={dashCarol}
+                                alt="Dashboard mostrando a Visão 360"
                                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out z-30 ${step >= 3 ? "opacity-100" : "opacity-0"}`}
                             />
 
