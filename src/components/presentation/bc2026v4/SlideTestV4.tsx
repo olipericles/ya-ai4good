@@ -1,4 +1,4 @@
-import { type SlideMode } from "../bc2026v2/SlideContainerV2";
+import { type SlideMode } from "../types";
 import { cn } from "@/lib/utils";
 
 interface SlideTestV4Props {

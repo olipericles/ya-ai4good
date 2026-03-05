@@ -1,4 +1,4 @@
-import { type SlideMode } from "../bc2026v2/SlideContainerV2";
+import { type SlideMode } from "../types";
 import { Building, Users, Landmark, Share2 } from "lucide-react";
 
 interface SlidePathV4Props {

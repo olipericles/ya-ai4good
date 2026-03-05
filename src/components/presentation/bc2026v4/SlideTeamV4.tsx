@@ -1,4 +1,4 @@
-import { type SlideMode } from "../bc2026v2/SlideContainerV2";
+import { type SlideMode } from "../types";
 import { Linkedin } from "lucide-react";
 import equipeAdriele from "@/assets/team/equipe-adriele.png";
 import equipePericles from "@/assets/team/equipe-pericles.png";
