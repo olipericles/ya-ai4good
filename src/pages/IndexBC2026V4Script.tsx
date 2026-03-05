@@ -1,12 +1,12 @@
 import ScriptViewer from "@/components/presentation/ScriptViewer";
-import roteiroV2 from "@/assets/docs/roteiro-v2.md?raw";
+import roteiroV4 from "@/assets/docs/roteiro-v4.md?raw";
 
 const IndexBC2026V4Script = () => {
-    // V4 is essentially identical in logical progression to V2 script logic
+    // V4 represents the latest pitch script structure
     return (
         <ScriptViewer
             title="Script V4"
-            markdownContent={roteiroV2}
+            markdownContent={roteiroV4}
         />
     );
 };

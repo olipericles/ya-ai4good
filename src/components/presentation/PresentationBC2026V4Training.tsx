@@ -13,7 +13,7 @@ import SlidePathV4, { SLIDE_PATH_V4_STEPS } from "./bc2026v4/SlidePathV4";
 import SlideTeamV4, { SLIDE_TEAM_V4_STEPS } from "./bc2026v4/SlideTeamV4";
 import SlideQRCodeV4, { SLIDE_QRCODE_V4_STEPS } from "./bc2026v4/SlideQRCodeV4";
 
-import roteiroRaw from "@/assets/docs/roteiro-v2.md?raw";
+import roteiroRaw from "@/assets/docs/roteiro-v4.md?raw";
 import { parseRoteiro } from "@/lib/parseRoteiro";
 
 const STEPS_PER_SLIDE = [
