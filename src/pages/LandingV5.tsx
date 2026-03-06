@@ -5,7 +5,9 @@ import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import equipePericles from "@/assets/team/equipe-pericles.png";
 import equipeAdriele from "@/assets/team/equipe-adriele.png";
 import equipeLua from "@/assets/team/equipe-lua.png";
-import yaWhatsappMockup from "@/assets/images/ya-whatsapp-mockup.jpg";
+import interacaoAudio from "@/assets/images/interacao-carol-audio.jpeg";
+import interacaoSaldo from "@/assets/images/interacao-carol-saldo.jpeg";
+import dashCarol from "@/assets/images/dash-carol.jpeg";
 import logoPoupa from "@/assets/logos/logo-poupa.png";
 import logoGranazen from "@/assets/logos/logo-granazen.png";
 import yaQrcode from "@/assets/logos/ya-qrcode.png";
@@ -16,7 +18,15 @@ const LandingV5 = () => {
     const [pitchPassword, setPitchPassword] = useState("");
     const [isPitchAuth, setIsPitchAuth] = useState(false);
     const [pitchError, setPitchError] = useState(false);
+    const [solutionStep, setSolutionStep] = useState(0);
     const t = translations[lang];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setSolutionStep((prev) => (prev + 1) % 3);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         document.title = t.meta.title;
@@ -210,11 +220,23 @@ const LandingV5 = () => {
                         <div className="flex-shrink-0 relative group perspective-1000">
                             {/* Glow behind phone */}
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl rounded-[3rem] scale-90 group-hover:scale-100 transition-transform duration-700" />
-                            <img
-                                src={yaWhatsappMockup}
-                                alt="Conversa com assistente Yá no WhatsApp"
-                                className="relative rounded-[3rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] border-8 border-white/10 max-w-[320px] w-full transform rotate-y-[-5deg] group-hover:rotate-y-0 transition-transform duration-700"
-                            />
+                            <div className="relative rounded-[3rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] border-8 border-white/10 max-w-[320px] w-full aspect-[9/19.5] overflow-hidden bg-black transform rotate-y-[-5deg] group-hover:rotate-y-0 transition-transform duration-700">
+                                <img
+                                    src={interacaoAudio}
+                                    alt="Interação por Áudio"
+                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-1000 ${solutionStep === 0 ? "opacity-100" : "opacity-0"}`}
+                                />
+                                <img
+                                    src={interacaoSaldo}
+                                    alt="Interação verificando Saldo"
+                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-1000 ${solutionStep === 1 ? "opacity-100" : "opacity-0"}`}
+                                />
+                                <img
+                                    src={dashCarol}
+                                    alt="Dashboard PWA"
+                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-1000 ${solutionStep === 2 ? "opacity-100" : "opacity-0"}`}
+                                />
+                            </div>
                         </div>
 
                         <div className="flex-1 space-y-6">
