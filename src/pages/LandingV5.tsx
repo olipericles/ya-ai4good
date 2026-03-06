@@ -360,7 +360,7 @@ const LandingV5 = () => {
                                     <th className="text-left p-6 font-bold text-white/80 uppercase tracking-widest text-xs border-b border-white/10">{"Critério"}</th>
                                     <th className="p-6 font-bold text-white/80 uppercase tracking-widest text-xs border-b border-white/10">
                                         <div className="flex items-center justify-center gap-2 opacity-60">
-                                            <span className="text-white/60">🏦</span>
+                                            <span className="text-white/60 text-lg">⌘</span>
                                             <span>{t.bankComparison.otherLabel}</span>
                                         </div>
                                     </th>
@@ -392,8 +392,8 @@ const LandingV5 = () => {
                                 <div className="flex flex-col gap-4">
                                     <div className="flex flex-col gap-2">
                                         <div className="flex items-center gap-2 text-white/50 text-xs font-bold uppercase tracking-widest">
-                                            <div className="flex bg-black/50 px-3 py-1.5 rounded-full border border-white/10 gap-2 items-center">
-                                                <span>🏦</span>
+                                            <div className="flex bg-black/50 px-3 py-1.5 rounded-full border border-white/10 gap-2 items-center opacity-60">
+                                                <span className="text-xs">⌘</span>
                                                 <span>{t.bankComparison.otherLabel}</span>
                                             </div>
                                         </div>
