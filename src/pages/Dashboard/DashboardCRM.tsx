@@ -23,6 +23,8 @@ interface WaitlistEntry {
     ja_usou_app_financeiro: string | null;
     usa_whatsapp: boolean | null;
     motivacao: string;
+    alerta_duplicidade: boolean;
+    interesse_ajudar_outras: string;
     interesse_ajudar_outras: string;
     dias_ativos_7d: number;
     ultima_interacao: string | null;
@@ -384,8 +386,8 @@ export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
                     <div className="flex flex-wrap gap-3 mt-4">
                         {selectedEntry.ja_usou_app_financeiro && (
                             <span className={`text-xs px-2.5 py-1 rounded-full border ${selectedEntry.ja_usou_app_financeiro === "sim" ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" :
-                                    selectedEntry.ja_usou_app_financeiro === "ja_mas_nao_adaptei" ? "bg-amber-500/10 border-amber-500/20 text-amber-400" :
-                                        "bg-white/5 border-white/10 text-white/50"
+                                selectedEntry.ja_usou_app_financeiro === "ja_mas_nao_adaptei" ? "bg-amber-500/10 border-amber-500/20 text-amber-400" :
+                                    "bg-white/5 border-white/10 text-white/50"
                                 }`}>
                                 {selectedEntry.ja_usou_app_financeiro === "sim" ? "✅ Usa app financeiro" :
                                     selectedEntry.ja_usou_app_financeiro === "ja_mas_nao_adaptei" ? "⚠️ Já usou, não adaptou" :

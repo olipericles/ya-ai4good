@@ -69,7 +69,7 @@ const t = {
         s2EstadoLabel: "Estado",
         s2EstadoPlaceholder: "Selecione",
         s3Title: "Seus dados de contato",
-        s3NomeLabel: "Como podemos te chamar?",
+        s3NomeLabel: "Como quer que a Yá te chame?",
         s3NomePlaceholder: "Seu nome",
         s3WhatsLabel: "Número do WhatsApp",
         s3WhatsPlaceholder: "(XX) XXXXX-XXXX",
@@ -109,8 +109,12 @@ const t = {
         successMsg: "Sua inscrição na lista de espera foi recebida com sucesso! Entraremos em contato pelo WhatsApp em breve.",
         successClose: "Fechar",
         // Validation
-        required: "Campo obrigatório",
         invalidWhatsapp: "Número inválido",
+        duplicateTitle: "Número já cadastrado",
+        duplicateMsg: "Este número de WhatsApp já encontra-se na nossa lista de espera.",
+        duplicateReportLabel: "Não foi você que fez este cadastro?",
+        duplicateReportBtn: "Reportar erro com este número",
+        duplicateReportSuccess: "Erro reportado com sucesso. Vamos analisar o caso.",
     },
     en: {
         step0Title: "Welcome to Yá! 💛",
@@ -126,7 +130,7 @@ const t = {
         s2EstadoLabel: "State",
         s2EstadoPlaceholder: "Select",
         s3Title: "Your contact info",
-        s3NomeLabel: "What should we call you?",
+        s3NomeLabel: "How would you like Yá to call you?",
         s3NomePlaceholder: "Your name",
         s3WhatsLabel: "WhatsApp number",
         s3WhatsPlaceholder: "(XX) XXXXX-XXXX",
@@ -164,6 +168,11 @@ const t = {
         successClose: "Close",
         required: "Required field",
         invalidWhatsapp: "Invalid number",
+        duplicateTitle: "Number already registered",
+        duplicateMsg: "This WhatsApp number is already on our waitlist.",
+        duplicateReportLabel: "Wasn't you who registered?",
+        duplicateReportBtn: "Report error with this number",
+        duplicateReportSuccess: "Error reported successfully. We will analyze the case.",
     },
 };
 
@@ -180,6 +189,8 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
     const [form, setForm] = useState<FormData>(initialFormData);
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [duplicateError, setDuplicateError] = useState(false);
+    const [reportedDuplicate, setReportedDuplicate] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     const labels = t[lang];
@@ -192,6 +203,8 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
         setForm(initialFormData);
         setSubmitting(false);
         setSuccess(false);
+        setDuplicateError(false);
+        setReportedDuplicate(false);
         setErrors({});
     };
 
@@ -274,9 +287,34 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
             });
 
             if (!resp.ok) throw new Error("Failed");
+
+            const data = await resp.json();
+            if (data.status === "error" && data.code === "DUPLICATE_PHONE") {
+                setDuplicateError(true);
+                return;
+            }
+
             setSuccess(true);
         } catch (err) {
             console.error("Waitlist submit error:", err);
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
+    const handleReportDuplicate = async () => {
+        setSubmitting(true);
+        try {
+            const resp = await fetch(`${API_BASE_URL}/api/forms/submit/report-waitlist-error`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ whatsapp: form.whatsapp.replace(/\D/g, "") }),
+            });
+            if (resp.ok) {
+                setReportedDuplicate(true);
+            }
+        } catch (err) {
+            console.error("Report duplicate error:", err);
         } finally {
             setSubmitting(false);
         }
@@ -308,7 +346,7 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                 </button>
 
                 {/* Progress Bar */}
-                {step >= 0 && !success && (
+                {step >= 0 && !success && !duplicateError && (
                     <div className="mb-6">
                         <div className="h-1 bg-white/10 rounded-full overflow-hidden">
                             <div
@@ -339,8 +377,52 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                     </div>
                 )}
 
+                {/* DUPLICATE ERROR */}
+                {duplicateError && !success && (
+                    <div className="text-center py-6 animate-fade-up">
+                        <div className="w-16 h-16 mx-auto mb-6 bg-amber-500/10 rounded-full flex items-center justify-center border border-amber-500/20">
+                            <span className="text-3xl">⚠️</span>
+                        </div>
+                        <h2 className="text-2xl font-black text-white mb-3">{labels.duplicateTitle}</h2>
+                        <p className="text-white/60 mb-6">{labels.duplicateMsg}</p>
+
+                        {!reportedDuplicate ? (
+                            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 mb-6 text-sm">
+                                <p className="text-white/50 mb-4">{labels.duplicateReportLabel}</p>
+                                <button
+                                    onClick={handleReportDuplicate}
+                                    disabled={submitting}
+                                    className="w-full py-3 bg-white/5 border border-white/10 hover:border-amber-500/50 hover:bg-amber-500/10 text-amber-500 font-bold rounded-xl transition-all flex justify-center items-center gap-2"
+                                >
+                                    {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+                                    {labels.duplicateReportBtn}
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-xl mb-6">
+                                <p className="text-emerald-400 font-semibold text-sm">{labels.duplicateReportSuccess}</p>
+                            </div>
+                        )}
+
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => setDuplicateError(false)}
+                                className="flex-1 px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-white/80 font-semibold hover:bg-white/10 transition-colors"
+                            >
+                                {labels.back}
+                            </button>
+                            <button
+                                onClick={handleClose}
+                                className="flex-1 px-5 py-3 rounded-xl bg-primary/20 border border-primary/30 text-primary font-bold hover:bg-primary/30 transition-colors"
+                            >
+                                {labels.successClose}
+                            </button>
+                        </div>
+                    </div>
+                )}
+
                 {/* STEP -1: Triagem */}
-                {!success && step === -1 && (
+                {!success && !duplicateError && step === -1 && (
                     <div className="py-4 animate-fade-up">
                         <div className="text-center mb-8">
                             <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">{labels.step0Title}</h2>
@@ -367,7 +449,7 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                 )}
 
                 {/* MÃE SOLO FLOW */}
-                {!success && flow === "mae_solo" && step >= 0 && (
+                {!success && !duplicateError && flow === "mae_solo" && step >= 0 && (
                     <div className="animate-fade-up" key={`solo-${step}`}>
                         {/* Step 0: Filhos */}
                         {step === 0 && (
@@ -557,7 +639,7 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                 )}
 
                 {/* APOIADOR FLOW */}
-                {!success && flow === "apoiador" && step >= 0 && (
+                {!success && !duplicateError && flow === "apoiador" && step >= 0 && (
                     <div className="animate-fade-up" key={`apoiador-${step}`}>
                         {/* Step 0: Filhos */}
                         {step === 0 && (
@@ -668,7 +750,7 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                 )}
 
                 {/* Navigation Buttons */}
-                {!success && step >= 0 && (
+                {!success && !duplicateError && step >= 0 && (
                     <div className="flex gap-3 mt-8">
                         <button
                             onClick={() => step === 0 ? (setStep(-1), setFlow("")) : setStep(s => s - 1)}
