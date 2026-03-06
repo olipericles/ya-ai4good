@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Heart, Globe, Lock, Unlock, X, ChevronRight, PlayCircle, FileText, LayoutDashboard } from "lucide-react";
 import { translations } from "./LandingTranslations";
+import WaitlistFormModal from "@/components/landing/WaitlistFormModal";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import equipePericles from "@/assets/team/equipe-pericles.png";
 import equipeAdriele from "@/assets/team/equipe-adriele.png";
@@ -18,6 +19,7 @@ const LandingV5 = () => {
     const [isPitchAuth, setIsPitchAuth] = useState(false);
     const [pitchError, setPitchError] = useState(false);
     const [solutionStep, setSolutionStep] = useState(0);
+    const [showWaitlistForm, setShowWaitlistForm] = useState(false);
     const t = translations[lang];
 
     useEffect(() => {
@@ -158,14 +160,12 @@ const LandingV5 = () => {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-up delay-500">
-                        <a
-                            href="https://wa.me/5571992433241?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
-                            target="_blank"
-                            rel="noreferrer"
+                        <button
+                            onClick={() => setShowWaitlistForm(true)}
                             className="bg-gradient-hero text-white font-black text-xl px-12 py-5 rounded-full shadow-[0_0_40px_rgba(226,107,88,0.4)] hover:scale-105 hover:shadow-[0_0_60px_rgba(226,107,88,0.6)] transition-all duration-500 uppercase tracking-widest"
                         >
                             {t.hero.ctaPrimary}
-                        </a>
+                        </button>
                         <a
                             href="#solucao"
                             className="px-10 py-5 rounded-full border-2 border-white/20 bg-transparent text-white font-bold text-lg hover:bg-white/10 transition-colors uppercase tracking-widest"
@@ -552,14 +552,12 @@ const LandingV5 = () => {
                         {t.cta.title}
                     </h2>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                        <a
-                            href="https://wa.me/5571992433241?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
-                            target="_blank"
-                            rel="noreferrer"
+                        <button
+                            onClick={() => setShowWaitlistForm(true)}
                             className="bg-gradient-hero text-white font-black text-xl px-12 py-6 rounded-full shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:scale-105 hover:shadow-[0_0_60px_rgba(226,107,88,0.6)] transition-all duration-500 uppercase tracking-widest"
                         >
                             {t.cta.button1}
-                        </a>
+                        </button>
                         <a
                             href="mailto:ya.ai4good@gmail.com"
                             className="px-12 py-6 rounded-full border-2 border-white/20 bg-black/50 backdrop-blur-md text-white font-bold text-xl hover:bg-white/10 hover:border-white/40 transition-colors uppercase tracking-widest"
@@ -667,6 +665,13 @@ const LandingV5 = () => {
                     </div>
                 </div>
             )}
+
+            {/* Waitlist Form Modal */}
+            <WaitlistFormModal
+                isOpen={showWaitlistForm}
+                onClose={() => setShowWaitlistForm(false)}
+                lang={lang}
+            />
 
         </div>
     );

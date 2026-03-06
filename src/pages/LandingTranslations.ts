@@ -20,7 +20,7 @@ export const translations = {
             stat1: " de lares chefiados por mães solo no Brasil.",
             stat2: "Mais do que a população inteira de Portugal.",
             quote: "\"Yá significa 'mãe' em Yorubá. Um nome que carrega ancestralidade e acolhimento.\"",
-            ctaPrimary: "Quero Participar do Piloto",
+            ctaPrimary: "Quero Apoiar o Projeto 💛",
             ctaSecondary: "Conhecer o Projeto ↓"
         },
         problem: {
@@ -131,7 +131,7 @@ export const translations = {
         cta: {
             slogan: "Uma IA que cuida de quem cuida de todo mundo",
             title: "Faça parte dessa transformação",
-            button1: "🤱 Quero Participar como Mãe",
+            button1: "Entrar na Lista de Espera",
             button2: "🤝 Quero ser Parceiro"
         },
         footer: {
@@ -163,7 +163,7 @@ export const translations = {
             stat1: " households headed by single mothers in Brazil.",
             stat2: "More than the entire population of Portugal.",
             quote: "\"Yá means 'mother' in Yoruba. A name that carries ancestry and welcoming.\"",
-            ctaPrimary: "I want to join the pilot",
+            ctaPrimary: "I Want to Support 💛",
             ctaSecondary: "Discover the Project ↓"
         },
         problem: {
@@ -274,7 +274,7 @@ export const translations = {
         cta: {
             slogan: "An AI that cares for those who care for everyone",
             title: "Be part of this transformation",
-            button1: "🤱 Join as a Mother",
+            button1: "Join the Waitlist",
             button2: "🤝 Become a Partner"
         },
         footer: {
