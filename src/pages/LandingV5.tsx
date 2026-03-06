@@ -220,22 +220,25 @@ const LandingV5 = () => {
                         <div className="flex-shrink-0 relative group perspective-1000">
                             {/* Glow behind phone */}
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl rounded-[3rem] scale-90 group-hover:scale-100 transition-transform duration-700" />
-                            <div className="relative rounded-[3rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] border-8 border-white/10 max-w-[320px] w-full aspect-[9/19.5] overflow-hidden bg-black transform rotate-y-[-5deg] group-hover:rotate-y-0 transition-transform duration-700">
+                            <div className="relative rounded-[2.5rem] shadow-[0_0_40px_rgba(0,0,0,0.5)] border-[6px] border-[#2A2A2A] bg-black flex flex-col max-w-[340px] w-full aspect-[9/19.5] overflow-hidden transform rotate-y-[-5deg] group-hover:rotate-y-0 transition-all duration-1000">
                                 <img
                                     src={interacaoAudio}
                                     alt="Interação por Áudio"
-                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-1000 ${solutionStep === 0 ? "opacity-100" : "opacity-0"}`}
+                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-700 ease-out z-10 ${solutionStep === 0 ? "opacity-100" : "opacity-0"}`}
                                 />
                                 <img
                                     src={interacaoSaldo}
                                     alt="Interação verificando Saldo"
-                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-1000 ${solutionStep === 1 ? "opacity-100" : "opacity-0"}`}
+                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-700 ease-out z-20 ${solutionStep === 1 ? "opacity-100" : "opacity-0"}`}
                                 />
                                 <img
                                     src={dashCarol}
                                     alt="Dashboard PWA"
-                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-1000 ${solutionStep === 2 ? "opacity-100" : "opacity-0"}`}
+                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-700 ease-out z-30 ${solutionStep === 2 ? "opacity-100" : "opacity-0"}`}
                                 />
+                                <div className="absolute inset-0 flex items-center justify-center -z-10 bg-[#0B141A]">
+                                    <img src={yaLogo} alt="Yá" className="w-16 opacity-30" />
+                                </div>
                             </div>
                         </div>
 
