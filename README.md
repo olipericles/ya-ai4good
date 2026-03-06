@@ -119,10 +119,10 @@ npm run dev
 | Fase | Escopo | Status |
 |------|--------|--------|
 | **1. README.md** | Visão geral, arquitetura, rotas, setup | ✅ Feito |
-| **2. docs/PITCH-DECK.md** | Estrutura narrativa dos 10 slides, sub-steps, como editar conteúdo | 📋 Planejado |
-| **3. docs/DASHBOARD.md** | Fluxo de auth, endpoints, estrutura de dados financeiros | 📋 Planejado |
-| **4. docs/DESIGN-SYSTEM.md** | Tokens, componentes, variantes, guidelines de contraste | 📋 Planejado |
-| **5. docs/DEPLOY.md** | PWA config, domínio, SEO checklist | 📋 Planejado |
+| **2. [docs/PITCH-DECK.md](docs/PITCH-DECK.md)** | Estrutura narrativa dos 10 slides, sub-steps, como editar conteúdo | ✅ Feito |
+| **3. [docs/DASHBOARD.md](docs/DASHBOARD.md)** | Fluxo de auth, endpoints, estrutura de dados financeiros | ✅ Feito |
+| **4. [docs/DESIGN-SYSTEM.md](docs/DESIGN-SYSTEM.md)** | Tokens, componentes, variantes, guidelines de contraste | ✅ Feito |
+| **5. [docs/DEPLOY.md](docs/DEPLOY.md)** | PWA config, domínio, SEO checklist | ✅ Feito |
 
 ---
 
