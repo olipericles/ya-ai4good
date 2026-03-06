@@ -62,6 +62,19 @@ export const translations = {
                 { label: "Comunidade", other: "Não possui", ya: "🤝 Rede de apoio entre usuárias" },
             ]
         },
+        bankComparison: {
+            badge: "Acessibilidade",
+            title: "Fugindo do Monopólio da Dificuldade",
+            subtitle: "Como a Yá se compara aos aplicativos de bancos tradicionais que excluem quem tem baixo letramento digital:",
+            otherLabel: "Apps de Bancos",
+            rows: [
+                { label: "Interface", other: "Menus complexos e telas pesadas", ya: "📱 Seu próprio WhatsApp" },
+                { label: "Linguagem", other: "Jargões financeiros (CDB, CDI, Over)", ya: "🗣️ A língua que o povo fala" },
+                { label: "Acolhimento", other: "Frio e puramente transacional", ya: "🫂 Empática, como uma amiga" },
+                { label: "Curva de Aprendizado", other: "Exige letramento digital e paciência", ya: "🎙️ Zero. É só mandar um áudio." },
+                { label: "Foco", other: "Te vender crédito e produtos", ya: "🛡️ Proteger sua saúde financeira" },
+            ]
+        },
         impact: {
             badge: "Impacto",
             title: "Impacto que vai além do individual",
@@ -190,6 +203,19 @@ export const translations = {
                 { label: "Focus", other: "Middle class", ya: "👩‍👧 Single mothers" },
                 { label: "Impact", other: "Individual", ya: "📊 Data for public policies" },
                 { label: "Community", other: "None", ya: "🤝 Support network among users" },
+            ]
+        },
+        bankComparison: {
+            badge: "Accessibility",
+            title: "Escaping the Monopoly of Difficulty",
+            subtitle: "How Yá compares to traditional banking apps that exclude those with low digital literacy:",
+            otherLabel: "Bank Apps",
+            rows: [
+                { label: "Interface", other: "Complex menus and heavy screens", ya: "📱 Your own WhatsApp" },
+                { label: "Language", other: "Financial jargon (CDB, CDI, APR)", ya: "🗣️ Everyday accessible language" },
+                { label: "Welcoming", other: "Cold and purely transactional", ya: "🫂 Empathetic, like a friend" },
+                { label: "Learning Curve", other: "Requires digital literacy and patience", ya: "🎙️ Zero. Just send an audio." },
+                { label: "Focus", other: "Selling you credit and products", ya: "🛡️ Protecting your financial health" },
             ]
         },
         impact: {

@@ -339,6 +339,82 @@ const LandingV5 = () => {
                 </div>
             </section>
 
+            {/* Yá vs Bancos Tradicionais */}
+            <section className="py-20 sm:py-32 bg-[#060606] text-white">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <span className="text-sm font-mono uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-bold">{t.bankComparison.badge}</span>
+                        <h2 className="text-4xl sm:text-6xl font-black mt-4 tracking-tight">{t.bankComparison.title}</h2>
+                        {t.bankComparison.subtitle && (
+                            <p className="text-lg text-white/50 mt-6 max-w-2xl mx-auto leading-relaxed">
+                                {t.bankComparison.subtitle}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Desktop View */}
+                    <div className="hidden md:block overflow-x-auto rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm p-4">
+                        <table className="w-full text-base">
+                            <thead>
+                                <tr>
+                                    <th className="text-left p-6 font-bold text-white/80 uppercase tracking-widest text-xs border-b border-white/10">{"Critério"}</th>
+                                    <th className="p-6 font-bold text-white/80 uppercase tracking-widest text-xs border-b border-white/10">
+                                        <div className="flex items-center justify-center gap-2 opacity-60">
+                                            <span className="text-white/60">🏦</span>
+                                            <span>{t.bankComparison.otherLabel}</span>
+                                        </div>
+                                    </th>
+                                    <th className="p-6 bg-gradient-hero border-b border-white/20 rounded-tr-xl">
+                                        <img src={yaLogo} alt="Yá" className="h-8 mx-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] invert" />
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {t.bankComparison.rows.map((row, i) => (
+                                    <tr key={i} className="border-b border-white/5 hover:bg-white/5 transition-colors group">
+                                        <td className="p-6 font-bold text-white group-hover:text-primary transition-colors">{row.label}</td>
+                                        <td className="p-6 text-center text-white/40 font-mono text-sm">{row.other}</td>
+                                        <td className="p-6 text-center font-bold text-lg text-primary">
+                                            {row.ya}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {/* Mobile View */}
+                    <div className="flex flex-col gap-6 md:hidden">
+                        {t.bankComparison.rows.map((row, i) => (
+                            <div key={i} className="bg-white/5 border border-white/10 rounded-[1.5rem] p-6 flex flex-col gap-4">
+                                <h3 className="font-bold text-white text-lg border-b border-white/10 pb-3">{row.label}</h3>
+
+                                <div className="flex flex-col gap-4">
+                                    <div className="flex flex-col gap-2">
+                                        <div className="flex items-center gap-2 text-white/50 text-xs font-bold uppercase tracking-widest">
+                                            <div className="flex bg-black/50 px-3 py-1.5 rounded-full border border-white/10 gap-2 items-center">
+                                                <span>🏦</span>
+                                                <span>{t.bankComparison.otherLabel}</span>
+                                            </div>
+                                        </div>
+                                        <div className="text-white/60 font-mono text-sm pl-2">{row.other}</div>
+                                    </div>
+
+                                    <div className="flex flex-col gap-2 bg-gradient-to-r from-primary/10 to-transparent p-4 rounded-xl border border-primary/20">
+                                        <div className="flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-widest">
+                                            <div className="flex bg-primary/20 px-3 py-1.5 rounded-full border border-primary/30 items-center">
+                                                <img src={yaLogo} alt="Yá" className="h-3" />
+                                            </div>
+                                        </div>
+                                        <div className="text-primary font-bold pl-1">{row.ya}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Impacto */}
             <section id="impacto" className="py-20 sm:py-32 bg-[#0A0A0A] text-white">
                 <div className="max-w-6xl mx-auto px-6">
