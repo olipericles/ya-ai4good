@@ -267,6 +267,11 @@ const LandingV5 = () => {
                     <div className="text-center mb-16">
                         <span className="text-sm font-mono uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-bold">{t.differentials.badge}</span>
                         <h2 className="text-4xl sm:text-6xl font-black mt-4 tracking-tight">{t.differentials.title}</h2>
+                        {t.differentials.subtitle && (
+                            <p className="text-lg text-white/50 mt-6 max-w-2xl mx-auto leading-relaxed">
+                                {t.differentials.subtitle}
+                            </p>
+                        )}
                     </div>
 
                     {/* Desktop View */}

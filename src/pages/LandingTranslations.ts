@@ -52,6 +52,7 @@ export const translations = {
         differentials: {
             badge: "Diferenciais",
             title: "Por que a Yá é diferente?",
+            subtitle: "Comparado a outros Assistentes Financeiros via WhatsApp (ex: Poupa.ai, GranaZen):",
             headers: ["Critério", "Yá"],
             rows: [
                 { label: "Output", other: "Responde só em texto", ya: "🎙️ Responde em áudio" },
@@ -181,6 +182,7 @@ export const translations = {
         differentials: {
             badge: "Differentials",
             title: "Why is Yá different?",
+            subtitle: "Compared to other WhatsApp Financial Assistants (e.g., Poupa.ai, GranaZen):",
             headers: ["Criteria", "Yá"],
             rows: [
                 { label: "Output", other: "Text only", ya: "🎙️ Answers in audio" },
