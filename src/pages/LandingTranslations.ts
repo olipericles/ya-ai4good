@@ -69,7 +69,7 @@ export const translations = {
             otherLabel: "Apps de Bancos",
             rows: [
                 { label: "Interface", other: "Menus complexos e telas pesadas", ya: "📱 Seu próprio WhatsApp" },
-                { label: "Linguagem", other: "Jargões financeiros (CDB, CDI, Over)", ya: "🗣️ A língua que o povo fala" },
+                { label: "Linguagem", other: "Jargões financeiros (CDB, CDI, Over)", ya: "🗣️ A língua da gente" },
                 { label: "Acolhimento", other: "Frio e puramente transacional", ya: "🫂 Empática, como uma amiga" },
                 { label: "Curva de Aprendizado", other: "Exige letramento digital e paciência", ya: "🎙️ Zero. É só mandar um áudio." },
                 { label: "Foco", other: "Te vender crédito e produtos", ya: "🛡️ Proteger sua saúde financeira" },
