@@ -10,7 +10,6 @@ import interacaoSaldo from "@/assets/images/interacao-carol-saldo.jpeg";
 import dashCarol from "@/assets/images/dash-carol.jpeg";
 import logoPoupa from "@/assets/logos/logo-poupa.png";
 import logoGranazen from "@/assets/logos/logo-granazen.png";
-import yaQrcode from "@/assets/logos/ya-qrcode.png";
 
 const LandingV5 = () => {
     const [lang, setLang] = useState<"pt" | "en">("pt");
@@ -270,7 +269,8 @@ const LandingV5 = () => {
                         <h2 className="text-4xl sm:text-6xl font-black mt-4 tracking-tight">{t.differentials.title}</h2>
                     </div>
 
-                    <div className="overflow-x-auto rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm p-4">
+                    {/* Desktop View */}
+                    <div className="hidden md:block overflow-x-auto rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm p-4">
                         <table className="w-full text-base">
                             <thead>
                                 <tr>
@@ -299,6 +299,37 @@ const LandingV5 = () => {
                                 ))}
                             </tbody>
                         </table>
+                    </div>
+
+                    {/* Mobile View */}
+                    <div className="flex flex-col gap-6 md:hidden">
+                        {t.differentials.rows.map((row, i) => (
+                            <div key={i} className="bg-white/5 border border-white/10 rounded-[1.5rem] p-6 flex flex-col gap-4">
+                                <h3 className="font-bold text-white text-lg border-b border-white/10 pb-3">{row.label}</h3>
+
+                                <div className="flex flex-col gap-4">
+                                    <div className="flex flex-col gap-2">
+                                        <div className="flex items-center gap-2 text-white/50 text-xs font-bold uppercase tracking-widest">
+                                            <div className="flex bg-black/50 px-3 py-1.5 rounded-full border border-white/10 gap-2 items-center">
+                                                <img src={logoPoupa} alt="Poupa.ai" className="h-3 grayscale opacity-60" />
+                                                <span>/</span>
+                                                <img src={logoGranazen} alt="GranaZen" className="h-3 grayscale opacity-60" />
+                                            </div>
+                                        </div>
+                                        <div className="text-white/60 font-mono text-sm pl-2">{row.other}</div>
+                                    </div>
+
+                                    <div className="flex flex-col gap-2 bg-gradient-to-r from-primary/10 to-transparent p-4 rounded-xl border border-primary/20">
+                                        <div className="flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-widest">
+                                            <div className="flex bg-primary/20 px-3 py-1.5 rounded-full border border-primary/30 items-center">
+                                                <img src={yaLogo} alt="Yá" className="h-3" />
+                                            </div>
+                                        </div>
+                                        <div className="text-primary font-bold pl-1">{row.ya}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -436,8 +467,6 @@ const LandingV5 = () => {
             <section className="py-24 sm:py-40 relative bg-[#060606] text-white overflow-hidden text-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 blur-[150px] pointer-events-none mix-blend-screen" />
                 <div className="max-w-4xl mx-auto px-6 relative z-10">
-                    <img src={yaQrcode} alt="QR Code Yá" className="w-32 h-32 mx-auto mb-10 rounded-2xl border-4 border-white/10 shadow-[0_0_50px_rgba(226,107,88,0.3)] animate-pulse bg-white p-1" />
-
                     <h2 className="text-5xl sm:text-7xl font-black mb-10 tracking-tighter leading-none">
                         {t.cta.title}
                     </h2>
