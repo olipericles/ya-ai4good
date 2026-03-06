@@ -20,7 +20,7 @@ interface WaitlistEntry {
     cidade: string;
     estado: string;
     como_conheceu: string[];
-    ja_usou_app_financeiro: boolean | null;
+    ja_usou_app_financeiro: string | null;
     usa_whatsapp: boolean | null;
     motivacao: string;
     interesse_ajudar_outras: string;
@@ -227,7 +227,7 @@ export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Buscar por nome, telefone ou cidade..."
-                        className="w-full pl-10 pr-4 py-2.5 bg-dark-800/80 border border-white/5 text-white rounded-xl focus:border-primary outline-none transition-all text-sm"
+                        className="w-full pl-10 pr-4 py-2.5 bg-[#111] border border-white/10 text-white placeholder-white/40 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm"
                     />
                 </div>
                 <div className="relative">
@@ -235,11 +235,11 @@ export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
                     <select
                         value={filterStatus}
                         onChange={(e) => setFilterStatus(e.target.value)}
-                        className="pl-8 pr-8 py-2.5 bg-dark-800/80 border border-white/5 text-white rounded-xl text-sm outline-none appearance-none cursor-pointer"
+                        className="pl-8 pr-8 py-2.5 bg-[#111] border border-white/10 text-white rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none cursor-pointer"
                     >
-                        <option value="all" className="bg-[#111]">Todos Status</option>
+                        <option value="all" className="bg-[#111] text-white">Todos Status</option>
                         {Object.entries(STATUS_CONFIG).map(([key, cfg]) => (
-                            <option key={key} value={key} className="bg-[#111]">{cfg.label}</option>
+                            <option key={key} value={key} className="bg-[#111] text-white">{cfg.label}</option>
                         ))}
                     </select>
                     <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-500 pointer-events-none" />
@@ -249,11 +249,11 @@ export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
                     <select
                         value={filterTipo}
                         onChange={(e) => setFilterTipo(e.target.value)}
-                        className="pl-8 pr-8 py-2.5 bg-dark-800/80 border border-white/5 text-white rounded-xl text-sm outline-none appearance-none cursor-pointer"
+                        className="pl-8 pr-8 py-2.5 bg-[#111] border border-white/10 text-white rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none cursor-pointer"
                     >
-                        <option value="all" className="bg-[#111]">Todos</option>
-                        <option value="mae_solo" className="bg-[#111]">🤱 Mãe Solo</option>
-                        <option value="apoiador" className="bg-[#111]">💛 Apoiador</option>
+                        <option value="all" className="bg-[#111] text-white">Todos</option>
+                        <option value="mae_solo" className="bg-[#111] text-white">🤱 Mãe Solo</option>
+                        <option value="apoiador" className="bg-[#111] text-white">💛 Apoiador</option>
                     </select>
                     <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-500 pointer-events-none" />
                 </div>
@@ -382,9 +382,14 @@ export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
                     )}
 
                     <div className="flex flex-wrap gap-3 mt-4">
-                        {selectedEntry.ja_usou_app_financeiro !== null && (
-                            <span className={`text-xs px-2.5 py-1 rounded-full border ${selectedEntry.ja_usou_app_financeiro ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" : "bg-white/5 border-white/10 text-white/50"}`}>
-                                {selectedEntry.ja_usou_app_financeiro ? "✅ Já usou app financeiro" : "❌ Nunca usou app financeiro"}
+                        {selectedEntry.ja_usou_app_financeiro && (
+                            <span className={`text-xs px-2.5 py-1 rounded-full border ${selectedEntry.ja_usou_app_financeiro === "sim" ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" :
+                                    selectedEntry.ja_usou_app_financeiro === "ja_mas_nao_adaptei" ? "bg-amber-500/10 border-amber-500/20 text-amber-400" :
+                                        "bg-white/5 border-white/10 text-white/50"
+                                }`}>
+                                {selectedEntry.ja_usou_app_financeiro === "sim" ? "✅ Usa app financeiro" :
+                                    selectedEntry.ja_usou_app_financeiro === "ja_mas_nao_adaptei" ? "⚠️ Já usou, não adaptou" :
+                                        "❌ Nunca usou app financeiro"}
                             </span>
                         )}
                         {selectedEntry.interesse_ajudar_outras && (

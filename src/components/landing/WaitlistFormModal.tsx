@@ -32,7 +32,7 @@ interface FormData {
     cidade: string;
     estado: string;
     comoConheceu: string[];
-    jaUsouAppFinanceiro: boolean | null;
+    jaUsouAppFinanceiro: string | null;
     usaWhatsapp: boolean | null;
     motivacao: string;
     interesseAjudarOutras: string;
@@ -77,6 +77,9 @@ const t = {
         s4Subtitle: "Selecione uma ou mais opções",
         s5Title: "Sobre tecnologia",
         s5AppLabel: "Já usou algum aplicativo de controle financeiro?",
+        s5AppYes: "Sim",
+        s5AppTried: "Já, mas não me adaptei",
+        s5AppNo: "Não",
         s5WhatsLabel: "Você usa o WhatsApp no dia a dia?",
         s5Yes: "Sim",
         s5No: "Não",
@@ -131,6 +134,9 @@ const t = {
         s4Subtitle: "Select one or more options",
         s5Title: "About technology",
         s5AppLabel: "Have you ever used a financial control app?",
+        s5AppYes: "Yes",
+        s5AppTried: "Tried, but didn't adapt",
+        s5AppNo: "No",
         s5WhatsLabel: "Do you use WhatsApp daily?",
         s5Yes: "Yes",
         s5No: "No",
@@ -408,10 +414,10 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                                 <select
                                     value={form.estado}
                                     onChange={e => setField("estado", e.target.value)}
-                                    className={`w-full bg-white/5 border ${errors.estado ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white outline-none transition-colors appearance-none`}
+                                    className={`w-full bg-[#111] text-white border ${errors.estado ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 outline-none transition-colors appearance-none`}
                                 >
-                                    <option value="" className="bg-[#111]">{labels.s2EstadoPlaceholder}</option>
-                                    {ESTADOS_BR.map(uf => <option key={uf} value={uf} className="bg-[#111]">{uf}</option>)}
+                                    <option value="" className="bg-[#111] text-white">{labels.s2EstadoPlaceholder}</option>
+                                    {ESTADOS_BR.map(uf => <option key={uf} value={uf} className="bg-[#111] text-white">{uf}</option>)}
                                 </select>
                                 {errors.estado && <p className="text-red-400 text-xs mt-2">{errors.estado}</p>}
                             </div>
@@ -455,8 +461,8 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                                                 key={opt.value}
                                                 onClick={() => toggleComoConheceu(opt.value)}
                                                 className={`px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${selected
-                                                        ? "bg-primary/20 border border-primary/50 text-primary shadow-[0_0_15px_rgba(226,107,88,0.2)]"
-                                                        : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:border-white/20"
+                                                    ? "bg-primary/20 border border-primary/50 text-primary shadow-[0_0_15px_rgba(226,107,88,0.2)]"
+                                                    : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:border-white/20"
                                                     }`}
                                             >
                                                 {lang === "pt" ? opt.labelPt : opt.labelEn}
@@ -473,19 +479,26 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                             <div>
                                 <h3 className="text-xl font-bold text-white mb-6">{labels.s5Title}</h3>
                                 <label className="text-white/70 text-sm font-medium mb-3 block">{labels.s5AppLabel}</label>
-                                <div className="flex gap-3 mb-6">
-                                    {[true, false].map(val => (
-                                        <button
-                                            key={String(val)}
-                                            onClick={() => setField("jaUsouAppFinanceiro", val)}
-                                            className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${form.jaUsouAppFinanceiro === val
+                                <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                                    {(["sim", "ja_mas_nao_adaptei", "nao"] as const).map(val => {
+                                        const labelMap = {
+                                            sim: labels.s5AppYes,
+                                            ja_mas_nao_adaptei: labels.s5AppTried,
+                                            nao: labels.s5AppNo
+                                        };
+                                        return (
+                                            <button
+                                                key={val}
+                                                onClick={() => setField("jaUsouAppFinanceiro", val)}
+                                                className={`flex-1 py-3 px-2 rounded-xl font-bold text-sm transition-all ${form.jaUsouAppFinanceiro === val
                                                     ? "bg-primary/20 border border-primary/50 text-primary"
                                                     : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10"
-                                                }`}
-                                        >
-                                            {val ? labels.s5Yes : labels.s5No}
-                                        </button>
-                                    ))}
+                                                    }`}
+                                            >
+                                                {labelMap[val]}
+                                            </button>
+                                        );
+                                    })}
                                 </div>
                                 {errors.jaUsouAppFinanceiro && <p className="text-red-400 text-xs mb-4">{errors.jaUsouAppFinanceiro}</p>}
 
@@ -496,8 +509,8 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                                             key={String(val)}
                                             onClick={() => setField("usaWhatsapp", val)}
                                             className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${form.usaWhatsapp === val
-                                                    ? "bg-primary/20 border border-primary/50 text-primary"
-                                                    : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10"
+                                                ? "bg-primary/20 border border-primary/50 text-primary"
+                                                : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10"
                                                 }`}
                                         >
                                             {val ? labels.s5Yes : labels.s5No}
@@ -529,8 +542,8 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                                                 key={val}
                                                 onClick={() => setField("interesseAjudarOutras", val)}
                                                 className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${form.interesseAjudarOutras === val
-                                                        ? "bg-primary/20 border border-primary/50 text-primary"
-                                                        : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10"
+                                                    ? "bg-primary/20 border border-primary/50 text-primary"
+                                                    : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10"
                                                     }`}
                                             >
                                                 {labelMap[val]}
@@ -609,10 +622,10 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                                 <select
                                     value={form.estado}
                                     onChange={e => setField("estado", e.target.value)}
-                                    className={`w-full bg-white/5 border ${errors.estado ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white outline-none transition-colors appearance-none`}
+                                    className={`w-full bg-[#111] text-white border ${errors.estado ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 outline-none transition-colors appearance-none`}
                                 >
-                                    <option value="" className="bg-[#111]">{labels.s2EstadoPlaceholder}</option>
-                                    {ESTADOS_BR.map(uf => <option key={uf} value={uf} className="bg-[#111]">{uf}</option>)}
+                                    <option value="" className="bg-[#111] text-white">{labels.s2EstadoPlaceholder}</option>
+                                    {ESTADOS_BR.map(uf => <option key={uf} value={uf} className="bg-[#111] text-white">{uf}</option>)}
                                 </select>
                                 {errors.estado && <p className="text-red-400 text-xs mt-2">{errors.estado}</p>}
                             </div>
@@ -631,8 +644,8 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                                                 key={opt.value}
                                                 onClick={() => toggleComoConheceu(opt.value)}
                                                 className={`px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${selected
-                                                        ? "bg-primary/20 border border-primary/50 text-primary"
-                                                        : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10"
+                                                    ? "bg-primary/20 border border-primary/50 text-primary"
+                                                    : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10"
                                                     }`}
                                             >
                                                 {lang === "pt" ? opt.labelPt : opt.labelEn}
