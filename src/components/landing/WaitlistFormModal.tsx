@@ -109,6 +109,7 @@ const t = {
         successMsg: "Sua inscrição na lista de espera foi recebida com sucesso! Entraremos em contato pelo WhatsApp em breve.",
         successClose: "Fechar",
         // Validation
+        required: "Campo obrigatório",
         invalidWhatsapp: "Número inválido",
         duplicateTitle: "Número já cadastrado",
         duplicateMsg: "Este número de WhatsApp já encontra-se na nossa lista de espera.",
