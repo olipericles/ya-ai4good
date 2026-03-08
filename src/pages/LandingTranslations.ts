@@ -78,7 +78,7 @@ export const translations = {
         impact: {
             badge: "Impacto",
             title: "Impacto que vai além do individual",
-            number: "30M+",
+            number: "20M+",
             subtitle: "de vidas impactadas",
             desc: "Pesquisa realizada com 23 mães solo de Salvador. 18 mães já pediram para participar do piloto."
         },
@@ -221,7 +221,7 @@ export const translations = {
         impact: {
             badge: "Impact",
             title: "Impact that goes beyond the individual",
-            number: "30M+",
+            number: "20M+",
             subtitle: "lives impacted",
             desc: "Research conducted with 23 single mothers in Salvador. 18 mothers have already asked to participate in the pilot."
         },
