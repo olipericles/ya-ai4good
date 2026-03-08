@@ -80,7 +80,7 @@ export const translations = {
             title: "Impacto que vai além do individual",
             number: "20M+",
             subtitle: "de vidas impactadas",
-            desc: "Pesquisa realizada com 23 mães solo de Salvador. 18 mães já pediram para participar do piloto."
+            desc: "Pesquisa realizada com 23 mães solo de Salvador. 14 mães já estão participando do piloto."
         },
         journey: {
             badge: "Nossa Trajetória",
