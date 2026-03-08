@@ -25,7 +25,6 @@ interface WaitlistEntry {
     motivacao: string;
     alerta_duplicidade: boolean;
     interesse_ajudar_outras: string;
-    interesse_ajudar_outras: string;
     dias_ativos_7d: number;
     ultima_interacao: string | null;
     created_at: string;
