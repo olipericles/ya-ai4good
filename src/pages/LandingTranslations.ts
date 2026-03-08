@@ -80,7 +80,7 @@ export const translations = {
             title: "Impacto que vai além do individual",
             number: "20M+",
             subtitle: "de vidas impactadas",
-            desc: "Pesquisa realizada com 23 mães solo de Salvador. 18 mães já pediram para participar do piloto."
+            desc: "Pesquisa realizada com 23 mães solo de Salvador. 14 mães já estão participando do piloto."
         },
         journey: {
             badge: "Nossa Trajetória",
@@ -223,7 +223,7 @@ export const translations = {
             title: "Impact that goes beyond the individual",
             number: "20M+",
             subtitle: "lives impacted",
-            desc: "Research conducted with 23 single mothers in Salvador. 18 mothers have already asked to participate in the pilot."
+            desc: "Research conducted with 23 single mothers in Salvador. 14 mothers are already participating in the pilot."
         },
         journey: {
             badge: "Our Trajectory",
