@@ -9,6 +9,7 @@ import equipeLua from "@/assets/team/equipe-lua.png";
 import interacaoAudio from "@/assets/images/interacao-carol-audio.jpeg";
 import interacaoSaldo from "@/assets/images/interacao-carol-saldo.jpeg";
 import dashCarol from "@/assets/images/dash-carol.jpeg";
+import demoVideo from "@/assets/videos/demo.mp4";
 import logoPoupa from "@/assets/logos/logo-poupa.png";
 import logoGranazen from "@/assets/logos/logo-granazen.png";
 
@@ -18,16 +19,8 @@ const LandingV5 = () => {
     const [pitchPassword, setPitchPassword] = useState("");
     const [isPitchAuth, setIsPitchAuth] = useState(false);
     const [pitchError, setPitchError] = useState(false);
-    const [solutionStep, setSolutionStep] = useState(0);
     const [showWaitlistForm, setShowWaitlistForm] = useState(false);
     const t = translations[lang];
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setSolutionStep((prev) => (prev + 1) % 3);
-        }, 3000);
-        return () => clearInterval(interval);
-    }, []);
 
     useEffect(() => {
         document.title = t.meta.title;
@@ -220,20 +213,13 @@ const LandingV5 = () => {
                             {/* Glow behind phone */}
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl rounded-[3rem] scale-90 group-hover:scale-100 transition-transform duration-700" />
                             <div className="relative rounded-[2.5rem] shadow-[0_0_40px_rgba(0,0,0,0.5)] border-[6px] border-[#2A2A2A] bg-black max-w-[320px] w-[320px] h-[650px] overflow-hidden transform rotate-y-[-5deg] group-hover:rotate-y-0 transition-transform duration-700">
-                                <img
-                                    src={interacaoAudio}
-                                    alt="Interação por Áudio"
-                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-700 ease-out ${solutionStep === 0 ? "opacity-100 z-30" : "opacity-0 z-10"}`}
-                                />
-                                <img
-                                    src={interacaoSaldo}
-                                    alt="Interação verificando Saldo"
-                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-700 ease-out ${solutionStep === 1 ? "opacity-100 z-30" : "opacity-0 z-10"}`}
-                                />
-                                <img
-                                    src={dashCarol}
-                                    alt="Dashboard PWA"
-                                    className={`absolute inset-0 w-full h-[105%] object-cover object-top transition-opacity duration-700 ease-out ${solutionStep === 2 ? "opacity-100 z-30" : "opacity-0 z-10"}`}
+                                <video
+                                    src={demoVideo}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="absolute inset-0 w-full h-[105%] object-cover object-top z-30"
                                 />
                                 <div className="absolute inset-0 flex items-center justify-center bg-[#0B141A] -z-10">
                                     <img src={yaLogo} alt="Yá" className="w-16 opacity-30" />
