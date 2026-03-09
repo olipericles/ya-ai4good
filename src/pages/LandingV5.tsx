@@ -212,14 +212,15 @@ const LandingV5 = () => {
                         <div className="flex-shrink-0 relative group perspective-1000">
                             {/* Glow behind phone */}
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl rounded-[3rem] scale-90 group-hover:scale-100 transition-transform duration-700" />
-                            <div className="relative rounded-[2.5rem] shadow-[0_0_40px_rgba(0,0,0,0.5)] border-[6px] border-[#2A2A2A] bg-black max-w-[320px] w-[320px] h-[570px] overflow-hidden transform rotate-y-[-5deg] group-hover:rotate-y-0 transition-transform duration-700">
+                            <div className="relative rounded-[2.5rem] shadow-[0_0_40px_rgba(0,0,0,0.5)] border-[8px] border-[#1A1A1A] bg-black max-w-[320px] w-[320px] h-[570px] overflow-hidden transform rotate-y-[-5deg] group-hover:rotate-y-0 transition-transform duration-700">
+                                <div className="absolute inset-0 bg-[#0B141A] z-0"></div>
                                 <video
                                     src={demoVideo}
                                     autoPlay
                                     loop
                                     muted
                                     playsInline
-                                    className="absolute inset-0 w-full h-full object-cover object-center z-30"
+                                    className="absolute inset-[2px] w-[calc(100%-4px)] h-[calc(100%-4px)] rounded-[2rem] object-contain object-center z-30"
                                 />
                                 <div className="absolute inset-0 flex items-center justify-center bg-[#0B141A] -z-10">
                                     <img src={yaLogo} alt="Yá" className="w-16 opacity-30" />
