@@ -212,7 +212,7 @@ const LandingV5 = () => {
                         <div className="flex-shrink-0 relative group perspective-1000">
                             {/* Glow behind phone */}
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl rounded-[3rem] scale-90 group-hover:scale-100 transition-transform duration-700" />
-                            <div className="relative rounded-[2.5rem] shadow-[0_0_40px_rgba(0,0,0,0.5)] border-[6px] border-[#2A2A2A] bg-black max-w-[301px] w-[301px] h-[570px] overflow-hidden transform rotate-y-[-5deg] group-hover:rotate-y-0 transition-transform duration-700">
+                            <div className="relative rounded-[2.5rem] shadow-[0_0_40px_rgba(0,0,0,0.5)] border-[6px] border-[#2A2A2A] bg-black max-w-[281px] w-[281px] h-[570px] overflow-hidden transform rotate-y-[-5deg] group-hover:rotate-y-0 transition-transform duration-700">
                                 <video
                                     src={demoVideo}
                                     autoPlay
