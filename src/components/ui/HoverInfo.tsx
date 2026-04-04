@@ -11,7 +11,7 @@ const HoverInfo = ({ children, tooltip, className = "" }: HoverInfoProps) => {
     const [position, setPosition] = useState<"top" | "bottom">("top");
     const triggerRef = useRef<HTMLSpanElement>(null);
     const tooltipRef = useRef<HTMLDivElement>(null);
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const showTooltip = () => {
         timeoutRef.current = setTimeout(() => {
