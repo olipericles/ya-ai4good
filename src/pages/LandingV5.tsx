@@ -646,6 +646,21 @@ const LandingV5 = () => {
                                         </a>
                                     </div>
                                 </div>
+
+                                <div className="flex flex-col sm:flex-row items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 gap-4 hover:bg-white/10 transition-colors">
+                                    <span className="font-bold text-lg text-white">Yá - Pós-BC</span>
+                                    <div className="flex gap-2 w-full sm:w-auto flex-wrap justify-end">
+                                        <a href="/rba" className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                            <PlayCircle className="w-4 h-4" /> RBA
+                                        </a>
+                                        <a href="/trindai" className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                            <PlayCircle className="w-4 h-4" /> Trind AI
+                                        </a>
+                                        <a href="/baia" className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white/10 hover:bg-primary/20 hover:text-primary text-white rounded-lg text-sm font-bold transition-colors">
+                                            <PlayCircle className="w-4 h-4" /> BaIA
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         )}
                     </div>
