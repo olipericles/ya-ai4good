@@ -38,6 +38,7 @@ const App = () => (
           <Route path="/vBC2026s" element={<IndexBC2026V4Script />} />
           <Route path="/trindai" element={<PageTrindAI />} />
           <Route path="/baia" element={<PageBaIA />} />
+          <Route path="/rba" element={<PageRBA />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/:phone" element={<Dashboard />} />
 

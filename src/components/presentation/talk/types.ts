@@ -1,4 +1,4 @@
-export type TalkVariant = "trindai" | "baia";
+export type TalkVariant = "trindai" | "baia" | "rba";
 
 export interface TalkSlideProps {
   isActive: boolean;
