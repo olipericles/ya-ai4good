@@ -43,11 +43,12 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
       <div className="absolute bottom-10 left-12 right-12 flex justify-between items-end">
         <p className="text-[12px] text-[#999] font-talk-body">{subtitle}</p>
         <div className="flex items-center gap-3">
-          {variant === "trindai" ? (
+          {variant === "trindai" && (
             <div className="h-[40px] w-[100px] rounded-lg border border-dashed border-[#666] flex items-center justify-center">
               <span className="text-[9px] text-[#888] font-mono">logo_trindai</span>
             </div>
-          ) : (
+          )}
+          {variant === "baia" && (
             <>
               <div className="h-[40px] w-[80px] rounded-lg border border-dashed border-[#666] flex items-center justify-center">
                 <span className="text-[8px] text-[#888] font-mono">logo_baia</span>
@@ -56,6 +57,11 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
                 <span className="text-[8px] text-[#888] font-mono">logo_liao</span>
               </div>
             </>
+          )}
+          {variant === "rba" && (
+            <div className="h-[40px] w-[120px] rounded-lg border border-dashed border-[#666] flex items-center justify-center">
+              <span className="text-[9px] text-[#888] font-mono">logo_redebahia</span>
+            </div>
           )}
         </div>
       </div>
