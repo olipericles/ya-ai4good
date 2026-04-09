@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import PageTrindAI from "./pages/PageTrindAI";
 import PageBaIA from "./pages/PageBaIA";
+import PageRBA from "./pages/PageRBA";
 
 const queryClient = new QueryClient();
 
