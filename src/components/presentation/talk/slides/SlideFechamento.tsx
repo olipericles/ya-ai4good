@@ -14,7 +14,9 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
 
   const footerLogos = variant === "trindai"
     ? [{ file: "logo_ya", w: 50 }, { file: "logo_trindai", w: 80 }, { file: "logo_redebahia", w: 80 }]
-    : [{ file: "logo_ya", w: 50 }, { file: "logo_baia", w: 70 }, { file: "logo_liao", w: 70 }, { file: "logo_redebahia", w: 80 }, { file: "logo_ufba", w: 70 }];
+    : variant === "baia"
+    ? [{ file: "logo_ya", w: 50 }, { file: "logo_baia", w: 70 }, { file: "logo_liao", w: 70 }, { file: "logo_redebahia", w: 80 }, { file: "logo_ufba", w: 70 }]
+    : [{ file: "logo_ya", w: 50 }, { file: "logo_redebahia", w: 100 }];
 
   return (
     <TalkSlideContainer className="bg-[#1A1A2E] flex flex-col items-center justify-center">
