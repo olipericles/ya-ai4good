@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   EyeOff, Unlink, ShieldAlert, BarChart3, DollarSign, Heart, TrendingUp,
   Building2, MessageCircle, FileText, ArrowRight, Mail, Award, ChevronRight,
-  Users, Zap, Shield, BadgeCheck, Megaphone, PieChart, Star, Check, Loader2, Quote
+  Users, Zap, Shield, BadgeCheck, Megaphone, PieChart, Star, Check, Loader2, Quote, Instagram, Globe
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,12 @@ import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 // Import maes placeholder - user can update this later
 import aureaPlaceholder from "@/assets/maes/aurea.jpeg"; 
+
+// Variáveis da Cohort Fundadora 2026
+const VAGAS_APOIADORA = 5;
+const VAGAS_PARCEIRA = 3;
+const VAGAS_FUNDADORA = 2;
+const DATA_ENCERRAMENTO = "30/06/2026";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -95,55 +101,102 @@ const HeroSection = () => (
           <Award size={32} className="text-primary" />
           <div className="text-left">
             <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Vencedor AI4Good 2026</p>
-            <p className="text-sm font-semibold">Brazil Conference (Harvard & MIT)</p>
-            <p className="text-[10px] text-muted-foreground">Único projeto do NE entre 188 inscritos</p>
+            <p className="text-sm font-semibold">Brazil Conference Harvard e MIT</p>
+            <p className="text-[10px] text-muted-foreground">Único projeto da região Nordeste entre 188 inscritos</p>
           </div>
         </Card>
 
-        {/* Press Logos Placeholder */}
-        <div className="flex items-center justify-center gap-6 opacity-60 grayscale w-full max-w-md">
-          {['Alma Preta', 'JC Bahia', 'G1 Bahia'].map((name) => (
-             <div key={name} className="flex items-center justify-center bg-muted/50 rounded-lg px-4 py-2 border border-border/50 text-xs font-bold text-muted-foreground">
-               {name}
-             </div>
-          ))}
-        </div>
+
       </motion.div>
     </div>
   </section>
 );
 
 /* ─── Faixa de Credibilidade (NOVA) ─── */
+const pressLinks = [
+  {
+    name: "Alma Preta",
+    links: [
+      { type: "portal", url: "https://almapreta.com.br/sessao/cotidiano/projeto-salvador-maes-solo-gestao-financeira/" }
+    ]
+  },
+  {
+    name: "Nordeste Eu Sou",
+    links: [
+      { type: "portal", url: "https://nordesteusou.com.br/noticias/da-periferia-para-harvard-jovens-de-salvador-vencem-premio-internacional-com-ia-que-ajuda-maes-solo/" },
+      { type: "instagram", url: "https://www.instagram.com/p/DWgtyMWFlWA" }
+    ]
+  },
+  {
+    name: "JC Bairro da Paz",
+    links: [
+      { type: "instagram", url: "https://www.instagram.com/p/DWgvOcvFvWw" }
+    ]
+  },
+  {
+    name: "G1 Bahia",
+    date: "abril 2026",
+    links: [
+      { type: "portal", url: "#" }
+    ]
+  },
+  {
+    name: "Conexão Bahia",
+    date: "maio 2026",
+    links: [
+      { type: "portal", url: "#" }
+    ]
+  }
+];
+
 const CredibilitySection = () => (
   <section className="bg-[#252540]/30 border-y border-border/20 py-8 relative z-20">
     <div className="container mx-auto px-6 lg:px-12">
       <p className="text-center text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-6">Reconhecido por:</p>
-      <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale">
+      <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
         
-        {/* Placeholder styling for missing logos - to be replaced by actual images later */}
-        <div className="flex items-center gap-2">
-           <Award size={20} className="text-primary grayscale-0" />
+        {/* Prêmio principal */}
+        <motion.a 
+          href="https://brazilconference.org/" target="_blank" rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }}
+          className="flex items-center gap-2 cursor-pointer opacity-70 hover:opacity-100 transition-opacity mb-2 md:mb-0"
+        >
+           <Award size={24} className="text-primary" />
            <div className="text-sm font-bold leading-tight">
               <div>Vencedor AI4Good 2026</div>
-              <div className="text-xs opacity-70 font-normal">Harvard & MIT</div>
+              <div className="text-xs font-normal">Brazil Conference</div>
            </div>
-        </div>
+        </motion.a>
 
-        <div className="text-sm font-bold border border-border/50 rounded px-3 py-1 bg-muted/30">Alma Preta</div>
-        <div className="text-sm font-bold border border-border/50 rounded px-3 py-1 bg-muted/30">Nordeste Eu Sou</div>
-        <div className="flex flex-col items-center">
-           <div className="text-sm font-bold border border-border/50 rounded px-3 py-1 bg-muted/30 mb-1">JC Bairro da Paz</div>
-        </div>
-        
-        <div className="flex flex-col items-center">
-           <div className="text-sm font-bold border border-border/50 rounded px-3 py-1 bg-muted/30 mb-1">G1 Bahia</div>
-           <span className="text-[10px] opacity-70">abril 2026</span>
-        </div>
-
-        <div className="flex flex-col items-center">
-           <div className="text-sm font-bold border border-border/50 rounded px-3 py-1 bg-muted/30 mb-1">Conexão Bahia</div>
-           <span className="text-[10px] opacity-70">maio 2026</span>
-        </div>
+        {/* Imprensa renderizada automaticamente */}
+        {pressLinks.map((press) => (
+          <motion.div 
+            key={press.name}
+            whileHover={{ scale: 1.05 }}
+            className="flex flex-col items-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+          >
+            <div className="text-sm font-bold border border-border/50 rounded px-4 py-1.5 bg-muted/20 mb-2">
+              {press.name}
+            </div>
+            
+            {press.date && <span className="text-[10px] text-muted-foreground mb-2 -mt-1">{press.date}</span>}
+            
+            <div className="flex gap-2">
+              {press.links.map((link, idx) => (
+                <a 
+                  key={idx}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer" 
+                  className="p-1.5 rounded-full bg-card border border-border/50 hover:border-primary/50 hover:text-primary transition-colors text-muted-foreground shadow-sm"
+                  title={link.type === 'instagram' ? "Ver no Instagram" : "Ler no portal"}
+                >
+                  {link.type === 'instagram' ? <Instagram size={14} /> : <Globe size={14} />}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        ))}
 
       </div>
     </div>
@@ -234,7 +287,7 @@ const SolutionSection = () => (
             <div className="w-72 h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 backdrop-blur-md border-2 border-primary/30 flex flex-col items-center justify-center text-center p-10 shadow-2xl">
               <Award size={48} className="text-primary mb-3" />
               <p className="font-extrabold text-xl leading-tight">Selo Yá de Origem</p>
-              <p className="text-sm text-primary font-semibold mt-2 leading-relaxed">
+              <p className="text-sm text-white font-bold mt-2 leading-relaxed drop-shadow-sm">
                 Sua empresa entre as marcas pioneiras da primeira safra
               </p>
             </div>
@@ -399,7 +452,7 @@ const KPISection = () => (
         ))}
       </div>
       
-      <div className="mt-8 text-center text-xs text-muted-foreground/60 max-w-3xl mx-auto px-4">
+      <div className="mt-8 text-center text-sm font-medium text-muted-foreground/90 max-w-3xl mx-auto px-4">
         * Projeções baseadas em literatura de impacto e em dados do piloto Yá. Métricas reais serão entregues mensalmente para as marcas pioneiras.
       </div>
     </div>
@@ -438,7 +491,7 @@ const packages = [
       "Suporte dedicado", 
       "Consultoria trimestral de materialidade ESG",
       "Selo Yá Fundadora 2026 em campanhas",
-      "Lugar no conselho consultivo da Yá em 2027"
+      "Convite para o círculo consultivo das marcas pioneiras Yá, encontros trimestrais com o time fundador a partir de 2027"
     ]
   },
 ];
@@ -459,11 +512,12 @@ const PricingSection = () => (
         className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto"
       >
         Vagas limitadas. As marcas pioneiras assinam contrato anual e ajudam a moldar a primeira safra do Selo Yá.
+        <br/><span className="inline-block mt-2 font-semibold">As marcas pioneiras de 2026 mantêm condições especiais nas safras seguintes.</span>
       </motion.p>
       
       <motion.div variants={fadeUp} custom={1.5} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex justify-center mb-12">
-        <div className="bg-secondary/20 border border-secondary/30 text-secondary-foreground px-6 py-2 rounded-full font-semibold text-sm">
-          5 vagas Apoiadora | 3 vagas Parceira | 2 vagas Fundadora. Encerramento: 30/06/2026
+        <div className="bg-orange-500/15 border border-orange-500/20 text-orange-500 px-6 py-2 rounded-full font-bold text-sm shadow-sm">
+          {VAGAS_APOIADORA} vagas Apoiadora | {VAGAS_PARCEIRA} vagas Parceira | {VAGAS_FUNDADORA} vagas Fundadora. Encerramento: {DATA_ENCERRAMENTO}
         </div>
       </motion.div>
 
