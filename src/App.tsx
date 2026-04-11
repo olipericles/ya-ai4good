@@ -17,6 +17,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import PageTrindAI from "./pages/PageTrindAI";
 import PageBaIA from "./pages/PageBaIA";
 import PageRBA from "./pages/PageRBA";
+import PageSelo from "./pages/PageSelo";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/trindai" element={<PageTrindAI />} />
           <Route path="/baia" element={<PageBaIA />} />
           <Route path="/rba" element={<PageRBA />} />
+          <Route path="/selo" element={<PageSelo />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/:phone" element={<Dashboard />} />
 
