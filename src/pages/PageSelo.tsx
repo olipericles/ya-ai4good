@@ -48,7 +48,7 @@ const Header = ({ t, toggleLang }: any) => (
 
 /* ─── Hero ─── */
 const HeroSection = ({ t }: any) => (
-  <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
+  <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-20">
     <div className="absolute inset-0 pointer-events-none">
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[120px]" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-secondary/10 blur-[120px]" />
@@ -175,12 +175,12 @@ const CredibilitySection = ({ t }: any) => (
 
 /* ─── Problema ─── */
 const ProblemSection = ({ t }: any) => (
-  <section className="py-24 relative">
+  <section className="py-16 relative">
     <div className="container mx-auto px-6 lg:px-12">
       <motion.h2 variants={fadeUp} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-center mb-4">
         {t.problem.title1}<span className="text-primary">{t.problem.titleHighlight}</span>
       </motion.h2>
-      <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center text-muted-foreground max-w-2xl mx-auto mb-14">
+      <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center text-muted-foreground max-w-2xl mx-auto mb-10">
         {t.problem.desc}
       </motion.p>
       <div className="grid md:grid-cols-3 gap-8">
@@ -204,7 +204,7 @@ const ProblemSection = ({ t }: any) => (
 
 /* ─── Solução ─── */
 const SolutionSection = ({ t }: any) => (
-  <section className="py-24 relative">
+  <section className="py-16 relative">
     <div className="absolute inset-0 pointer-events-none">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-secondary/5 blur-[100px] rounded-full" />
     </div>
@@ -289,7 +289,7 @@ const TripleWinSection = ({ t }: any) => {
         <motion.h2 variants={fadeUp} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-center mb-4">
           {t.triple.title1}<span className="text-gradient">{t.triple.titleHighlight}</span>
         </motion.h2>
-        <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center text-muted-foreground mb-14 max-w-2xl mx-auto">
+        <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
           {t.triple.desc}
         </motion.p>
         <div className="grid md:grid-cols-3 gap-8">
@@ -321,7 +321,7 @@ const TripleWinSection = ({ t }: any) => {
 
 /* ─── Story ─── */
 const AureaStorySection = ({ t }: any) => (
-  <section className="py-24 relative overflow-hidden">
+  <section className="py-16 relative overflow-hidden">
     <div className="absolute inset-0 bg-secondary/5" />
     <div className="container mx-auto px-6 lg:px-12 relative z-10">
       <div className="bg-card border border-border/30 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col lg:flex-row gap-12 items-center">
@@ -364,7 +364,7 @@ const KPISection = ({ t }: any) => {
         <motion.h2 variants={fadeUp} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-center mb-4">
           {t.kpi.title1}<span className="text-primary">{t.kpi.titleHighlight}</span>
         </motion.h2>
-        <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center text-muted-foreground mb-14 max-w-2xl mx-auto">
+        <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
           {t.kpi.desc}
         </motion.p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -398,7 +398,7 @@ const PricingSection = ({ t }: any) => {
   const p = t.pricing;
   const packages = [p.pacote1, p.pacote2, p.pacote3];
   return (
-    <section className="py-24 relative">
+    <section className="py-16 relative">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.h2 variants={fadeUp} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-center mb-4">
           {p.title1}<span className="text-gradient">{p.titleHighlight}</span>
@@ -482,7 +482,7 @@ const CTASection = ({ t }: any) => {
   };
 
   return (
-    <section id="contato" className="py-24 relative overflow-hidden">
+    <section id="contato" className="py-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-primary/5 to-background" />
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">

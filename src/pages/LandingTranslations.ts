@@ -123,6 +123,13 @@ export const translations = {
                     highlight: true,
                     badge: "Próximo",
                     link: "/selo"
+                },
+                {
+                    date: "2º Sem/2026",
+                    title: "Pilotos com Comunidades",
+                    desc: "Primeiras comunidades parceiras testam a Yá com suas participantes.",
+                    highlight: false,
+                    link: "/comunidades"
                 }
             ]
         },
@@ -273,6 +280,13 @@ export const translations = {
                     highlight: true,
                     badge: "Next",
                     link: "/selo"
+                },
+                {
+                    date: "H2/2026",
+                    title: "Community Pilots",
+                    desc: "First partner communities test Yá with their participants.",
+                    highlight: false,
+                    link: "/comunidades"
                 }
             ]
         },

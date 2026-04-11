@@ -18,6 +18,7 @@ import PageTrindAI from "./pages/PageTrindAI";
 import PageBaIA from "./pages/PageBaIA";
 import PageRBA from "./pages/PageRBA";
 import PageSelo from "./pages/PageSelo";
+import PageCommunity from "./pages/PageCommunity";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/baia" element={<PageBaIA />} />
           <Route path="/rba" element={<PageRBA />} />
           <Route path="/selo" element={<PageSelo />} />
+          <Route path="/comunidades" element={<PageCommunity />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/:phone" element={<Dashboard />} />
 
