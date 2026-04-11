@@ -30,7 +30,9 @@ const fadeUp = {
 const Header = ({ t, toggleLang }: any) => (
   <header className="absolute top-0 w-full z-50 bg-transparent">
     <div className="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-      <img src={yaLogo} alt="Yá Logo" className="h-6 opacity-80 object-contain" />
+      <a href="/" className="cursor-pointer hover:opacity-80 transition-opacity">
+        <img src={yaLogo} alt="Yá Logo" className="h-6 opacity-80 object-contain" />
+      </a>
       <div className="flex items-center gap-4">
         <button
           onClick={toggleLang}
@@ -230,16 +232,43 @@ const SolutionSection = ({ t }: any) => (
           </motion.p>
         </div>
 
-        <motion.div variants={fadeUp} custom={2} className="flex justify-center">
-          <div className="relative">
-            <div className="w-72 h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 backdrop-blur-md border-2 border-primary/30 flex flex-col items-center justify-center text-center p-10 shadow-2xl">
-              <Award size={48} className="text-primary mb-3" />
-              <p className="font-extrabold text-xl leading-tight">{t.solution.seloTitle}</p>
-              <p className="text-sm text-white font-bold mt-2 leading-relaxed drop-shadow-sm">
-                {t.solution.seloSub}
-              </p>
+        <motion.div variants={fadeUp} custom={2} className="flex justify-center w-full lg:justify-end pr-0 lg:pr-12">
+          <div className="relative group perspective-1000">
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-secondary/40 to-accent/40 blur-[80px] -z-10 group-hover:blur-[100px] transition-all duration-700" />
+            
+            {/* Outer Hexagon Shield (Border) */}
+            <div 
+              className="w-[280px] h-[340px] md:w-[320px] md:h-[380px] bg-gradient-to-br from-[#FF7B54] via-[#E13C6E] to-[#7329A3] p-[2px] shadow-2xl relative transition-transform duration-700 group-hover:scale-105 mx-auto"
+              style={{ clipPath: "polygon(50% 0%, 100% 18%, 100% 82%, 50% 100%, 0% 82%, 0% 18%)" }}
+            >
+              {/* Inner Hexagon Shield */}
+              <div 
+                className="w-full h-full bg-[#171523] relative"
+                style={{ clipPath: "polygon(50% 0%, 100% 18%, 100% 82%, 50% 100%, 0% 82%, 0% 18%)" }}
+              >
+                {/* Logo Circle */}
+                <div className="absolute top-[16%] left-1/2 -translate-x-1/2 w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-[#FF7B54] via-[#E13C6E] to-[#7329A3] flex items-center justify-center p-4 shadow-inner">
+                  <img src={yaLogo} alt="Yá Logo" className="w-[85%] object-contain drop-shadow-md" />
+                </div>
+                
+                {/* Details Container */}
+                <div className="absolute top-[56%] md:top-[55%] left-0 w-full flex flex-col items-center">
+                   <div className="w-8 h-[2px] bg-gradient-to-r from-[#FF7B54] to-[#E13C6E] opacity-90 mb-3" />
+                   <p className="text-[10.5px] md:text-[11.5px] font-black tracking-[0.2em] uppercase text-white mb-1">
+                     Marca Pioneira
+                   </p>
+                   <p className="text-3xl md:text-[36px] font-normal tracking-wide text-[#FF7B54] leading-none" style={{ fontFamily: 'sans-serif' }}>
+                     2026
+                   </p>
+                </div>
+                
+                {/* Subtitle */}
+                <p className="absolute bottom-[16%] left-0 w-full text-center text-[7.5px] md:text-[8px] font-bold tracking-[0.15em] text-white/30 uppercase">
+                  Selo de impacto verificado
+                </p>
+              </div>
             </div>
-            <div className="absolute -z-10 inset-0 rounded-full bg-primary/10 blur-[60px]" />
           </div>
         </motion.div>
       </motion.div>
