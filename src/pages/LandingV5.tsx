@@ -448,21 +448,23 @@ const LandingV5 = () => {
                                         <div className={`hidden sm:flex sm:w-full items-center justify-between`}>
                                             {/* Lado Esquerdo */}
                                             <div className={`w-[45%] flex justify-end ${!isLeftSide ? 'invisible' : ''}`}>
-                                                <div className={`bg-black/80 border border-white/10 rounded-[2rem] p-8 hover:border-primary/50 transition-all duration-500 relative overflow-hidden backdrop-blur-xl w-full max-w-lg text-right ${isHighlighted ? 'border-primary/30 shadow-[0_0_30px_rgba(226,107,88,0.15)] bg-white/5' : ''}`}>
-                                                    {isHighlighted && <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 blur-xl pointer-events-none" />}
-                                                    <div className="flex items-center gap-4 mb-4 justify-end">
-                                                        {isHighlighted && step.badge && (
-                                                            <span className="text-xs uppercase font-black tracking-widest px-3 py-1 rounded bg-gradient-hero text-white">
-                                                                {step.badge}
+                                                {((content) => 'link' in step && step.link ? <a href={step.link as string} className="block w-full max-w-lg cursor-pointer hover:scale-105 transition-transform duration-500">{content}</a> : <div className="w-full max-w-lg">{content}</div>)(
+                                                    <div className={`bg-black/80 border border-white/10 rounded-[2rem] p-8 hover:border-primary/50 transition-all duration-500 relative overflow-hidden backdrop-blur-xl w-full text-right ${isHighlighted ? 'border-primary/30 shadow-[0_0_30px_rgba(226,107,88,0.15)] bg-white/5' : ''}`}>
+                                                        {isHighlighted && <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 blur-xl pointer-events-none" />}
+                                                        <div className="flex items-center gap-4 mb-4 justify-end">
+                                                            {isHighlighted && step.badge && (
+                                                                <span className="text-xs uppercase font-black tracking-widest px-3 py-1 rounded bg-gradient-hero text-white">
+                                                                    {step.badge}
+                                                                </span>
+                                                            )}
+                                                            <span className={`font-mono text-sm uppercase tracking-wider ${isHighlighted ? 'text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-bold' : 'text-white/40'}`}>
+                                                                {step.date}
                                                             </span>
-                                                        )}
-                                                        <span className={`font-mono text-sm uppercase tracking-wider ${isHighlighted ? 'text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-bold' : 'text-white/40'}`}>
-                                                            {step.date}
-                                                        </span>
+                                                        </div>
+                                                        <h3 className="text-2xl font-bold mb-3 text-white">{step.title}</h3>
+                                                        <p className="text-white/60 leading-relaxed">{step.desc}</p>
                                                     </div>
-                                                    <h3 className="text-2xl font-bold mb-3 text-white">{step.title}</h3>
-                                                    <p className="text-white/60 leading-relaxed">{step.desc}</p>
-                                                </div>
+                                                )}
                                             </div>
 
                                             {/* Ponto Central Desktop */}
@@ -477,21 +479,23 @@ const LandingV5 = () => {
 
                                             {/* Lado Direito */}
                                             <div className={`w-[45%] flex justify-start ${isLeftSide ? 'invisible' : ''}`}>
-                                                <div className={`bg-black/80 border border-white/10 rounded-[2rem] p-8 hover:border-primary/50 transition-all duration-500 relative overflow-hidden backdrop-blur-xl w-full max-w-lg text-left ${isHighlighted ? 'border-primary/30 shadow-[0_0_30px_rgba(226,107,88,0.15)] bg-white/5' : ''}`}>
-                                                    {isHighlighted && <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 blur-xl pointer-events-none" />}
-                                                    <div className="flex items-center gap-4 mb-4 justify-start">
-                                                        <span className={`font-mono text-sm uppercase tracking-wider ${isHighlighted ? 'text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-bold' : 'text-white/40'}`}>
-                                                            {step.date}
-                                                        </span>
-                                                        {isHighlighted && step.badge && (
-                                                            <span className="text-xs uppercase font-black tracking-widest px-3 py-1 rounded bg-gradient-hero text-white">
-                                                                {step.badge}
+                                                {((content) => 'link' in step && step.link ? <a href={step.link as string} className="block w-full max-w-lg cursor-pointer hover:scale-105 transition-transform duration-500">{content}</a> : <div className="w-full max-w-lg">{content}</div>)(
+                                                    <div className={`bg-black/80 border border-white/10 rounded-[2rem] p-8 hover:border-primary/50 transition-all duration-500 relative overflow-hidden backdrop-blur-xl w-full text-left ${isHighlighted ? 'border-primary/30 shadow-[0_0_30px_rgba(226,107,88,0.15)] bg-white/5' : ''}`}>
+                                                        {isHighlighted && <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 blur-xl pointer-events-none" />}
+                                                        <div className="flex items-center gap-4 mb-4 justify-start">
+                                                            <span className={`font-mono text-sm uppercase tracking-wider ${isHighlighted ? 'text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-bold' : 'text-white/40'}`}>
+                                                                {step.date}
                                                             </span>
-                                                        )}
+                                                            {isHighlighted && step.badge && (
+                                                                <span className="text-xs uppercase font-black tracking-widest px-3 py-1 rounded bg-gradient-hero text-white">
+                                                                    {step.badge}
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        <h3 className="text-2xl font-bold mb-3 text-white">{step.title}</h3>
+                                                        <p className="text-white/60 leading-relaxed">{step.desc}</p>
                                                     </div>
-                                                    <h3 className="text-2xl font-bold mb-3 text-white">{step.title}</h3>
-                                                    <p className="text-white/60 leading-relaxed">{step.desc}</p>
-                                                </div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>

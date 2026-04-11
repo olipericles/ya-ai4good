@@ -114,8 +114,15 @@ export const translations = {
                     date: "Mar/2026",
                     title: "Brazil Conference",
                     desc: "Apresentação em Boston",
+                    highlight: false
+                },
+                {
+                    date: "Abr/2026",
+                    title: "Montagem do Grupo Pioneiro",
+                    desc: "Abertura oficial para captação B2B (Selo Yá).",
                     highlight: true,
-                    badge: "Próximo"
+                    badge: "Próximo",
+                    link: "/selo"
                 }
             ]
         },
@@ -257,8 +264,15 @@ export const translations = {
                     date: "Mar/2026",
                     title: "Brazil Conference",
                     desc: "Presentation in Boston",
+                    highlight: false
+                },
+                {
+                    date: "Apr/2026",
+                    title: "Pioneering Brands Assembly",
+                    desc: "Official opening for B2B funding (Selo Yá).",
                     highlight: true,
-                    badge: "Next"
+                    badge: "Next",
+                    link: "/selo"
                 }
             ]
         },

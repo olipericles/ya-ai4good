@@ -18,7 +18,6 @@ import PageTrindAI from "./pages/PageTrindAI";
 import PageBaIA from "./pages/PageBaIA";
 import PageRBA from "./pages/PageRBA";
 import PageSelo from "./pages/PageSelo";
-import ExportStat from "./pages/ExportStat";
 
 const queryClient = new QueryClient();
 
@@ -46,7 +45,6 @@ const App = () => (
           <Route path="/dashboard/:phone" element={<Dashboard />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="/export-stat" element={<ExportStat />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
