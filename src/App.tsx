@@ -40,6 +40,7 @@ const App = () => (
           <Route path="/trindai" element={<PageTrindAI />} />
           <Route path="/baia" element={<PageBaIA />} />
           <Route path="/rba" element={<PageRBA />} />
+          <Route path="/selo" element={<PageSelo />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/:phone" element={<Dashboard />} />
 
