@@ -118,7 +118,7 @@ export const translations = {
                 },
                 {
                     date: "Abr/2026",
-                    title: "Montagem do Grupo Pioneiro",
+                    title: "Montagem com Marcas Pioneiras",
                     desc: "Abertura oficial para captação B2B (Selo Yá).",
                     highlight: true,
                     badge: "Próximo",
@@ -268,7 +268,7 @@ export const translations = {
                 },
                 {
                     date: "Apr/2026",
-                    title: "Pioneering Brands Assembly",
+                    title: "Assembly with Pioneering Brands",
                     desc: "Official opening for B2B funding (Selo Yá).",
                     highlight: true,
                     badge: "Next",

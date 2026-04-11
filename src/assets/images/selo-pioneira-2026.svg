@@ -22,8 +22,8 @@
   <circle cx="160" cy="124" r="64" fill="url(#brandGradient)" />
   
   <!-- White Yá Logo (Embedded & Centered) -->
-  <g transform="translate(100.8, 79.2)">
-    <g transform="translate(0.000000,896.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
+  <svg x="106" y="83" width="108" height="82" viewBox="0 0 1184 896" preserveAspectRatio="xMidYMid meet">
+    <g transform="translate(0,896) scale(0.1,-0.1)" fill="#ffffff" stroke="none">
       <path d="M8896 8535 c-122 -34 -262 -128 -321 -218 -19 -28 -143 -279 -276
       -557 -322 -674 -370 -780 -364 -791 8 -13 663 -12 782 2 112 12 228 51 305
       103 95 63 117 89 541 640 106 138 226 293 267 347 261 336 355 462 355 472 0
@@ -62,7 +62,7 @@
       1490 -32 192 -112 366 -241 527 -272 341 -782 572 -1423 646 -125 14 -567 27
       -651 18z"/>
     </g>
-  </g>
+  </svg>
   
   <!-- Subtle Middle Line -->
   <rect x="144" y="209" width="32" height="2" fill="url(#lineGradient)" opacity="0.9" />
