@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Eye, Link2, ShieldAlert, BarChart3, DollarSign, Heart, TrendingUp,
+  EyeOff, Unlink, ShieldAlert, BarChart3, DollarSign, Heart, TrendingUp,
   Building2, MessageCircle, FileText, ArrowRight, Mail, Award, ChevronRight,
-  Users, Zap, Shield, BadgeCheck, Megaphone, PieChart, Star, Check, Loader2
+  Users, Zap, Shield, BadgeCheck, Megaphone, PieChart, Star, Check, Loader2, Quote
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
+
+// Import maes placeholder - user can update this later
+import aureaPlaceholder from "@/assets/maes/aurea.jpeg"; 
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -44,7 +48,7 @@ const HeroSection = () => (
         </motion.h1>
 
         <motion.p variants={fadeUp} custom={2} className="text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed">
-          Conectamos seu investimento social diretamente ao CPF anonimizado da mãe solo e medimos em tempo real a curva de inadimplência, o aumento da poupança para educação e o score financeiro da família.
+          Conectamos seu investimento social diretamente ao CPF anonimizado da mãe solo, e medimos em tempo real a curva de inadimplência, o aumento de poupança para educação e o score financeiro da família. Edição 2026 para Marcas Pioneiras com vagas limitadas.
         </motion.p>
 
         <motion.p variants={fadeUp} custom={2.5} className="text-sm text-muted-foreground/70 italic max-w-lg">
@@ -54,43 +58,94 @@ const HeroSection = () => (
         <motion.div variants={fadeUp} custom={3} className="flex flex-wrap gap-4 pt-2">
           <Button size="lg" className="bg-gradient-hero text-white font-semibold rounded-2xl shadow-lg hover:opacity-90 transition-opacity" asChild>
             <a href="#contato" className="flex items-center gap-2">
-              Quero o Selo de Impacto da minha marca <ChevronRight size={18} />
+              Candidate-se como Marca Pioneira <ChevronRight size={18} />
             </a>
           </Button>
           <Button variant="outline" size="lg" className="rounded-2xl border-border/60" asChild>
-            <a href="#contato">Agendar demonstração de 15 min</a>
+            <a href="#contato">Conhecer o método em 20 minutos</a>
           </Button>
         </motion.div>
       </motion.div>
 
-      {/* dashboard mock */}
+      {/* Hero Visual Composition */}
       <motion.div
         initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
-        className="hidden lg:block"
+        className="hidden lg:flex flex-col items-center gap-6"
       >
-        <Card className="bg-card/80 backdrop-blur-xl border-border/40 rounded-3xl shadow-2xl p-6 space-y-4">
-          <p className="text-xs text-muted-foreground tracking-wide uppercase">Renda Disponível Após Uso da Yá</p>
-          <div className="flex items-end gap-3 h-40">
-            {[35, 50, 62, 78, 90, 100].map((h, i) => (
-              <motion.div
-                key={i}
-                initial={{ height: 0 }}
-                animate={{ height: `${h}%` }}
-                transition={{ delay: 0.8 + i * 0.12, duration: 0.6, ease: "easeOut" as const }}
-                className="flex-1 rounded-xl bg-gradient-to-t from-secondary to-primary"
-              />
-            ))}
+        {/* Aurea Photo & Quote */}
+        <div className="flex flex-col items-center">
+          <div className="w-40 h-40 rounded-full border-4 border-primary/30 overflow-hidden mb-4 shadow-xl">
+            {/* Using a placeholder from assets/maes - user can change to official photo */}
+            <img src={aureaPlaceholder} alt="Áurea Valéria" className="w-full h-full object-cover" />
           </div>
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span>
-          </div>
-          <div className="flex items-center gap-2 pt-2">
-            <TrendingUp size={16} className="text-primary" />
-            <span className="text-sm font-semibold text-primary">+62% renda liberada</span>
+          <Card className="bg-card/80 backdrop-blur-md border-border/40 rounded-2xl max-w-md text-center p-4">
+            <Quote size={20} className="text-primary/50 mx-auto mb-2" />
+            <p className="text-sm italic text-foreground mb-2">
+              "Eu tinha medo de ver os números. A Yá me mostrou sem julgamento."
+            </p>
+            <p className="text-xs text-muted-foreground font-semibold">
+              Áurea, mãe transformada do piloto Yá
+            </p>
+          </Card>
+        </div>
+
+        {/* Award Badge Placeholder */}
+        <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20 backdrop-blur-md rounded-2xl text-center p-4 w-full max-w-md flex items-center justify-center gap-3">
+          <Award size={32} className="text-primary" />
+          <div className="text-left">
+            <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Vencedor AI4Good 2026</p>
+            <p className="text-sm font-semibold">Brazil Conference (Harvard & MIT)</p>
+            <p className="text-[10px] text-muted-foreground">Único projeto do NE entre 188 inscritos</p>
           </div>
         </Card>
+
+        {/* Press Logos Placeholder */}
+        <div className="flex items-center justify-center gap-6 opacity-60 grayscale w-full max-w-md">
+          {['Alma Preta', 'JC Bahia', 'G1 Bahia'].map((name) => (
+             <div key={name} className="flex items-center justify-center bg-muted/50 rounded-lg px-4 py-2 border border-border/50 text-xs font-bold text-muted-foreground">
+               {name}
+             </div>
+          ))}
+        </div>
       </motion.div>
+    </div>
+  </section>
+);
+
+/* ─── Faixa de Credibilidade (NOVA) ─── */
+const CredibilitySection = () => (
+  <section className="bg-[#252540]/30 border-y border-border/20 py-8 relative z-20">
+    <div className="container mx-auto px-6 lg:px-12">
+      <p className="text-center text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-6">Reconhecido por:</p>
+      <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale">
+        
+        {/* Placeholder styling for missing logos - to be replaced by actual images later */}
+        <div className="flex items-center gap-2">
+           <Award size={20} className="text-primary grayscale-0" />
+           <div className="text-sm font-bold leading-tight">
+              <div>Vencedor AI4Good 2026</div>
+              <div className="text-xs opacity-70 font-normal">Harvard & MIT</div>
+           </div>
+        </div>
+
+        <div className="text-sm font-bold border border-border/50 rounded px-3 py-1 bg-muted/30">Alma Preta</div>
+        <div className="text-sm font-bold border border-border/50 rounded px-3 py-1 bg-muted/30">Nordeste Eu Sou</div>
+        <div className="flex flex-col items-center">
+           <div className="text-sm font-bold border border-border/50 rounded px-3 py-1 bg-muted/30 mb-1">JC Bairro da Paz</div>
+        </div>
+        
+        <div className="flex flex-col items-center">
+           <div className="text-sm font-bold border border-border/50 rounded px-3 py-1 bg-muted/30 mb-1">G1 Bahia</div>
+           <span className="text-[10px] opacity-70">abril 2026</span>
+        </div>
+
+        <div className="flex flex-col items-center">
+           <div className="text-sm font-bold border border-border/50 rounded px-3 py-1 bg-muted/30 mb-1">Conexão Bahia</div>
+           <span className="text-[10px] opacity-70">maio 2026</span>
+        </div>
+
+      </div>
     </div>
   </section>
 );
@@ -117,14 +172,14 @@ const ProblemSection = () => (
 
       <div className="grid md:grid-cols-3 gap-8">
         {[
-          { icon: Eye, title: "Invisibilidade", desc: "Você doa, mas não sabe se o dinheiro virou comida na mesa ou pagou juros do banco." },
-          { icon: Link2, title: "Desconexão", desc: "11 Milhões de mães solo são o motor da economia, mas seu app ou produto não fala a língua delas." },
+          { icon: EyeOff, title: "Invisibilidade", desc: "Você doa, mas não sabe se o dinheiro virou comida na mesa ou pagou juros do banco." },
+          { icon: Unlink, title: "Desconexão", desc: "O Brasil tem 11,3 milhões de domicílios chefiados por mães solo, e 64% das mães solo negras vivem abaixo da linha de pobreza segundo o IBGE. Sua marca chega até elas com a linguagem certa?" },
           { icon: ShieldAlert, title: "Risco Regulatório", desc: "Normas IFRS S1 e Resolução CVM 193 exigem dados de impacto social auditáveis. Você tem?" }
         ].map((p, i) => (
           <motion.div key={p.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i + 1}>
             <Card className="bg-card/60 backdrop-blur-md border-border/30 rounded-3xl h-full hover:border-primary/30 transition-colors">
               <CardContent className="p-8 space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
                   <p.icon size={24} className="text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">{p.title}</h3>
@@ -152,7 +207,7 @@ const SolutionSection = () => (
             <span className="text-gradient">dado financeiro mensurável.</span>
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} className="text-muted-foreground leading-relaxed text-lg">
-            Uma plataforma de inteligência (SaaS) que conecta sua marca à comunidade Yá de forma anonimizada e LGPD-compliant. Três lados ganham.
+            Uma plataforma em construção pela equipe que venceu o AI4Good 2026, conectando sua marca à comunidade Yá de forma anonimizada e LGPD-compliant. Três lados ganham.
           </motion.p>
           <motion.ul variants={fadeUp} custom={2} className="space-y-3">
             {[
@@ -169,15 +224,18 @@ const SolutionSection = () => (
               </li>
             ))}
           </motion.ul>
+          <motion.p variants={fadeUp} custom={3} className="text-sm text-primary/80 italic pt-2">
+            Marcas Pioneiras 2026: as primeiras a ajudar a moldar a safra inicial do Selo Yá.
+          </motion.p>
         </div>
 
         <motion.div variants={fadeUp} custom={2} className="flex justify-center">
           <div className="relative">
             <div className="w-72 h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 backdrop-blur-md border-2 border-primary/30 flex flex-col items-center justify-center text-center p-10 shadow-2xl">
               <Award size={48} className="text-primary mb-3" />
-              <p className="font-extrabold text-lg leading-tight">Selo Yá de Origem</p>
-              <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-                Esta empresa reduz a pobreza menstrual e o superendividamento feminino.
+              <p className="font-extrabold text-xl leading-tight">Selo Yá de Origem</p>
+              <p className="text-sm text-primary font-semibold mt-2 leading-relaxed">
+                Sua empresa entre as marcas pioneiras da primeira safra
               </p>
             </div>
             <div className="absolute -z-10 inset-0 rounded-full bg-primary/10 blur-[60px]" />
@@ -196,11 +254,11 @@ const tripleWin = [
   },
   {
     icon: Users, title: "Comunidade",
-    items: ["Queda de inadimplência", "Poupança para educação", "Score financeiro melhor"]
+    items: ["Visibilidade financeira sem julgamento", "Queda de inadimplência mensurável", "Score financeiro real e crescente"]
   },
   {
     icon: Building2, title: "Sua Marca",
-    items: ["ROI de vendas direto", "Materialidade financeira", "Credencial ESG forte + Selo"]
+    items: ["ROI mensurável de programas ESG", "Materialidade financeira auditável (IFRS S1 e CVM 193)", "Credencial ESG validada + Selo Yá de Origem"]
   },
 ];
 
@@ -231,11 +289,11 @@ const TripleWinSection = () => (
                   <tw.icon size={28} className="text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold">{tw.title}</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {tw.items.map((item, j) => (
-                    <li key={j} className="flex items-center gap-2 text-muted-foreground">
-                      <Check size={14} className="text-primary flex-shrink-0" />
-                      <span>{item}</span>
+                    <li key={j} className="flex items-start gap-2 text-muted-foreground">
+                      <Check size={16} className="text-primary flex-shrink-0 mt-0.5" />
+                      <span className="leading-snug">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -248,12 +306,63 @@ const TripleWinSection = () => (
   </section>
 );
 
+/* ─── Aurea Story (NOVA) ─── */
+const AureaStorySection = () => (
+  <section className="py-24 relative overflow-hidden">
+    <div className="absolute inset-0 bg-secondary/5" />
+    <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <div className="bg-card border border-border/30 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col lg:flex-row gap-12 items-center">
+        
+        <div className="w-full lg:w-2/5 flex justify-center">
+          <div className="relative">
+            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl z-10 relative">
+              <img src={aureaPlaceholder} alt="Áurea Valéria" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute -bottom-4 -right-4 bg-card border border-primary/30 rounded-2xl p-4 shadow-xl z-20 max-w-[200px]">
+              <Quote className="text-primary mb-2" size={20} />
+              <p className="text-xs font-bold leading-tight">
+                "Eu tinha medo de ver os números. A Yá me mostrou sem julgamento."
+              </p>
+            </div>
+            <div className="absolute inset-0 bg-primary/20 blur-[80px] -z-10 rounded-full" />
+          </div>
+        </div>
+
+        <div className="w-full lg:w-3/5 space-y-6">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">Conheça a Áurea</h2>
+            <p className="text-lg text-primary font-semibold">
+              Mãe transformada do piloto Yá, natural de Miguel Calmon, na Chapada Diamantina
+            </p>
+          </div>
+          
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Áurea Valéria é mãe solo do Isaque, sete anos, e empreendedora digital. Ensina mulheres a fazer renda no TikTok Shop e é Head de afiliadas da @usebigboom. Antes da Yá, ela tinha medo de abrir os apps do banco. Hoje, registra os gastos com a Yá no WhatsApp todos os dias, sabe pra onde o dinheiro vai e ajuda outras mães a fazer o mesmo.
+            </p>
+            <p>
+              Em maio de 2026, a história da Áurea vai ao ar no programa Conexão Bahia, da TV Bahia.
+            </p>
+          </div>
+
+          <div className="pt-4 border-t border-border/40">
+            <p className="text-sm font-semibold italic text-foreground">
+              Áurea Valéria, mãe transformada do piloto Yá
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+);
+
 /* ─── KPIs ─── */
 const kpis = [
-  { icon: BarChart3, label: "Redução do CAC", value: "3x", desc: "Consumidoras impactadas compram 3x mais da marca apoiadora." },
-  { icon: DollarSign, label: "Renda Liberada", value: "R$ 147", desc: "Por mês em média deixam de ir para juros e vão para o consumo essencial." },
-  { icon: Heart, label: "NPS Social", value: "78%", desc: "Das mães sentem menos ansiedade financeira." },
-  { icon: TrendingUp, label: "Índice de Retenção", value: "+40%", desc: "Aumento na fidelidade à marca patrocinadora." },
+  { icon: BarChart3, label: "Potencial de redução de CAC em programas de impacto", value: "3x*" },
+  { icon: DollarSign, label: "Estimativa de renda liberada por mãe ao mês", value: "R$ 147*" },
+  { icon: Heart, label: "Meta de satisfação para a primeira safra", value: "NPS 70+*" },
+  { icon: TrendingUp, label: "Potencial de aumento em lealdade e recompra da marca", value: "40%+*" },
 ];
 
 const KPISection = () => (
@@ -264,7 +373,7 @@ const KPISection = () => (
         variants={fadeUp} custom={0}
         className="text-3xl md:text-4xl font-bold text-center mb-4"
       >
-        O que seu CFO verá no <span className="text-primary">Dashboard.</span>
+        O que sua área de sustentabilidade verá no <span className="text-primary">relatório mensal.</span>
       </motion.h2>
       <motion.p
         initial="hidden" whileInView="visible" viewport={{ once: true }}
@@ -283,85 +392,15 @@ const KPISection = () => (
                   <k.icon size={28} className="text-primary" />
                 </div>
                 <p className="text-4xl font-extrabold text-gradient">{k.value}</p>
-                <h3 className="text-base font-bold">{k.label}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{k.desc}</p>
+                <p className="text-sm font-bold leading-snug">{k.label}</p>
               </CardContent>
             </Card>
           </motion.div>
         ))}
       </div>
-    </div>
-  </section>
-);
-
-/* ─── Benefits ─── */
-const benefits = [
-  { icon: BadgeCheck, text: "Direito de usar o Selo Yá em campanhas e relatório anual" },
-  { icon: Shield, text: "Prova mensurável para CVM e investidores" },
-  { icon: PieChart, text: "ROI de vendas direto via mães solo" },
-  { icon: Megaphone, text: "Dados exclusivos de consumo desse público" },
-];
-
-const BenefitsSection = () => (
-  <section className="py-24">
-    <div className="container mx-auto px-6 lg:px-12">
-      <motion.h2
-        initial="hidden" whileInView="visible" viewport={{ once: true }}
-        variants={fadeUp} custom={0}
-        className="text-3xl md:text-4xl font-bold text-center mb-14"
-      >
-        Benefícios para <span className="text-gradient">sua marca.</span>
-      </motion.h2>
-
-      <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-        {benefits.map((b, i) => (
-          <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i + 1}
-            className="flex items-start gap-4 p-6 rounded-2xl bg-card/40 border border-border/20"
-          >
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <b.icon size={20} className="text-primary" />
-            </div>
-            <p className="text-foreground leading-relaxed">{b.text}</p>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-/* ─── Timeline ─── */
-const TimelineSection = () => (
-  <section className="py-24 relative">
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full" />
-    </div>
-    <div className="container mx-auto px-6 lg:px-12 relative z-10">
-      <motion.h2
-        initial="hidden" whileInView="visible" viewport={{ once: true }}
-        variants={fadeUp} custom={0}
-        className="text-3xl md:text-4xl font-bold text-center mb-14"
-      >
-        Do Investimento ao <span className="text-gradient">Relatório Auditável.</span>
-      </motion.h2>
-
-      <div className="grid md:grid-cols-3 gap-8 relative">
-        <div className="hidden md:block absolute top-16 left-[16.6%] right-[16.6%] h-0.5 bg-gradient-to-r from-primary/40 via-secondary/40 to-primary/40" />
-        {[
-          { icon: Building2, title: "Investimento", desc: "Sua marca investe no programa Yá para uma comunidade ou região." },
-          { icon: MessageCircle, title: "Uso da IA", desc: "As mães usam a IA no WhatsApp (anonimizado)." },
-          { icon: FileText, title: "Relatório", desc: "Você recebe um Relatório de Materialidade mensal para o Board." },
-        ].map((s, i) => (
-          <motion.div key={s.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i + 1}
-            className="flex flex-col items-center text-center"
-          >
-            <div className="relative z-10 w-16 h-16 rounded-full bg-card border-2 border-primary/40 flex items-center justify-center mb-6 shadow-lg">
-              <s.icon size={28} className="text-primary" />
-            </div>
-            <span className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">Passo {i + 1}</span>
-            <h3 className="text-xl font-bold mb-2">{s.title}</h3>
-            <p className="text-muted-foreground leading-relaxed max-w-xs">{s.desc}</p>
-          </motion.div>
-        ))}
+      
+      <div className="mt-8 text-center text-xs text-muted-foreground/60 max-w-3xl mx-auto px-4">
+        * Projeções baseadas em literatura de impacto e em dados do piloto Yá. Métricas reais serão entregues mensalmente para as marcas pioneiras.
       </div>
     </div>
   </section>
@@ -370,41 +409,68 @@ const TimelineSection = () => (
 /* ─── Pricing ─── */
 const packages = [
   {
-    name: "Starter", price: "R$ 48 mil", period: "/ano", highlight: false,
-    features: ["Selo Yá para 1 campanha", "Relatório mensal básico", "Até 500 mães impactadas", "Dashboard com métricas-chave"]
+    name: "Apoiadora", price: "R$ 48 mil", period: "/ano", highlight: false,
+    features: [
+      "Selo Yá para uma comunidade", 
+      "Relatório mensal básico", 
+      "Até 100 mães impactadas", 
+      "Dashboard com métricas-chave",
+      "Logo no relatório anual de impacto Yá"
+    ]
   },
   {
-    name: "Growth", price: "R$ 98 mil", period: "/ano", highlight: true, badge: "Mais vendido",
-    features: ["Selo Yá para campanhas ilimitadas", "Relatório mensal completo + auditoria", "Até 2.000 mães impactadas", "Dashboard avançado + API", "Dados exclusivos de consumo"]
+    name: "Parceira", price: "R$ 98 mil", period: "/ano", highlight: true, badge: "Recomendado",
+    features: [
+      "Selo Yá para até 3 comunidades", 
+      "Relatório mensal completo, com curadoria", 
+      "Até 300 mães impactadas", 
+      "Dashboard avançado com API", 
+      "Sessão exclusiva com equipe Yá trimestral",
+      "Co-criação de uma campanha narrativa"
+    ]
   },
   {
-    name: "Enterprise", price: "R$ 198 mil", period: "/ano", highlight: false,
-    features: ["Tudo do Growth", "Comunidades ilimitadas", "White-label do relatório", "Suporte dedicado", "Consultoria trimestral de materialidade"]
+    name: "Fundadora", price: "R$ 198 mil", period: "/ano", highlight: false,
+    features: [
+      "Tudo da Parceira", 
+      "Comunidades ilimitadas (dentro da região)", 
+      "White label do relatório", 
+      "Suporte dedicado", 
+      "Consultoria trimestral de materialidade ESG",
+      "Selo Yá Fundadora 2026 em campanhas",
+      "Lugar no conselho consultivo da Yá em 2027"
+    ]
   },
 ];
 
 const PricingSection = () => (
-  <section className="py-24">
+  <section className="py-24 relative">
     <div className="container mx-auto px-6 lg:px-12">
       <motion.h2
         initial="hidden" whileInView="visible" viewport={{ once: true }}
         variants={fadeUp} custom={0}
         className="text-3xl md:text-4xl font-bold text-center mb-4"
       >
-        Escolha seu nível de <span className="text-gradient">impacto.</span>
+        Marcas Pioneiras 2026: <span className="text-gradient">três níveis de protagonismo.</span>
       </motion.h2>
       <motion.p
         initial="hidden" whileInView="visible" viewport={{ once: true }}
         variants={fadeUp} custom={1}
-        className="text-center text-muted-foreground mb-14 max-w-2xl mx-auto"
+        className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto"
       >
-        Cada pacote entrega resultados mensuráveis para seu relatório anual.
+        Vagas limitadas. As marcas pioneiras assinam contrato anual e ajudam a moldar a primeira safra do Selo Yá.
       </motion.p>
+      
+      <motion.div variants={fadeUp} custom={1.5} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex justify-center mb-12">
+        <div className="bg-secondary/20 border border-secondary/30 text-secondary-foreground px-6 py-2 rounded-full font-semibold text-sm">
+          5 vagas Apoiadora | 3 vagas Parceira | 2 vagas Fundadora. Encerramento: 30/06/2026
+        </div>
+      </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
         {packages.map((pkg, i) => (
           <motion.div key={pkg.name} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i + 1}>
-            <Card className={`rounded-3xl h-full relative overflow-hidden transition-colors ${
+            <Card className={`rounded-3xl h-full flex flex-col relative overflow-hidden transition-colors ${
               pkg.highlight
                 ? "bg-gradient-to-b from-primary/10 to-card border-primary/40 shadow-xl"
                 : "bg-card/60 backdrop-blur-md border-border/30 hover:border-primary/30"
@@ -414,31 +480,30 @@ const PricingSection = () => (
                   {pkg.badge}
                 </div>
               )}
-              <CardContent className="p-8 space-y-6">
-                <div>
+              <CardContent className="p-8 flex-1 flex flex-col">
+                <div className="mb-6">
                   <h3 className="text-xl font-bold">{pkg.name}</h3>
-                  <div className="mt-2">
-                    <span className="text-3xl font-extrabold text-gradient">{pkg.price}</span>
-                    <span className="text-muted-foreground text-sm">{pkg.period}</span>
+                  <div className="mt-2 text-primary font-extrabold text-3xl">
+                    {pkg.price} <span className="text-muted-foreground text-sm font-normal">{pkg.period}</span>
                   </div>
                 </div>
-                <ul className="space-y-3">
+                <ul className="space-y-4 mb-8 flex-1">
                   {pkg.features.map((f, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm">
+                    <li key={j} className="flex items-start gap-3 text-sm">
                       <Check size={16} className="text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground">{f}</span>
+                      <span className="text-muted-foreground leading-relaxed">{f}</span>
                     </li>
                   ))}
                 </ul>
                 <Button
-                  className={`w-full rounded-2xl font-semibold ${
+                  className={`w-full rounded-2xl font-semibold mt-auto ${
                     pkg.highlight
-                      ? "bg-gradient-hero text-white hover:opacity-90"
-                      : "bg-card border border-primary/30 text-primary hover:bg-primary/10"
+                      ? "bg-gradient-hero text-white hover:opacity-90 shadow-lg"
+                      : "bg-card border-2 border-border text-foreground hover:border-primary/50"
                   }`}
                   asChild
                 >
-                  <a href="#contato">Quero este plano</a>
+                  <a href="#contato">Candidatar como {pkg.name}</a>
                 </Button>
               </CardContent>
             </Card>
@@ -451,7 +516,10 @@ const PricingSection = () => (
 
 /* ─── CTA + Form ─── */
 const CTASection = () => {
-  const [form, setForm] = useState({ nome: "", empresa: "", cargo: "", email: "" });
+  const [form, setForm] = useState({ 
+    nome: "", empresa: "", email: "", 
+    tamanho: "", estagio: "", tier: "" 
+  });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -459,7 +527,7 @@ const CTASection = () => {
     e.preventDefault();
     if (!form.nome.trim() || !form.email.trim()) return;
     setLoading(true);
-    // Simulates sending — replace with real endpoint
+    // Simulates sending
     setTimeout(() => {
       setSubmitted(true);
       setLoading(false);
@@ -468,81 +536,133 @@ const CTASection = () => {
 
   return (
     <section id="contato" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-primary/10 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-primary/5 to-background" />
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           {/* left copy */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-6">
             <motion.p variants={fadeUp} custom={0} className="text-primary font-semibold uppercase tracking-widest text-sm">
-              Seja pioneira
+              Processo de Seleção
             </motion.p>
-            <motion.h2 variants={fadeUp} custom={1} className="text-3xl md:text-4xl font-extrabold leading-tight">
-              Seja a primeira marca a carregar o{" "}
-              <span className="text-gradient">Selo de Impacto Yá</span> em 2026.
+            <motion.h2 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-extrabold leading-tight">
+              Candidate sua marca a ser <span className="text-gradient">Pioneira em 2026.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="text-muted-foreground leading-relaxed">
-              Chega de PDF bonito. Vamos falar de Resultado Social Auditável.
+            <motion.p variants={fadeUp} custom={2} className="text-muted-foreground leading-relaxed text-lg">
+              Receba uma resposta personalizada da nossa equipe em até 5 dias úteis. Conversa exploratória sem compromisso.
             </motion.p>
-            <motion.p variants={fadeUp} custom={3} className="text-sm text-muted-foreground flex items-center gap-2">
-              <Mail size={14} /> impacto@ya-assistente.com.br
+            <motion.p variants={fadeUp} custom={3} className="text-sm text-foreground font-semibold flex items-center gap-2">
+              <Mail size={16} className="text-primary" /> ya.ai4good@gmail.com
             </motion.p>
           </motion.div>
 
           {/* right form */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={2}>
-            <Card className="bg-card/80 backdrop-blur-xl border-border/40 rounded-3xl shadow-2xl">
+            <Card className="bg-card/80 backdrop-blur-xl border-border/40 rounded-3xl shadow-2xl overflow-hidden">
               <CardContent className="p-8">
                 {submitted ? (
-                  <div className="text-center py-8 space-y-4">
-                    <div className="w-16 h-16 rounded-full bg-primary/15 flex items-center justify-center mx-auto">
-                      <Check size={32} className="text-primary" />
+                  <div className="text-center py-12 space-y-4">
+                    <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                      <Check size={40} className="text-primary" />
                     </div>
-                    <h3 className="text-xl font-bold">Recebemos seu interesse!</h3>
-                    <p className="text-muted-foreground">O time Yá entrará em contato em até 48h.</p>
+                    <h3 className="text-2xl font-bold">Candidatura Enviada!</h3>
+                    <p className="text-muted-foreground">Nossa equipe comercial analisará suas informações e entrará em contato nos próximos 5 dias úteis para os próximos passos.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
-                    <h3 className="text-lg font-bold mb-2">Agendar reunião com o time Yá</h3>
-                    <Input
-                      placeholder="Seu nome"
-                      value={form.nome}
-                      onChange={(e) => setForm({ ...form, nome: e.target.value })}
-                      className="rounded-xl bg-muted/50 border-border/30"
-                      maxLength={100}
-                      required
-                    />
-                    <Input
-                      placeholder="Empresa"
-                      value={form.empresa}
-                      onChange={(e) => setForm({ ...form, empresa: e.target.value })}
-                      className="rounded-xl bg-muted/50 border-border/30"
-                      maxLength={100}
-                    />
-                    <Input
-                      placeholder="Cargo"
-                      value={form.cargo}
-                      onChange={(e) => setForm({ ...form, cargo: e.target.value })}
-                      className="rounded-xl bg-muted/50 border-border/30"
-                      maxLength={100}
-                    />
-                    <Input
-                      type="email"
-                      placeholder="E-mail corporativo"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="rounded-xl bg-muted/50 border-border/30"
-                      maxLength={255}
-                      required
-                    />
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label className="text-xs font-semibold text-muted-foreground ml-1">Seu nome</label>
+                        <Input
+                          placeholder="Ex: Ana Silva"
+                          value={form.nome}
+                          onChange={(e) => setForm({ ...form, nome: e.target.value })}
+                          className="rounded-xl bg-muted/50 border-border/30 h-12"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-xs font-semibold text-muted-foreground ml-1">E-mail corporativo</label>
+                        <Input
+                          type="email"
+                          placeholder="ana@empresa.com"
+                          value={form.email}
+                          onChange={(e) => setForm({ ...form, email: e.target.value })}
+                          className="rounded-xl bg-muted/50 border-border/30 h-12"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-xs font-semibold text-muted-foreground ml-1">Empresa</label>
+                      <Input
+                        placeholder="Nome da sua empresa"
+                        value={form.empresa}
+                        onChange={(e) => setForm({ ...form, empresa: e.target.value })}
+                        className="rounded-xl bg-muted/50 border-border/30 h-12"
+                        required
+                      />
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label className="text-xs font-semibold text-muted-foreground ml-1">Tamanho da equipe</label>
+                        <Select onValueChange={(v) => setForm({...form, tamanho: v})}>
+                          <SelectTrigger className="w-full rounded-xl bg-muted/50 border-border/30 h-12">
+                            <SelectValue placeholder="Selecione..." />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="ate-100">Até 100 funcionários</SelectItem>
+                            <SelectItem value="100-1000">100 a 1000 funcionários</SelectItem>
+                            <SelectItem value="mais-1000">Mais de 1000 funcionários</SelectItem>
+                            <SelectItem value="capital-aberto">Capital aberto</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <label className="text-xs font-semibold text-muted-foreground ml-1">Estágio do programa ESG</label>
+                        <Select onValueChange={(v) => setForm({...form, estagio: v})}>
+                          <SelectTrigger className="w-full rounded-xl bg-muted/50 border-border/30 h-12">
+                            <SelectValue placeholder="Selecione..." />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="explorando">Explorando opções</SelectItem>
+                            <SelectItem value="estruturando">Estruturando setor</SelectItem>
+                            <SelectItem value="ativo-orcamento">Ativo (com orçamento)</SelectItem>
+                            <SelectItem value="cvm-193">Capital aberto (CVM 193)</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2 mb-6">
+                      <label className="text-xs font-semibold text-muted-foreground ml-1">Tier de Interesse (opcional)</label>
+                      <Select onValueChange={(v) => setForm({...form, tier: v})}>
+                        <SelectTrigger className="w-full rounded-xl bg-muted/50 border-border/30 h-12">
+                          <SelectValue placeholder="Qual vaga interessa?" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="apoiadora">Apoiadora (R$ 48 mil)</SelectItem>
+                          <SelectItem value="parceira">Parceira (R$ 98 mil)</SelectItem>
+                          <SelectItem value="fundadora">Fundadora (R$ 198 mil)</SelectItem>
+                          <SelectItem value="indeciso">Ainda decidindo</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
                     <Button
                       type="submit"
                       disabled={loading}
-                      className="w-full bg-gradient-hero text-white font-semibold rounded-2xl shadow-lg hover:opacity-90 transition-opacity"
-                      size="lg"
+                      className="w-full bg-gradient-hero text-white font-bold rounded-2xl shadow-lg hover:opacity-90 transition-all h-14 text-lg mt-4"
                     >
-                      {loading ? <Loader2 size={18} className="animate-spin" /> : <>Quero o meu Selo agora <ArrowRight size={18} /></>}
+                      {loading ? <Loader2 size={24} className="animate-spin" /> : <>Enviar Candidatura <ArrowRight size={20} className="ml-2" /></>}
                     </Button>
+                    
+                    <p className="text-[10px] text-muted-foreground/80 text-center pt-4 px-2 leading-relaxed">
+                      A Yá é desenvolvida por uma equipe de Salvador, Bahia, vencedora do AI4Good 2026 do Brazil Conference (Harvard e MIT). CNPJ em estruturação para 2026. Operação atual via Instituto Yá.
+                    </p>
                   </form>
                 )}
               </CardContent>
@@ -568,12 +688,12 @@ const Footer = () => (
 const PageSelo = () => (
   <div className="min-h-screen bg-background text-foreground">
     <HeroSection />
+    <CredibilitySection />
     <ProblemSection />
     <SolutionSection />
     <TripleWinSection />
+    <AureaStorySection />
     <KPISection />
-    <BenefitsSection />
-    <TimelineSection />
     <PricingSection />
     <CTASection />
     <Footer />
