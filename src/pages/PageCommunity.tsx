@@ -422,7 +422,7 @@ const ProofSection = ({ t }: any) => {
 /* ─── 10. CTA + Formulário ─── */
 const CTAFormSection = ({ t }: any) => {
   const [form, setForm] = useState({
-    nome: "", comunidade: "", mulheres: "", cidade: "", whatsapp: "", motivo: ""
+    nome: "", comunidade: "", mulheres: "", cidade: "", estado: "", whatsapp: "", motivo: ""
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -430,6 +430,7 @@ const CTAFormSection = ({ t }: any) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.nome.trim() || !form.comunidade.trim() || !form.whatsapp.trim() || !form.cidade.trim() || !form.estado.trim()) return;
     const whatsappLimpo = form.whatsapp.replace(/\D/g, "");
     if (whatsappLimpo.length < 10) {
       alert("Por favor, insira um número de WhatsApp válido (com DDD).");
@@ -447,6 +448,7 @@ const CTAFormSection = ({ t }: any) => {
           comunidade: form.comunidade,
           mulheres: form.mulheres ? parseInt(form.mulheres, 10) : null,
           cidade: form.cidade,
+          estado: form.estado,
           whatsapp: form.whatsapp,
           motivo: form.motivo
         })
@@ -543,12 +545,19 @@ const CTAFormSection = ({ t }: any) => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-xs font-semibold text-muted-foreground ml-1">{t.form.fCidade}</label>
-                        <Input
-                          placeholder={t.form.fCidadePlace} value={form.cidade}
-                          onChange={(e) => setForm({ ...form, cidade: e.target.value })}
-                          className="rounded-xl bg-muted/50 border-border/30 h-12"
-                        />
+                        <label className="text-xs font-semibold text-muted-foreground ml-1">{t.form.fCidade} / UF *</label>
+                        <div className="flex gap-2">
+                          <Input
+                            placeholder={t.form.fCidadePlace} value={form.cidade}
+                            onChange={(e) => setForm({ ...form, cidade: e.target.value })}
+                            className="rounded-xl bg-muted/50 border-border/30 h-12 flex-1" required
+                          />
+                          <Input
+                            placeholder="UF" value={form.estado}
+                            onChange={(e) => setForm({ ...form, estado: e.target.value.toUpperCase() })}
+                            className="rounded-xl bg-muted/50 border-border/30 h-12 w-[60px] text-center uppercase" required maxLength={2}
+                          />
+                        </div>
                       </div>
                     </div>
 
