@@ -465,7 +465,7 @@ const PricingSection = ({ t }: any) => {
 /* ─── CTA + Form ─── */
 const CTASection = ({ t }: any) => {
   const [form, setForm] = useState({ 
-    nome: "", empresa: "", email: "", tamanho: "", estagio: "", tier: "" 
+    nome: "", empresa: "", email: "", tamanho: "", estagio: "" 
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -489,8 +489,7 @@ const CTASection = ({ t }: any) => {
           email: form.email,
           empresa: form.empresa,
           tamanho: form.tamanho || null,
-          estagio: form.estagio || null,
-          tier: form.tier || null
+          estagio: form.estagio || null
         })
       });
       
@@ -598,21 +597,6 @@ const CTASection = ({ t }: any) => {
                           </SelectContent>
                         </Select>
                       </div>
-                    </div>
-
-                    <div className="space-y-2 mb-6">
-                      <label className="text-xs font-semibold text-muted-foreground ml-1">{f.fTier}</label>
-                      <Select onValueChange={(v) => setForm({...form, tier: v})}>
-                        <SelectTrigger className="w-full rounded-xl bg-muted/50 border-border/30 h-12">
-                          <SelectValue placeholder={f.fTierPlace} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="apoiadora">{f.fTier1}</SelectItem>
-                          <SelectItem value="parceira">{f.fTier2}</SelectItem>
-                          <SelectItem value="fundadora">{f.fTier3}</SelectItem>
-                          <SelectItem value="indeciso">{f.fTier4}</SelectItem>
-                        </SelectContent>
-                      </Select>
                     </div>
 
                     <Button
