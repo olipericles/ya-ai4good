@@ -508,12 +508,16 @@ const CTAFormSection = ({ t }: any) => {
             <Card className="bg-card/80 backdrop-blur-xl border-border/40 rounded-3xl shadow-2xl overflow-hidden">
               <CardContent className="p-8">
                 {submitted ? (
-                  <div className="text-center py-12 space-y-4">
-                    <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                      <Check size={40} className="text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-bold">{t.form.successTitle}</h3>
-                    <p className="text-muted-foreground">{t.form.successDesc}</p>
+                  <div className="w-full text-center animate-fade-in">
+                    <h3 className="text-2xl font-bold mb-2">{t.form.successTitle}</h3>
+                    <p className="text-muted-foreground mb-6">Escolha o melhor horário para conversarmos sobre a sua comunidade.</p>
+                    <iframe 
+                      src="https://calendly.com/s-olipericles/ya-para-comunidades-clone?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=17171a&text_color=f6f4f0&primary_color=e26b58" 
+                      width="100%" 
+                      height="700" 
+                      frameBorder="0"
+                      className="rounded-xl overflow-hidden"
+                    />
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
