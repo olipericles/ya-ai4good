@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import aureaPhoto from "@/assets/maes/aurea.jpeg";
+import { useIBGE } from "@/hooks/useIBGE";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { communityTranslations } from "./CommunityTranslations";
 
 const fadeUp = {
@@ -427,6 +429,7 @@ const CTAFormSection = ({ t }: any) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const trustIcons = [Check, MessageCircle, Heart];
+  const { ufs, cidades, loading: loadingCidades } = useIBGE(form.estado);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -547,16 +550,30 @@ const CTAFormSection = ({ t }: any) => {
                       <div className="space-y-2">
                         <label className="text-xs font-semibold text-muted-foreground ml-1">{t.form.fCidade} / UF *</label>
                         <div className="flex gap-2">
-                          <Input
-                            placeholder={t.form.fCidadePlace} value={form.cidade}
-                            onChange={(e) => setForm({ ...form, cidade: e.target.value })}
-                            className="rounded-xl bg-muted/50 border-border/30 h-12 flex-1" required
-                          />
-                          <Input
-                            placeholder="UF" value={form.estado}
-                            onChange={(e) => setForm({ ...form, estado: e.target.value.toUpperCase() })}
-                            className="rounded-xl bg-muted/50 border-border/30 h-12 w-[60px] text-center uppercase" required maxLength={2}
-                          />
+                          <div className="w-[90px]">
+                            <Select onValueChange={(v) => setForm({...form, estado: v, cidade: ""})} value={form.estado || undefined}>
+                              <SelectTrigger className="w-full rounded-xl bg-muted/50 border-border/30 h-12">
+                                <SelectValue placeholder="UF" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {ufs.map(uf => <SelectItem key={uf.sigla} value={uf.sigla}>{uf.sigla}</SelectItem>)}
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="flex-1 relative">
+                            <Input
+                              list="cidades-list-comunidade"
+                              placeholder={loadingCidades ? "Carregando..." : t.form.fCidadePlace} 
+                              value={form.cidade}
+                              onChange={(e) => setForm({ ...form, cidade: e.target.value })}
+                              className="rounded-xl bg-muted/50 border-border/30 h-12 w-full" 
+                              required 
+                              disabled={!form.estado || loadingCidades}
+                            />
+                            <datalist id="cidades-list-comunidade">
+                              {cidades.map(c => <option key={c.id} value={c.nome} />)}
+                            </datalist>
+                          </div>
                         </div>
                       </div>
                     </div>
