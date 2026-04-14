@@ -52,7 +52,7 @@ export const communityTranslations = {
         { icon: "gift", title: "Acesso gratuito à Yá", desc: "As participantes da sua comunidade usam a Yá sem pagar nada durante todo o piloto." },
         { icon: "chart", title: "Apoio na organização financeira", desc: "Ajuda real para as mulheres entenderem pra onde o dinheiro vai." },
         { icon: "report", title: "Relatório de impacto", desc: "Sua comunidade recebe um relatório mostrando os resultados do piloto." },
-        { icon: "star", title: "Visibilidade como comunidade piloto", desc: "Seja reconhecida como uma das primeiras comunidades a testar a Yá em 2026." },
+        { icon: "star", title: "Visibilidade como comunidade piloto", desc: "Seja reconhecida como uma das primeiras comunidades a escalar a Yá em 2026." },
       ],
     },
     howItWorks: {
@@ -103,7 +103,7 @@ export const communityTranslations = {
     cta: {
       badge: "Inscrição Aberta",
       title1: "Sua comunidade pode ser uma das primeiras a ",
-      titleHighlight: "testar a Yá.",
+      titleHighlight: "escalar a Yá.",
       desc: "Estamos selecionando parceiras para construir esse piloto junto com a gente.",
       trust: [
         "Gratuito durante todo o piloto",
