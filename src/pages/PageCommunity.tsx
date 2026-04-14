@@ -433,7 +433,7 @@ const CTAFormSection = ({ t }: any) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.nome.trim() || !form.comunidade.trim() || !form.whatsapp.trim() || !form.cidade.trim() || !form.estado.trim()) return;
+    if (!form.nome.trim() || !form.comunidade.trim() || !form.whatsapp.trim() || !form.cidade.trim() || !form.estado.trim() || !form.mulheres.trim() || Number(form.mulheres) < 1) return;
     const whatsappLimpo = form.whatsapp.replace(/\D/g, "");
     if (whatsappLimpo.length < 10) {
       alert("Por favor, insira um número de WhatsApp válido (com DDD).");
@@ -540,11 +540,11 @@ const CTAFormSection = ({ t }: any) => {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-xs font-semibold text-muted-foreground ml-1">{t.form.fMulheres}</label>
+                        <label className="text-xs font-semibold text-muted-foreground ml-1">{t.form.fMulheres} *</label>
                         <Input
                           placeholder={t.form.fMulheresPlace} value={form.mulheres}
                           onChange={(e) => setForm({ ...form, mulheres: e.target.value })}
-                          className="rounded-xl bg-muted/50 border-border/30 h-12" type="number"
+                          className="rounded-xl bg-muted/50 border-border/30 h-12" type="number" required min="1"
                         />
                       </div>
                       <div className="space-y-2">
