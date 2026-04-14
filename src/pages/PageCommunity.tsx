@@ -295,6 +295,46 @@ const HowItWorksSection = ({ t }: any) => {
   );
 };
 
+/* ─── 5b. Como funciona a parceria ─── */
+const PartnershipSection = ({ t }: any) => {
+  const iconMap: Record<string, any> = { graduation: GraduationCap, shield: Shield, heart: Heart, trending: TrendingUp };
+  return (
+    <section className="py-16 relative">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-secondary/5 blur-[120px] rounded-full" />
+      </div>
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <motion.h2 variants={fadeUp} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-center mb-4">
+          {t.partnership.title1}<span className="text-gradient">{t.partnership.titleHighlight}</span>
+        </motion.h2>
+        <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center text-muted-foreground max-w-2xl mx-auto mb-10 text-lg">
+          {t.partnership.desc}
+        </motion.p>
+        <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {t.partnership.items.map((item: any, i: number) => {
+            const Icon = iconMap[item.icon] || Heart;
+            return (
+              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i + 1}>
+                <Card className="bg-card/60 backdrop-blur-md border-border/30 rounded-3xl h-full hover:border-primary/30 transition-colors group">
+                  <CardContent className="p-8 flex gap-5 items-start">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                      <Icon size={28} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 /* ─── 6. O que vamos medir ─── */
 const MetricsSection = ({ t }: any) => (
   <section className="py-16 relative">
