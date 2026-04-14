@@ -555,7 +555,7 @@ const CTASection = ({ t }: any) => {
                     <h3 className="text-2xl font-bold mb-2">{f.successTitle}</h3>
                     <p className="text-muted-foreground mb-6">Escolha o melhor horário para falarmos sobre a nossa parceria.</p>
                     <iframe 
-                      src="https://calendly.com/s-olipericles/ya-para-marcas?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=17171a&text_color=f6f4f0&primary_color=e26b58" 
+                      src="https://calendly.com/s-olipericles/ya-para-comunidades-clone?hide_event_type_details=1&hide_gdpr_banner=1&background_color=17171a&text_color=f6f4f0&primary_color=e26b58" 
                       width="100%" 
                       height="700" 
                       frameBorder="0"
