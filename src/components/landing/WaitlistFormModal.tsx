@@ -234,7 +234,7 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
         const errs: Record<string, string> = {};
 
         if (flow === "mae_solo") {
-            if (step === 0 && !form.semFilhos && !form.filhos) errs.filhos = labels.required;
+            if (step === 0 && (!form.filhos || Number(form.filhos) < 1)) errs.filhos = labels.required;
             if (step === 1) {
                 if (!form.cidade.trim()) errs.cidade = labels.required;
                 if (!form.estado) errs.estado = labels.required;
@@ -465,19 +465,9 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                                     max="20"
                                     value={form.filhos}
                                     onChange={e => setField("filhos", e.target.value)}
-                                    disabled={form.semFilhos}
-                                    className={`w-full bg-white/5 border ${errors.filhos ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white font-mono outline-none transition-colors disabled:opacity-30 mb-3`}
+                                    className={`w-full bg-white/5 border ${errors.filhos ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white font-mono outline-none transition-colors mb-3`}
                                     placeholder="2"
                                 />
-                                <label className="flex items-center gap-3 cursor-pointer group">
-                                    <div
-                                        className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${form.semFilhos ? "bg-primary border-primary" : "border-white/20 group-hover:border-white/40"}`}
-                                        onClick={() => { setField("semFilhos", !form.semFilhos); if (!form.semFilhos) setField("filhos", ""); }}
-                                    >
-                                        {form.semFilhos && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
-                                    </div>
-                                    <span className="text-white/60 text-sm">{labels.s1SemFilhos}</span>
-                                </label>
                                 {errors.filhos && <p className="text-red-400 text-xs mt-2">{errors.filhos}</p>}
                             </div>
                         )}
