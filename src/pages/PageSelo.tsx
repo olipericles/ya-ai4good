@@ -3,11 +3,13 @@ import { motion } from "framer-motion";
 import {
   EyeOff, Unlink, ShieldAlert, BarChart3, DollarSign, Heart, TrendingUp,
   Building2, MessageCircle, FileText, ArrowRight, Mail, Award, ChevronRight,
-  Users, Zap, Shield, BadgeCheck, Megaphone, PieChart, Star, Check, Loader2, Quote, Instagram, Globe
+  Users, Zap, Shield, BadgeCheck, Megaphone, PieChart, Star, Check, Loader2, Quote, Instagram, Globe,
+  CalendarClock, AlertTriangle, Landmark, User
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import aureaPlaceholder from "@/assets/maes/aurea.jpeg"; 
@@ -26,7 +28,7 @@ const fadeUp = {
   })
 };
 
-/* ─── Header Toggler ─── */
+/* ─── Header ─── */
 const Header = ({ t, toggleLang }: any) => (
   <header className="absolute top-0 w-full z-50 bg-transparent">
     <div className="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
@@ -75,7 +77,7 @@ const HeroSection = ({ t }: any) => (
           {t.hero.desc}
         </motion.p>
 
-        <motion.p variants={fadeUp} custom={2.5} className="text-sm text-muted-foreground/70 italic max-w-lg">
+        <motion.p variants={fadeUp} custom={2.5} className="text-sm text-primary/80 italic max-w-lg font-semibold">
           {t.hero.italic}
         </motion.p>
 
@@ -120,10 +122,10 @@ const HeroSection = ({ t }: any) => (
   </section>
 );
 
-/* ─── Faixa de Credibilidade ─── */
+/* ─── Credibilidade ─── */
 const pressLinksData = [
   { name: "Alma Preta", links: [{ type: "portal", url: "https://almapreta.com.br/sessao/cotidiano/projeto-salvador-maes-solo-gestao-financeira/" }] },
-  { name: "Nordeste Eu Sou", links: [ { type: "portal", url: "https://nordesteusou.com.br/noticias/da-periferia-para-harvard-jovens-de-salvador-vencem-premio-internacional-com-ia-que-ajuda-maes-solo/" }, { type: "instagram", url: "https://www.instagram.com/p/DWgtyMWFlWA" } ] },
+  { name: "Nordeste Eu Sou", links: [{ type: "portal", url: "https://nordesteusou.com.br/noticias/da-periferia-para-harvard-jovens-de-salvador-vencem-premio-internacional-com-ia-que-ajuda-maes-solo/" }, { type: "instagram", url: "https://www.instagram.com/p/DWgtyMWFlWA" }] },
   { name: "JC Bairro da Paz", links: [{ type: "instagram", url: "https://www.instagram.com/p/DWgvOcvFvWw" }] },
   { name: "G1 Bahia", dateRaw: "04/2026", links: [{ type: "portal", url: "#" }] },
   { name: "Conexão Bahia", dateRaw: "05/2026", links: [{ type: "portal", url: "#" }] }
@@ -139,11 +141,11 @@ const CredibilitySection = ({ t }: any) => (
           whileHover={{ scale: 1.05 }}
           className="flex items-center gap-2 cursor-pointer opacity-70 hover:opacity-100 transition-opacity mb-2 md:mb-0"
         >
-           <Award size={24} className="text-primary" />
-           <div className="text-sm font-bold leading-tight">
-              <div>{t.hero.awardTitle}</div>
-              <div className="text-xs font-normal">Brazil Conference</div>
-           </div>
+          <Award size={24} className="text-primary" />
+          <div className="text-sm font-bold leading-tight">
+            <div>{t.hero.awardTitle}</div>
+            <div className="text-xs font-normal">Brazil Conference</div>
+          </div>
         </motion.a>
 
         {pressLinksData.map((press) => (
@@ -202,6 +204,41 @@ const ProblemSection = ({ t }: any) => (
   </section>
 );
 
+/* ─── Por que agora ─── */
+const WhyNowSection = ({ t }: any) => {
+  const blockIcons = [Landmark, AlertTriangle, Shield];
+  return (
+    <section className="py-16 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[#252540]/20" />
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <motion.h2 variants={fadeUp} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-center mb-12">
+          {t.whyNow.title1}<span className="text-gradient">{t.whyNow.titleHighlight}</span>
+        </motion.h2>
+        <div className="max-w-4xl mx-auto space-y-8">
+          {t.whyNow.blocks.map((block: any, i: number) => {
+            const Icon = blockIcons[i];
+            return (
+              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i + 1}>
+                <Card className="bg-card/60 backdrop-blur-md border-border/30 rounded-3xl hover:border-primary/30 transition-colors">
+                  <CardContent className="p-8 flex gap-6 items-start">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Icon size={28} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-3">{block.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{block.text}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 /* ─── Solução ─── */
 const SolutionSection = ({ t }: any) => (
   <section className="py-16 relative">
@@ -234,36 +271,27 @@ const SolutionSection = ({ t }: any) => (
 
         <motion.div variants={fadeUp} custom={2} className="flex justify-center w-full lg:justify-end pr-0 lg:pr-12">
           <div className="relative group perspective-1000">
-            {/* Glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-secondary/40 to-accent/40 blur-[80px] -z-10 group-hover:blur-[100px] transition-all duration-700" />
-            
-            {/* Outer Hexagon Shield (Border) */}
             <div 
               className="w-[280px] h-[340px] md:w-[320px] md:h-[380px] bg-gradient-to-br from-[#FF7B54] via-[#E13C6E] to-[#7329A3] p-[2px] shadow-2xl relative transition-transform duration-700 group-hover:scale-105 mx-auto"
               style={{ clipPath: "polygon(50% 0%, 100% 18%, 100% 82%, 50% 100%, 0% 82%, 0% 18%)" }}
             >
-              {/* Inner Hexagon Shield */}
               <div 
                 className="w-full h-full bg-[#171523] relative"
                 style={{ clipPath: "polygon(50% 0%, 100% 18%, 100% 82%, 50% 100%, 0% 82%, 0% 18%)" }}
               >
-                {/* Logo Circle */}
                 <div className="absolute top-[16%] left-1/2 -translate-x-1/2 w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-[#FF7B54] via-[#E13C6E] to-[#7329A3] flex items-center justify-center p-4 shadow-inner">
                   <img src={yaLogo} alt="Yá Logo" className="w-[85%] object-contain drop-shadow-md" />
                 </div>
-                
-                {/* Details Container */}
                 <div className="absolute top-[56%] md:top-[55%] left-0 w-full flex flex-col items-center">
-                   <div className="w-8 h-[2px] bg-gradient-to-r from-[#FF7B54] to-[#E13C6E] opacity-90 mb-3" />
-                   <p className="text-[10.5px] md:text-[11.5px] font-black tracking-[0.2em] uppercase text-white mb-1">
-                     Marca Pioneira
-                   </p>
-                   <p className="text-3xl md:text-[36px] font-normal tracking-wide text-[#FF7B54] leading-none" style={{ fontFamily: 'sans-serif' }}>
-                     2026
-                   </p>
+                  <div className="w-8 h-[2px] bg-gradient-to-r from-[#FF7B54] to-[#E13C6E] opacity-90 mb-3" />
+                  <p className="text-[10.5px] md:text-[11.5px] font-black tracking-[0.2em] uppercase text-white mb-1">
+                    Marca Pioneira
+                  </p>
+                  <p className="text-3xl md:text-[36px] font-normal tracking-wide text-[#FF7B54] leading-none" style={{ fontFamily: 'sans-serif' }}>
+                    2026
+                  </p>
                 </div>
-                
-                {/* Subtitle */}
                 <p className="absolute bottom-[16%] left-0 w-full text-center text-[7.5px] md:text-[8px] font-bold tracking-[0.15em] text-white/30 uppercase">
                   Selo de impacto verificado
                 </p>
@@ -355,6 +383,58 @@ const AureaStorySection = ({ t }: any) => (
   </section>
 );
 
+/* ─── Team ─── */
+const TeamSection = ({ t }: any) => (
+  <section className="py-16 relative">
+    <div className="container mx-auto px-6 lg:px-12">
+      <motion.h2 variants={fadeUp} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-center mb-4">
+        {t.team.title1}<span className="text-gradient">{t.team.titleHighlight}</span>
+      </motion.h2>
+      <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center text-muted-foreground max-w-2xl mx-auto mb-10 text-lg">
+        {t.team.desc}
+      </motion.p>
+      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {t.team.members.map((member: any, i: number) => (
+          <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i + 1}>
+            <Card className="bg-card/60 backdrop-blur-md border-border/30 rounded-3xl h-full hover:border-primary/30 transition-colors group">
+              <CardContent className="p-8 space-y-4 text-center">
+                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto group-hover:bg-primary/20 transition-colors">
+                  <User size={36} className="text-primary" />
+                </div>
+                <h3 className="text-lg font-bold">{member.name}</h3>
+                <p className="text-sm text-primary font-semibold">{member.role}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── Ecossistema ─── */
+const EcosystemSection = ({ t }: any) => (
+  <section className="py-12 relative overflow-hidden">
+    <div className="absolute inset-0 bg-[#252540]/20" />
+    <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <motion.h2 variants={fadeUp} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-2xl md:text-3xl font-bold text-center mb-8">
+        {t.ecosystem.title}
+      </motion.h2>
+      <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+        {t.ecosystem.items.map((item: any, i: number) => (
+          <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.5}>
+            <div className="bg-card/60 backdrop-blur-md border border-border/30 rounded-2xl px-5 py-3 hover:border-primary/30 transition-colors text-center">
+              <p className="text-sm font-bold">{item.name}</p>
+              <p className="text-[10px] text-muted-foreground">{item.sub}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
 /* ─── KPIs ─── */
 const KPISection = ({ t }: any) => {
   const kpiIcons = [BarChart3, DollarSign, Heart, TrendingUp];
@@ -393,7 +473,7 @@ const KPISection = ({ t }: any) => {
   );
 };
 
-/* ─── Pricing ─── */
+/* ─── Pricing (sem valores) ─── */
 const PricingSection = ({ t }: any) => {
   const p = t.pricing;
   const packages = [p.pacote1, p.pacote2, p.pacote3];
@@ -409,13 +489,13 @@ const PricingSection = ({ t }: any) => {
         </motion.p>
         
         <motion.div variants={fadeUp} custom={1.5} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex justify-center mb-12">
-          <div className="bg-orange-500/15 border border-orange-500/20 text-orange-500 px-6 py-2 rounded-full font-bold text-sm shadow-sm text-center">
-            {p.vagasInfo.replace("{apoiadora}", VAGAS_APOIADORA).replace("{parceira}", VAGAS_PARCEIRA).replace("{fundadora}", VAGAS_FUNDADORA).replace("{data}", DATA_ENCERRAMENTO)}
+          <div className="bg-orange-500/15 border border-orange-500/20 text-orange-500 px-6 py-2 rounded-full font-bold text-sm shadow-sm text-center max-w-2xl">
+            {p.vagasInfo.replace("{apoiadora}", String(VAGAS_APOIADORA)).replace("{parceira}", String(VAGAS_PARCEIRA)).replace("{fundadora}", String(VAGAS_FUNDADORA)).replace("{data}", DATA_ENCERRAMENTO)}
           </div>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
-          {packages.map((pkg, i) => (
+          {packages.map((pkg: any, i: number) => (
             <motion.div key={pkg.name} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i + 1}>
               <Card className={`rounded-3xl h-full flex flex-col relative overflow-hidden transition-colors ${
                 pkg.badge
@@ -429,10 +509,8 @@ const PricingSection = ({ t }: any) => {
                 )}
                 <CardContent className="p-8 flex-1 flex flex-col">
                   <div className="mb-6">
-                    <h3 className="text-xl font-bold">{pkg.name}</h3>
-                    <div className="mt-2 text-primary font-extrabold text-3xl">
-                      {pkg.price} <span className="text-muted-foreground text-sm font-normal">{pkg.period}</span>
-                    </div>
+                    <h3 className="text-2xl font-extrabold">{pkg.name}</h3>
+                    <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{pkg.tagline}</p>
                   </div>
                   <ul className="space-y-4 mb-8 flex-1">
                     {pkg.features.map((f: string, j: number) => (
@@ -450,7 +528,7 @@ const PricingSection = ({ t }: any) => {
                     }`}
                     asChild
                   >
-                    <a href="#contato">{p.cta} {pkg.name}</a>
+                    <a href="#contato">{p.cta}</a>
                   </Button>
                 </CardContent>
               </Card>
@@ -465,7 +543,7 @@ const PricingSection = ({ t }: any) => {
 /* ─── CTA + Form ─── */
 const CTASection = ({ t }: any) => {
   const [form, setForm] = useState({ 
-    nome: "", empresa: "", email: "", tamanho: "", estagio: "", tier: "" 
+    nome: "", empresa: "", email: "", tamanho: "", estagio: "", tier: "", extra: "" 
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -496,6 +574,12 @@ const CTASection = ({ t }: any) => {
             <motion.p variants={fadeUp} custom={2} className="text-muted-foreground leading-relaxed text-lg">
               {f.desc}
             </motion.p>
+            <motion.div variants={fadeUp} custom={2.5} className="bg-card/60 border border-border/30 rounded-2xl p-4">
+              <div className="flex items-start gap-3">
+                <CalendarClock size={20} className="text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-sm text-muted-foreground leading-relaxed">{f.process}</p>
+              </div>
+            </motion.div>
             <motion.p variants={fadeUp} custom={3} className="text-sm text-foreground font-semibold flex items-center gap-2">
               <Mail size={16} className="text-primary" /> ya.ai4good@gmail.com
             </motion.p>
@@ -574,7 +658,7 @@ const CTASection = ({ t }: any) => {
                       </div>
                     </div>
 
-                    <div className="space-y-2 mb-6">
+                    <div className="space-y-2">
                       <label className="text-xs font-semibold text-muted-foreground ml-1">{f.fTier}</label>
                       <Select onValueChange={(v) => setForm({...form, tier: v})}>
                         <SelectTrigger className="w-full rounded-xl bg-muted/50 border-border/30 h-12">
@@ -587,6 +671,16 @@ const CTASection = ({ t }: any) => {
                           <SelectItem value="indeciso">{f.fTier4}</SelectItem>
                         </SelectContent>
                       </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-xs font-semibold text-muted-foreground ml-1">{f.fExtra}</label>
+                      <Textarea
+                        placeholder={f.fExtraPlace} value={form.extra}
+                        onChange={(e) => setForm({ ...form, extra: e.target.value })}
+                        className="rounded-xl bg-muted/50 border-border/30 min-h-[80px] resize-none"
+                        rows={3}
+                      />
                     </div>
 
                     <Button
@@ -635,13 +729,16 @@ const PageSelo = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors relative">
-      <Header t={t} lang={lang} toggleLang={toggleLang} />
+      <Header t={t} toggleLang={toggleLang} />
       <HeroSection t={t} />
       <CredibilitySection t={t} />
       <ProblemSection t={t} />
+      <WhyNowSection t={t} />
       <SolutionSection t={t} />
       <TripleWinSection t={t} />
       <AureaStorySection t={t} />
+      <TeamSection t={t} />
+      <EcosystemSection t={t} />
       <KPISection t={t} />
       <PricingSection t={t} />
       <CTASection t={t} />
