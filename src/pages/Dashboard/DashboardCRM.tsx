@@ -29,12 +29,20 @@ interface WaitlistEntry {
     ultima_interacao: string | null;
     created_at: string;
     updated_at: string;
+    organizacao: string | null;
+    tamanho_empresa: string | null;
+    estagio_maturidade: string | null;
+    tier_interesse: string | null;
+    mulheres_impactadas: number | null;
+    email: string | null;
 }
 
 interface Stats {
     total: number;
     total_mae_solo: number;
     total_apoiador: number;
+    total_comunidade: number;
+    total_selo: number;
     pre_cadastro: number;
     ativacao: number;
     cadastro: number;
@@ -64,13 +72,16 @@ function StatusBadge({ status }: { status: string }) {
 }
 
 function TipoBadge({ tipo }: { tipo: string }) {
-    const isMae = tipo === "mae_solo";
-    return (
-        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${isMae ? "bg-primary/10 border border-primary/20 text-primary" : "bg-white/5 border border-white/10 text-white/50"
-            }`}>
-            {isMae ? "🤱 Mãe Solo" : "💛 Apoiador"}
-        </span>
-    );
+    if (tipo === "mae_solo") {
+        return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/10 border border-primary/20 text-primary">🤱 Mãe Solo</span>;
+    }
+    if (tipo === "comunidade") {
+        return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-purple-500/10 border border-purple-500/20 text-purple-400">🏢 Comunidade</span>;
+    }
+    if (tipo === "selo") {
+        return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-500/10 border border-orange-500/20 text-orange-400">🏆 Parceiro Selo</span>;
+    }
+    return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/5 border border-white/10 text-white/50">💛 Apoiador</span>;
 }
 
 export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
@@ -156,9 +167,11 @@ export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
                         <div className="absolute top-0 right-0 w-20 h-20 bg-primary/10 blur-[30px] rounded-full" />
                         <p className="text-gray-400 text-[10px] font-mono uppercase tracking-wider mb-3">Total na Fila</p>
                         <p className="text-3xl font-black text-white">{stats.total}</p>
-                        <div className="flex gap-2 mt-3">
-                            <span className="text-[10px] text-primary font-bold">🤱 {stats.total_mae_solo}</span>
-                            <span className="text-[10px] text-white/40 font-bold">💛 {stats.total_apoiador}</span>
+                        <div className="flex gap-2 mt-3 flex-wrap">
+                            <span className="text-[10px] text-primary font-bold">🤱 {stats.total_mae_solo} Mães</span>
+                            <span className="text-[10px] text-white/40 font-bold">💛 {stats.total_apoiador} Apoids</span>
+                            <span className="text-[10px] text-purple-400 font-bold">🏢 {stats.total_comunidade} Comuns</span>
+                            <span className="text-[10px] text-orange-400 font-bold">🏆 {stats.total_selo} Selos</span>
                         </div>
                     </div>
                     <div className="bg-dark-800/80 border border-white/5 p-5 rounded-2xl relative overflow-hidden">
@@ -255,6 +268,8 @@ export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
                         <option value="all" className="bg-[#111] text-white">Todos</option>
                         <option value="mae_solo" className="bg-[#111] text-white">🤱 Mãe Solo</option>
                         <option value="apoiador" className="bg-[#111] text-white">💛 Apoiador</option>
+                        <option value="comunidade" className="bg-[#111] text-white">🏢 Comunidade</option>
+                        <option value="selo" className="bg-[#111] text-white">🏆 Parceiro Selo</option>
                     </select>
                     <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-500 pointer-events-none" />
                 </div>
@@ -363,6 +378,17 @@ export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
                         <InfoItem icon={Activity} label="Dias ativos (7d)" value={`${selectedEntry.dias_ativos_7d || 0} dias`} />
                         <InfoItem icon={Clock} label="Última interação" value={selectedEntry.ultima_interacao ? new Date(selectedEntry.ultima_interacao).toLocaleString("pt-BR") : "Nenhuma"} />
                     </div>
+
+                    {(selectedEntry.tipo === "comunidade" || selectedEntry.tipo === "selo") && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                            {selectedEntry.email && <InfoItem icon={Clock} label="Email" value={selectedEntry.email} />}
+                            {selectedEntry.organizacao && <InfoItem icon={Users} label="Organização" value={selectedEntry.organizacao} />}
+                            {selectedEntry.mulheres_impactadas && <InfoItem icon={Users} label="Mulheres Impactadas" value={selectedEntry.mulheres_impactadas.toString()} />}
+                            {selectedEntry.tamanho_empresa && <InfoItem icon={Activity} label="Tamanho" value={selectedEntry.tamanho_empresa} />}
+                            {selectedEntry.estagio_maturidade && <InfoItem icon={Activity} label="Estágio" value={selectedEntry.estagio_maturidade} />}
+                            {selectedEntry.tier_interesse && <InfoItem icon={Heart} label="Tier" value={selectedEntry.tier_interesse} />}
+                        </div>
+                    )}
 
                     {(selectedEntry.como_conheceu && selectedEntry.como_conheceu.length > 0) && (
                         <div className="mt-4">
