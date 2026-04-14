@@ -465,14 +465,30 @@ const PricingSection = ({ t }: any) => {
 /* ─── CTA + Form ─── */
 const CTASection = ({ t }: any) => {
   const [form, setForm] = useState({ 
-    nome: "", empresa: "", email: "", tamanho: "", estagio: "" 
+    nome: "", empresa: "", email: "", tamanho: "", estagio: "", whatsapp: "", cidade: "", estado: ""
   });
+  const [coberturaNacional, setCoberturaNacional] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const f = t.form;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.nome.trim() || !form.email.trim() || !form.empresa.trim() || !form.whatsapp.trim()) {
+      alert("Por favor, preencha todos os campos obrigatórios (marcados com *).");
+      return;
+    }
+    
+    if (!coberturaNacional && (!form.cidade.trim() || !form.estado.trim())) {
+      alert("Por favor, preencha a Cidade e UF ou marque a opção 'Cobertura Nacional'.");
+      return;
+    }
+
+    const wppLimpo = form.whatsapp.replace(/\D/g, "");
+    if (wppLimpo.length < 10) {
+      alert("Por favor, insira um WhatsApp ou Celular válido (com DDD).");
+      return;
+    }
     if (!form.email.includes("@") || !form.email.includes(".")) {
       alert("Por favor, insira um e-mail corporativo válido.");
       return;
@@ -488,6 +504,9 @@ const CTASection = ({ t }: any) => {
           nome: form.nome,
           email: form.email,
           empresa: form.empresa,
+          whatsapp: form.whatsapp,
+          cidade: coberturaNacional ? "Nacional" : form.cidade,
+          estado: coberturaNacional ? "BR" : form.estado,
           tamanho: form.tamanho || null,
           estagio: form.estagio || null
         })
@@ -565,6 +584,45 @@ const CTASection = ({ t }: any) => {
                         onChange={(e) => setForm({ ...form, empresa: e.target.value })}
                         className="rounded-xl bg-muted/50 border-border/30 h-12" required
                       />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-xs font-semibold text-muted-foreground ml-1">WhatsApp / Celular *</label>
+                      <Input
+                        placeholder="(11) 99999-9999" value={form.whatsapp}
+                        onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
+                        className="rounded-xl bg-muted/50 border-border/30 h-12" required type="tel"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between ml-1 mb-1">
+                        <label className="text-xs font-semibold text-muted-foreground">Cidade / UF *</label>
+                        <label className="flex items-center gap-2 cursor-pointer text-xs text-muted-foreground hover:text-white transition-colors">
+                          <input 
+                            type="checkbox" 
+                            checked={coberturaNacional}
+                            onChange={(e) => setCoberturaNacional(e.target.checked)}
+                            className="rounded border-border/30 bg-muted/50 w-4 h-4 accent-primary" 
+                          />
+                          Cobertura Nacional
+                        </label>
+                      </div>
+                      
+                      {!coberturaNacional && (
+                        <div className="flex gap-2">
+                          <Input
+                            placeholder="Sua Cidade" value={form.cidade}
+                            onChange={(e) => setForm({ ...form, cidade: e.target.value })}
+                            className="rounded-xl bg-muted/50 border-border/30 h-12 flex-1" required={!coberturaNacional}
+                          />
+                          <Input
+                            placeholder="UF" value={form.estado}
+                            onChange={(e) => setForm({ ...form, estado: e.target.value.toUpperCase() })}
+                            className="rounded-xl bg-muted/50 border-border/30 h-12 w-[60px] text-center uppercase" required={!coberturaNacional} maxLength={2}
+                          />
+                        </div>
+                      )}
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-4">
