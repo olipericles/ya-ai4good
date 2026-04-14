@@ -50,7 +50,7 @@ export const communityTranslations = {
       desc: "Tudo isso de forma gratuita durante o piloto.",
       items: [
         { icon: "gift", title: "Acesso gratuito à Yá", desc: "As participantes da sua comunidade usam a Yá sem pagar nada durante todo o piloto." },
-        { icon: "chart", title: "Apoio na organização financeira", desc: "Ajuda real para as mulheres entenderem pra onde o dinheiro vai." },
+        { icon: "chart", title: "Apoio na organização financeira", desc: "Sua comunidade não investe nada para participar. As mães recebem o acesso, vocês recebem o relatório de impacto — construído com dados que apoiam a captação de recursos de vocês também." },
         { icon: "report", title: "Relatório de impacto", desc: "Sua comunidade recebe um relatório mostrando os resultados do piloto." },
         { icon: "star", title: "Visibilidade como comunidade piloto", desc: "Seja reconhecida como uma das primeiras comunidades a testar a Yá em 2026." },
       ],
@@ -64,6 +64,18 @@ export const communityTranslations = {
         { number: "02", title: "Acesso via WhatsApp", desc: "As participantes usam a Yá direto no WhatsApp, sem baixar nada." },
         { number: "03", title: "Acompanhamento próximo", desc: "O time Yá estará junto da comunidade durante todo o processo." },
         { number: "04", title: "Coleta de dados de impacto", desc: "Medimos uso, mudança de comportamento e percepção das participantes." },
+        { number: "05", title: "Acolhimento sem julgamento", desc: "A Yá responde às mães com cuidado, nunca com pressão. Em momentos de maior sensibilidade, oferecemos referência a redes de apoio da própria comunidade ou a serviços públicos como o CVV." },
+      ],
+    },
+    partnership: {
+      title1: "Como funciona a parceria ",
+      titleHighlight: "com sua comunidade.",
+      desc: "Transparência total sobre o que esperar de nós, e o que esperamos de você.",
+      items: [
+        { icon: "graduation", title: "Treinamento curto e simples", desc: "Uma conversa de quinze minutos com a liderança da sua comunidade é o suficiente. A Yá foi feita para ser intuitiva, sem técnica, sem manuais, sem tempo semanal de manutenção." },
+        { icon: "shield", title: "Privacidade como princípio", desc: "Cada mãe assina um termo de consentimento antes de começar. Os dados são tratados conforme a LGPD e pertencem à mãe. Sua comunidade recebe apenas relatórios agregados de impacto, nunca dados individuais." },
+        { icon: "heart", title: "Gratuito para as mães, sempre", desc: "As mães nunca pagam nada. O custo de operação é coberto por empresas patrocinadoras que apoiam comunidades parceiras como parte de seus compromissos de impacto social. Sua comunidade escolhe conosco quais mães entram no piloto." },
+        { icon: "trending", title: "Capacidade para crescer junto", desc: "Nossa infraestrutura atual suporta até mil mães ativas simultaneamente. Temos folga confortável para conduzir múltiplos pilotos comunitários em paralelo em 2026, sem comprometer a qualidade do atendimento a cada uma." },
       ],
     },
     metrics: {
@@ -127,6 +139,8 @@ export const communityTranslations = {
       fWhatsappPlace: "(71) 99999-9999",
       fMotivo: "Por que quer participar?",
       fMotivoPlace: "Conte um pouco sobre a sua comunidade e por que a Yá seria importante...",
+      fExtra: "Há algo específico sobre sua comunidade que gostaríamos de saber antes de conversar?",
+      fExtraPlace: "Ex: temos 39 mil mulheres cadastradas em toda a Bahia, atuamos em 12 municípios...",
       btnSubmit: "Enviar Inscrição",
       legal: "A Yá é desenvolvida por uma equipe de Salvador, Bahia, vencedora do AI4Good 2026 do Brazil Conference (Harvard e MIT). Seus dados serão usados apenas para contato sobre o piloto.",
     },
@@ -183,7 +197,7 @@ export const communityTranslations = {
       desc: "All of this for free during the pilot.",
       items: [
         { icon: "gift", title: "Free access to Yá", desc: "Your community's participants use Yá for free during the entire pilot." },
-        { icon: "chart", title: "Financial organization support", desc: "Real help for women to understand where their money goes." },
+        { icon: "chart", title: "Financial organization support", desc: "Your community invests nothing to participate. The mothers get access, you get the impact report — built with data that supports your own fundraising too." },
         { icon: "report", title: "Impact report", desc: "Your community receives a report showing pilot results." },
         { icon: "star", title: "Visibility as a pilot community", desc: "Be recognized as one of the first communities to test Yá in 2026." },
       ],
@@ -197,6 +211,18 @@ export const communityTranslations = {
         { number: "02", title: "Access via WhatsApp", desc: "Participants use Yá directly on WhatsApp, no downloads needed." },
         { number: "03", title: "Close support", desc: "The Yá team will be alongside the community throughout the process." },
         { number: "04", title: "Impact data collection", desc: "We measure usage, behavior change, and participant perception." },
+        { number: "05", title: "Care without judgment", desc: "Yá responds to mothers with care, never with pressure. In more sensitive moments, we offer referrals to the community's own support networks or public services." },
+      ],
+    },
+    partnership: {
+      title1: "How the partnership ",
+      titleHighlight: "with your community works.",
+      desc: "Full transparency about what to expect from us, and what we expect from you.",
+      items: [
+        { icon: "graduation", title: "Short and simple training", desc: "A fifteen-minute conversation with your community's leadership is enough. Yá was made to be intuitive — no manuals, no weekly maintenance." },
+        { icon: "shield", title: "Privacy as a principle", desc: "Each mother signs a consent form before starting. Data is handled according to LGPD and belongs to the mother. Your community receives only aggregated impact reports, never individual data." },
+        { icon: "heart", title: "Free for mothers, always", desc: "Mothers never pay anything. Operating costs are covered by sponsoring companies that support partner communities as part of their social impact commitments. Your community chooses with us which mothers join the pilot." },
+        { icon: "trending", title: "Capacity to grow together", desc: "Our current infrastructure supports up to one thousand active mothers simultaneously. We have comfortable capacity to run multiple community pilots in parallel in 2026 without compromising quality." },
       ],
     },
     metrics: {
@@ -260,6 +286,8 @@ export const communityTranslations = {
       fWhatsappPlace: "+55 (71) 99999-9999",
       fMotivo: "Why do you want to participate?",
       fMotivoPlace: "Tell us about your community and why Yá would be important...",
+      fExtra: "Is there anything specific about your community we should know before talking?",
+      fExtraPlace: "E.g.: we have 39,000 women registered across the state, we operate in 12 municipalities...",
       btnSubmit: "Submit Registration",
       legal: "Yá is developed by a team from Salvador, Bahia, winner of AI4Good 2026 at the Brazil Conference (Harvard and MIT). Your data will only be used for pilot contact.",
     },
