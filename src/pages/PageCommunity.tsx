@@ -430,11 +430,15 @@ const CTAFormSection = ({ t }: any) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.nome.trim() || !form.comunidade.trim() || !form.whatsapp.trim()) return;
+    const whatsappLimpo = form.whatsapp.replace(/\D/g, "");
+    if (whatsappLimpo.length < 10) {
+      alert("Por favor, insira um número de WhatsApp válido (com DDD).");
+      return;
+    }
     
     setLoading(true);
     try {
-      const baseUrl = import.meta.env.VITE_API_URL || "https://api.praxisagencia.com.br";
+      const baseUrl = import.meta.env.VITE_API_URL || "https://www.praxisagencia.com.br";
       const response = await fetch(`${baseUrl}/api/forms/submit/comunidade`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

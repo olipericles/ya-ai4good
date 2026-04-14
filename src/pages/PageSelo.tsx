@@ -473,11 +473,14 @@ const CTASection = ({ t }: any) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.nome.trim() || !form.email.trim() || !form.empresa.trim()) return;
+    if (!form.email.includes("@") || !form.email.includes(".")) {
+      alert("Por favor, insira um e-mail corporativo válido.");
+      return;
+    }
     
     setLoading(true);
     try {
-      const baseUrl = import.meta.env.VITE_API_URL || "https://api.praxisagencia.com.br";
+      const baseUrl = import.meta.env.VITE_API_URL || "https://www.praxisagencia.com.br";
       const response = await fetch(`${baseUrl}/api/forms/submit/parceiros`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
