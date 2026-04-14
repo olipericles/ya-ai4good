@@ -647,6 +647,7 @@ const PageCommunity = () => {
       <AudienceSection t={t} />
       <BenefitsSection t={t} />
       <HowItWorksSection t={t} />
+      <PartnershipSection t={t} />
       <MetricsSection t={t} />
       <ScarcitySection t={t} />
       <AureaStorySection t={t} />
