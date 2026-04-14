@@ -10,13 +10,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
-import aureaPlaceholder from "@/assets/maes/aurea.jpeg"; 
+import aureaPlaceholder from "@/assets/maes/aurea.jpeg";
 import { useIBGE } from "@/hooks/useIBGE";
 import { seloTranslations } from "./SeloTranslations";
 
-const VAGAS_APOIADORA = 5;
-const VAGAS_PARCEIRA = 3;
-const VAGAS_FUNDADORA = 2;
 const DATA_ENCERRAMENTO = "30/06/2026";
 
 const fadeUp = {
@@ -124,7 +121,7 @@ const HeroSection = ({ t }: any) => (
 /* ─── Faixa de Credibilidade ─── */
 const pressLinksData = [
   { name: "Alma Preta", links: [{ type: "portal", url: "https://almapreta.com.br/sessao/cotidiano/projeto-salvador-maes-solo-gestao-financeira/" }] },
-  { name: "Nordeste Eu Sou", links: [ { type: "portal", url: "https://nordesteusou.com.br/noticias/da-periferia-para-harvard-jovens-de-salvador-vencem-premio-internacional-com-ia-que-ajuda-maes-solo/" }, { type: "instagram", url: "https://www.instagram.com/p/DWgtyMWFlWA" } ] },
+  { name: "Nordeste Eu Sou", links: [{ type: "portal", url: "https://nordesteusou.com.br/noticias/da-periferia-para-harvard-jovens-de-salvador-vencem-premio-internacional-com-ia-que-ajuda-maes-solo/" }, { type: "instagram", url: "https://www.instagram.com/p/DWgtyMWFlWA" }] },
   { name: "JC Bairro da Paz", links: [{ type: "instagram", url: "https://www.instagram.com/p/DWgvOcvFvWw" }] },
   { name: "G1 Bahia", dateRaw: "04/2026", links: [{ type: "portal", url: "#" }] },
   { name: "Conexão Bahia", dateRaw: "05/2026", links: [{ type: "portal", url: "#" }] }
@@ -135,20 +132,20 @@ const CredibilitySection = ({ t }: any) => (
     <div className="container mx-auto px-6 lg:px-12">
       <p className="text-center text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-6">{t.credibility.title}</p>
       <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-        <motion.a 
+        <motion.a
           href="https://brazilconference.org/" target="_blank" rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
           className="flex items-center gap-2 cursor-pointer opacity-70 hover:opacity-100 transition-opacity mb-2 md:mb-0"
         >
-           <Award size={24} className="text-primary" />
-           <div className="text-sm font-bold leading-tight">
-              <div>{t.hero.awardTitle}</div>
-              <div className="text-xs font-normal">Brazil Conference</div>
-           </div>
+          <Award size={24} className="text-primary" />
+          <div className="text-sm font-bold leading-tight">
+            <div>{t.hero.awardTitle}</div>
+            <div className="text-xs font-normal">Brazil Conference</div>
+          </div>
         </motion.a>
 
         {pressLinksData.map((press) => (
-          <motion.div 
+          <motion.div
             key={press.name}
             whileHover={{ scale: 1.05 }}
             className="flex flex-col items-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
@@ -159,8 +156,8 @@ const CredibilitySection = ({ t }: any) => (
             {press.dateRaw && <span className="text-[10px] text-muted-foreground mb-2 -mt-1">{press.dateRaw}</span>}
             <div className="flex gap-2">
               {press.links.map((link, idx) => (
-                <a 
-                  key={idx} href={link.url} target="_blank" rel="noopener noreferrer" 
+                <a
+                  key={idx} href={link.url} target="_blank" rel="noopener noreferrer"
                   className="p-1.5 rounded-full bg-card border border-border/50 hover:border-primary/50 hover:text-primary transition-colors text-muted-foreground shadow-sm"
                 >
                   {link.type === 'instagram' ? <Instagram size={14} /> : <Globe size={14} />}
@@ -237,14 +234,14 @@ const SolutionSection = ({ t }: any) => (
           <div className="relative group perspective-1000">
             {/* Glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-secondary/40 to-accent/40 blur-[80px] -z-10 group-hover:blur-[100px] transition-all duration-700" />
-            
+
             {/* Outer Hexagon Shield (Border) */}
-            <div 
+            <div
               className="w-[280px] h-[340px] md:w-[320px] md:h-[380px] bg-gradient-to-br from-[#FF7B54] via-[#E13C6E] to-[#7329A3] p-[2px] shadow-2xl relative transition-transform duration-700 group-hover:scale-105 mx-auto"
               style={{ clipPath: "polygon(50% 0%, 100% 18%, 100% 82%, 50% 100%, 0% 82%, 0% 18%)" }}
             >
               {/* Inner Hexagon Shield */}
-              <div 
+              <div
                 className="w-full h-full bg-[#171523] relative"
                 style={{ clipPath: "polygon(50% 0%, 100% 18%, 100% 82%, 50% 100%, 0% 82%, 0% 18%)" }}
               >
@@ -252,18 +249,18 @@ const SolutionSection = ({ t }: any) => (
                 <div className="absolute top-[16%] left-1/2 -translate-x-1/2 w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-[#FF7B54] via-[#E13C6E] to-[#7329A3] flex items-center justify-center p-4 shadow-inner">
                   <img src={yaLogo} alt="Yá Logo" className="w-[85%] object-contain drop-shadow-md" />
                 </div>
-                
+
                 {/* Details Container */}
                 <div className="absolute top-[56%] md:top-[55%] left-0 w-full flex flex-col items-center">
-                   <div className="w-8 h-[2px] bg-gradient-to-r from-[#FF7B54] to-[#E13C6E] opacity-90 mb-3" />
-                   <p className="text-[10.5px] md:text-[11.5px] font-black tracking-[0.2em] uppercase text-white mb-1">
-                     Marca Pioneira
-                   </p>
-                   <p className="text-3xl md:text-[36px] font-normal tracking-wide text-[#FF7B54] leading-none" style={{ fontFamily: 'sans-serif' }}>
-                     2026
-                   </p>
+                  <div className="w-8 h-[2px] bg-gradient-to-r from-[#FF7B54] to-[#E13C6E] opacity-90 mb-3" />
+                  <p className="text-[10.5px] md:text-[11.5px] font-black tracking-[0.2em] uppercase text-white mb-1">
+                    Marca Pioneira
+                  </p>
+                  <p className="text-3xl md:text-[36px] font-normal tracking-wide text-[#FF7B54] leading-none" style={{ fontFamily: 'sans-serif' }}>
+                    2026
+                  </p>
                 </div>
-                
+
                 {/* Subtitle */}
                 <p className="absolute bottom-[16%] left-0 w-full text-center text-[7.5px] md:text-[8px] font-bold tracking-[0.15em] text-white/30 uppercase">
                   Selo de impacto verificado
@@ -406,23 +403,22 @@ const PricingSection = ({ t }: any) => {
         </motion.h2>
         <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
           {p.desc}
-          <br/><span className="inline-block mt-2 font-semibold">{p.specialCond}</span>
+          <br /><span className="inline-block mt-2 font-semibold">{p.specialCond}</span>
         </motion.p>
-        
+
         <motion.div variants={fadeUp} custom={1.5} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex justify-center mb-12">
           <div className="bg-orange-500/15 border border-orange-500/20 text-orange-500 px-6 py-2 rounded-full font-bold text-sm shadow-sm text-center">
-            {p.vagasInfo.replace("{apoiadora}", VAGAS_APOIADORA).replace("{parceira}", VAGAS_PARCEIRA).replace("{fundadora}", VAGAS_FUNDADORA).replace("{data}", DATA_ENCERRAMENTO)}
+            {p.vagasInfo.replace("{data}", DATA_ENCERRAMENTO)}
           </div>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
           {packages.map((pkg, i) => (
             <motion.div key={pkg.name} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i + 1}>
-              <Card className={`rounded-3xl h-full flex flex-col relative overflow-hidden transition-colors ${
-                pkg.badge
+              <Card className={`rounded-3xl h-full flex flex-col relative overflow-hidden transition-colors ${pkg.badge
                   ? "bg-gradient-to-b from-primary/10 to-card border-primary/40 shadow-xl"
                   : "bg-card/60 backdrop-blur-md border-border/30 hover:border-primary/30"
-              }`}>
+                }`}>
                 {pkg.badge && (
                   <div className="absolute top-0 right-0 px-4 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-bl-2xl">
                     {pkg.badge}
@@ -431,9 +427,9 @@ const PricingSection = ({ t }: any) => {
                 <CardContent className="p-8 flex-1 flex flex-col">
                   <div className="mb-6">
                     <h3 className="text-xl font-bold">{pkg.name}</h3>
-                    <div className="mt-2 text-primary font-extrabold text-3xl">
-                      {pkg.price} <span className="text-muted-foreground text-sm font-normal">{pkg.period}</span>
-                    </div>
+                    {pkg.tagline && (
+                      <p className="mt-2 text-sm text-muted-foreground italic">{pkg.tagline}</p>
+                    )}
                   </div>
                   <ul className="space-y-4 mb-8 flex-1">
                     {pkg.features.map((f: string, j: number) => (
@@ -444,11 +440,10 @@ const PricingSection = ({ t }: any) => {
                     ))}
                   </ul>
                   <Button
-                    className={`w-full rounded-2xl font-semibold mt-auto ${
-                      pkg.badge
+                    className={`w-full rounded-2xl font-semibold mt-auto ${pkg.badge
                         ? "bg-gradient-hero text-white hover:opacity-90 shadow-lg"
                         : "bg-card border-2 border-border text-foreground hover:border-primary/50"
-                    }`}
+                      }`}
                     asChild
                   >
                     <a href="#contato">{p.cta} {pkg.name}</a>
@@ -465,7 +460,7 @@ const PricingSection = ({ t }: any) => {
 
 /* ─── CTA + Form ─── */
 const CTASection = ({ t }: any) => {
-  const [form, setForm] = useState({ 
+  const [form, setForm] = useState({
     nome: "", empresa: "", email: "", tamanho: "", estagio: "", whatsapp: "", cidade: "", estado: ""
   });
   const [coberturaNacional, setCoberturaNacional] = useState(false);
@@ -480,7 +475,7 @@ const CTASection = ({ t }: any) => {
       alert("Por favor, preencha todos os campos obrigatórios (marcados com *).");
       return;
     }
-    
+
     if (!coberturaNacional && (!form.cidade.trim() || !form.estado.trim())) {
       alert("Por favor, preencha a Cidade e UF ou marque a opção 'Cobertura Nacional'.");
       return;
@@ -495,7 +490,7 @@ const CTASection = ({ t }: any) => {
       alert("Por favor, insira um e-mail corporativo válido.");
       return;
     }
-    
+
     setLoading(true);
     try {
       const baseUrl = import.meta.env.VITE_API_URL || "https://www.praxisagencia.com.br";
@@ -513,7 +508,7 @@ const CTASection = ({ t }: any) => {
           estagio: form.estagio || null
         })
       });
-      
+
       if (response.ok) {
         setSubmitted(true);
       } else {
@@ -554,10 +549,10 @@ const CTASection = ({ t }: any) => {
                   <div className="w-full text-center animate-fade-in">
                     <h3 className="text-2xl font-bold mb-2">{f.successTitle}</h3>
                     <p className="text-muted-foreground mb-6">Escolha o melhor horário para falarmos sobre a nossa parceria.</p>
-                    <iframe 
-                      src="https://calendly.com/s-olipericles/ya-para-comunidades-clone?hide_event_type_details=1&hide_gdpr_banner=1&background_color=17171a&text_color=f6f4f0&primary_color=e26b58" 
-                      width="100%" 
-                      height="700" 
+                    <iframe
+                      src="https://calendly.com/s-olipericles/ya-para-comunidades-clone?hide_event_type_details=1&hide_gdpr_banner=1&background_color=17171a&text_color=f6f4f0&primary_color=e26b58"
+                      width="100%"
+                      height="700"
                       frameBorder="0"
                       className="rounded-xl overflow-hidden"
                     />
@@ -605,20 +600,20 @@ const CTASection = ({ t }: any) => {
                       <div className="flex items-center justify-between ml-1 mb-1">
                         <label className="text-xs font-semibold text-muted-foreground">Cidade / UF *</label>
                         <label className="flex items-center gap-2 cursor-pointer text-xs text-muted-foreground hover:text-white transition-colors">
-                          <input 
-                            type="checkbox" 
+                          <input
+                            type="checkbox"
                             checked={coberturaNacional}
                             onChange={(e) => setCoberturaNacional(e.target.checked)}
-                            className="rounded border-border/30 bg-muted/50 w-4 h-4 accent-primary" 
+                            className="rounded border-border/30 bg-muted/50 w-4 h-4 accent-primary"
                           />
                           Cobertura Nacional
                         </label>
                       </div>
-                      
+
                       {!coberturaNacional && (
                         <div className="flex gap-2">
                           <div className="w-[90px]">
-                            <Select onValueChange={(v) => setForm({...form, estado: v, cidade: ""})} value={form.estado || undefined}>
+                            <Select onValueChange={(v) => setForm({ ...form, estado: v, cidade: "" })} value={form.estado || undefined}>
                               <SelectTrigger className="w-full rounded-xl bg-muted/50 border-border/30 h-12">
                                 <SelectValue placeholder="UF" />
                               </SelectTrigger>
@@ -630,10 +625,10 @@ const CTASection = ({ t }: any) => {
                           <div className="flex-1 relative">
                             <Input
                               list="cidades-list-selo"
-                              placeholder={loadingCidades ? "Carregando..." : "Sua Cidade"} 
+                              placeholder={loadingCidades ? "Carregando..." : "Sua Cidade"}
                               value={form.cidade}
                               onChange={(e) => setForm({ ...form, cidade: e.target.value })}
-                              className="rounded-xl bg-muted/50 border-border/30 h-12 w-full" 
+                              className="rounded-xl bg-muted/50 border-border/30 h-12 w-full"
                               required={!coberturaNacional}
                               disabled={!form.estado || loadingCidades}
                             />
@@ -648,7 +643,7 @@ const CTASection = ({ t }: any) => {
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <label className="text-xs font-semibold text-muted-foreground ml-1">{f.fTamanho}</label>
-                        <Select onValueChange={(v) => setForm({...form, tamanho: v})}>
+                        <Select onValueChange={(v) => setForm({ ...form, tamanho: v })}>
                           <SelectTrigger className="w-full rounded-xl bg-muted/50 border-border/30 h-12">
                             <SelectValue placeholder="Selecione..." />
                           </SelectTrigger>
@@ -660,10 +655,10 @@ const CTASection = ({ t }: any) => {
                           </SelectContent>
                         </Select>
                       </div>
-                      
+
                       <div className="space-y-2">
                         <label className="text-xs font-semibold text-muted-foreground ml-1">{f.fEstagio}</label>
-                        <Select onValueChange={(v) => setForm({...form, estagio: v})}>
+                        <Select onValueChange={(v) => setForm({ ...form, estagio: v })}>
                           <SelectTrigger className="w-full rounded-xl bg-muted/50 border-border/30 h-12">
                             <SelectValue placeholder="Selecione..." />
                           </SelectTrigger>
@@ -683,7 +678,7 @@ const CTASection = ({ t }: any) => {
                     >
                       {loading ? <Loader2 size={24} className="animate-spin" /> : <>{f.btnSubmit} <ArrowRight size={20} className="ml-2" /></>}
                     </Button>
-                    
+
                     <p className="text-[10px] text-muted-foreground/80 text-center pt-4 px-2 leading-relaxed">
                       {f.legal}
                     </p>
