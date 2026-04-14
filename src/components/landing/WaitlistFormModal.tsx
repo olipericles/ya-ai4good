@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, ChevronRight, ChevronLeft, Check, Heart, Users, Loader2 } from "lucide-react";
+import { useIBGE } from "@/hooks/useIBGE";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "https://www.praxisagencia.com.br";
 
@@ -195,6 +196,7 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     const labels = t[lang];
+    const { cidades, loading: loadingCidades } = useIBGE(form.estado);
 
     const totalSteps = flow === "mae_solo" ? 6 : 3;
 
@@ -487,11 +489,16 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                                 <label className="text-white/70 text-sm font-medium mb-2 block">{labels.s2CidadeLabel}</label>
                                 <input
                                     type="text"
+                                    list="cidades-list-waitlist1"
                                     value={form.cidade}
                                     onChange={e => setField("cidade", e.target.value)}
-                                    className={`w-full bg-white/5 border ${errors.cidade ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white outline-none transition-colors mb-4`}
-                                    placeholder="Salvador"
+                                    disabled={!form.estado || loadingCidades}
+                                    className={`w-full bg-white/5 border ${errors.cidade ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white outline-none transition-colors mb-4 disabled:opacity-50`}
+                                    placeholder={loadingCidades ? "Carregando..." : "Salvador"}
                                 />
+                                <datalist id="cidades-list-waitlist1">
+                                    {cidades.map(c => <option key={c.id} value={c.nome} />)}
+                                </datalist>
                                 {errors.cidade && <p className="text-red-400 text-xs mb-3">{errors.cidade}</p>}
                                 <label className="text-white/70 text-sm font-medium mb-2 block">{labels.s2EstadoLabel}</label>
                                 <select
@@ -695,11 +702,16 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                                 <label className="text-white/70 text-sm font-medium mb-2 block">{labels.s2CidadeLabel}</label>
                                 <input
                                     type="text"
+                                    list="cidades-list-waitlist2"
                                     value={form.cidade}
                                     onChange={e => setField("cidade", e.target.value)}
-                                    className={`w-full bg-white/5 border ${errors.cidade ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white outline-none transition-colors mb-4`}
-                                    placeholder="Salvador"
+                                    disabled={!form.estado || loadingCidades}
+                                    className={`w-full bg-white/5 border ${errors.cidade ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white outline-none transition-colors mb-4 disabled:opacity-50`}
+                                    placeholder={loadingCidades ? "Carregando..." : "Salvador"}
                                 />
+                                <datalist id="cidades-list-waitlist2">
+                                    {cidades.map(c => <option key={c.id} value={c.nome} />)}
+                                </datalist>
                                 {errors.cidade && <p className="text-red-400 text-xs mb-3">{errors.cidade}</p>}
                                 <label className="text-white/70 text-sm font-medium mb-2 block">{labels.s2EstadoLabel}</label>
                                 <select
