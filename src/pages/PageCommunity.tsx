@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   Award, ChevronRight, Check, Loader2, Heart, Users, Gift, BarChart3,
   Star, FileText, ArrowRight, MessageCircle, Clock, Smartphone, UserCheck,
-  TrendingUp, Quote, Instagram, Globe
+  TrendingUp, Quote, Instagram, Globe, GraduationCap, Shield, HandHeart
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -257,7 +257,7 @@ const BenefitsSection = ({ t }: any) => {
 
 /* ─── 5. Como funciona o piloto ─── */
 const HowItWorksSection = ({ t }: any) => {
-  const stepIcons = [Clock, Smartphone, UserCheck, TrendingUp];
+  const stepIcons = [Clock, Smartphone, UserCheck, TrendingUp, HandHeart];
   return (
     <section className="py-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-[#252540]/20" />
@@ -422,7 +422,7 @@ const ProofSection = ({ t }: any) => {
 /* ─── 10. CTA + Formulário ─── */
 const CTAFormSection = ({ t }: any) => {
   const [form, setForm] = useState({
-    nome: "", comunidade: "", mulheres: "", cidade: "", whatsapp: "", motivo: ""
+    nome: "", comunidade: "", mulheres: "", cidade: "", whatsapp: "", motivo: "", extra: ""
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -541,6 +541,16 @@ const CTAFormSection = ({ t }: any) => {
                         onChange={(e) => setForm({ ...form, motivo: e.target.value })}
                         className="rounded-xl bg-muted/50 border-border/30 min-h-[100px] resize-none"
                         rows={4}
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-xs font-semibold text-muted-foreground ml-1">{t.form.fExtra}</label>
+                      <Textarea
+                        placeholder={t.form.fExtraPlace} value={form.extra}
+                        onChange={(e) => setForm({ ...form, extra: e.target.value })}
+                        className="rounded-xl bg-muted/50 border-border/30 min-h-[80px] resize-none"
+                        rows={3}
                       />
                     </div>
 
