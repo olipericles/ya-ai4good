@@ -13,7 +13,7 @@ export const translations = {
         },
         hero: {
             badge: "🏆 Top 3 AI4Good 2026 — Harvard & MIT",
-            title1: "Inteligência financeira na ",
+            title1: "Consciência financeira na ",
             titleHighlight: "palma da mão",
             title2: "para quem mais precisa.",
             stat1Highlight: "11 milhões",
