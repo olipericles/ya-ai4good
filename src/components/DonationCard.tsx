@@ -1,6 +1,6 @@
 import { Heart, ExternalLink } from "lucide-react";
 
-const GOFUNDME_URL = "https://gofund.me/ya-ai4good"; // ← substituir pelo link real
+const BENFEITORIA_URL = "https://benfeitoria.com/projeto/ya-ia-que-cuida-de-quem-cuida-de-todo-mundo-253h";
 
 interface DonationCardProps {
   lang?: "pt" | "en";
@@ -12,14 +12,14 @@ const t = {
     badge: "Apoie a Yá",
     title: "Ajude mães solo a terem controle financeiro",
     desc: "Cada doação nos aproxima de levar a Yá para mais comunidades. 100% do arrecadado vai para operação e expansão do projeto.",
-    btn: "Doar pelo GoFundMe",
+    btn: "Doar pela Benfeitoria",
     footer: "Transparência total. Prestação de contas pública.",
   },
   en: {
     badge: "Support Yá",
     title: "Help single mothers gain financial control",
     desc: "Every donation brings us closer to reaching more communities. 100% of funds go to project operations and expansion.",
-    btn: "Donate on GoFundMe",
+    btn: "Donate on Benfeitoria",
     footer: "Full transparency. Public accountability.",
   },
 };
@@ -30,7 +30,7 @@ const DonationCard = ({ lang = "pt", variant = "inline" }: DonationCardProps) =>
   if (variant === "floating") {
     return (
       <a
-        href={GOFUNDME_URL}
+        href={BENFEITORIA_URL}
         target="_blank"
         rel="noopener noreferrer"
         className="group fixed bottom-6 right-6 z-50 flex items-center gap-3 px-5 py-3 rounded-full bg-gradient-to-r from-[#FF7B54] via-[#E13C6E] to-[#7329A3] text-white font-bold shadow-[0_0_30px_rgba(226,107,88,0.4)] hover:shadow-[0_0_50px_rgba(226,107,88,0.6)] hover:scale-105 transition-all duration-300"
@@ -70,7 +70,7 @@ const DonationCard = ({ lang = "pt", variant = "inline" }: DonationCardProps) =>
             {/* CTA Button */}
             <div className="pt-2">
               <a
-                href={GOFUNDME_URL}
+                href={BENFEITORIA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#FF7B54] via-[#E13C6E] to-[#7329A3] text-white font-bold text-lg shadow-[0_0_30px_rgba(226,107,88,0.3)] hover:shadow-[0_0_50px_rgba(226,107,88,0.5)] hover:scale-105 transition-all duration-300"
