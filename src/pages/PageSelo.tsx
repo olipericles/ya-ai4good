@@ -13,6 +13,7 @@ import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import aureaPlaceholder from "@/assets/maes/aurea.jpeg";
 import { useIBGE } from "@/hooks/useIBGE";
 import { seloTranslations } from "./SeloTranslations";
+import DonationCard from "@/components/DonationCard";
 
 const DATA_ENCERRAMENTO = "30/06/2026";
 
@@ -728,6 +729,7 @@ const PageSelo = () => {
       <KPISection t={t} />
       <PricingSection t={t} />
       <CTASection t={t} />
+      <DonationCard lang={lang} />
       <Footer t={t} />
     </div>
   );

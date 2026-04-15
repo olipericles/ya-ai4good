@@ -14,6 +14,7 @@ import aureaPhoto from "@/assets/maes/aurea.jpeg";
 import { useIBGE } from "@/hooks/useIBGE";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { communityTranslations } from "./CommunityTranslations";
+import DonationCard from "@/components/DonationCard";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -659,6 +660,7 @@ const PageCommunity = () => {
       <AureaStorySection t={t} />
       <ProofSection t={t} />
       <CTAFormSection t={t} />
+      <DonationCard lang={lang} />
       <Footer t={t} />
     </div>
   );

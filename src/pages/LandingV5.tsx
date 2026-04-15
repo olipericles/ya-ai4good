@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Heart, Globe, Lock, Unlock, X, ChevronRight, PlayCircle, FileText, LayoutDashboard } from "lucide-react";
+import DonationCard from "@/components/DonationCard";
 import { translations } from "./LandingTranslations";
 import WaitlistFormModal from "@/components/landing/WaitlistFormModal";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
@@ -533,6 +534,9 @@ const LandingV5 = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Donation Card */}
+            <DonationCard lang={lang} />
 
             {/* CTA Section */}
             <section className="py-24 sm:py-40 relative bg-[#060606] text-white overflow-hidden text-center">
