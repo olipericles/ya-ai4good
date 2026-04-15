@@ -1,6 +1,6 @@
 import { Heart, ExternalLink } from "lucide-react";
 
-const BENFEITORIA_URL = "https://benfeitoria.com/projeto/ya-ia-que-cuida-de-quem-cuida-de-todo-mundo-253h";
+const BENFEITORIA_URL = "https://benfeitoria.com/projeto/a-ya-mostra-sem-julgar-no-whatsapp-que-voce-ja-usa-253i";
 
 interface DonationCardProps {
   lang?: "pt" | "en";
