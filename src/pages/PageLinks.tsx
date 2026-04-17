@@ -81,7 +81,7 @@ const PageLinks = () => {
           className="text-white/80 text-base mb-4 max-w-[320px]"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
-          Inteligência financeira pra mães solo, no WhatsApp
+          Visibilidade financeira para mães solo, no WhatsApp
         </p>
         <span
           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border"
