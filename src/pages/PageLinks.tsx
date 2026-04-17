@@ -37,6 +37,13 @@ const links: LinkItem[] = [
     href: "/",
     icon: Sparkles,
   },
+  {
+    title: "Apoie a Yá",
+    subtitle: "Doe pelo Benfeitoria e ajude a escalar",
+    href: "https://benfeitoria.com/projeto/a-ya-mostra-sem-julgar-no-whatsapp-que-voce-ja-usa-253i",
+    external: true,
+    icon: Heart,
+  },
 ];
 
 const trackClick = (label: string) => {
