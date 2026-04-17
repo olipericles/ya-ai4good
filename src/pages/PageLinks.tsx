@@ -1,0 +1,229 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Users, Building2, Mail, Sparkles, ChevronRight, Instagram, Linkedin } from "lucide-react";
+import yaLogo from "@/assets/logos/ya_logo_branco.svg";
+
+type LinkItem = {
+  title: string;
+  subtitle: string;
+  href: string;
+  external?: boolean;
+  icon: React.ComponentType<{ className?: string }>;
+};
+
+const links: LinkItem[] = [
+  {
+    title: "Sou liderança comunitária",
+    subtitle: "Quero levar a Yá pra minha comunidade",
+    href: "/comunidades",
+    icon: Users,
+  },
+  {
+    title: "Sou empresa e quero patrocinar",
+    subtitle: "Selo de Impacto Yá e dado auditável pra ESG",
+    href: "/selo",
+    icon: Building2,
+  },
+  {
+    title: "Imprensa e parcerias",
+    subtitle: "Sou jornalista ou quero propor parceria",
+    href: "mailto:contato@ya-ai4good.com",
+    external: true,
+    icon: Mail,
+  },
+  {
+    title: "Conheça a Yá",
+    subtitle: "Quero entender o projeto",
+    href: "/",
+    icon: Sparkles,
+  },
+];
+
+const trackClick = (label: string) => {
+  // Fires to gtag/plausible if available, otherwise no-op
+  try {
+    // @ts-expect-error - gtag may not be defined
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      // @ts-expect-error - gtag may not be defined
+      window.gtag("event", "links_click", { button: label });
+    }
+    // @ts-expect-error - plausible may not be defined
+    if (typeof window !== "undefined" && typeof window.plausible === "function") {
+      // @ts-expect-error - plausible may not be defined
+      window.plausible("LinksClick", { props: { button: label } });
+    }
+  } catch {
+    // ignore
+  }
+};
+
+const PageLinks = () => {
+  useEffect(() => {
+    document.title = "Yá - Links";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) {
+      meta.setAttribute(
+        "content",
+        "Acesse todos os canais e caminhos da Yá, inteligência artificial que entrega visibilidade financeira a mães solo no Brasil."
+      );
+    }
+  }, []);
+
+  return (
+    <main
+      className="min-h-screen w-full flex flex-col items-center px-6 py-12"
+      style={{ backgroundColor: "#1A1A2E" }}
+    >
+      {/* Header */}
+      <header className="w-full max-w-[480px] flex flex-col items-center text-center animate-fade-in">
+        <img src={yaLogo} alt="Yá" className="w-20 h-20 mb-4" />
+        <h1
+          className="text-white text-6xl mb-3"
+          style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, letterSpacing: "-0.03em" }}
+        >
+          Yá
+        </h1>
+        <p
+          className="text-white/80 text-base mb-4 max-w-[320px]"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
+          Inteligência financeira pra mães solo, no WhatsApp
+        </p>
+        <span
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border"
+          style={{
+            color: "#F5A623",
+            borderColor: "rgba(245, 166, 35, 0.4)",
+            backgroundColor: "rgba(245, 166, 35, 0.08)",
+            fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          ✦ Vencedor AI4Good 2026 · Harvard/MIT
+        </span>
+      </header>
+
+      {/* Buttons */}
+      <nav className="w-full max-w-[480px] flex flex-col gap-4 mt-10">
+        {links.map((item, i) => {
+          const Icon = item.icon;
+          const content = (
+            <div
+              className="group relative flex items-center gap-4 w-full p-4 rounded-2xl text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
+              style={{
+                background: "linear-gradient(90deg, #E8673C 0%, #C040A0 50%, #8C30B0 100%)",
+                boxShadow: "0 4px 20px -6px rgba(192, 64, 160, 0.4)",
+              }}
+            >
+              <div
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background: "linear-gradient(90deg, #F07a4d 0%, #D24fb0 50%, #9d3fc0 100%)",
+                }}
+              />
+              <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-white/15 backdrop-blur-sm shrink-0">
+                <Icon className="w-5 h-5 text-white" />
+              </div>
+              <div className="relative flex-1 min-w-0 text-left">
+                <div
+                  className="text-base font-semibold leading-tight"
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  {item.title}
+                </div>
+                <div
+                  className="text-sm text-white/70 mt-0.5 leading-snug"
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  {item.subtitle}
+                </div>
+              </div>
+              <ChevronRight className="relative w-5 h-5 text-white/80 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+            </div>
+          );
+
+          const style = {
+            animation: "fadeUp 0.5s ease-out both",
+            animationDelay: `${150 + i * 100}ms`,
+          } as React.CSSProperties;
+
+          if (item.external) {
+            return (
+              <a
+                key={item.title}
+                href={item.href}
+                onClick={() => trackClick(item.title)}
+                className="block"
+                style={style}
+              >
+                {content}
+              </a>
+            );
+          }
+          return (
+            <Link
+              key={item.title}
+              to={item.href}
+              onClick={() => trackClick(item.title)}
+              className="block"
+              style={style}
+            >
+              {content}
+            </Link>
+          );
+        })}
+      </nav>
+
+      {/* Footer */}
+      <footer
+        className="w-full max-w-[480px] mt-16 flex flex-col items-center text-center gap-4"
+        style={{ animation: "fadeUp 0.6s ease-out 700ms both" }}
+      >
+        <div className="flex items-center gap-6">
+          <a
+            href="https://instagram.com/ya.ai4good"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackClick("Instagram")}
+            className="text-white/60 hover:text-white transition-colors flex items-center gap-1.5 text-sm"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            <Instagram className="w-4 h-4" />
+            @ya.ai4good
+          </a>
+          <a
+            href="https://tiktok.com/@ya.ai4good"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackClick("TikTok")}
+            className="text-white/60 hover:text-white transition-colors flex items-center gap-1.5 text-sm"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.66a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.09Z" />
+            </svg>
+            @ya.ai4good
+          </a>
+          <a
+            href="https://www.linkedin.com/company/ya-ai4good"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackClick("LinkedIn")}
+            className="text-white/60 hover:text-white transition-colors flex items-center gap-1.5 text-sm"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            <Linkedin className="w-4 h-4" />
+            LinkedIn
+          </a>
+        </div>
+        <p
+          className="text-xs text-white/40 max-w-[320px] leading-relaxed"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
+          Yá é uma iniciativa de Péricles Oliveira, Adriele Ornellas e Luã Mota, nascida em Salvador, Bahia.
+        </p>
+      </footer>
+    </main>
+  );
+};
+
+export default PageLinks;
