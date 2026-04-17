@@ -19,6 +19,7 @@ import PageBaIA from "./pages/PageBaIA";
 import PageRBA from "./pages/PageRBA";
 import PageSelo from "./pages/PageSelo";
 import PageCommunity from "./pages/PageCommunity";
+import PageLinks from "./pages/PageLinks";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/rba" element={<PageRBA />} />
           <Route path="/selo" element={<PageSelo />} />
           <Route path="/comunidades" element={<PageCommunity />} />
+          <Route path="/links" element={<PageLinks />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/:phone" element={<Dashboard />} />
 
