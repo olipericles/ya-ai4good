@@ -200,7 +200,7 @@ const PageLinks = () => {
           className="text-xs text-white/40 max-w-[320px] leading-relaxed"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
-          Yá é uma iniciativa de Péricles Oliveira, Adriele Ornellas e Luã Mota, nascida em Salvador, Bahia.
+          Yá é uma iniciativa de Adriele Ornellas, Luã Mota e Péricles Oliveira, nascida em Salvador, Bahia.
         </p>
       </footer>
     </main>
