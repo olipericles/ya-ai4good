@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, Building2, Mail, Sparkles, ChevronRight, Instagram, Linkedin } from "lucide-react";
+import { Users, Building2, Mail, Sparkles, Heart, ChevronRight, Instagram, Linkedin } from "lucide-react";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 type LinkItem = {
@@ -36,6 +36,13 @@ const links: LinkItem[] = [
     subtitle: "Quero entender o projeto",
     href: "/",
     icon: Sparkles,
+  },
+  {
+    title: "Apoie a Yá",
+    subtitle: "Doe pelo Benfeitoria e ajude a escalar",
+    href: "https://benfeitoria.com/projeto/a-ya-mostra-sem-julgar-no-whatsapp-que-voce-ja-usa-253i",
+    external: true,
+    icon: Heart,
   },
 ];
 
