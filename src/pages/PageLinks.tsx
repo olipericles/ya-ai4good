@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, Building2, Mail, Sparkles, ChevronRight, Instagram, Linkedin } from "lucide-react";
+import { Users, Building2, Mail, Sparkles, Heart, ChevronRight, Instagram, Linkedin } from "lucide-react";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 type LinkItem = {
