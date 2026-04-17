@@ -76,13 +76,7 @@ const PageLinks = () => {
     >
       {/* Header */}
       <header className="w-full max-w-[480px] flex flex-col items-center text-center animate-fade-in">
-        <img src={yaLogo} alt="Yá" className="w-20 h-20 mb-4" />
-        <h1
-          className="text-white text-6xl mb-3"
-          style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, letterSpacing: "-0.03em" }}
-        >
-          Yá
-        </h1>
+        <img src={yaLogo} alt="Yá" className="w-24 h-24 mb-5" />
         <p
           className="text-white/80 text-base mb-4 max-w-[320px]"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
