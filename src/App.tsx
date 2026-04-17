@@ -19,6 +19,7 @@ import PageBaIA from "./pages/PageBaIA";
 import PageRBA from "./pages/PageRBA";
 import PageSelo from "./pages/PageSelo";
 import PageCommunity from "./pages/PageCommunity";
+import PageLinks from "./pages/PageLinks";
 
 const queryClient = new QueryClient();
 
