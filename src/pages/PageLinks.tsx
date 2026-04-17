@@ -27,7 +27,7 @@ const links: LinkItem[] = [
   {
     title: "Imprensa e parcerias",
     subtitle: "Sou jornalista ou quero propor parceria",
-    href: "mailto:contato@ya-ai4good.com",
+    href: "mailto:ya.ai4good@gmail.com",
     external: true,
     icon: Mail,
   },
