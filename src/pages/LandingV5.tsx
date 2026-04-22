@@ -79,6 +79,7 @@ const LandingV5 = () => {
                         <a href="#solucao" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t.nav.solution}</a>
                         <a href="#impacto" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t.nav.impact}</a>
                         <a href="#equipe" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t.nav.team}</a>
+                        <a href="#lista-de-espera" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t.nav.waitlist}</a>
                         <button onClick={() => setShowPitchModal(true)} className="text-sm font-bold text-primary hover:text-secondary transition-colors flex items-center gap-1 ml-2">
                             <Lock className="w-3 h-3" /> Pitch Deck
                         </button>
@@ -539,12 +540,15 @@ const LandingV5 = () => {
             <DonationCard lang={lang} />
 
             {/* CTA Section */}
-            <section className="py-24 sm:py-40 relative bg-[#060606] text-white overflow-hidden text-center">
+            <section id="lista-de-espera" className="py-24 sm:py-40 relative bg-[#060606] text-white overflow-hidden text-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 blur-[150px] pointer-events-none mix-blend-screen" />
                 <div className="max-w-4xl mx-auto px-6 relative z-10">
-                    <h2 className="text-5xl sm:text-7xl font-black mb-10 tracking-tighter leading-none">
+                    <h2 className="text-5xl sm:text-7xl font-black mb-6 tracking-tighter leading-none">
                         {t.cta.title}
                     </h2>
+                    <p className="text-lg sm:text-xl text-white/60 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                        {t.cta.subtitle}
+                    </p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
                         <button
                             onClick={() => setShowWaitlistForm(true)}

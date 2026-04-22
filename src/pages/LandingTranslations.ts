@@ -9,7 +9,8 @@ export const translations = {
             solution: "A Solução",
             impact: "Impacto",
             team: "Equipe",
-            contact: "Fale Conosco"
+            contact: "Fale Conosco",
+            waitlist: "Lista de Espera"
         },
         hero: {
             badge: "🏆 Top 3 AI4Good 2026 — Harvard & MIT",
@@ -145,6 +146,7 @@ export const translations = {
         cta: {
             slogan: "Uma IA que cuida de quem cuida de todo mundo",
             title: "Faça parte dessa transformação",
+            subtitle: "Esta lista de espera garante o seu acesso para quando iniciarmos nossa operação pública no segundo semestre de 2026.",
             button1: "Entrar na Lista de Espera",
             button2: "🤝 Quero ser Parceiro"
         },
@@ -166,7 +168,8 @@ export const translations = {
             solution: "The Solution",
             impact: "Impact",
             team: "Team",
-            contact: "Contact Us"
+            contact: "Contact Us",
+            waitlist: "Waitlist"
         },
         hero: {
             badge: "🏆 Top 3 AI4Good 2026 — Harvard & MIT",
@@ -302,6 +305,7 @@ export const translations = {
         cta: {
             slogan: "An AI that cares for those who care for everyone",
             title: "Be part of this transformation",
+            subtitle: "This waitlist guarantees your access for when we launch our public operation in the second half of 2026.",
             button1: "Join the Waitlist",
             button2: "🤝 Become a Partner"
         },
