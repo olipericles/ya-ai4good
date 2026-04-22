@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import {
     Search, Loader2, Users, Activity, Heart, UserCheck, AlertTriangle,
-    Clock, ChevronDown, Filter, RefreshCw, Phone, MapPin
+    Clock, ChevronDown, Filter, RefreshCw, Phone, MapPin, Upload
 } from "lucide-react";
 import { BarChart, Bar, ResponsiveContainer, Tooltip as RechartsTooltip, XAxis, Cell } from "recharts";
 
@@ -60,6 +60,8 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; icon: typeof
     reengajamento: { label: "Reengajamento", color: "text-red-400", icon: AlertTriangle, bg: "bg-red-500/10 border-red-500/20" },
 };
 
+import BulkAddModal from "./components/BulkAddModal";
+
 function StatusBadge({ status }: { status: string }) {
     const cfg = STATUS_CONFIG[status] || STATUS_CONFIG.pre_cadastro;
     const Icon = cfg.icon;
@@ -92,6 +94,7 @@ export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
     const [filterStatus, setFilterStatus] = useState<string>("all");
     const [filterTipo, setFilterTipo] = useState<string>("all");
     const [selectedEntry, setSelectedEntry] = useState<WaitlistEntry | null>(null);
+    const [showBulkAdd, setShowBulkAdd] = useState(false);
 
     const fetchData = async () => {
         setLoading(true);
@@ -152,12 +155,20 @@ export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
                     </h1>
                     <p className="text-gray-500 text-sm font-mono uppercase tracking-wider mt-1">Lista de Espera & Funil</p>
                 </div>
-                <button
-                    onClick={fetchData}
-                    className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm text-white/70 hover:bg-white/10 transition-colors"
-                >
-                    <RefreshCw className="w-4 h-4" /> Atualizar
-                </button>
+                <div className="flex gap-2">
+                    <button
+                        onClick={() => setShowBulkAdd(true)}
+                        className="hidden sm:flex items-center gap-2 px-4 py-2 bg-primary/20 border border-primary/30 rounded-xl text-sm text-primary font-bold hover:bg-primary/30 transition-colors"
+                    >
+                        <Upload className="w-4 h-4" /> Em Lote
+                    </button>
+                    <button
+                        onClick={fetchData}
+                        className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm text-white/70 hover:bg-white/10 transition-colors"
+                    >
+                        <RefreshCw className="w-4 h-4" /> Atualizar
+                    </button>
+                </div>
             </div>
 
             {/* KPI Cards */}
@@ -431,6 +442,15 @@ export default function DashboardCRM({ adminToken }: DashboardCRMProps) {
             <p className="text-center text-[10px] text-gray-600 font-mono pb-4">
                 {filtered.length} de {entries.length} registros • Última atualização: {new Date().toLocaleString("pt-BR")}
             </p>
+
+            <BulkAddModal 
+                isOpen={showBulkAdd} 
+                onClose={() => setShowBulkAdd(false)} 
+                onSuccess={() => {
+                    setShowBulkAdd(false);
+                    fetchData();
+                }} 
+            />
         </div>
     );
 }
