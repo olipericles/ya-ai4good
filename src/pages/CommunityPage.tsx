@@ -632,7 +632,7 @@ const Footer = ({ t }: any) => (
 import { useLanguage } from "@/contexts/LanguageContext";
 
 /* ─── Page ─── */
-const PageCommunity = () => {
+const CommunityPage = () => {
   const { lang } = useLanguage();
   const t = communityTranslations[lang];
 
@@ -662,4 +662,4 @@ const PageCommunity = () => {
   );
 };
 
-export default PageCommunity;
+export default CommunityPage;

@@ -703,7 +703,7 @@ const Footer = ({ t }: any) => (
 import { useLanguage } from "@/contexts/LanguageContext";
 
 /* ─── Page ─── */
-const PageSelo = () => {
+const SeloPage = () => {
   const { lang } = useLanguage();
   const t = seloTranslations[lang];
 
@@ -731,4 +731,4 @@ const PageSelo = () => {
   );
 };
 
-export default PageSelo;
+export default SeloPage;

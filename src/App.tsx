@@ -4,23 +4,23 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import LandingOriginal from "./pages/LandingOriginal";
-import Index from "./pages/Index";
-import IndexV2 from "./pages/IndexV2";
-import IndexV3 from "./pages/IndexV3";
-import IndexBC2026V4Training from "./pages/IndexBC2026V4Training";
-import IndexBC2026V4Script from "./pages/IndexBC2026V4Script";
+import LandingOriginal from "./pages/Legacy/LandingOriginal";
+import Index from "./pages/Legacy/Index";
+import IndexV2 from "./pages/Legacy/IndexV2";
+import IndexV3 from "./pages/Legacy/IndexV3";
+import IndexBC2026V4Training from "./pages/Legacy/IndexBC2026V4Training";
+import IndexBC2026V4Script from "./pages/Legacy/IndexBC2026V4Script";
 import PresentationBC2026V4 from "./components/presentation/PresentationBC2026V4";
-import IndexBC2026V4OnePage from "./pages/IndexBC2026V4OnePage";
-import LandingV5 from "./pages/LandingV5";
+import IndexBC2026V4OnePage from "./pages/Legacy/IndexBC2026V4OnePage";
+import LandingPage from "./pages/LandingPage";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import PageTrindAI from "./pages/PageTrindAI";
-import PageBaIA from "./pages/PageBaIA";
-import PageRBA from "./pages/PageRBA";
-import PageSelo from "./pages/PageSelo";
-import PageCommunity from "./pages/PageCommunity";
-import PageLinks from "./pages/PageLinks";
+import TrindAIPage from "./pages/TrindAIPage";
+import BaIAPage from "./pages/BaIAPage";
+import RBAPage from "./pages/RBAPage";
+import SeloPage from "./pages/SeloPage";
+import CommunityPage from "./pages/CommunityPage";
+import LinksPage from "./pages/LinksPage";
 
 const queryClient = new QueryClient();
 
@@ -32,7 +32,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingV5 />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/original" element={<LandingOriginal />} />
           <Route path="/v1" element={<Index />} />
           <Route path="/v2" element={<IndexV2 />} />
@@ -41,12 +41,12 @@ const App = () => (
           <Route path="/vBC2026t" element={<IndexBC2026V4Training />} />
           <Route path="/vBC2026op" element={<IndexBC2026V4OnePage />} />
           <Route path="/vBC2026s" element={<IndexBC2026V4Script />} />
-          <Route path="/trindai" element={<PageTrindAI />} />
-          <Route path="/baia" element={<PageBaIA />} />
-          <Route path="/rba" element={<PageRBA />} />
-          <Route path="/selo" element={<PageSelo />} />
-          <Route path="/comunidades" element={<PageCommunity />} />
-          <Route path="/links" element={<PageLinks />} />
+          <Route path="/trindai" element={<TrindAIPage />} />
+          <Route path="/baia" element={<BaIAPage />} />
+          <Route path="/rba" element={<RBAPage />} />
+          <Route path="/selo" element={<SeloPage />} />
+          <Route path="/comunidades" element={<CommunityPage />} />
+          <Route path="/links" element={<LinksPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/:phone" element={<Dashboard />} />
 

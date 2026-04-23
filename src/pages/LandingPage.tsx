@@ -16,7 +16,7 @@ import demoVideo from "@/assets/videos/demo.mp4";
 import logoPoupa from "@/assets/logos/logo-poupa.png";
 import logoGranazen from "@/assets/logos/logo-granazen.png";
 
-const LandingV5 = () => {
+const LandingPage = () => {
     const { lang } = useLanguage();
     const [showPitchModal, setShowPitchModal] = useState(false);
     const [pitchPassword, setPitchPassword] = useState("");
@@ -607,7 +607,7 @@ const LandingV5 = () => {
                         </div>
                     </div>
                     <div className="border-t border-white/10 pt-8 text-center">
-                        <p className="text-xs text-white/30 font-mono uppercase tracking-widest">{t.footer.rights} | V5 NEO-BRUTAL</p>
+                        <p className="text-xs text-white/30 font-mono uppercase tracking-widest">{t.footer.rights}</p>
                     </div>
                 </div>
             </footer>
@@ -700,4 +700,4 @@ const LandingV5 = () => {
     );
 };
 
-export default LandingV5;
+export default LandingPage;

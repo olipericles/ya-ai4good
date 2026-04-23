@@ -41,7 +41,7 @@ const trackClick = (label: string) => {
   }
 };
 
-const PageLinks = () => {
+const LinksPage = () => {
   const { lang } = useLanguage();
   const t = linksTranslations[lang];
 
@@ -202,4 +202,4 @@ const PageLinks = () => {
   );
 };
 
-export default PageLinks;
+export default LinksPage;
