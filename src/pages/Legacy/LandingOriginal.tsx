@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Heart, Globe } from "lucide-react";
-import { translations } from "./LandingTranslations";
+import { translations } from "@/pages/LandingTranslations";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import equipePericles from "@/assets/team/equipe-pericles.png";
 import equipeAdriele from "@/assets/team/equipe-adriele.png";
