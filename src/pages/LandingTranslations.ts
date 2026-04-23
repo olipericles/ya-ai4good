@@ -21,8 +21,8 @@ export const translations = {
             stat1: " de lares chefiados por mães solo no Brasil.",
             stat2: "Mais do que a população inteira de Portugal.",
             quote: "\"Yá significa 'mãe' em Yorubá. Um nome que carrega ancestralidade e acolhimento.\"",
-            ctaPrimary: "Quero Apoiar o Projeto 💛",
-            ctaSecondary: "Conhecer o Projeto ↓"
+            ctaPrimary: "Quero testar a Yá 💛",
+            ctaSecondary: "Como funciona? ↓"
         },
         problem: {
             badge: "O Problema",
@@ -147,7 +147,7 @@ export const translations = {
             slogan: "Uma IA que cuida de quem cuida de todo mundo",
             title: "Faça parte dessa transformação",
             subtitle: "Esta lista de espera garante o seu acesso para quando iniciarmos nossa operação pública no segundo semestre de 2026.",
-            button1: "Entrar na Lista de Espera",
+            button1: "Garantir meu acesso gratuito",
             button2: "🤝 Quero ser Parceiro"
         },
         footer: {
@@ -180,8 +180,8 @@ export const translations = {
             stat1: " households headed by single mothers in Brazil.",
             stat2: "More than the entire population of Portugal.",
             quote: "\"Yá means 'mother' in Yoruba. A name that carries ancestry and welcoming.\"",
-            ctaPrimary: "I Want to Support 💛",
-            ctaSecondary: "Discover the Project ↓"
+            ctaPrimary: "I want to test Yá 💛",
+            ctaSecondary: "How it works ↓"
         },
         problem: {
             badge: "The Problem",
@@ -306,7 +306,7 @@ export const translations = {
             slogan: "An AI that cares for those who care for everyone",
             title: "Be part of this transformation",
             subtitle: "This waitlist guarantees your access for when we launch our public operation in the second half of 2026.",
-            button1: "Join the Waitlist",
+            button1: "Secure my free access",
             button2: "🤝 Become a Partner"
         },
         footer: {
