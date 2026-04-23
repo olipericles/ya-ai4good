@@ -241,6 +241,14 @@ const LandingV5 = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="mt-16 text-center">
+                        <button
+                            onClick={() => setShowWaitlistForm(true)}
+                            className="bg-gradient-hero text-white font-black text-lg px-10 py-4 rounded-full shadow-[0_0_30px_rgba(226,107,88,0.3)] hover:scale-105 hover:shadow-[0_0_50px_rgba(226,107,88,0.5)] transition-all duration-500 uppercase tracking-widest"
+                        >
+                            {t.hero.ctaPrimary}
+                        </button>
+                    </div>
                 </div>
             </section>
 
@@ -394,6 +402,14 @@ const LandingV5 = () => {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                    <div className="mt-16 text-center">
+                        <button
+                            onClick={() => setShowWaitlistForm(true)}
+                            className="bg-white/5 border border-white/20 hover:bg-white/10 text-white font-bold text-lg px-10 py-4 rounded-full transition-all duration-300 uppercase tracking-widest"
+                        >
+                            {t.hero.ctaPrimary}
+                        </button>
                     </div>
                 </div>
             </section>
