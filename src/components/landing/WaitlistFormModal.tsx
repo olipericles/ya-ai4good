@@ -22,7 +22,6 @@ const COMO_CONHECEU_OPTIONS = [
 interface WaitlistFormModalProps {
     isOpen: boolean;
     onClose: () => void;
-    lang: "pt" | "en";
 }
 
 interface FormData {
@@ -186,7 +185,10 @@ function formatWhatsapp(value: string): string {
     return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
 }
 
-export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFormModalProps) {
+import { useLanguage } from "@/contexts/LanguageContext";
+
+export default function WaitlistFormModal({ isOpen, onClose }: WaitlistFormModalProps) {
+    const { lang } = useLanguage();
     const [step, setStep] = useState(-1); // -1 = triagem
     const [flow, setFlow] = useState<"mae_solo" | "apoiador" | "">("");
     const [form, setForm] = useState<FormData>(initialFormData);

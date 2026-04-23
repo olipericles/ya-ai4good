@@ -3,6 +3,8 @@ import { Heart, Globe, Lock, Unlock, X, ChevronRight, PlayCircle, FileText, Layo
 import DonationCard from "@/components/DonationCard";
 import { translations } from "./LandingTranslations";
 import WaitlistFormModal from "@/components/landing/WaitlistFormModal";
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { useLanguage } from "@/contexts/LanguageContext";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import equipePericles from "@/assets/team/equipe-pericles.png";
 import equipeAdriele from "@/assets/team/equipe-adriele.png";
@@ -15,7 +17,7 @@ import logoPoupa from "@/assets/logos/logo-poupa.png";
 import logoGranazen from "@/assets/logos/logo-granazen.png";
 
 const LandingV5 = () => {
-    const [lang, setLang] = useState<"pt" | "en">("pt");
+    const { lang } = useLanguage();
     const [showPitchModal, setShowPitchModal] = useState(false);
     const [pitchPassword, setPitchPassword] = useState("");
     const [isPitchAuth, setIsPitchAuth] = useState(false);
@@ -57,10 +59,6 @@ const LandingV5 = () => {
         }
     ];
 
-    const toggleLang = () => {
-        setLang(prev => prev === "pt" ? "en" : "pt");
-    };
-
     const handlePitchLogin = (e: React.FormEvent) => {
         e.preventDefault();
         if (pitchPassword.toLowerCase() === "ai4good") {
@@ -90,15 +88,7 @@ const LandingV5 = () => {
                         </button>
                     </nav>
                     <div className="flex items-center gap-3 relative">
-                        {/* Language Toggle */}
-                        <button
-                            onClick={toggleLang}
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border bg-card hover:bg-muted transition-colors text-xs font-medium"
-                            title={lang === "pt" ? "Switch to English" : "Mudar para Português"}
-                        >
-                            <Globe className="w-3.5 h-3.5" />
-                            <span>{lang === "pt" ? "EN" : "PT"}</span>
-                        </button>
+                        <LanguageToggle />
 
                         <a
                             href="https://wa.me/5571992433241?text=Ol%C3%A1!%20Quero%20participar%20do%20piloto%20da%20Y%C3%A1"
@@ -542,7 +532,7 @@ const LandingV5 = () => {
             </section>
 
             {/* Donation Card */}
-            <DonationCard lang={lang} />
+            <DonationCard />
 
             {/* CTA Section */}
             <section id="lista-de-espera" className="py-24 sm:py-40 relative bg-[#060606] text-white overflow-hidden text-center">
@@ -688,7 +678,6 @@ const LandingV5 = () => {
             <WaitlistFormModal
                 isOpen={showWaitlistForm}
                 onClose={() => setShowWaitlistForm(false)}
-                lang={lang}
             />
 
         </div>

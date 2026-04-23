@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Users, Building2, Mail, Sparkles, Heart, ChevronRight, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { linksTranslations } from "./LinksTranslations";
 
 type LinkItem = {
   title: string;
@@ -11,45 +14,13 @@ type LinkItem = {
   icon: React.ComponentType<{ className?: string }>;
 };
 
-const links: LinkItem[] = [
-  {
-    title: "Sou mãe e quero testar a Yá",
-    subtitle: "Entrar na lista de espera gratuita",
-    href: "/?waitlist=true",
-    icon: MessageCircle,
-  },
-  {
-    title: "Sou liderança comunitária",
-    subtitle: "Quero levar a Yá pra minha comunidade",
-    href: "/comunidades",
-    icon: Users,
-  },
-  {
-    title: "Sou empresa e quero patrocinar",
-    subtitle: "Selo de Impacto Yá e dado auditável pra ESG",
-    href: "/selo",
-    icon: Building2,
-  },
-  {
-    title: "Imprensa e parcerias",
-    subtitle: "Sou jornalista ou quero propor parceria",
-    href: "mailto:ya.ai4good@gmail.com",
-    external: true,
-    icon: Mail,
-  },
-  {
-    title: "Conheça a Yá",
-    subtitle: "Quero entender o projeto",
-    href: "/",
-    icon: Sparkles,
-  },
-  {
-    title: "Apoie a Yá",
-    subtitle: "Doe pelo Benfeitoria e ajude a escalar",
-    href: "https://benfeitoria.com/projeto/a-ya-mostra-sem-julgar-no-whatsapp-que-voce-ja-usa-253i",
-    external: true,
-    icon: Heart,
-  },
+const baseLinks = [
+  { icon: MessageCircle },
+  { icon: Users },
+  { icon: Building2 },
+  { icon: Mail, external: true },
+  { icon: Sparkles },
+  { icon: Heart, external: true },
 ];
 
 const trackClick = (label: string) => {
@@ -71,16 +42,24 @@ const trackClick = (label: string) => {
 };
 
 const PageLinks = () => {
+  const { lang } = useLanguage();
+  const t = linksTranslations[lang];
+
+  const links: LinkItem[] = t.links.map((link, index) => ({
+    ...link,
+    ...baseLinks[index]
+  }));
+
   useEffect(() => {
-    document.title = "Yá - Links";
+    document.title = t.meta.title;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) {
       meta.setAttribute(
         "content",
-        "Acesse todos os canais e caminhos da Yá, inteligência artificial que entrega visibilidade financeira a mães solo no Brasil."
+        t.meta.desc
       );
     }
-  }, []);
+  }, [t]);
 
   return (
     <main
@@ -88,13 +67,16 @@ const PageLinks = () => {
       style={{ backgroundColor: "#1A1A2E" }}
     >
       {/* Header */}
-      <header className="w-full max-w-[480px] flex flex-col items-center text-center animate-fade-in">
+      <header className="w-full max-w-[480px] flex flex-col items-center text-center animate-fade-in relative pt-4">
+        <div className="absolute top-0 right-0">
+          <LanguageToggle />
+        </div>
         <img src={yaLogo} alt="Yá" className="w-24 h-24 mb-5" />
         <p
           className="text-white/80 text-base mb-4 max-w-[320px]"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
-          Visibilidade financeira para mães solo, no WhatsApp
+          {t.header.subtitle}
         </p>
         <span
           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border"
@@ -105,7 +87,7 @@ const PageLinks = () => {
             fontFamily: "'DM Sans', sans-serif",
           }}
         >
-          ✦ Vencedor AI4Good 2026 · Harvard/MIT
+          {t.header.badge}
         </span>
       </header>
 
@@ -213,7 +195,7 @@ const PageLinks = () => {
           className="text-xs text-white/40 max-w-[320px] leading-relaxed"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
-          Yá é uma iniciativa de Adriele Ornellas, Luã Mota e Péricles Oliveira, nascida em Salvador, Bahia.
+          {t.footer.rights}
         </p>
       </footer>
     </main>

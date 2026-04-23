@@ -24,20 +24,16 @@ const fadeUp = {
   })
 };
 
+import { LanguageToggle } from "@/components/LanguageToggle";
+
 /* ─── Header ─── */
-const Header = ({ t, toggleLang }: any) => (
+const Header = () => (
   <header className="absolute top-0 w-full z-50 bg-transparent">
     <div className="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
       <a href="/" className="cursor-pointer hover:opacity-80 transition-opacity">
         <img src={yaLogo} alt="Yá Logo" className="h-6 opacity-80 object-contain" />
       </a>
-      <button
-        onClick={toggleLang}
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border bg-card/40 backdrop-blur-md hover:bg-muted transition-colors text-xs font-semibold text-foreground uppercase tracking-widest"
-      >
-        <Globe className="w-3.5 h-3.5" />
-        <span>{t.nav.toggle}</span>
-      </button>
+      <LanguageToggle />
     </div>
   </header>
 );
@@ -633,9 +629,11 @@ const Footer = ({ t }: any) => (
   </footer>
 );
 
+import { useLanguage } from "@/contexts/LanguageContext";
+
 /* ─── Page ─── */
 const PageCommunity = () => {
-  const [lang, setLang] = useState<"pt" | "en">("pt");
+  const { lang } = useLanguage();
   const t = communityTranslations[lang];
 
   useEffect(() => {
@@ -644,11 +642,9 @@ const PageCommunity = () => {
     if (meta) meta.setAttribute("content", t.meta.desc);
   }, [t]);
 
-  const toggleLang = () => setLang(prev => prev === "pt" ? "en" : "pt");
-
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors relative">
-      <Header t={{ nav: { toggle: lang === "pt" ? "EN" : "PT" } }} toggleLang={toggleLang} />
+      <Header />
       <HeroSection t={t} />
       <CredibilitySection t={t} />
       <WhatIsSection t={t} />
@@ -660,7 +656,7 @@ const PageCommunity = () => {
       <AureaStorySection t={t} />
       <ProofSection t={t} />
       <CTAFormSection t={t} />
-      <DonationCard lang={lang} />
+      <DonationCard />
       <Footer t={t} />
     </div>
   );
