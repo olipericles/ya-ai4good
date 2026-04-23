@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, Building2, Mail, Sparkles, Heart, ChevronRight, Instagram, Linkedin } from "lucide-react";
+import { Users, Building2, Mail, Sparkles, Heart, ChevronRight, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 
 type LinkItem = {
@@ -12,6 +12,12 @@ type LinkItem = {
 };
 
 const links: LinkItem[] = [
+  {
+    title: "Sou mãe e quero testar a Yá",
+    subtitle: "Entrar na lista de espera gratuita",
+    href: "/?waitlist=true",
+    icon: MessageCircle,
+  },
   {
     title: "Sou liderança comunitária",
     subtitle: "Quero levar a Yá pra minha comunidade",

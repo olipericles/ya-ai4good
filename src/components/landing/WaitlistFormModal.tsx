@@ -10,6 +10,7 @@ const ESTADOS_BR = [
 ];
 
 const COMO_CONHECEU_OPTIONS = [
+    { value: "g1", labelPt: "Matéria do G1", labelEn: "G1 Article" },
     { value: "brazil_conference", labelPt: "Brazil Conference", labelEn: "Brazil Conference" },
     { value: "instagram", labelPt: "Instagram", labelEn: "Instagram" },
     { value: "linkedin", labelPt: "LinkedIn", labelEn: "LinkedIn" },
@@ -198,7 +199,7 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
     const labels = t[lang];
     const { cidades, loading: loadingCidades } = useIBGE(form.estado);
 
-    const totalSteps = flow === "mae_solo" ? 6 : 3;
+    const totalSteps = flow === "mae_solo" ? 3 : 3;
 
     const reset = () => {
         setStep(-1);
@@ -234,20 +235,18 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
         const errs: Record<string, string> = {};
 
         if (flow === "mae_solo") {
-            if (step === 0 && (!form.filhos || Number(form.filhos) < 1)) errs.filhos = labels.required;
-            if (step === 1) {
-                if (!form.cidade.trim()) errs.cidade = labels.required;
-                if (!form.estado) errs.estado = labels.required;
-            }
-            if (step === 2) {
+            if (step === 0) {
                 if (!form.nome.trim()) errs.nome = labels.required;
                 const digits = form.whatsapp.replace(/\D/g, "");
                 if (digits.length < 10) errs.whatsapp = labels.invalidWhatsapp;
             }
-            if (step === 3 && form.comoConheceu.length === 0) errs.comoConheceu = labels.required;
-            if (step === 4) {
-                if (form.jaUsouAppFinanceiro === null) errs.jaUsouAppFinanceiro = labels.required;
-                if (form.usaWhatsapp === null) errs.usaWhatsapp = labels.required;
+            if (step === 1) {
+                if (!form.filhos || Number(form.filhos) < 1) errs.filhos = labels.required;
+                if (!form.cidade.trim()) errs.cidade = labels.required;
+                if (!form.estado) errs.estado = labels.required;
+            }
+            if (step === 2) {
+                if (form.comoConheceu.length === 0) errs.comoConheceu = labels.required;
             }
         } else {
             if (step === 0 && !form.semFilhos && !form.filhos) errs.filhos = labels.required;
@@ -454,57 +453,8 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                 {/* MÃE SOLO FLOW */}
                 {!success && !duplicateError && flow === "mae_solo" && step >= 0 && (
                     <div className="animate-fade-up" key={`solo-${step}`}>
-                        {/* Step 0: Filhos */}
+                        {/* Step 0: Contato */}
                         {step === 0 && (
-                            <div>
-                                <h3 className="text-xl font-bold text-white mb-6">{labels.s1Title}</h3>
-                                <label className="text-white/70 text-sm font-medium mb-3 block">{labels.s1FilhosLabel}</label>
-                                <input
-                                    type="number"
-                                    min="1"
-                                    max="20"
-                                    value={form.filhos}
-                                    onChange={e => setField("filhos", e.target.value)}
-                                    className={`w-full bg-white/5 border ${errors.filhos ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white font-mono outline-none transition-colors mb-3`}
-                                    placeholder="2"
-                                />
-                                {errors.filhos && <p className="text-red-400 text-xs mt-2">{errors.filhos}</p>}
-                            </div>
-                        )}
-
-                        {/* Step 1: Cidade + Estado */}
-                        {step === 1 && (
-                            <div>
-                                <h3 className="text-xl font-bold text-white mb-6">{labels.s2Title}</h3>
-                                <label className="text-white/70 text-sm font-medium mb-2 block">{labels.s2CidadeLabel}</label>
-                                <input
-                                    type="text"
-                                    list="cidades-list-waitlist1"
-                                    value={form.cidade}
-                                    onChange={e => setField("cidade", e.target.value)}
-                                    disabled={!form.estado || loadingCidades}
-                                    className={`w-full bg-white/5 border ${errors.cidade ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white outline-none transition-colors mb-4 disabled:opacity-50`}
-                                    placeholder={loadingCidades ? "Carregando..." : "Salvador"}
-                                />
-                                <datalist id="cidades-list-waitlist1">
-                                    {cidades.map(c => <option key={c.id} value={c.nome} />)}
-                                </datalist>
-                                {errors.cidade && <p className="text-red-400 text-xs mb-3">{errors.cidade}</p>}
-                                <label className="text-white/70 text-sm font-medium mb-2 block">{labels.s2EstadoLabel}</label>
-                                <select
-                                    value={form.estado}
-                                    onChange={e => setField("estado", e.target.value)}
-                                    className={`w-full bg-[#111] text-white border ${errors.estado ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 outline-none transition-colors appearance-none`}
-                                >
-                                    <option value="" className="bg-[#111] text-white">{labels.s2EstadoPlaceholder}</option>
-                                    {ESTADOS_BR.map(uf => <option key={uf} value={uf} className="bg-[#111] text-white">{uf}</option>)}
-                                </select>
-                                {errors.estado && <p className="text-red-400 text-xs mt-2">{errors.estado}</p>}
-                            </div>
-                        )}
-
-                        {/* Step 2: Nome + WhatsApp */}
-                        {step === 2 && (
                             <div>
                                 <h3 className="text-xl font-bold text-white mb-6">{labels.s3Title}</h3>
                                 <label className="text-white/70 text-sm font-medium mb-2 block">{labels.s3NomeLabel}</label>
@@ -528,12 +478,56 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                             </div>
                         )}
 
-                        {/* Step 3: Como conheceu */}
-                        {step === 3 && (
+                        {/* Step 1: Perfil (Filhos e Local) */}
+                        {step === 1 && (
                             <div>
-                                <h3 className="text-xl font-bold text-white mb-2">{labels.s4Title}</h3>
-                                <p className="text-white/40 text-sm mb-6">{labels.s4Subtitle}</p>
-                                <div className="flex flex-wrap gap-3">
+                                <h3 className="text-xl font-bold text-white mb-6">{labels.s1Title} e Localização</h3>
+                                <label className="text-white/70 text-sm font-medium mb-3 block">{labels.s1FilhosLabel}</label>
+                                <input
+                                    type="number"
+                                    min="1"
+                                    max="20"
+                                    value={form.filhos}
+                                    onChange={e => setField("filhos", e.target.value)}
+                                    className={`w-full bg-white/5 border ${errors.filhos ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white font-mono outline-none transition-colors mb-4`}
+                                    placeholder="2"
+                                />
+                                {errors.filhos && <p className="text-red-400 text-xs mb-3">{errors.filhos}</p>}
+
+                                <label className="text-white/70 text-sm font-medium mb-2 block">{labels.s2CidadeLabel}</label>
+                                <input
+                                    type="text"
+                                    list="cidades-list-waitlist1"
+                                    value={form.cidade}
+                                    onChange={e => setField("cidade", e.target.value)}
+                                    disabled={!form.estado || loadingCidades}
+                                    className={`w-full bg-white/5 border ${errors.cidade ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 text-white outline-none transition-colors mb-4 disabled:opacity-50`}
+                                    placeholder={loadingCidades ? "Carregando..." : "Salvador"}
+                                />
+                                <datalist id="cidades-list-waitlist1">
+                                    {cidades.map(c => <option key={c.id} value={c.nome} />)}
+                                </datalist>
+                                {errors.cidade && <p className="text-red-400 text-xs mb-3">{errors.cidade}</p>}
+
+                                <label className="text-white/70 text-sm font-medium mb-2 block">{labels.s2EstadoLabel}</label>
+                                <select
+                                    value={form.estado}
+                                    onChange={e => setField("estado", e.target.value)}
+                                    className={`w-full bg-[#111] text-white border ${errors.estado ? "border-red-500" : "border-white/10 focus:border-primary"} rounded-xl px-5 py-3.5 outline-none transition-colors appearance-none`}
+                                >
+                                    <option value="" className="bg-[#111] text-white">{labels.s2EstadoPlaceholder}</option>
+                                    {ESTADOS_BR.map(uf => <option key={uf} value={uf} className="bg-[#111] text-white">{uf}</option>)}
+                                </select>
+                                {errors.estado && <p className="text-red-400 text-xs mt-2">{errors.estado}</p>}
+                            </div>
+                        )}
+
+                        {/* Step 2: Como conheceu e Opcionais */}
+                        {step === 2 && (
+                            <div>
+                                <h3 className="text-xl font-bold text-white mb-6">Quase lá!</h3>
+                                <label className="text-white/70 text-sm font-medium mb-3 block">{labels.s4Title} *</label>
+                                <div className="flex flex-wrap gap-3 mb-6">
                                     {COMO_CONHECEU_OPTIONS.map(opt => {
                                         const selected = form.comoConheceu.includes(opt.value);
                                         return (
@@ -550,62 +544,9 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                                         );
                                     })}
                                 </div>
-                                {errors.comoConheceu && <p className="text-red-400 text-xs mt-3">{errors.comoConheceu}</p>}
-                            </div>
-                        )}
+                                {errors.comoConheceu && <p className="text-red-400 text-xs mb-6">{errors.comoConheceu}</p>}
 
-                        {/* Step 4: App financeiro + WhatsApp usage */}
-                        {step === 4 && (
-                            <div>
-                                <h3 className="text-xl font-bold text-white mb-6">{labels.s5Title}</h3>
-                                <label className="text-white/70 text-sm font-medium mb-3 block">{labels.s5AppLabel}</label>
-                                <div className="flex flex-col sm:flex-row gap-3 mb-6">
-                                    {(["sim", "ja_mas_nao_adaptei", "nao"] as const).map(val => {
-                                        const labelMap = {
-                                            sim: labels.s5AppYes,
-                                            ja_mas_nao_adaptei: labels.s5AppTried,
-                                            nao: labels.s5AppNo
-                                        };
-                                        return (
-                                            <button
-                                                key={val}
-                                                onClick={() => setField("jaUsouAppFinanceiro", val)}
-                                                className={`flex-1 py-3 px-2 rounded-xl font-bold text-sm transition-all ${form.jaUsouAppFinanceiro === val
-                                                    ? "bg-primary/20 border border-primary/50 text-primary"
-                                                    : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10"
-                                                    }`}
-                                            >
-                                                {labelMap[val]}
-                                            </button>
-                                        );
-                                    })}
-                                </div>
-                                {errors.jaUsouAppFinanceiro && <p className="text-red-400 text-xs mb-4">{errors.jaUsouAppFinanceiro}</p>}
-
-                                <label className="text-white/70 text-sm font-medium mb-3 block">{labels.s5WhatsLabel}</label>
-                                <div className="flex gap-3">
-                                    {[true, false].map(val => (
-                                        <button
-                                            key={String(val)}
-                                            onClick={() => setField("usaWhatsapp", val)}
-                                            className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${form.usaWhatsapp === val
-                                                ? "bg-primary/20 border border-primary/50 text-primary"
-                                                : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10"
-                                                }`}
-                                        >
-                                            {val ? labels.s5Yes : labels.s5No}
-                                        </button>
-                                    ))}
-                                </div>
-                                {errors.usaWhatsapp && <p className="text-red-400 text-xs mt-2">{errors.usaWhatsapp}</p>}
-                            </div>
-                        )}
-
-                        {/* Step 5: Motivação + Interesse */}
-                        {step === 5 && (
-                            <div>
-                                <h3 className="text-xl font-bold text-white mb-6">{labels.s6Title}</h3>
-                                <label className="text-white/70 text-sm font-medium mb-2 block">{labels.s6MotivacaoLabel}</label>
+                                <label className="text-white/70 text-sm font-medium mb-3 block">{labels.s6MotivacaoLabel} (Opcional)</label>
                                 <textarea
                                     value={form.motivacao}
                                     onChange={e => setField("motivacao", e.target.value)}
@@ -613,24 +554,6 @@ export default function WaitlistFormModal({ isOpen, onClose, lang }: WaitlistFor
                                     className="w-full bg-white/5 border border-white/10 focus:border-primary rounded-xl px-5 py-3.5 text-white outline-none transition-colors resize-none mb-6"
                                     placeholder={labels.s6MotivacaoPlaceholder}
                                 />
-                                <label className="text-white/70 text-sm font-medium mb-3 block">{labels.s6AjudarLabel}</label>
-                                <div className="flex gap-3">
-                                    {(["sim", "nao", "talvez"] as const).map(val => {
-                                        const labelMap = { sim: labels.s6AjudarSim, nao: labels.s6AjudarNao, talvez: labels.s6AjudarTalvez };
-                                        return (
-                                            <button
-                                                key={val}
-                                                onClick={() => setField("interesseAjudarOutras", val)}
-                                                className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${form.interesseAjudarOutras === val
-                                                    ? "bg-primary/20 border border-primary/50 text-primary"
-                                                    : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10"
-                                                    }`}
-                                            >
-                                                {labelMap[val]}
-                                            </button>
-                                        );
-                                    })}
-                                </div>
                             </div>
                         )}
                     </div>

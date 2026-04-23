@@ -29,6 +29,11 @@ const LandingV5 = () => {
         if (meta) {
             meta.setAttribute("content", t.meta.desc);
         }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('waitlist') === 'true') {
+            setShowWaitlistForm(true);
+        }
     }, [t]);
 
     const team = [
