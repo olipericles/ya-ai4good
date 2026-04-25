@@ -15,6 +15,7 @@ import dashCarol from "@/assets/images/dash-carol.jpeg";
 import demoVideo from "@/assets/videos/demo.mp4";
 import logoPoupa from "@/assets/logos/logo-poupa.png";
 import logoGranazen from "@/assets/logos/logo-granazen.png";
+import MediaMarquee from "@/components/landing/MediaMarquee";
 
 const LandingPage = () => {
     const { lang } = useLanguage();
@@ -518,6 +519,9 @@ const LandingPage = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Imprensa / A Yá na mídia */}
+            <MediaMarquee />
 
             {/* Equipe */}
             <section id="equipe" className="py-20 sm:py-32 bg-[#0A0A0A] text-white">
