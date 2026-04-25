@@ -84,7 +84,7 @@ const allMediaItems: MediaItem[] = [
   {
     name: "TVE",
     logo: tveLogo,
-    url: "#",
+    url: "https://www.youtube.com/live/JH2Vzbxc8bw?t=1606&si=mpY6jD3RMqnxTaVF",
     active: true,
   },
   // Inactive / Backup links (typographic fallback)
