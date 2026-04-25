@@ -49,7 +49,7 @@ const allMediaItems: MediaItem[] = [
   {
     name: "Informe Baiano",
     logo: informeBaiano,
-    url: "https://www.instagram.com/p/DXXe4FsD7yD/",
+    url: "https://informebaiano.com.br/516705/zmanchete/representatividade-baianos-criam-ferramenta-com-ia-para-ajudar-maes-solo-e-vencem-conferencia-em-harvard-veja",
     active: true,
   },
   {
