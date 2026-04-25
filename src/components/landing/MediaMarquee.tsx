@@ -28,9 +28,9 @@ const allMediaItems: MediaItem[] = [
     active: true,
   },
   {
-    name: "TV Bahia",
-    logo: tvBahia,
-    url: "#",
+    name: "TVE",
+    logo: tveLogo,
+    url: "https://www.youtube.com/live/JH2Vzbxc8bw?t=1606&si=mpY6jD3RMqnxTaVF",
     active: true,
   },
   {
@@ -82,9 +82,9 @@ const allMediaItems: MediaItem[] = [
     active: true,
   },
   {
-    name: "TVE",
-    logo: tveLogo,
-    url: "https://www.youtube.com/live/JH2Vzbxc8bw?t=1606&si=mpY6jD3RMqnxTaVF",
+    name: "TV Bahia",
+    logo: tvBahia,
+    url: "#",
     active: true,
   },
   // Inactive / Backup links (typographic fallback)
