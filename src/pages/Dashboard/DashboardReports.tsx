@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Loader2, BarChart3, MapPin, Smartphone, Users, Megaphone, CalendarDays } from "lucide-react";
+import { Loader2, BarChart3, MapPin, Smartphone, Users, Megaphone, CalendarDays, TrendingDown } from "lucide-react";
 import {
     BarChart, Bar, ResponsiveContainer, Tooltip as RechartsTooltip,
     XAxis, YAxis, Cell, PieChart, Pie
@@ -124,16 +124,26 @@ function toChartData(counts: Record<string, number>, labels?: Record<string, str
 
 export default function DashboardReports({ adminToken }: DashboardReportsProps) {
     const [entries, setEntries] = useState<WaitlistEntry[]>([]);
+    const [intents, setIntents] = useState<{ tipo: string; timestamp: string }[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const res = await fetch(`${API_BASE_URL}/api/waitlist/`, {
-                    headers: { Authorization: `Bearer ${adminToken}` },
-                });
-                if (res.ok) setEntries(await res.json());
+                const [entriesRes, intentsRes] = await Promise.all([
+                    fetch(`${API_BASE_URL}/api/waitlist/`, {
+                        headers: { Authorization: `Bearer ${adminToken}` },
+                    }),
+                    fetch(`${API_BASE_URL}/api/forms/intents`, {
+                        headers: { Authorization: `Bearer ${adminToken}` },
+                    }).catch(() => null),
+                ]);
+                if (entriesRes.ok) setEntries(await entriesRes.json());
+                if (intentsRes && intentsRes.ok) {
+                    const data = await intentsRes.json();
+                    if (Array.isArray(data)) setIntents(data);
+                }
             } catch (err) {
                 console.error("Reports fetch error:", err);
             } finally {
@@ -192,6 +202,27 @@ export default function DashboardReports({ adminToken }: DashboardReportsProps) 
             })
             .map(([name, value]) => ({ name, value }));
     }, [entries]);
+
+    // Conversion funnel: intents vs completions
+    const funnelData = useMemo(() => {
+        const intentMae = intents.filter(i => i.tipo === "mae_solo").length;
+        const intentApo = intents.filter(i => i.tipo === "apoiador").length;
+        const completedMae = entries.filter(e => e.tipo === "mae_solo").length;
+        const completedApo = entries.filter(e => e.tipo === "apoiador").length;
+        return [
+            { name: "Mãe Solo - Clicou", value: intentMae || completedMae, fill: COLORS.blue },
+            { name: "Mãe Solo - Finalizou", value: completedMae, fill: COLORS.emerald },
+            { name: "Apoiador - Clicou", value: intentApo || completedApo, fill: COLORS.amber },
+            { name: "Apoiador - Finalizou", value: completedApo, fill: COLORS.teal },
+        ];
+    }, [entries, intents]);
+
+    const conversionRate = useMemo(() => {
+        const intentMae = intents.filter(i => i.tipo === "mae_solo").length;
+        const completedMae = entries.filter(e => e.tipo === "mae_solo").length;
+        if (intentMae === 0) return null;
+        return Math.round((completedMae / intentMae) * 100);
+    }, [entries, intents]);
 
     // Summary stats
     const totalMaes = entries.filter(e => e.tipo === "mae_solo").length;
@@ -387,6 +418,30 @@ export default function DashboardReports({ adminToken }: DashboardReportsProps) 
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
+                </ChartCard>
+
+                {/* 7. Funil de Conversão Waitlist */}
+                <ChartCard title="Funil de Conversão Waitlist" icon={TrendingDown} subtitle={conversionRate !== null ? `Taxa mãe solo: ${conversionRate}%` : "Dados de intent acumulando"}>
+                    <div className="h-52">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={funnelData} layout="horizontal" margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+                                <XAxis dataKey="name" stroke="#555" fontSize={9} tickLine={false} axisLine={false} interval={0} angle={-15} textAnchor="end" height={55} />
+                                <YAxis stroke="#333" fontSize={10} tickLine={false} axisLine={false} width={30} />
+                                <RechartsTooltip content={<CustomTooltip />} />
+                                <Bar dataKey="value" radius={[8, 8, 0, 0]} maxBarSize={50}>
+                                    {funnelData.map((entry, i) => (
+                                        <Cell key={i} fill={entry.fill} />
+                                    ))}
+                                </Bar>
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                    <p className="text-[10px] text-white/30 mt-3 text-center">
+                        {intents.length > 0
+                            ? `${intents.length} cliques registrados no formulário`
+                            : "O tracking de intenção foi ativado agora — os dados de abandono começarão a aparecer com os próximos acessos."
+                        }
+                    </p>
                 </ChartCard>
             </div>
 

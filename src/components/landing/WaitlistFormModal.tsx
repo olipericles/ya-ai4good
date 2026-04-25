@@ -4,6 +4,17 @@ import { useIBGE } from "@/hooks/useIBGE";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "https://www.praxisagencia.com.br";
 
+// Fire-and-forget intent tracking for funnel analysis
+const trackIntent = (tipo: string) => {
+    try {
+        fetch(`${API_BASE_URL}/api/forms/submit/waitlist-intent`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ tipo, timestamp: new Date().toISOString() }),
+        }).catch(() => { /* silent */ });
+    } catch { /* silent */ }
+};
+
 const ESTADOS_BR = [
     "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA",
     "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"
@@ -436,14 +447,14 @@ export default function WaitlistFormModal({ isOpen, onClose }: WaitlistFormModal
                         <p className="text-white/80 text-lg font-semibold text-center mb-6">{labels.step0Question}</p>
                         <div className="flex flex-col gap-4">
                             <button
-                                onClick={() => { setFlow("mae_solo"); setForm(p => ({ ...p, tipo: "mae_solo" })); setStep(0); }}
+                                onClick={() => { trackIntent("mae_solo"); setFlow("mae_solo"); setForm(p => ({ ...p, tipo: "mae_solo" })); setStep(0); }}
                                 className="w-full py-4 px-6 bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/40 rounded-2xl text-white font-bold text-lg hover:from-primary/30 hover:to-secondary/30 hover:border-primary/60 transition-all duration-300 flex items-center justify-center gap-3 group"
                             >
                                 <Heart className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                                 {labels.step0Yes}
                             </button>
                             <button
-                                onClick={() => { setFlow("apoiador"); setForm(p => ({ ...p, tipo: "apoiador" })); setStep(0); }}
+                                onClick={() => { trackIntent("apoiador"); setFlow("apoiador"); setForm(p => ({ ...p, tipo: "apoiador" })); setStep(0); }}
                                 className="w-full py-4 px-6 bg-white/5 border border-white/10 rounded-2xl text-white font-bold text-lg hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-3 group"
                             >
                                 <Users className="w-5 h-5 text-white/60 group-hover:scale-110 transition-transform" />
