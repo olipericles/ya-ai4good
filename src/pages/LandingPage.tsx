@@ -520,6 +520,9 @@ const LandingPage = () => {
                 </div>
             </section>
 
+            {/* Imprensa / A Yá na mídia */}
+            <MediaMarquee />
+
             {/* Equipe */}
             <section id="equipe" className="py-20 sm:py-32 bg-[#0A0A0A] text-white">
                 <div className="max-w-6xl mx-auto px-6">
