@@ -294,22 +294,49 @@ export default function DashboardReports({ adminToken }: DashboardReportsProps) 
             {/* Charts Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-                {/* 1. Distribuição por Tipo (>3 vars → barras horizontais) */}
+                {/* 1. Distribuição por Tipo → pizza */}
                 <ChartCard title="Distribuição por Tipo" icon={Users} subtitle={`${entries.length} registros`}>
-                    <div className="h-52">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={tipoData} layout="vertical" margin={{ top: 0, right: 10, left: 0, bottom: 0 }}>
-                                <XAxis type="number" stroke="#333" fontSize={10} tickLine={false} axisLine={false} />
-                                <YAxis dataKey="name" type="category" stroke="#555" fontSize={10} tickLine={false} axisLine={false} width={110} />
-                                <RechartsTooltip content={<CustomTooltip />} />
-                                <Bar dataKey="value" radius={[0, 8, 8, 0]} maxBarSize={28}>
-                                    {tipoData.map((_, i) => (
-                                        <Cell key={i} fill={CHART_PALETTE[i % CHART_PALETTE.length]} />
+                    {tipoData.length > 0 ? (() => {
+                        const total = tipoData.reduce((s, d) => s + d.value, 0);
+                        const dataWithTotal = tipoData.map((d, i) => ({ ...d, total, fill: CHART_PALETTE[i % CHART_PALETTE.length] }));
+                        return (
+                            <>
+                                <div className="h-48 flex items-center justify-center">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <PieChart>
+                                            <Pie
+                                                data={dataWithTotal}
+                                                dataKey="value"
+                                                nameKey="name"
+                                                cx="50%"
+                                                cy="50%"
+                                                innerRadius={45}
+                                                outerRadius={75}
+                                                strokeWidth={2}
+                                                stroke="#0a0a0a"
+                                            >
+                                                {dataWithTotal.map((d, i) => (
+                                                    <Cell key={i} fill={d.fill} />
+                                                ))}
+                                            </Pie>
+                                            <RechartsTooltip content={<PieTooltip />} />
+                                        </PieChart>
+                                    </ResponsiveContainer>
+                                </div>
+                                <div className="flex flex-wrap justify-center gap-3 mt-2">
+                                    {dataWithTotal.map((d) => (
+                                        <span key={d.name} className="text-[10px] text-white/50 flex items-center gap-1.5">
+                                            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: d.fill }} />
+                                            {d.name}: <strong className="text-white/80">{d.value}</strong>
+                                            <span className="text-white/30">({Math.round((d.value / total) * 100)}%)</span>
+                                        </span>
                                     ))}
-                                </Bar>
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </div>
+                                </div>
+                            </>
+                        );
+                    })() : (
+                        <p className="text-white/30 text-sm text-center py-8">Ainda sem dados</p>
+                    )}
                 </ChartCard>
 
                 {/* 2. Top Estados (>3 vars → barras horizontais) */}
