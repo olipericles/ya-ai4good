@@ -504,12 +504,11 @@ export default function DashboardReports({ adminToken }: DashboardReportsProps) 
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
-                    <p className="text-[10px] text-white/30 mt-3 text-center">
-                        {intents.length > 0
-                            ? `${intents.length} cliques registrados no formulário`
-                            : "O tracking de intenção foi ativado agora — os dados de abandono começarão a aparecer com os próximos acessos."
-                        }
-                    </p>
+                    {intents.length > 0 && (
+                        <p className="text-[10px] text-white/30 mt-3 text-center">
+                            {intents.length} cliques registrados no formulário
+                        </p>
+                    )}
                 </ChartCard>
             </div>
 
