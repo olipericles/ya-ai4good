@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Loader2, BarChart3, MapPin, Smartphone, Users, Megaphone, CalendarDays, TrendingDown } from "lucide-react";
 import {
     BarChart, Bar, ResponsiveContainer, Tooltip as RechartsTooltip,
-    XAxis, YAxis, Cell, PieChart, Pie
+    XAxis, YAxis, Cell, PieChart, Pie, LineChart, Line
 } from "recharts";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "https://www.praxisagencia.com.br";
@@ -81,6 +81,20 @@ function CustomTooltip({ active, payload, label }: any) {
             <div className="bg-[#0a0a0a]/95 border border-white/10 px-4 py-3 rounded-xl shadow-2xl">
                 <p className="text-white/50 text-[10px] font-mono uppercase tracking-wider mb-1">{label || payload[0].payload.name}</p>
                 <p className="text-white font-black text-lg">{payload[0].value}</p>
+            </div>
+        );
+    }
+    return null;
+}
+
+function PieTooltip({ active, payload }: any) {
+    if (active && payload && payload.length) {
+        const total = payload[0].payload.total || 1;
+        const pct = Math.round((payload[0].value / total) * 100);
+        return (
+            <div className="bg-[#0a0a0a]/95 border border-white/10 px-4 py-3 rounded-xl shadow-2xl">
+                <p className="text-white/50 text-[10px] font-mono uppercase tracking-wider mb-1">{payload[0].name}</p>
+                <p className="text-white font-black text-lg">{payload[0].value} <span className="text-white/40 text-sm font-normal">({pct}%)</span></p>
             </div>
         );
     }
@@ -280,15 +294,15 @@ export default function DashboardReports({ adminToken }: DashboardReportsProps) 
             {/* Charts Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-                {/* 1. Distribuição por Tipo */}
+                {/* 1. Distribuição por Tipo (>3 vars → barras horizontais) */}
                 <ChartCard title="Distribuição por Tipo" icon={Users} subtitle={`${entries.length} registros`}>
                     <div className="h-52">
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={tipoData} layout="horizontal" margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-                                <XAxis dataKey="name" stroke="#555" fontSize={10} tickLine={false} axisLine={false} interval={0} angle={-15} textAnchor="end" height={50} />
-                                <YAxis stroke="#333" fontSize={10} tickLine={false} axisLine={false} width={30} />
+                            <BarChart data={tipoData} layout="vertical" margin={{ top: 0, right: 10, left: 0, bottom: 0 }}>
+                                <XAxis type="number" stroke="#333" fontSize={10} tickLine={false} axisLine={false} />
+                                <YAxis dataKey="name" type="category" stroke="#555" fontSize={10} tickLine={false} axisLine={false} width={110} />
                                 <RechartsTooltip content={<CustomTooltip />} />
-                                <Bar dataKey="value" radius={[8, 8, 0, 0]} maxBarSize={50}>
+                                <Bar dataKey="value" radius={[0, 8, 8, 0]} maxBarSize={28}>
                                     {tipoData.map((_, i) => (
                                         <Cell key={i} fill={CHART_PALETTE[i % CHART_PALETTE.length]} />
                                     ))}
@@ -296,25 +310,17 @@ export default function DashboardReports({ adminToken }: DashboardReportsProps) 
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
-                    <div className="flex flex-wrap gap-2 mt-3">
-                        {tipoData.map((d, i) => (
-                            <span key={d.name} className="text-[10px] text-white/50 flex items-center gap-1.5">
-                                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: CHART_PALETTE[i] }} />
-                                {d.name}: <strong className="text-white/80">{d.value}</strong>
-                            </span>
-                        ))}
-                    </div>
                 </ChartCard>
 
-                {/* 2. Top Estados */}
+                {/* 2. Top Estados (>3 vars → barras horizontais) */}
                 <ChartCard title="Top Estados" icon={MapPin} subtitle="Concentração geográfica">
                     <div className="h-52">
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={estadoData} layout="horizontal" margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-                                <XAxis dataKey="name" stroke="#555" fontSize={10} tickLine={false} axisLine={false} />
-                                <YAxis stroke="#333" fontSize={10} tickLine={false} axisLine={false} width={30} />
+                            <BarChart data={estadoData} layout="vertical" margin={{ top: 0, right: 10, left: 0, bottom: 0 }}>
+                                <XAxis type="number" stroke="#333" fontSize={10} tickLine={false} axisLine={false} />
+                                <YAxis dataKey="name" type="category" stroke="#555" fontSize={10} tickLine={false} axisLine={false} width={40} />
                                 <RechartsTooltip content={<CustomTooltip />} />
-                                <Bar dataKey="value" radius={[8, 8, 0, 0]} maxBarSize={40} fill={COLORS.blue}>
+                                <Bar dataKey="value" radius={[0, 8, 8, 0]} maxBarSize={22}>
                                     {estadoData.map((_, i) => (
                                         <Cell key={i} fill={i === 0 ? COLORS.primary : i === 1 ? COLORS.amber : COLORS.blue} />
                                     ))}
@@ -324,71 +330,99 @@ export default function DashboardReports({ adminToken }: DashboardReportsProps) 
                     </div>
                 </ChartCard>
 
-                {/* 3. Familiaridade Tecnológica (só mães) */}
+                {/* 3. Familiaridade Tecnológica (≤3 vars → pizza) */}
                 <ChartCard title="Familiaridade com Apps Financeiros" icon={Smartphone} subtitle="Apenas mães solo">
-                    {appData.length > 0 ? (
-                        <>
-                            <div className="h-48">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <BarChart data={appData} layout="horizontal" margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-                                        <XAxis dataKey="name" stroke="#555" fontSize={9} tickLine={false} axisLine={false} interval={0} />
-                                        <YAxis stroke="#333" fontSize={10} tickLine={false} axisLine={false} width={30} />
-                                        <RechartsTooltip content={<CustomTooltip />} />
-                                        <Bar dataKey="value" radius={[8, 8, 0, 0]} maxBarSize={60}>
-                                            <Cell fill={COLORS.emerald} />
-                                            <Cell fill={COLORS.amber} />
-                                            <Cell fill={COLORS.red} />
-                                        </Bar>
-                                    </BarChart>
-                                </ResponsiveContainer>
-                            </div>
-                            <div className="flex flex-wrap gap-3 mt-3">
-                                {appData.map((d, i) => (
-                                    <span key={d.name} className="text-[10px] text-white/50 flex items-center gap-1.5">
-                                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: [COLORS.emerald, COLORS.amber, COLORS.red][i] }} />
-                                        {d.name}: <strong className="text-white/80">{d.value}</strong>
-                                    </span>
-                                ))}
-                            </div>
-                        </>
-                    ) : (
+                    {appData.length > 0 ? (() => {
+                        const total = appData.reduce((s, d) => s + d.value, 0);
+                        const pieColors = [COLORS.emerald, COLORS.amber, COLORS.red];
+                        const dataWithTotal = appData.map((d, i) => ({ ...d, total, fill: pieColors[i] || CHART_PALETTE[i] }));
+                        return (
+                            <>
+                                <div className="h-48 flex items-center justify-center">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <PieChart>
+                                            <Pie
+                                                data={dataWithTotal}
+                                                dataKey="value"
+                                                nameKey="name"
+                                                cx="50%"
+                                                cy="50%"
+                                                innerRadius={45}
+                                                outerRadius={75}
+                                                strokeWidth={2}
+                                                stroke="#0a0a0a"
+                                            >
+                                                {dataWithTotal.map((d, i) => (
+                                                    <Cell key={i} fill={d.fill} />
+                                                ))}
+                                            </Pie>
+                                            <RechartsTooltip content={<PieTooltip />} />
+                                        </PieChart>
+                                    </ResponsiveContainer>
+                                </div>
+                                <div className="flex flex-wrap justify-center gap-3 mt-2">
+                                    {dataWithTotal.map((d) => (
+                                        <span key={d.name} className="text-[10px] text-white/50 flex items-center gap-1.5">
+                                            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: d.fill }} />
+                                            {d.name}: <strong className="text-white/80">{d.value}</strong>
+                                            <span className="text-white/30">({Math.round((d.value / total) * 100)}%)</span>
+                                        </span>
+                                    ))}
+                                </div>
+                            </>
+                        );
+                    })() : (
                         <p className="text-white/30 text-sm text-center py-8">Ainda sem dados suficientes</p>
                     )}
                 </ChartCard>
 
-                {/* 4. Interesse em Multiplicar (só mães) */}
+                {/* 4. Interesse em Multiplicar (≤3 vars → pizza) */}
                 <ChartCard title="Interesse em Ajudar Outras Mães" icon={Users} subtitle="Potencial de comunidade digital">
-                    {ajudarData.length > 0 ? (
-                        <>
-                            <div className="h-48">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <BarChart data={ajudarData} layout="horizontal" margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-                                        <XAxis dataKey="name" stroke="#555" fontSize={10} tickLine={false} axisLine={false} interval={0} />
-                                        <YAxis stroke="#333" fontSize={10} tickLine={false} axisLine={false} width={30} />
-                                        <RechartsTooltip content={<CustomTooltip />} />
-                                        <Bar dataKey="value" radius={[8, 8, 0, 0]} maxBarSize={60}>
-                                            <Cell fill={COLORS.emerald} />
-                                            <Cell fill={COLORS.red} />
-                                            <Cell fill={COLORS.amber} />
-                                        </Bar>
-                                    </BarChart>
-                                </ResponsiveContainer>
-                            </div>
-                            <div className="flex flex-wrap gap-3 mt-3">
-                                {ajudarData.map((d, i) => (
-                                    <span key={d.name} className="text-[10px] text-white/50 flex items-center gap-1.5">
-                                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: [COLORS.emerald, COLORS.red, COLORS.amber][i] }} />
-                                        {d.name}: <strong className="text-white/80">{d.value}</strong>
-                                    </span>
-                                ))}
-                            </div>
-                        </>
-                    ) : (
+                    {ajudarData.length > 0 ? (() => {
+                        const total = ajudarData.reduce((s, d) => s + d.value, 0);
+                        const pieColors = [COLORS.emerald, COLORS.red, COLORS.amber];
+                        const dataWithTotal = ajudarData.map((d, i) => ({ ...d, total, fill: pieColors[i] || CHART_PALETTE[i] }));
+                        return (
+                            <>
+                                <div className="h-48 flex items-center justify-center">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <PieChart>
+                                            <Pie
+                                                data={dataWithTotal}
+                                                dataKey="value"
+                                                nameKey="name"
+                                                cx="50%"
+                                                cy="50%"
+                                                innerRadius={45}
+                                                outerRadius={75}
+                                                strokeWidth={2}
+                                                stroke="#0a0a0a"
+                                            >
+                                                {dataWithTotal.map((d, i) => (
+                                                    <Cell key={i} fill={d.fill} />
+                                                ))}
+                                            </Pie>
+                                            <RechartsTooltip content={<PieTooltip />} />
+                                        </PieChart>
+                                    </ResponsiveContainer>
+                                </div>
+                                <div className="flex flex-wrap justify-center gap-3 mt-2">
+                                    {dataWithTotal.map((d) => (
+                                        <span key={d.name} className="text-[10px] text-white/50 flex items-center gap-1.5">
+                                            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: d.fill }} />
+                                            {d.name}: <strong className="text-white/80">{d.value}</strong>
+                                            <span className="text-white/30">({Math.round((d.value / total) * 100)}%)</span>
+                                        </span>
+                                    ))}
+                                </div>
+                            </>
+                        );
+                    })() : (
                         <p className="text-white/30 text-sm text-center py-8">Ainda sem dados suficientes</p>
                     )}
                 </ChartCard>
 
-                {/* 5. Canais de Aquisição */}
+                {/* 5. Canais de Aquisição (>3 vars → barras horizontais, já era) */}
                 <ChartCard title="Canais de Aquisição" icon={Megaphone} subtitle="Como nos conheceram">
                     <div className="h-52">
                         <ResponsiveContainer width="100%" height="100%">
@@ -406,16 +440,23 @@ export default function DashboardReports({ adminToken }: DashboardReportsProps) 
                     </div>
                 </ChartCard>
 
-                {/* 6. Timeline de Cadastros */}
+                {/* 6. Timeline de Cadastros (série temporal → linha reta com marcadores) */}
                 <ChartCard title="Cadastros ao Longo do Tempo" icon={CalendarDays} subtitle="Evolução diária">
                     <div className="h-52">
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={timelineData} layout="horizontal" margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+                            <LineChart data={timelineData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                                 <XAxis dataKey="name" stroke="#555" fontSize={9} tickLine={false} axisLine={false} interval={Math.max(0, Math.floor(timelineData.length / 8))} />
-                                <YAxis stroke="#333" fontSize={10} tickLine={false} axisLine={false} width={25} />
+                                <YAxis stroke="#333" fontSize={10} tickLine={false} axisLine={false} width={25} allowDecimals={false} />
                                 <RechartsTooltip content={<CustomTooltip />} />
-                                <Bar dataKey="value" radius={[4, 4, 0, 0]} maxBarSize={16} fill={COLORS.primary} />
-                            </BarChart>
+                                <Line
+                                    type="linear"
+                                    dataKey="value"
+                                    stroke={COLORS.primary}
+                                    strokeWidth={2}
+                                    dot={{ r: 4, fill: COLORS.primary, stroke: "#0a0a0a", strokeWidth: 2 }}
+                                    activeDot={{ r: 6, fill: COLORS.primary, stroke: "#fff", strokeWidth: 2 }}
+                                />
+                            </LineChart>
                         </ResponsiveContainer>
                     </div>
                 </ChartCard>
