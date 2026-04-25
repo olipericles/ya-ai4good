@@ -5,6 +5,7 @@ import DashboardLogin from "./DashboardLogin";
 import DashboardUser from "./DashboardUser";
 import DashboardAdmin from "./DashboardAdmin";
 import DashboardCRM from "./DashboardCRM";
+import DashboardReports from "./DashboardReports";
 import { PWAPrompt } from "@/components/PWAPrompt";
 
 const Dashboard = () => {
@@ -15,7 +16,7 @@ const Dashboard = () => {
     const [userId, setUserId] = useState<number | null>(localStorage.getItem('ya_userid') ? parseInt(localStorage.getItem('ya_userid')!) : null);
     const [userName, setUserName] = useState<string | null>(localStorage.getItem('ya_username'));
     const [userPhone, setUserPhone] = useState<string | null>(localStorage.getItem('ya_userphone'));
-    const [adminTab, setAdminTab] = useState<'crm' | 'logs'>('crm');
+    const [adminTab, setAdminTab] = useState<'crm' | 'reports' | 'logs'>('crm');
 
     // Automatically redirect users to their specific parameterized dashboard URL if they hit the naked route.
     // This ensures that any bookmarks or PWAs initiated on this page correctly capture their /dashboard/7199... path.
@@ -105,6 +106,7 @@ const Dashboard = () => {
                                 />
                             </>
                         )}
+
                         {role === 'admin' && (
                             <div className="w-full">
                                 <div className="flex gap-2 mb-6 justify-center">
@@ -118,6 +120,15 @@ const Dashboard = () => {
                                         CRM & Funil
                                     </button>
                                     <button
+                                        onClick={() => setAdminTab('reports')}
+                                        className={`px-4 py-2 rounded-xl text-sm font-bold transition-colors ${adminTab === 'reports'
+                                                ? 'bg-primary/20 border border-primary/30 text-primary'
+                                                : 'bg-white/5 border border-white/10 text-white/50 hover:text-white'
+                                            }`}
+                                    >
+                                        📊 Relatórios
+                                    </button>
+                                    <button
                                         onClick={() => setAdminTab('logs')}
                                         className={`px-4 py-2 rounded-xl text-sm font-bold transition-colors ${adminTab === 'logs'
                                                 ? 'bg-primary/20 border border-primary/30 text-primary'
@@ -129,6 +140,8 @@ const Dashboard = () => {
                                 </div>
                                 {adminTab === 'crm' ? (
                                     <DashboardCRM adminToken={token} />
+                                ) : adminTab === 'reports' ? (
+                                    <DashboardReports adminToken={token} />
                                 ) : (
                                     <DashboardAdmin adminToken={token} />
                                 )}
