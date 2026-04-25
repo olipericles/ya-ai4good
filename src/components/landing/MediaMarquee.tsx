@@ -133,9 +133,8 @@ const allMediaItems: MediaItem[] = [
 ];
 
 const mediaActive = allMediaItems.filter(i => i.active);
-// Use all items in both rows but in different orders to feel "fuller" and less repetitive
-const mediaUpper = [...mediaActive];
-const mediaLower = [...mediaActive].reverse();
+const mediaUpper = mediaActive.slice(0, Math.ceil(mediaActive.length / 2));
+const mediaLower = mediaActive.slice(Math.ceil(mediaActive.length / 2));
 
 const MediaItemView = ({ item }: { item: MediaItem }) => {
   const inner = item.logo ? (
@@ -186,8 +185,8 @@ const MarqueeRow = ({
   direction: "left" | "right";
   speed?: number;
 }) => {
-  // Triple the items to ensure no gaps on very wide screens
-  const duplicated = [...items, ...items, ...items];
+  // Use enough duplicates to cover wide screens without gaps
+  const duplicated = [...items, ...items, ...items, ...items];
   const animationName = direction === "left" ? "ya-marquee-left" : "ya-marquee-right";
 
   return (
@@ -210,10 +209,10 @@ const MarqueeRow = ({
       <style>{`
         @keyframes ya-marquee-left {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-33.33%); }
+          100% { transform: translateX(-25%); }
         }
         @keyframes ya-marquee-right {
-          0% { transform: translateX(-33.33%); }
+          0% { transform: translateX(-25%); }
           100% { transform: translateX(0); }
         }
         @media (prefers-reduced-motion: reduce) {
@@ -239,13 +238,13 @@ const MediaMarquee = () => {
           A Yá na mídia
         </h2>
         <p className="text-base sm:text-lg text-white/60 mt-4 max-w-2xl mx-auto">
-          Mais de 20 veículos contaram a nossa história. De Salvador para o mundo.
+          Mais de 10 veículos contaram a nossa história. De Salvador para o mundo.
         </p>
       </div>
 
       <div className="space-y-12">
-        <MarqueeRow items={mediaUpper} direction="left" speed={50} />
-        <MarqueeRow items={mediaLower} direction="right" speed={60} />
+        <MarqueeRow items={mediaUpper} direction="left" speed={40} />
+        <MarqueeRow items={mediaLower} direction="right" speed={35} />
       </div>
     </section>
   );
