@@ -1,8 +1,14 @@
-import g1Bahia from "@/assets/logos/press/g1-bahia.png";
-import tvBahia from "@/assets/logos/press/tv-bahia.jpg";
-import bahiaFm from "@/assets/logos/press/bahia-fm.jpg";
-import almaPreta from "@/assets/logos/press/alma-preta.png";
-import aloAloBahia from "@/assets/logos/press/aloalo-bahia.png";
+import g1Bahia from "@/assets/logos/press/g1_bahia.png";
+import tvBahia from "@/assets/logos/press/tvbahia.png";
+import bahiaFm from "@/assets/logos/press/bahia_fm.png";
+import almaPreta from "@/assets/logos/press/alma_preta.png";
+import aloAloBahia from "@/assets/logos/press/alo_alo_bahia.png";
+import nordesteUsou from "@/assets/logos/press/nordesteusou.jpeg";
+import letsGoBa from "@/assets/logos/press/letsgoba.png";
+import comediaBaiana from "@/assets/logos/press/comediabaiana.png";
+import informeBaiano from "@/assets/logos/press/informebaiano.png";
+import jcBairroPaz from "@/assets/logos/press/jcbairrodapaz.jpeg";
+import tveLogo from "@/assets/logos/press/tve.png";
 
 type MediaItem = {
   name: string;
@@ -11,93 +17,124 @@ type MediaItem = {
   logo?: string;
   /** Tailwind class for the typographic fallback (font / weight / case / tracking). */
   textClass?: string;
+  active?: boolean;
 };
 
-const mediaUpper: MediaItem[] = [
+const allMediaItems: MediaItem[] = [
   {
     name: "G1 Bahia",
     logo: g1Bahia,
     url: "https://g1.globo.com/ba/bahia/noticia/2026/04/20/baianos-criam-ferramenta-de-ia-para-ajudar-maes-solo-e-vencem-programa-em-harvard-e-mit.ghtml",
+    active: true,
   },
   {
     name: "TV Bahia",
     logo: tvBahia,
     url: "#",
+    active: true,
   },
   {
     name: "Bahia FM",
     logo: bahiaFm,
     url: "https://www.youtube.com/live/QSm47aZ0xJM?t=2153",
+    active: true,
   },
   {
     name: "Alma Preta",
     logo: almaPreta,
     url: "https://almapreta.com.br/sessao/cotidiano/projeto-salvador-maes-solo-gestao-financeira/",
+    active: true,
   },
   {
     name: "NORDESTeuSOU",
+    logo: nordesteUsou,
     url: "https://nordesteusou.com.br/noticias/da-periferia-para-harvard-jovens-de-salvador-vencem-premio-internacional-com-ia-que-ajuda-maes-solo/",
-    textClass: "font-black uppercase tracking-tight italic",
+    active: true,
   },
   {
     name: "Alô Alô Bahia",
     logo: aloAloBahia,
     url: "https://aloalobahia.com/noticias/2026/04/20/baianos-criam-ia-para-apoio-financeiro-de-maes-solo-e-vencem-programa-em-harvard/",
+    active: true,
   },
   {
     name: "Let's Go Bahia",
+    logo: letsGoBa,
     url: "https://letsgobahia.com.br/noticia/default/jovens-de-salvador-criam-ia-para-apoiar-maes-solo-e-sao-premiados-em-conferencia-em-boston",
-    textClass: "font-extrabold italic tracking-tight",
+    active: true,
   },
   {
     name: "Comédia Baiana",
+    logo: comediaBaiana,
     url: "https://www.instagram.com/p/DXb5Cd0Du9o/",
-    textClass: "font-serif italic font-bold",
+    active: true,
   },
-];
-
-const mediaLower: MediaItem[] = [
+  {
+    name: "Informe Baiano",
+    logo: informeBaiano,
+    url: "https://www.instagram.com/p/DXXe4FsD7yD/",
+    active: true,
+  },
+  {
+    name: "JC Bairro da Paz",
+    logo: jcBairroPaz,
+    url: "https://www.instagram.com/p/DWgvOcvFvWw",
+    active: true,
+  },
+  {
+    name: "TVE",
+    logo: tveLogo,
+    url: "#",
+    active: true,
+  },
+  // Inactive / Backup links (typographic fallback)
   {
     name: "Toda Bahia",
     url: "https://todabahia.com.br/baianos-criam-ferramenta-de-ia-para-maes-solo-e-vencem-conferencia-em-harvard-e-mit/",
     textClass: "font-black uppercase tracking-wider",
-  },
-  {
-    name: "Informe Baiano",
-    url: "https://www.instagram.com/p/DXXe4FsD7yD/",
-    textClass: "font-bold uppercase tracking-tight",
+    active: false,
   },
   {
     name: "Folha do Estado",
     url: "https://www.jornalfolhadoestado.com/blogs/ponto-e-virgula/ponto-e-virgula-21-04-2026/",
     textClass: "font-serif font-bold",
+    active: false,
   },
   {
     name: "Taktá",
     url: "https://takta.com.br/ultimas-noticias/baianos-vencem-programa-em-harvard-e-mit-com-ia-voltada-para-maes-solo/",
     textClass: "font-black lowercase tracking-tighter",
+    active: false,
   },
   {
     name: "Jacobina Notícia",
     url: "https://www.jacobinanoticia.com.br/2026/04/baianos-criam-ferramenta-de-ia-para.html",
     textClass: "font-bold uppercase tracking-tight",
+    active: false,
   },
   {
     name: "Líder FM 96,5",
     url: "https://www.liderfm965.com.br/noticiaatual/ba_baianos-criam-ferramenta-de-ia-para-ajudar-maes-solo-e-vencem-programa-em-harvard-e-mit",
     textClass: "font-black italic uppercase",
+    active: false,
   },
   {
     name: "Portal Spy",
     url: "https://www.portalspy.com.br/2026/04/baianos-criam-ferramenta-de-ia-para.html",
     textClass: "font-extrabold uppercase tracking-widest",
+    active: false,
   },
   {
     name: "Cebolinha Notícias",
     url: "https://cebolinhanoticias.com.br/noticia/6082/baianos-criam-ferramenta-de-ia-para-ajudar-maes-solo-e-vencem-programa-em-harvard-e-mit.html",
     textClass: "font-bold uppercase tracking-tight",
+    active: false,
   },
 ];
+
+const mediaActive = allMediaItems.filter(i => i.active);
+const mediaUpper = mediaActive.slice(0, Math.ceil(mediaActive.length / 2));
+const mediaLower = mediaActive.slice(Math.ceil(mediaActive.length / 2));
 
 const MediaItemView = ({ item }: { item: MediaItem }) => {
   const inner = item.logo ? (
