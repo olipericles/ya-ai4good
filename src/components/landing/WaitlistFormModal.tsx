@@ -557,6 +557,52 @@ export default function WaitlistFormModal({ isOpen, onClose }: WaitlistFormModal
                                     className="w-full bg-white/5 border border-white/10 focus:border-primary rounded-xl px-5 py-3.5 text-white outline-none transition-colors resize-none mb-6"
                                     placeholder={labels.s6MotivacaoPlaceholder}
                                 />
+
+                                {/* Pergunta: Já usou app financeiro? */}
+                                <label className="text-white/70 text-sm font-medium mb-3 block">{labels.s5AppLabel}</label>
+                                <div className="flex flex-wrap gap-3 mb-6">
+                                    {[
+                                        { value: "sim", label: labels.s5AppYes },
+                                        { value: "tentou", label: labels.s5AppTried },
+                                        { value: "nao", label: labels.s5AppNo },
+                                    ].map(opt => (
+                                        <button
+                                            key={opt.value}
+                                            type="button"
+                                            onClick={() => setField("jaUsouAppFinanceiro", form.jaUsouAppFinanceiro === opt.value ? null : opt.value)}
+                                            className={`px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                                                form.jaUsouAppFinanceiro === opt.value
+                                                    ? "bg-primary/20 border border-primary/50 text-primary shadow-[0_0_15px_rgba(226,107,88,0.2)]"
+                                                    : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:border-white/20"
+                                            }`}
+                                        >
+                                            {opt.label}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                {/* Pergunta: Interesse em ajudar outras mães? */}
+                                <label className="text-white/70 text-sm font-medium mb-3 block">{labels.s6AjudarLabel}</label>
+                                <div className="flex flex-wrap gap-3 mb-4">
+                                    {[
+                                        { value: "sim", label: labels.s6AjudarSim },
+                                        { value: "nao", label: labels.s6AjudarNao },
+                                        { value: "talvez", label: labels.s6AjudarTalvez },
+                                    ].map(opt => (
+                                        <button
+                                            key={opt.value}
+                                            type="button"
+                                            onClick={() => setField("interesseAjudarOutras", form.interesseAjudarOutras === opt.value ? "" : opt.value)}
+                                            className={`px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                                                form.interesseAjudarOutras === opt.value
+                                                    ? "bg-primary/20 border border-primary/50 text-primary shadow-[0_0_15px_rgba(226,107,88,0.2)]"
+                                                    : "bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:border-white/20"
+                                            }`}
+                                        >
+                                            {opt.label}
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
                         )}
                     </div>
