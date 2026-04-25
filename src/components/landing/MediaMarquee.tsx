@@ -133,8 +133,9 @@ const allMediaItems: MediaItem[] = [
 ];
 
 const mediaActive = allMediaItems.filter(i => i.active);
-const mediaUpper = mediaActive.slice(0, Math.ceil(mediaActive.length / 2));
-const mediaLower = mediaActive.slice(Math.ceil(mediaActive.length / 2));
+// Split into two DISJOINT sets to ensure no logo appears in both rows
+const mediaUpper = mediaActive.slice(0, 6);
+const mediaLower = mediaActive.slice(6);
 
 const MediaItemView = ({ item }: { item: MediaItem }) => {
   const inner = item.logo ? (
@@ -142,18 +143,19 @@ const MediaItemView = ({ item }: { item: MediaItem }) => {
       src={item.logo}
       alt={item.name}
       loading="lazy"
-      className="h-10 md:h-14 w-auto object-contain max-w-[200px]"
+      className="h-12 md:h-16 w-auto object-contain max-w-[220px]"
     />
   ) : (
     <span
-      className={`text-white text-lg md:text-2xl whitespace-nowrap leading-none ${item.textClass ?? "font-bold"}`}
+      className={`text-white text-xl md:text-3xl whitespace-nowrap leading-none ${item.textClass ?? "font-bold"}`}
     >
       {item.name}
     </span>
   );
 
+  // Large horizontal padding to ensure the total width of few items exceeds screen width
   const baseClass =
-    "flex-shrink-0 flex items-center justify-center h-10 md:h-14 px-4 opacity-80 hover:opacity-100 transition-opacity duration-300";
+    "flex-shrink-0 flex items-center justify-center h-12 md:h-16 px-12 md:px-20 opacity-90 hover:opacity-100 transition-opacity duration-300";
 
   if (item.url === "#") {
     return (
@@ -179,24 +181,25 @@ const MediaItemView = ({ item }: { item: MediaItem }) => {
 const MarqueeRow = ({
   items,
   direction,
-  speed = 40,
+  speed = 30,
 }: {
   items: MediaItem[];
   direction: "left" | "right";
   speed?: number;
 }) => {
-  // Use enough duplicates to cover wide screens without gaps
-  const duplicated = [...items, ...items, ...items, ...items];
+  // We only duplicate once. If (items.length * itemWidth) > viewportWidth, 
+  // then the same logo will NEVER appear twice on screen.
+  const duplicated = [...items, ...items];
   const animationName = direction === "left" ? "ya-marquee-left" : "ya-marquee-right";
 
   return (
     <div className="relative w-full overflow-hidden group">
       {/* Edge fade */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-20 md:w-40 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-20 md:w-40 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10" />
 
       <div
-        className="flex gap-16 md:gap-24 w-max group-hover:[animation-play-state:paused] motion-reduce:!animation-none motion-reduce:flex-wrap motion-reduce:justify-center"
+        className="flex w-max group-hover:[animation-play-state:paused] motion-reduce:!animation-none"
         style={{
           animation: `${animationName} ${speed}s linear infinite`,
         }}
@@ -209,14 +212,11 @@ const MarqueeRow = ({
       <style>{`
         @keyframes ya-marquee-left {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-25%); }
+          100% { transform: translateX(-50%); }
         }
         @keyframes ya-marquee-right {
-          0% { transform: translateX(-25%); }
+          0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          [style*="ya-marquee"] { animation: none !important; }
         }
       `}</style>
     </div>
@@ -227,10 +227,10 @@ const MediaMarquee = () => {
   return (
     <section
       id="midia"
-      className="py-20 sm:py-28 bg-[#0A0A0A] text-white overflow-hidden border-y border-white/5"
+      className="py-24 sm:py-32 bg-[#0A0A0A] text-white overflow-hidden border-y border-white/5"
       aria-label="A Yá na mídia"
     >
-      <div className="max-w-6xl mx-auto px-6 mb-12 text-center">
+      <div className="max-w-6xl mx-auto px-6 mb-16 text-center">
         <span className="text-sm font-mono uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-bold">
           Imprensa
         </span>
@@ -242,7 +242,7 @@ const MediaMarquee = () => {
         </p>
       </div>
 
-      <div className="space-y-12">
+      <div className="flex flex-col gap-16 md:gap-24">
         <MarqueeRow items={mediaUpper} direction="left" speed={40} />
         <MarqueeRow items={mediaLower} direction="right" speed={35} />
       </div>
