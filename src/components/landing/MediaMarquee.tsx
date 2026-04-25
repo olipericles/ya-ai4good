@@ -133,8 +133,9 @@ const allMediaItems: MediaItem[] = [
 ];
 
 const mediaActive = allMediaItems.filter(i => i.active);
-const mediaUpper = mediaActive.slice(0, Math.ceil(mediaActive.length / 2));
-const mediaLower = mediaActive.slice(Math.ceil(mediaActive.length / 2));
+// Use all items in both rows but in different orders to feel "fuller" and less repetitive
+const mediaUpper = [...mediaActive];
+const mediaLower = [...mediaActive].reverse();
 
 const MediaItemView = ({ item }: { item: MediaItem }) => {
   const inner = item.logo ? (
@@ -142,7 +143,7 @@ const MediaItemView = ({ item }: { item: MediaItem }) => {
       src={item.logo}
       alt={item.name}
       loading="lazy"
-      className="h-9 md:h-12 w-auto object-contain max-w-[180px] grayscale brightness-[2.2] contrast-125"
+      className="h-10 md:h-14 w-auto object-contain max-w-[200px]"
     />
   ) : (
     <span
@@ -153,7 +154,7 @@ const MediaItemView = ({ item }: { item: MediaItem }) => {
   );
 
   const baseClass =
-    "flex-shrink-0 flex items-center justify-center h-9 md:h-12 px-3 opacity-60 hover:opacity-100 transition-opacity duration-300";
+    "flex-shrink-0 flex items-center justify-center h-10 md:h-14 px-4 opacity-80 hover:opacity-100 transition-opacity duration-300";
 
   if (item.url === "#") {
     return (
@@ -179,11 +180,14 @@ const MediaItemView = ({ item }: { item: MediaItem }) => {
 const MarqueeRow = ({
   items,
   direction,
+  speed = 40,
 }: {
   items: MediaItem[];
   direction: "left" | "right";
+  speed?: number;
 }) => {
-  const duplicated = [...items, ...items];
+  // Triple the items to ensure no gaps on very wide screens
+  const duplicated = [...items, ...items, ...items];
   const animationName = direction === "left" ? "ya-marquee-left" : "ya-marquee-right";
 
   return (
@@ -193,9 +197,9 @@ const MarqueeRow = ({
       <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10" />
 
       <div
-        className="flex gap-12 md:gap-20 w-max group-hover:[animation-play-state:paused] motion-reduce:!animation-none motion-reduce:flex-wrap motion-reduce:justify-center"
+        className="flex gap-16 md:gap-24 w-max group-hover:[animation-play-state:paused] motion-reduce:!animation-none motion-reduce:flex-wrap motion-reduce:justify-center"
         style={{
-          animation: `${animationName} 50s linear infinite`,
+          animation: `${animationName} ${speed}s linear infinite`,
         }}
       >
         {duplicated.map((item, idx) => (
@@ -206,10 +210,10 @@ const MarqueeRow = ({
       <style>{`
         @keyframes ya-marquee-left {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(-33.33%); }
         }
         @keyframes ya-marquee-right {
-          0% { transform: translateX(-50%); }
+          0% { transform: translateX(-33.33%); }
           100% { transform: translateX(0); }
         }
         @media (prefers-reduced-motion: reduce) {
@@ -235,13 +239,13 @@ const MediaMarquee = () => {
           A Yá na mídia
         </h2>
         <p className="text-base sm:text-lg text-white/60 mt-4 max-w-2xl mx-auto">
-          Mais de 20 veículos contaram a história. De Salvador para o mundo.
+          Mais de 20 veículos contaram a nossa história. De Salvador para o mundo.
         </p>
       </div>
 
-      <MarqueeRow items={mediaUpper} direction="left" />
-      <div className="mt-8">
-        <MarqueeRow items={mediaLower} direction="right" />
+      <div className="space-y-12">
+        <MarqueeRow items={mediaUpper} direction="left" speed={50} />
+        <MarqueeRow items={mediaLower} direction="right" speed={60} />
       </div>
     </section>
   );
