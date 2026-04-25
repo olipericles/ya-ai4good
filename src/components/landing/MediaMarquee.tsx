@@ -9,6 +9,7 @@ import comediaBaiana from "@/assets/logos/press/comediabaiana.png";
 import informeBaiano from "@/assets/logos/press/informebaiano.png";
 import jcBairroPaz from "@/assets/logos/press/jcbairrodapaz.jpeg";
 import tveLogo from "@/assets/logos/press/tve.png";
+import taktaLogo from "@/assets/logos/press/takta.png";
 
 type MediaItem = {
   name: string;
@@ -87,6 +88,12 @@ const allMediaItems: MediaItem[] = [
     url: "https://nordesteusou.com.br/noticias/da-periferia-para-harvard-jovens-de-salvador-vencem-premio-internacional-com-ia-que-ajuda-maes-solo/",
     active: true,
   },
+  {
+    name: "Taktá",
+    logo: taktaLogo,
+    url: "https://takta.com.br/ultimas-noticias/baianos-vencem-programa-em-harvard-e-mit-com-ia-voltada-para-maes-solo/",
+    active: true,
+  },
   // Inactive / Backup links (typographic fallback)
   {
     name: "Toda Bahia",
@@ -98,12 +105,6 @@ const allMediaItems: MediaItem[] = [
     name: "Folha do Estado",
     url: "https://www.jornalfolhadoestado.com/blogs/ponto-e-virgula/ponto-e-virgula-21-04-2026/",
     textClass: "font-serif font-bold",
-    active: false,
-  },
-  {
-    name: "Taktá",
-    url: "https://takta.com.br/ultimas-noticias/baianos-vencem-programa-em-harvard-e-mit-com-ia-voltada-para-maes-solo/",
-    textClass: "font-black lowercase tracking-tighter",
     active: false,
   },
   {
