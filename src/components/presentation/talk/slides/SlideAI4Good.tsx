@@ -17,7 +17,7 @@ const SlideAI4Good = ({ isActive }: TalkSlideProps) => {
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/8 blur-[160px] rounded-full pointer-events-none" />
 
-      <div className="z-10 flex flex-col h-full justify-between">
+      <div className="z-10 flex flex-col h-full justify-center gap-20">
         {/* Top label */}
         <div className="text-center">
           <p className="font-display text-[16px] font-bold text-primary uppercase tracking-[3px] flex items-center justify-center gap-3">

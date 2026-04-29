@@ -51,15 +51,15 @@ const SlideEquipe = ({ isActive }: TalkSlideProps) => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 gap-10 flex-1 items-center">
+        <div className="grid grid-cols-3 gap-10 flex-1 items-stretch">
           {team.map((t, i) => (
             <div
               key={i}
-              className="bg-card/40 backdrop-blur-md border border-border/50 rounded-3xl p-10 flex flex-col items-center text-center hover:border-primary/40 transition-colors"
+              className="bg-card/40 backdrop-blur-md border border-border/50 rounded-3xl p-12 flex flex-col justify-center items-center text-center hover:border-primary/40 transition-colors"
             >
               {/* Circular photo */}
               <div
-                className="w-[220px] h-[220px] rounded-full overflow-hidden border-4 mb-7 shrink-0"
+                className="w-[260px] h-[260px] rounded-full overflow-hidden border-4 mb-7 shrink-0"
                 style={{ borderColor: t.color }}
               >
                 <img

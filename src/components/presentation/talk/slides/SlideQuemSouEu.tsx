@@ -1,7 +1,7 @@
 import { Zap, GraduationCap, Building2, Home, FlaskConical } from "lucide-react";
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
-import periclesPhoto from "@/assets/team/pericles-oficial.jpg";
+import periclesPhoto from "@/assets/images/boston-placa-hbs.jpeg";
 
 const blocksTrind = [
   { Icon: Zap, label: "Engenheiro Eletricista", sub: "Analista de Dados e IA na Rede Bahia" },
@@ -25,11 +25,12 @@ const SlideQuemSouEu = ({ isActive, variant }: TalkSlideProps) => {
     <TalkSlideContainer className="bg-[#0A0A0A] flex">
       {/* Left — full height photo */}
       <div className="w-[38%] h-full relative overflow-hidden">
-        <img src={periclesPhoto} alt="Péricles Oliveira" className="w-full h-full object-cover object-top" />
+        <img src={periclesPhoto} alt="Péricles Oliveira" className="w-full h-full object-cover" style={{ objectPosition: "50% 55%" }} />
         <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-r from-transparent to-[#0A0A0A]" />
-        <div className="absolute bottom-12 left-10">
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/80 to-transparent" />
+        <div className="absolute bottom-12 left-10 z-10">
           <p className="font-display text-[22px] font-black text-white">Péricles Oliveira</p>
-          <p className="font-display text-[16px] text-foreground/50 mt-1">Salvador, Bahia</p>
+          <p className="font-display text-[16px] text-foreground/50 mt-1">Harvard Business School, Boston</p>
         </div>
       </div>
 
@@ -60,8 +61,9 @@ const SlideQuemSouEu = ({ isActive, variant }: TalkSlideProps) => {
 
         <div className="mt-8 pl-6 border-l-2 border-primary/40">
           <p className="font-display text-[20px] italic text-primary/90">
-            "Tecnologia deve servir a quem mais precisa"
+            "Seja a mudança que você quer ver no mundo"
           </p>
+          <p className="font-display text-[15px] text-foreground/40 mt-2">— Mahatma Gandhi</p>
         </div>
       </div>
     </TalkSlideContainer>

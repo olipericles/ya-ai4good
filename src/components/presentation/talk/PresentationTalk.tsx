@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import { TalkVariant } from "./types";
 
 import SlideAbertura from "./slides/SlideAbertura";
@@ -7,7 +8,6 @@ import SlideQuemSouEu from "./slides/SlideQuemSouEu";
 import SlideProblemaMacro from "./slides/SlideProblemaMacro";
 import SlideProblemaEmocional from "./slides/SlideProblemaEmocional";
 import SlideSolucao from "./slides/SlideSolucao";
-import SlideDemo from "./slides/SlideDemo";
 import SlideArquitetura from "./slides/SlideArquitetura";
 import SlidePiloto from "./slides/SlidePiloto";
 import SlideAI4Good from "./slides/SlideAI4Good";
@@ -17,7 +17,7 @@ import SlideVisao from "./slides/SlideVisao";
 import SlideAprendizados from "./slides/SlideAprendizados";
 import SlideFechamento from "./slides/SlideFechamento";
 
-const TOTAL_SLIDES = 14;
+const TOTAL_SLIDES = 13;
 
 interface PresentationTalkProps {
   variant: TalkVariant;
@@ -30,8 +30,10 @@ const PresentationTalk = ({ variant }: PresentationTalkProps) => {
   const go = useCallback((idx: number) => {
     if (transitioning || idx < 0 || idx >= TOTAL_SLIDES) return;
     setTransitioning(true);
-    setCurrent(idx);
-    setTimeout(() => setTransitioning(false), 400);
+    setTimeout(() => {
+      setCurrent(idx);
+      setTransitioning(false);
+    }, 250);
   }, [transitioning]);
 
   const next = useCallback(() => go(current + 1), [current, go]);
@@ -60,21 +62,32 @@ const PresentationTalk = ({ variant }: PresentationTalkProps) => {
     <SlideProblemaMacro key={2} isActive={current === 2} variant={variant} />,
     <SlideProblemaEmocional key={3} isActive={current === 3} variant={variant} />,
     <SlideSolucao key={4} isActive={current === 4} variant={variant} />,
-    <SlideDemo key={5} isActive={current === 5} variant={variant} />,
-    <SlideArquitetura key={6} isActive={current === 6} variant={variant} />,
-    <SlidePiloto key={7} isActive={current === 7} variant={variant} />,
-    <SlideAI4Good key={8} isActive={current === 8} variant={variant} />,
-    <SlideFotos key={9} isActive={current === 9} variant={variant} />,
-    <SlideEquipe key={10} isActive={current === 10} variant={variant} />,
-    <SlideVisao key={11} isActive={current === 11} variant={variant} />,
-    <SlideAprendizados key={12} isActive={current === 12} variant={variant} />,
-    <SlideFechamento key={13} isActive={current === 13} variant={variant} />,
+    <SlideArquitetura key={5} isActive={current === 5} variant={variant} />,
+    <SlidePiloto key={6} isActive={current === 6} variant={variant} />,
+    <SlideAI4Good key={7} isActive={current === 7} variant={variant} />,
+    <SlideFotos key={8} isActive={current === 8} variant={variant} />,
+    <SlideEquipe key={9} isActive={current === 9} variant={variant} />,
+    <SlideVisao key={10} isActive={current === 10} variant={variant} />,
+    <SlideAprendizados key={11} isActive={current === 11} variant={variant} />,
+    <SlideFechamento key={12} isActive={current === 12} variant={variant} />,
   ];
 
   return (
     <div className="relative w-full h-screen bg-[#0A0A0A] overflow-hidden select-none" style={{ fontFamily: "'Sora', 'DM Sans', sans-serif" }}>
-      {/* Slide area with fade transition */}
-      <div className="absolute inset-0 transition-opacity duration-400" style={{ opacity: transitioning ? 0.7 : 1 }}>
+      {/* High-Contrast Anchor Header (Except on Intro/Outro) */}
+      {current > 0 && current < TOTAL_SLIDES - 1 && (
+        <header className="absolute top-0 left-0 w-full p-10 z-50 flex justify-between items-start pointer-events-none transition-opacity duration-1000">
+          <div className="flex items-center">
+            <img src={yaLogo} alt="Yá Logo" className="h-8 object-contain" />
+          </div>
+        </header>
+      )}
+
+      {/* Slide area with simple fade transition */}
+      <div 
+        className="absolute inset-0 transition-opacity duration-300 ease-in-out" 
+        style={{ opacity: transitioning ? 0 : 1 }}
+      >
         {slides}
       </div>
 
@@ -82,7 +95,7 @@ const PresentationTalk = ({ variant }: PresentationTalkProps) => {
       <button
         onClick={prev}
         disabled={current === 0}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-black/30 border border-white/10 backdrop-blur-md text-white hover:bg-white/20 disabled:opacity-0 disabled:pointer-events-none transition-all"
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-black/40 border border-white/10 backdrop-blur-md text-white hover:bg-primary hover:border-primary hover:text-black focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none disabled:opacity-0 disabled:pointer-events-none transition-all duration-300 shadow-xl shadow-black/40"
         aria-label="Slide anterior"
       >
         <ChevronLeft className="w-5 h-5" />
@@ -90,7 +103,7 @@ const PresentationTalk = ({ variant }: PresentationTalkProps) => {
       <button
         onClick={next}
         disabled={current === TOTAL_SLIDES - 1}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-black/30 border border-white/10 backdrop-blur-md text-white hover:bg-white/20 disabled:opacity-0 disabled:pointer-events-none transition-all"
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-black/40 border border-white/10 backdrop-blur-md text-white hover:bg-primary hover:border-primary hover:text-black focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none disabled:opacity-0 disabled:pointer-events-none transition-all duration-300 shadow-xl shadow-black/40"
         aria-label="Próximo slide"
       >
         <ChevronRight className="w-5 h-5" />
@@ -99,24 +112,12 @@ const PresentationTalk = ({ variant }: PresentationTalkProps) => {
       {/* Progress bar */}
       <div className="absolute bottom-0 left-0 w-full h-1 bg-white/5 z-50">
         <div
-          className="h-full bg-gradient-to-r from-[#E8673C] via-[#C040A0] to-[#8C30B0] transition-all duration-400"
+          className="h-full bg-gradient-to-r from-[#E8673C] via-[#C040A0] to-[#8C30B0] transition-all duration-400 shadow-[0_0_15px_rgba(232,103,60,0.6)]"
           style={{ width: `${((current + 1) / TOTAL_SLIDES) * 100}%` }}
         />
       </div>
 
-      {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex gap-1.5">
-        {Array.from({ length: TOTAL_SLIDES }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => go(i)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              i === current ? "w-6 bg-gradient-to-r from-[#E8673C] to-[#C040A0]" : "bg-white/20 hover:bg-white/40"
-            }`}
-            aria-label={`Slide ${i + 1}`}
-          />
-        ))}
-      </div>
+      {/* Dots (Removed to clean up UI, progress bar is sufficient) */}
 
       {/* Counter */}
       <div className="absolute bottom-4 right-6 z-50 text-xs text-white/30 font-mono">
