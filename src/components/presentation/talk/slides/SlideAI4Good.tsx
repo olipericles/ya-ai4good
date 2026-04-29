@@ -2,58 +2,56 @@ import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
 
 const infos = [
-  { icon: "📅", text: "27-29 de março de 2026" },
-  { icon: "📍", text: "Harvard & MIT, Boston" },
-  { icon: "🏆", text: "Programa de aceleração + mentoria" },
+  { label: "27–29 de marco de 2026" },
+  { label: "Harvard e MIT, Boston" },
+  { label: "Programa de aceleracao + mentoria" },
 ];
 
 const SlideAI4Good = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
 
   return (
-    <TalkSlideContainer className="bg-[#1A1A2E] flex flex-col items-center justify-center px-20">
-      {/* Motif decoration */}
-      <svg className="absolute top-0 left-0 w-[400px] h-[300px] opacity-[0.10]" viewBox="0 0 400 300" fill="none">
-        <path d="M0 250 Q100 50 250 150 Q350 220 400 50" stroke="url(#motifGrad3)" strokeWidth="1.5" fill="none" />
-        <defs>
-          <linearGradient id="motifGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#E8673C" />
-            <stop offset="100%" stopColor="#8C30B0" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <svg className="absolute bottom-0 right-0 w-[400px] h-[300px] opacity-[0.10] rotate-180" viewBox="0 0 400 300" fill="none">
-        <path d="M0 250 Q100 50 250 150 Q350 220 400 50" stroke="url(#motifGrad3b)" strokeWidth="1.5" fill="none" />
-        <defs>
-          <linearGradient id="motifGrad3b" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#E8673C" />
-            <stop offset="100%" stopColor="#8C30B0" />
-          </linearGradient>
-        </defs>
-      </svg>
-
-      <h1 className="font-talk-headline text-[40px] text-white mb-2 z-10">Selecionados entre 188 projetos</h1>
-      <p className="font-talk-body text-[18px] text-[#F5A623] mb-14 z-10">
-        AI4Good 2026 — Brazil Conference at Harvard and MIT
-      </p>
-
-      <div className="flex flex-col items-center mb-12 z-10">
-        <span className="font-talk-headline text-[120px] leading-none bg-gradient-to-r from-[#E8673C] via-[#C040A0] to-[#8C30B0] bg-clip-text text-transparent">
-          3
-        </span>
-        <p className="font-talk-body text-[22px] text-white mt-2">projetos premiados</p>
-        <p className="font-talk-body text-[16px] text-[#F5A623] mt-1 flex items-center gap-1">
-          📍 Único projeto do Nordeste do Brasil
-        </p>
+    <TalkSlideContainer className="bg-background flex flex-col px-24 pt-16 pb-16 relative overflow-hidden">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+        <span className="text-[50vw] font-black text-white/[0.025] leading-none">3</span>
       </div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/8 blur-[160px] rounded-full pointer-events-none" />
 
-      <div className="flex gap-10 z-10">
-        {infos.map((info, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <span className="text-[20px]">{info.icon}</span>
-            <span className="font-talk-body text-[14px] text-gray-300">{info.text}</span>
-          </div>
-        ))}
+      <div className="z-10 flex flex-col h-full justify-between">
+        {/* Top label */}
+        <div className="text-center">
+          <p className="font-display text-[16px] font-bold text-primary uppercase tracking-[3px] flex items-center justify-center gap-3">
+            <span className="w-8 h-px bg-primary inline-block" />
+            Validacao externa
+            <span className="w-8 h-px bg-primary inline-block" />
+          </p>
+          <h1 className="font-display text-[64px] font-bold text-foreground/70 mt-4">
+            Selecionados entre <span className="text-white font-black">188 projetos</span>
+          </h1>
+          <p className="font-display text-[28px] text-accent mt-3">
+            AI4Good 2026 — Brazil Conference at Harvard and MIT
+          </p>
+        </div>
+
+        {/* Big "3" */}
+        <div className="flex flex-col items-center">
+          <span className="font-display font-black leading-none text-transparent bg-clip-text bg-gradient-to-br from-primary via-[#C040A0] to-secondary" style={{ fontSize: "260px" }}>
+            3
+          </span>
+          <p className="font-display text-[40px] font-bold text-white -mt-6">projetos premiados</p>
+          <p className="font-display text-[24px] text-accent mt-3 font-semibold">
+            Unico projeto do Nordeste do Brasil
+          </p>
+        </div>
+
+        {/* Info chips */}
+        <div className="flex gap-8 justify-center">
+          {infos.map((info, i) => (
+            <div key={i} className="bg-card/40 backdrop-blur-md border border-border/50 rounded-2xl px-10 py-5">
+              <span className="font-display text-[20px] text-foreground/70">{info.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </TalkSlideContainer>
   );

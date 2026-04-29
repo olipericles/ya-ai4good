@@ -1,17 +1,18 @@
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
+import n8nWorkflow from "@/assets/images/n8n-ya.png";
 
 const techBlocks = [
-  { label: "WhatsApp Business API", sub: "Canal de entrada", color: "#25D366", icon: "💬" },
-  { label: "N8N", sub: "Orquestração", color: "#E05B2D", icon: "⚙️" },
-  { label: "Gemini API", sub: "Motor Cognitivo", color: "#4285F4", icon: "🧠" },
-  { label: "PostgreSQL", sub: "Persistência", color: "#336791", icon: "🗄️" },
+  { label: "WhatsApp Business API", sub: "Canal de entrada", color: "#25D366" },
+  { label: "N8N", sub: "Orquestração", color: "#E8673C" },
+  { label: "Gemini API", sub: "Motor Cognitivo", color: "#4285F4" },
+  { label: "PostgreSQL", sub: "Persistência", color: "#336791" },
 ];
 
 const academicCards = [
-  { icon: "🧠", title: "SMA-c (Sistema Multi-Agente Cognitivo)", desc: "Agentes com capacidade deliberativa habilitada por LLMs" },
-  { icon: "📊", title: "Almere Model (adaptado)", desc: "Framework de robótica social aplicado a IA conversacional" },
-  { icon: "🔄", title: "Design Science Research", desc: "Metodologia: construir o artefato E gerar conhecimento científico" },
+  { title: "SMA-c", desc: "Sistema Multi-Agente Cognitivo — deliberação habilitada por LLMs" },
+  { title: "Almere Model", desc: "Framework de robótica social aplicado a IA conversacional" },
+  { title: "Design Science Research", desc: "Construir o artefato E gerar conhecimento científico" },
 ];
 
 const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
@@ -19,75 +20,77 @@ const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
   const isBaia = variant === "baia";
 
   return (
-    <TalkSlideContainer className="bg-[#1A1A2E] flex flex-col px-16 pt-16">
-      <h2 className="font-talk-headline text-white mb-1" style={{ fontSize: isBaia ? 30 : 32 }}>
-        {isBaia ? "Da arquitetura técnica ao framework teórico" : "Como funciona por dentro"}
-      </h2>
-      <p className="font-talk-body text-[16px] text-[#F5A623] mb-8">
-        {isBaia ? "Como a Yá funciona — e como a pesquisa a investiga" : "Stack técnico da Yá"}
-      </p>
+    <TalkSlideContainer className="bg-background flex flex-col px-20 pt-14 pb-10 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-secondary/8 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Tech flow */}
-      <div className="flex items-center justify-center gap-4 mb-8">
-        {techBlocks.map((b, i) => (
-          <div key={i} className="flex items-center gap-4">
-            <div className="bg-white/[0.08] rounded-xl p-5 flex flex-col items-center w-[220px] border border-white/[0.06]">
-              <div
-                className="w-[52px] h-[52px] rounded-xl flex items-center justify-center text-[26px] mb-3"
-                style={{ background: `${b.color}22`, border: `1px solid ${b.color}55` }}
-              >
-                {b.icon}
-              </div>
-              <p className="font-talk-headline text-[15px] text-white text-center">{b.label}</p>
-              <p className="font-talk-body text-[12px] text-gray-400 mt-1 text-center">{b.sub}</p>
-            </div>
-            {i < techBlocks.length - 1 && (
-              <span className="text-[24px] bg-gradient-to-r from-[#E8673C] to-[#C040A0] bg-clip-text text-transparent font-bold">→</span>
-            )}
-          </div>
-        ))}
-      </div>
+      <div className="z-10 flex flex-col h-full">
+        <div className="shrink-0">
+          <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] mb-3 flex items-center gap-3">
+            <span className="w-8 h-px bg-primary inline-block" />
+            {isBaia ? "Arquitetura + Pesquisa" : "Stack técnico"}
+          </p>
+          <h2 className="font-display text-[56px] font-black text-white leading-tight mb-8">
+            {isBaia ? "Da arquitetura técnica ao framework teórico" : "Como funciona por dentro"}
+          </h2>
 
-      {isBaia ? (
-        <>
-          <div className="relative flex items-center my-4">
-            <div className="flex-1 h-[1px] bg-gradient-to-r from-[#E8673C] via-[#C040A0] to-[#8C30B0]" />
-            <span className="px-4 text-[12px] text-[#F5A623] uppercase tracking-[2px] font-talk-body font-bold">
-              Camada de Investigação Acadêmica
-            </span>
-            <div className="flex-1 h-[1px] bg-gradient-to-r from-[#8C30B0] via-[#C040A0] to-[#E8673C]" />
-          </div>
-
-          <div className="flex gap-4 mt-4">
-            {academicCards.map((c, i) => (
-              <div key={i} className="bg-white/[0.06] rounded-xl p-4 flex-1">
-                <span className="text-[32px]">{c.icon}</span>
-                <h4 className="font-talk-headline text-[16px] text-white mt-2 mb-1">{c.title}</h4>
-                <p className="font-talk-body text-[12px] text-gray-400 leading-relaxed">{c.desc}</p>
+          {/* Tech flow */}
+          <div className="flex items-center gap-3 mb-8">
+            {techBlocks.map((b, i) => (
+              <div key={i} className="flex items-center gap-3 flex-1">
+                <div className="bg-card/50 backdrop-blur-md border border-border/50 rounded-2xl px-5 py-4 flex items-center gap-3 w-full">
+                  <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: b.color, boxShadow: `0 0 10px ${b.color}80` }} />
+                  <div>
+                    <p className="font-display text-[16px] font-bold text-white">{b.label}</p>
+                    <p className="font-display text-[12px] text-foreground/50">{b.sub}</p>
+                  </div>
+                </div>
+                {i < techBlocks.length - 1 && (
+                  <svg width="24" height="14" viewBox="0 0 24 14" fill="none" className="shrink-0">
+                    <path d="M0 7h20M14 2l6 5-6 5" stroke="url(#arrG)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                      <linearGradient id="arrG" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#E8673C"/>
+                        <stop offset="100%" stopColor="#8C30B0"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                )}
               </div>
             ))}
           </div>
-        </>
-      ) : (
-        /* Trind: fluxo completo detalhado */
-        <div className="flex gap-4 mt-2">
-          {[
-            { step: "1", label: "Mãe envia", desc: "Áudio, texto ou foto do comprovante via WhatsApp", icon: "📱" },
-            { step: "2", label: "N8N orquestra", desc: "Detecta tipo, roteaia para STT ou OCR se necessário", icon: "⚙️" },
-            { step: "3", label: "Gemini interpreta", desc: "Categoriza, extrai valor, gera resposta empática", icon: "🧠" },
-            { step: "4", label: "Yá responde", desc: "Confirmação + contexto do mês de volta no WhatsApp", icon: "💬" },
-          ].map((f, i) => (
-            <div key={i} className="bg-white/[0.06] rounded-xl p-5 flex-1 border border-white/[0.04]">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-[24px]">{f.icon}</span>
-                <span className="font-talk-headline text-[13px] text-[#F5A623] uppercase tracking-wider">Passo {f.step}</span>
-              </div>
-              <h4 className="font-talk-headline text-[17px] text-white mb-1">{f.label}</h4>
-              <p className="font-talk-body text-[13px] text-gray-400 leading-relaxed">{f.desc}</p>
-            </div>
-          ))}
         </div>
-      )}
+
+        {isBaia ? (
+          <div className="flex flex-col flex-1 gap-5">
+            <div className="flex items-center gap-4">
+              <div className="flex-1 h-px bg-gradient-to-r from-primary/40 via-secondary/40 to-primary/40" />
+              <span className="font-display text-[12px] text-accent uppercase tracking-[3px] font-bold shrink-0">Camada Acadêmica</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-primary/40 via-secondary/40 to-primary/40" />
+            </div>
+            <div className="grid grid-cols-3 gap-5 flex-1">
+              {academicCards.map((c, i) => (
+                <div key={i} className="bg-card/40 backdrop-blur-sm border border-border/50 rounded-2xl p-7 flex flex-col justify-center">
+                  <p className="font-display text-[22px] font-black text-white mb-3">{c.title}</p>
+                  <p className="font-display text-[15px] text-foreground/60 leading-relaxed">{c.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          /* Trind: real N8N workflow screenshot */
+          <div className="flex-1 relative rounded-2xl overflow-hidden border border-border/30">
+            <img
+              src={n8nWorkflow}
+              alt="Workflow real da Yá no N8N"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-4 right-5 bg-background/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-border/40">
+              <p className="font-display text-[12px] text-foreground/60">Workflow real da Yá — N8N</p>
+            </div>
+          </div>
+        )}
+      </div>
     </TalkSlideContainer>
   );
 };

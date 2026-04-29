@@ -8,31 +8,48 @@ const SlideFotos = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
 
   return (
-    <TalkSlideContainer className="bg-[#F5F5F0] flex flex-col px-16 pt-14">
-      <h2 className="font-talk-headline text-[28px] text-[#8C30B0] mb-8">Boston — Março 2026</h2>
+    <TalkSlideContainer className="bg-background flex flex-col relative overflow-hidden">
+      {/* Header bar */}
+      <div className="absolute top-0 left-0 right-0 z-20 flex items-center px-16 pt-10 pb-6 bg-gradient-to-b from-background to-transparent">
+        <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] flex items-center gap-3">
+          <span className="w-8 h-px bg-primary inline-block" />
+          Boston — Marco 2026
+        </p>
+      </div>
 
-      <div className="flex-1 flex gap-5 pb-14">
+      {/* Full bleed photos */}
+      <div className="flex-1 flex gap-2 pt-16">
         {/* Main photo - 60% */}
-        <div className="w-[60%] h-full">
+        <div className="w-[60%] h-full relative group overflow-hidden">
           <img
             src={palcoPhoto}
-            alt="Apresentação no auditório — Brazil Conference at Harvard"
-            className="w-full h-full object-cover rounded-2xl"
+            alt="Apresentacao no auditorio — Brazil Conference at Harvard"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+          <p className="absolute bottom-5 left-6 font-display text-[14px] text-white/70">Auditorio Harvard — Brazil Conference</p>
         </div>
 
-        {/* Right stack - 38% */}
-        <div className="w-[38%] flex flex-col gap-5 h-full">
-          <img
-            src={placaPhoto}
-            alt="Luã e Péricles na Harvard Business School"
-            className="w-full flex-1 object-cover rounded-2xl"
-          />
-          <img
-            src={tuorPhoto}
-            alt="Tour no campus de Harvard"
-            className="w-full flex-1 object-cover rounded-2xl"
-          />
+        {/* Right stack - 40% */}
+        <div className="w-[40%] flex flex-col gap-2 h-full">
+          <div className="flex-1 relative group overflow-hidden">
+            <img
+              src={placaPhoto}
+              alt="Harvard Business School"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
+            <p className="absolute bottom-4 left-5 font-display text-[13px] text-white/70">Harvard Business School</p>
+          </div>
+          <div className="flex-1 relative group overflow-hidden">
+            <img
+              src={tuorPhoto}
+              alt="Tour no campus de Harvard"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
+            <p className="absolute bottom-4 left-5 font-display text-[13px] text-white/70">Campus Harvard, Cambridge</p>
+          </div>
         </div>
       </div>
     </TalkSlideContainer>

@@ -1,59 +1,72 @@
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
-import equipePhoto from "@/assets/team/boston-lua-pericles.jpeg";
+import bostonPhoto from "@/assets/team/boston-lua-pericles.jpeg";
 
 const insightsTrind = [
-  { quote: "A tecnologia que não entende contexto cultural não serve.", sub: "Design empático > design funcional para populações vulneráveis" },
-  { quote: "Dados pequenos, impacto real.", sub: "3 mães transformadas valem mais que 10.000 downloads vazios" },
-  { quote: "O WhatsApp não é canal. É território.", sub: "As mães já estão lá. A Yá vai até elas, não o contrário" },
+  {
+    quote: "A tecnologia que nao entende contexto cultural nao serve.",
+    sub: "Design empatico supera design funcional para populacoes vulneraveis",
+  },
+  {
+    quote: "Dados pequenos, impacto real.",
+    sub: "3 maes transformadas valem mais que 10.000 downloads vazios",
+  },
+  {
+    quote: "O WhatsApp nao e canal. E territorio.",
+    sub: "As maes ja estao la. A Ya vai ate elas, nao o contrario",
+  },
 ];
 
 const insightsBaia = [
-  { quote: "Frameworks de robótica social funcionam para IA conversacional — com adaptações.", sub: "O Almere Model captura dimensões que métricas de UX tradicionais ignoram: ansiedade social, confiança percebida, atitude frente à tecnologia" },
-  { quote: "O agente não é um chatbot. É um sistema cognitivo.", sub: "A deliberação via LLM permite adaptação contextual que regras fixas nunca alcançariam para este público" },
-  { quote: "Construir e pesquisar ao mesmo tempo é Design Science Research na prática.", sub: "O artefato (Yá) e o conhecimento (dissertação) se alimentam mutuamente" },
+  {
+    quote: "Frameworks de robotica social funcionam para IA conversacional.",
+    sub: "O Almere Model captura ansiedade social e confianca percebida que metricas de UX tradicionais ignoram",
+  },
+  {
+    quote: "O agente nao e um chatbot. E um sistema cognitivo.",
+    sub: "Deliberacao via LLM permite adaptacao contextual que regras fixas nunca alcancam para este publico",
+  },
+  {
+    quote: "Construir e pesquisar ao mesmo tempo e Design Science Research na pratica.",
+    sub: "O artefato (Ya) e o conhecimento (dissertacao) se alimentam mutuamente",
+  },
 ];
 
 const SlideAprendizados = ({ isActive, variant }: TalkSlideProps) => {
   if (!isActive) return null;
   const insights = variant === "baia" ? insightsBaia : insightsTrind;
-  const title = variant === "baia"
-    ? "O que a pesquisa está revelando"
-    : "O que Harvard e o piloto nos ensinaram";
-  const photoCaption = variant === "baia" ? "Pesquisa aplicada no território" : "Engenharia popular em ação";
+  const title = variant === "baia" ? "O que a pesquisa esta revelando" : "O que Harvard e o piloto nos ensinaram";
 
   return (
-    <TalkSlideContainer className="overflow-hidden">
-      {/* Diagonal bg */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-[#1A1A2E]" style={{ clipPath: "polygon(0 0, 100% 0, 55% 100%, 0 100%)" }} />
-        <div className="absolute top-0 left-0 w-full h-full bg-[#F5F5F0]" style={{ clipPath: "polygon(100% 0, 100% 100%, 55% 100%)" }} />
-      </div>
+    <TalkSlideContainer className="bg-background flex relative overflow-hidden">
+      {/* Left content — 65% */}
+      <div className="w-[65%] h-full flex flex-col pt-16 pb-16 pl-20 pr-16 z-10">
+        <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] mb-4 flex items-center gap-3">
+          <span className="w-8 h-px bg-primary inline-block" />
+          Aprendizados
+        </p>
+        <h2 className="font-display text-[52px] font-black text-white leading-tight mb-10">{title}</h2>
 
-      <div className="relative z-10 h-full flex flex-col justify-center px-16">
-        <h2 className="font-talk-headline text-[28px] text-white mb-10">{title}</h2>
-
-        <div className="flex flex-col gap-6 max-w-[750px]">
+        <div className="flex flex-col gap-8 flex-1 justify-center">
           {insights.map((ins, i) => (
-            <div key={i} className="relative pl-10">
-              {/* Quote mark */}
-              <span className="absolute -left-2 -top-4 text-[60px] font-talk-headline bg-gradient-to-r from-[#E8673C] to-[#8C30B0] bg-clip-text text-transparent opacity-20 select-none">
-                "
-              </span>
-              <p className="font-talk-headline text-[16px] text-white leading-snug">"{ins.quote}"</p>
-              <p className="font-talk-body text-[13px] text-gray-400 mt-1">{ins.sub}</p>
+            <div key={i} className="relative pl-8">
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full" style={{ background: "linear-gradient(180deg, #E8673C, #8C30B0)" }} />
+              <p className="font-display text-[26px] font-bold text-white leading-snug mb-3">"{ins.quote}"</p>
+              <p className="font-display text-[17px] text-foreground/50 leading-relaxed">{ins.sub}</p>
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Photo bottom-right */}
-        <div className="absolute bottom-12 right-12">
-          <img
-            src={equipePhoto}
-            alt={photoCaption}
-            className="w-[200px] h-[150px] object-cover rounded-xl opacity-80"
-          />
-        </div>
+      {/* Right — photo */}
+      <div className="w-[35%] h-full relative overflow-hidden">
+        <img
+          src={bostonPhoto}
+          alt="Harvard campus"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
       </div>
     </TalkSlideContainer>
   );

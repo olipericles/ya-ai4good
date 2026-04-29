@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        "talk-headline": ["'Sora'", "sans-serif"],
-        "talk-body": ["'DM Sans'", "sans-serif"],
+        "talk-headline": ["'Inter'", "sans-serif"],
+        "talk-body": ["'Inter'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
