@@ -18,20 +18,20 @@ const SlideFotos = ({ isActive }: TalkSlideProps) => {
       </div>
 
       {/* Full bleed photos */}
-      <div className="flex-1 flex gap-2 pt-16">
-        {/* Main photo - 60% */}
-        <div className="w-[60%] h-full relative group overflow-hidden">
+      <div className="flex-1 flex flex-col gap-2 min-h-0">
+        {/* Main photo - full width, top ~65% */}
+        <div className="relative group overflow-hidden min-h-0" style={{ flex: "65 65 0%" }}>
           <img
             src={palcoPhoto}
             alt="Apresentacao no auditorio — Brazil Conference at Harvard"
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/60 via-transparent to-transparent" />
-          <p className="absolute bottom-5 left-6 font-display text-[14px] text-white/70">Auditorio Harvard — Brazil Conference</p>
+          <p className="absolute bottom-5 left-6 font-display text-[14px] text-white/70">Auditório Harvard — Brazil Conference</p>
         </div>
 
-        {/* Right stack - 40% */}
-        <div className="w-[40%] flex flex-col gap-2 h-full">
+        {/* Bottom row - two photos side by side ~35% */}
+        <div className="flex gap-2 min-h-0" style={{ flex: "35 35 0%" }}>
           <div className="flex-1 relative group overflow-hidden">
             <img
               src={placaPhoto}
