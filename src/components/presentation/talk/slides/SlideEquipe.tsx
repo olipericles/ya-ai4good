@@ -9,7 +9,7 @@ const team = [
   {
     name: "Péricles Oliveira",
     role: "Estratégia e Produto",
-    bio: "Eng. Eletricista, Mestrando UFBA, Analista na Rede Bahia",
+    handle: "/in/olipericles",
     photo: equipePericles,
     color: "#E8673C",
     linkedin: "https://www.linkedin.com/in/olipericles/",
@@ -17,7 +17,7 @@ const team = [
   {
     name: "Luã Mota",
     role: "Arquitetura de Software",
-    bio: "Dev na Rede Bahia, co-arquiteto técnico da Yá",
+    handle: "/in/luaamota",
     photo: equipeLua,
     color: "#C040A0",
     linkedin: "https://www.linkedin.com/in/luaamota/",
@@ -25,7 +25,7 @@ const team = [
   {
     name: "Adriele Ornellas",
     role: "UX Research & Comunidades",
-    bio: "Pesquisadora, porta-voz oficial, ponte com as mães",
+    handle: "/in/adrieleornellas",
     photo: equipeAdriele,
     color: "#8C30B0",
     linkedin: "https://www.linkedin.com/in/adrieleornellas/",
@@ -40,7 +40,7 @@ const SlideEquipe = ({ isActive }: TalkSlideProps) => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[500px] bg-secondary/6 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="z-10 flex flex-col h-full">
-        <div className="shrink-0 text-center mb-10">
+        <div className="shrink-0 text-center mb-12">
           <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] mb-3 flex items-center justify-center gap-3">
             <span className="w-8 h-px bg-primary inline-block" />
             Time
@@ -51,11 +51,11 @@ const SlideEquipe = ({ isActive }: TalkSlideProps) => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 gap-10 flex-1 min-h-0" style={{ gridTemplateRows: "1fr" }}>
+        <div className="grid grid-cols-3 gap-10 flex-1 items-center">
           {team.map((t, i) => (
             <div
               key={i}
-              className="bg-card/40 backdrop-blur-md border border-border/50 rounded-3xl p-10 flex flex-col items-center text-center justify-between hover:border-primary/40 transition-colors min-h-0"
+              className="bg-card/40 backdrop-blur-md border border-border/50 rounded-3xl p-10 flex flex-col items-center text-center hover:border-primary/40 transition-colors"
             >
               {/* Circular photo */}
               <div
@@ -70,8 +70,8 @@ const SlideEquipe = ({ isActive }: TalkSlideProps) => {
               </div>
 
               <h3 className="font-display text-[28px] font-black text-white mb-1">{t.name}</h3>
-              <p className="font-display text-[18px] font-bold mb-3" style={{ color: t.color }}>{t.role}</p>
-              <p className="font-display text-[16px] text-foreground/50 leading-relaxed mb-6">{t.bio}</p>
+              <p className="font-display text-[18px] font-bold mb-4" style={{ color: t.color }}>{t.role}</p>
+              <p className="font-mono text-[14px] text-foreground/40 mb-6 tracking-wide">{t.handle}</p>
 
               <a
                 href={t.linkedin}

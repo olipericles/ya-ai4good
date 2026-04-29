@@ -4,38 +4,38 @@ import bostonPhoto from "@/assets/team/boston-lua-pericles.jpeg";
 
 const insightsTrind = [
   {
-    quote: "A tecnologia que nao entende contexto cultural nao serve.",
-    sub: "Design empatico supera design funcional para populacoes vulneraveis",
+    quote: "A tecnologia que não entende contexto cultural não serve.",
+    sub: "Design empático supera design funcional para populações vulneráveis",
   },
   {
     quote: "Dados pequenos, impacto real.",
-    sub: "3 maes transformadas valem mais que 10.000 downloads vazios",
+    sub: "3 mães transformadas valem mais que 10.000 downloads vazios",
   },
   {
-    quote: "O WhatsApp nao e canal. E territorio.",
-    sub: "As maes ja estao la. A Ya vai ate elas, nao o contrario",
+    quote: "O WhatsApp não é canal. É território.",
+    sub: "As mães já estão lá. A Yá vai até elas, não o contrário",
   },
 ];
 
 const insightsBaia = [
   {
-    quote: "Frameworks de robotica social funcionam para IA conversacional.",
-    sub: "O Almere Model captura ansiedade social e confianca percebida que metricas de UX tradicionais ignoram",
+    quote: "Frameworks de robótica social funcionam para IA conversacional.",
+    sub: "O Almere Model captura ansiedade social e confiança percebida que métricas de UX tradicionais ignoram",
   },
   {
-    quote: "O agente nao e um chatbot. E um sistema cognitivo.",
-    sub: "Deliberacao via LLM permite adaptacao contextual que regras fixas nunca alcancam para este publico",
+    quote: "O agente não é um chatbot. É um sistema cognitivo.",
+    sub: "Deliberação via LLM permite adaptação contextual que regras fixas nunca alcançam para este público",
   },
   {
-    quote: "Construir e pesquisar ao mesmo tempo e Design Science Research na pratica.",
-    sub: "O artefato (Ya) e o conhecimento (dissertacao) se alimentam mutuamente",
+    quote: "Construir e pesquisar ao mesmo tempo é Design Science Research na prática.",
+    sub: "O artefato (Yá) e o conhecimento (dissertação) se alimentam mutuamente",
   },
 ];
 
 const SlideAprendizados = ({ isActive, variant }: TalkSlideProps) => {
   if (!isActive) return null;
   const insights = variant === "baia" ? insightsBaia : insightsTrind;
-  const title = variant === "baia" ? "O que a pesquisa esta revelando" : "O que Harvard e o piloto nos ensinaram";
+  const title = variant === "baia" ? "O que a pesquisa está revelando" : "O que Harvard e o piloto nos ensinaram";
 
   return (
     <TalkSlideContainer className="bg-[#0A0A0A] flex relative overflow-hidden">

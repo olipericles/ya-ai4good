@@ -24,7 +24,7 @@ const SlideFotos = ({ isActive }: TalkSlideProps) => {
           <img
             src={palcoPhoto}
             alt="Apresentacao no auditorio — Brazil Conference at Harvard"
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/60 via-transparent to-transparent" />
           <p className="absolute bottom-5 left-6 font-display text-[14px] text-white/70">Auditório Harvard — Brazil Conference</p>
@@ -36,7 +36,7 @@ const SlideFotos = ({ isActive }: TalkSlideProps) => {
             <img
               src={placaPhoto}
               alt="Harvard Business School"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/50 via-transparent to-transparent" />
             <p className="absolute bottom-4 left-5 font-display text-[13px] text-white/70">Harvard Business School</p>
@@ -45,7 +45,7 @@ const SlideFotos = ({ isActive }: TalkSlideProps) => {
             <img
               src={tuorPhoto}
               alt="Tour no campus de Harvard"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/50 via-transparent to-transparent" />
             <p className="absolute bottom-4 left-5 font-display text-[13px] text-white/70">Campus Harvard, Cambridge</p>

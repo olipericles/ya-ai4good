@@ -2,14 +2,14 @@ import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
 
 const funnel = [
-  { label: "Pre-registradas", value: 14, pct: "100%", color: "#E8673C" },
+  { label: "Pré-registradas", value: 14, pct: "100%", color: "#E8673C" },
   { label: "Engajadas", value: 10, pct: "71%", color: "#D050A8" },
   { label: "Uso significativo", value: 5, pct: "36%", color: "#A038B8" },
   { label: "Transformadas", value: 3, pct: "21%", color: "#8C30B0" },
 ];
 
 const insights = [
-  "Maes nao registram gastos espontaneamente — onboarding proativo e essencial",
+  "Mães não registram gastos espontaneamente — onboarding proativo é essencial",
   "Linguagem de amiga reduz ansiedade financeira em vez de provocar",
   "Foto do comprovante foi a forma mais natural de registro",
 ];
@@ -30,7 +30,7 @@ const SlidePiloto = ({ isActive }: TalkSlideProps) => {
           </p>
           <h2 className="font-display text-[72px] font-black text-white leading-tight">
             Piloto com<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">maes reais</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">mães reais</span>
           </h2>
         </div>
 
@@ -47,7 +47,6 @@ const SlidePiloto = ({ isActive }: TalkSlideProps) => {
             </div>
           ))}
         </div>
-
       </div>
 
       {/* Right 50% */}

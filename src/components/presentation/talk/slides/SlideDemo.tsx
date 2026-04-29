@@ -8,8 +8,8 @@ const SlideDemo = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
 
   return (
-    <TalkSlideContainer className="bg-[#0A0A0A] flex items-center px-16 gap-16 relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-primary/6 blur-[120px] rounded-full pointer-events-none" />
+    <TalkSlideContainer className="bg-[#0A0A0A] flex items-center justify-center px-20 gap-20 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/6 blur-[120px] rounded-full pointer-events-none" />
 
       {/* GIF */}
       <div className="h-[860px] w-auto shrink-0 z-10 rounded-[32px] overflow-hidden border border-primary/20 shadow-2xl shadow-primary/10">
@@ -17,7 +17,7 @@ const SlideDemo = ({ isActive }: TalkSlideProps) => {
       </div>
 
       {/* Right */}
-      <div className="flex flex-col flex-1 z-10">
+      <div className="flex flex-col z-10 max-w-[680px]">
         <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] mb-4 flex items-center gap-3">
           <span className="w-8 h-px bg-primary inline-block" />
           Yá em ação

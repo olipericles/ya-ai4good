@@ -2,9 +2,9 @@ import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
 
 const infos = [
-  { label: "27–29 de marco de 2026" },
+  { label: "27–29 de março de 2026" },
   { label: "Harvard e MIT, Boston" },
-  { label: "Programa de aceleracao + mentoria" },
+  { label: "Programa de aceleração + mentoria" },
 ];
 
 const SlideAI4Good = ({ isActive }: TalkSlideProps) => {
@@ -22,7 +22,7 @@ const SlideAI4Good = ({ isActive }: TalkSlideProps) => {
         <div className="text-center">
           <p className="font-display text-[16px] font-bold text-primary uppercase tracking-[3px] flex items-center justify-center gap-3">
             <span className="w-8 h-px bg-primary inline-block" />
-            Validacao externa
+            Validação externa
             <span className="w-8 h-px bg-primary inline-block" />
           </p>
           <h1 className="font-display text-[64px] font-bold text-foreground/70 mt-4">
@@ -40,7 +40,7 @@ const SlideAI4Good = ({ isActive }: TalkSlideProps) => {
           </span>
           <p className="font-display text-[40px] font-bold text-white -mt-6">projetos premiados</p>
           <p className="font-display text-[24px] text-accent mt-3 font-semibold">
-            Unico projeto do Nordeste do Brasil
+            Único projeto do Nordeste do Brasil
           </p>
         </div>
 

@@ -1,3 +1,5 @@
+import { useRef, useState, useEffect, useCallback } from "react";
+import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
 import n8nWorkflow from "@/assets/images/n8n-ya.png";
@@ -18,6 +20,42 @@ const academicCards = [
 const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
   if (!isActive) return null;
   const isBaia = variant === "baia";
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const dragging = useRef(false);
+  const dragOrigin = useRef({ mx: 0, my: 0, px: 0, py: 0 });
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const delta = e.deltaY < 0 ? 0.2 : -0.2;
+      setZoom(z => Math.max(1, Math.min(8, z + delta)));
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
+  const onMouseDown = useCallback((e: React.MouseEvent) => {
+    if (zoom <= 1) return;
+    dragging.current = true;
+    dragOrigin.current = { mx: e.clientX, my: e.clientY, px: pan.x, py: pan.y };
+  }, [zoom, pan]);
+
+  const onMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!dragging.current) return;
+    setPan({
+      x: dragOrigin.current.px + (e.clientX - dragOrigin.current.mx),
+      y: dragOrigin.current.py + (e.clientY - dragOrigin.current.my),
+    });
+  }, []);
+
+  const onMouseUp = useCallback(() => { dragging.current = false; }, []);
+
+  const reset = () => { setZoom(1); setPan({ x: 0, y: 0 }); };
 
   return (
     <TalkSlideContainer className="bg-[#0A0A0A] flex flex-col px-20 pt-14 pb-10 relative overflow-hidden">
@@ -77,16 +115,56 @@ const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
             </div>
           </div>
         ) : (
-          /* Trind: real N8N workflow screenshot */
-          <div className="flex-1 relative rounded-2xl overflow-hidden border border-border/30 flex items-center justify-center bg-[#111]">
+          /* Trind: zoomable N8N workflow */
+          <div
+            ref={containerRef}
+            className="flex-1 relative rounded-2xl overflow-hidden border border-border/30 bg-[#111] select-none"
+            style={{ cursor: zoom > 1 ? "grab" : "zoom-in" }}
+            onMouseDown={onMouseDown}
+            onMouseMove={onMouseMove}
+            onMouseUp={onMouseUp}
+            onMouseLeave={onMouseUp}
+          >
             <img
               src={n8nWorkflow}
               alt="Workflow real da Yá no N8N"
-              className="w-full h-full object-contain"
+              draggable={false}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
+                transformOrigin: "center center",
+                transition: dragging.current ? "none" : "transform 0.15s ease",
+                userSelect: "none",
+              }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-4 right-5 bg-[#0A0A0A]/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-border/40">
-              <p className="font-display text-[12px] text-foreground/60">Workflow real da Yá — N8N</p>
+
+            {/* Zoom controls */}
+            <div className="absolute top-3 right-4 flex items-center gap-2 z-10">
+              <button
+                onClick={() => setZoom(z => Math.min(8, z + 0.5))}
+                className="w-8 h-8 rounded-lg bg-[#0A0A0A]/80 border border-border/40 flex items-center justify-center text-white/70 hover:text-white hover:border-primary/50 transition-colors"
+              >
+                <ZoomIn size={14} />
+              </button>
+              <span className="font-mono text-[11px] text-white/40 min-w-[36px] text-center">{Math.round(zoom * 100)}%</span>
+              <button
+                onClick={() => setZoom(z => Math.max(1, z - 0.5))}
+                className="w-8 h-8 rounded-lg bg-[#0A0A0A]/80 border border-border/40 flex items-center justify-center text-white/70 hover:text-white hover:border-primary/50 transition-colors"
+              >
+                <ZoomOut size={14} />
+              </button>
+              <button
+                onClick={reset}
+                className="w-8 h-8 rounded-lg bg-[#0A0A0A]/80 border border-border/40 flex items-center justify-center text-white/70 hover:text-white hover:border-primary/50 transition-colors"
+              >
+                <RotateCcw size={13} />
+              </button>
+            </div>
+
+            <div className="absolute bottom-4 left-5 bg-[#0A0A0A]/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-border/40 pointer-events-none">
+              <p className="font-display text-[12px] text-foreground/50">Scroll para zoom · Arraste para navegar</p>
             </div>
           </div>
         )}
