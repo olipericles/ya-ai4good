@@ -72,7 +72,7 @@ const PresentationTalk = ({ variant }: PresentationTalkProps) => {
   ];
 
   return (
-    <div className="relative w-full h-screen bg-[#1A1A2E] overflow-hidden select-none" style={{ fontFamily: "'Sora', 'DM Sans', sans-serif" }}>
+    <div className="relative w-full h-screen bg-[#0A0A0A] overflow-hidden select-none" style={{ fontFamily: "'Sora', 'DM Sans', sans-serif" }}>
       {/* Slide area with fade transition */}
       <div className="absolute inset-0 transition-opacity duration-400" style={{ opacity: transitioning ? 0.7 : 1 }}>
         {slides}
