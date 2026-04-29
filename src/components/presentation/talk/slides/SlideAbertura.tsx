@@ -8,7 +8,7 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
   if (!isActive) return null;
 
   const subtitle = variant === "trindai"
-    ? "Péricles Oliveira da Silva — Talk Trind AI — Abril 2026"
+    ? "Péricles Oliveira — TrindTalk — Abril 2026"
     : variant === "baia"
     ? "Péricles Oliveira da Silva — BaIA 2026 — UFBA — Maio 2026"
     : "Péricles Oliveira da Silva — Apresentação Interna — Rede Bahia 2026";
