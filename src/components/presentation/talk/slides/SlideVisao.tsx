@@ -41,7 +41,7 @@ const SlideVisao = ({ isActive, variant }: TalkSlideProps) => {
             <div key={i} className="flex items-center gap-5">
               <div
                 className="h-[72px] rounded-2xl flex items-center justify-between px-8 shrink-0"
-                style={{ width: r.pct, maxWidth: isBaia ? "100%" : "52%", backgroundColor: r.color, minWidth: 220 }}
+                style={{ width: r.pct, maxWidth: isBaia ? "100%" : "80%", backgroundColor: r.color, minWidth: 220 }}
               >
                 <span className="font-display text-[20px] font-bold text-white truncate mr-4">{r.label}</span>
                 <span className="font-display text-[14px] text-white/70 shrink-0 bg-black/20 rounded-lg px-3 py-1">{r.status}</span>
