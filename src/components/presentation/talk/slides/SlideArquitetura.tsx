@@ -78,11 +78,11 @@ const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
           </div>
         ) : (
           /* Trind: real N8N workflow screenshot */
-          <div className="flex-1 relative rounded-2xl overflow-hidden border border-border/30">
+          <div className="flex-1 relative rounded-2xl overflow-hidden border border-border/30 flex items-center justify-center bg-[#111]">
             <img
               src={n8nWorkflow}
               alt="Workflow real da Yá no N8N"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-contain"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 via-transparent to-transparent pointer-events-none" />
             <div className="absolute bottom-4 right-5 bg-[#0A0A0A]/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-border/40">

@@ -22,7 +22,7 @@ const SlidePiloto = ({ isActive }: TalkSlideProps) => {
       <div className="absolute bottom-0 left-1/4 w-[700px] h-[400px] bg-primary/6 blur-[120px] rounded-full pointer-events-none" />
 
       {/* Left 50% */}
-      <div className="w-1/2 h-full flex flex-col pt-16 pb-16 pl-20 pr-10 z-10 justify-between">
+      <div className="w-1/2 h-full flex flex-col pt-16 pb-16 pl-20 pr-10 z-10 gap-14">
         <div>
           <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] mb-4 flex items-center gap-3">
             <span className="w-8 h-px bg-primary inline-block" />
@@ -48,11 +48,6 @@ const SlidePiloto = ({ isActive }: TalkSlideProps) => {
           ))}
         </div>
 
-        <div className="bg-accent/10 border border-accent/30 rounded-2xl px-8 py-5">
-          <p className="font-display text-[22px] font-bold text-accent">
-            Custo operacional: menos de R$2/usuaria/mes
-          </p>
-        </div>
       </div>
 
       {/* Right 50% */}

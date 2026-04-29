@@ -1,10 +1,8 @@
-import { ChevronRight } from "lucide-react";
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
-import audioPhoto from "@/assets/images/interacao-carol-audio.jpeg";
-import saldoPhoto from "@/assets/images/interacao-carol-saldo.jpeg";
+import demoGif from "@/assets/videos/demo.gif";
 
-const steps = ["Recebe áudio", "Transcreve", "Categoriza", "Responde com empatia"];
+const steps = ["Recebe áudio, texto ou foto", "Transcreve e categoriza", "Responde com empatia no WhatsApp"];
 
 const SlideDemo = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
@@ -13,25 +11,9 @@ const SlideDemo = ({ isActive }: TalkSlideProps) => {
     <TalkSlideContainer className="bg-[#0A0A0A] flex items-center px-16 gap-16 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-primary/6 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Phones */}
-      <div className="flex gap-6 items-center z-10 shrink-0">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-[290px] h-[600px] rounded-[40px] border-[6px] border-foreground/20 bg-black shadow-2xl overflow-hidden">
-            <img src={audioPhoto} alt="Carol enviando áudio" className="w-full h-full object-cover" />
-          </div>
-          <p className="font-display text-[15px] text-foreground/40">Carol manda um áudio</p>
-        </div>
-
-        <div className="w-14 h-14 rounded-full flex items-center justify-center bg-primary/20 border border-primary/40 z-10 shrink-0">
-          <ChevronRight size={24} className="text-primary" />
-        </div>
-
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-[290px] h-[600px] rounded-[40px] border-[6px] border-primary/40 bg-black shadow-2xl shadow-primary/20 overflow-hidden">
-            <img src={saldoPhoto} alt="Yá responde com saldo" className="w-full h-full object-cover" />
-          </div>
-          <p className="font-display text-[15px] text-foreground/40">Yá responde com o saldo</p>
-        </div>
+      {/* GIF */}
+      <div className="h-[860px] w-auto shrink-0 z-10 rounded-[32px] overflow-hidden border border-primary/20 shadow-2xl shadow-primary/10">
+        <img src={demoGif} alt="Yá em ação — demo" className="h-full w-auto object-contain" />
       </div>
 
       {/* Right */}

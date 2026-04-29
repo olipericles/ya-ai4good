@@ -62,11 +62,12 @@ const SlideAprendizados = ({ isActive, variant }: TalkSlideProps) => {
       <div className="w-[35%] h-full relative overflow-hidden">
         <img
           src={bostonPhoto}
-          alt="Harvard campus"
-          className="w-full h-full object-cover"
+          alt="Luã e Péricles em Boston"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/30 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-transparent to-transparent" style={{ backgroundSize: "30% 100%", backgroundRepeat: "no-repeat" }} />
+        <div className="absolute top-0 bottom-0 left-0 w-[18%] bg-gradient-to-r from-[#0A0A0A] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/50 via-transparent to-transparent" />
       </div>
     </TalkSlideContainer>
   );

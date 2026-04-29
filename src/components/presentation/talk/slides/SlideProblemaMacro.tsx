@@ -36,7 +36,7 @@ const SlideProblemaMacro = ({ isActive }: TalkSlideProps) => {
           {stats.map((s, i) => (
             <div
               key={i}
-              className="bg-card/40 backdrop-blur-md border border-primary/20 rounded-3xl p-10 relative overflow-hidden hover:border-primary/50 transition-colors flex flex-col justify-end"
+              className="bg-card/40 backdrop-blur-md border border-primary/20 rounded-3xl p-10 relative overflow-hidden hover:border-primary/50 transition-colors flex flex-col justify-center"
             >
               <div className="absolute inset-0 bg-primary/5 blur-[40px] -z-10" />
               <div className="absolute top-8 left-10 right-10 h-[3px] rounded-full opacity-60" style={{ background: "linear-gradient(90deg, #E8673C, transparent)" }} />

@@ -25,8 +25,9 @@ const SlideProblemaEmocional = ({ isActive }: TalkSlideProps) => {
 
         <div className="bg-accent/10 border-l-4 border-accent rounded-r-2xl px-8 py-6">
           <p className="font-display text-[24px] font-semibold italic text-accent leading-snug">
-            "O conceito não é educação financeira.<br />É visibilidade financeira."
+            "Eu tinha medo de ver os números. A Yá me mostrou sem julgamento."
           </p>
+          <p className="font-display text-[16px] text-foreground/50 mt-3 not-italic">— Áurea, mãe transformada do piloto Yá</p>
         </div>
       </div>
 

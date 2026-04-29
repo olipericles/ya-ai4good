@@ -6,7 +6,7 @@ import periclesPhoto from "@/assets/team/pericles-oficial.jpg";
 const blocksTrind = [
   { Icon: Zap, label: "Engenheiro Eletricista", sub: "Analista de Dados e IA na Rede Bahia" },
   { Icon: GraduationCap, label: "Mestrando PPGEE/UFBA", sub: "Sistemas Multi-Agente Cognitivos com LLMs" },
-  { Icon: Building2, label: "Co-fundador da Praxis Agência", sub: "Produtos digitais com impacto social" },
+  { Icon: Building2, label: "Co-fundador da Praxis Agência", sub: "Infraestrutura para Agentes de IA" },
   { Icon: Home, label: "Cria da Vila Matos, Salvador", sub: "Periférico, orgulhoso, inconformado" },
 ];
 
@@ -25,10 +25,10 @@ const SlideQuemSouEu = ({ isActive, variant }: TalkSlideProps) => {
     <TalkSlideContainer className="bg-[#0A0A0A] flex">
       {/* Left — full height photo */}
       <div className="w-[38%] h-full relative overflow-hidden">
-        <img src={periclesPhoto} alt="Péricles Oliveira da Silva" className="w-full h-full object-cover object-top" />
+        <img src={periclesPhoto} alt="Péricles Oliveira" className="w-full h-full object-cover object-top" />
         <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-r from-transparent to-[#0A0A0A]" />
         <div className="absolute bottom-12 left-10">
-          <p className="font-display text-[22px] font-black text-white">Péricles Oliveira da Silva</p>
+          <p className="font-display text-[22px] font-black text-white">Péricles Oliveira</p>
           <p className="font-display text-[16px] text-foreground/50 mt-1">Salvador, Bahia</p>
         </div>
       </div>
@@ -51,8 +51,8 @@ const SlideQuemSouEu = ({ isActive, variant }: TalkSlideProps) => {
                 <Icon size={20} className="text-primary" />
               </div>
               <div>
-                <p className="font-display text-[20px] font-bold text-white">{label}</p>
-                <p className="font-display text-[14px] text-foreground/50 mt-0.5">{sub}</p>
+                <p className="font-display text-[24px] font-bold text-white">{label}</p>
+                <p className="font-display text-[17px] text-foreground/50 mt-1">{sub}</p>
               </div>
             </div>
           ))}

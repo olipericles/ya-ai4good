@@ -52,7 +52,7 @@ const SlideSolucao = ({ isActive }: TalkSlideProps) => {
 
         <div className="grid grid-cols-3 gap-6 flex-1">
           {cards.map(({ Icon, title, desc }, i) => (
-            <div key={i} className="bg-card/40 backdrop-blur-md border border-primary/20 rounded-3xl p-10 flex flex-col justify-between hover:border-primary/50 transition-colors">
+            <div key={i} className="bg-card/40 backdrop-blur-md border border-primary/20 rounded-3xl p-10 flex flex-col gap-8 justify-center hover:border-primary/50 transition-colors">
               <div className="w-20 h-20 rounded-2xl bg-primary/15 border border-primary/30 flex items-center justify-center">
                 <Icon size={40} className="text-primary" />
               </div>
