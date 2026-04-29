@@ -49,7 +49,7 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
         </h1>
 
         <p className="font-display text-[28px] font-semibold text-accent mt-8">
-          Da Vila Matos em Salvador à Harvard e MIT
+          Da Vila Matos em Salvador para Harvard e MIT
         </p>
       </div>
 
