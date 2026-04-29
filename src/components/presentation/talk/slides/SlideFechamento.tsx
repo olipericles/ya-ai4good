@@ -37,7 +37,7 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[800px] h-[600px] bg-primary/6 blur-[160px] rounded-full pointer-events-none" />
 
       {/* Left — 55% */}
-      <div className="w-[55%] h-full flex flex-col pt-16 pb-20 pl-20 pr-10 z-10 justify-between">
+      <div className="w-[55%] h-full flex flex-col pt-16 pb-32 pl-20 pr-10 z-10 justify-between">
         <img src={yaLogo} alt="Yá" className="h-[120px] self-start" />
 
         <div>
@@ -45,7 +45,7 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
           <p className="font-display text-[36px] text-accent font-semibold">Vamos conversar?</p>
         </div>
 
-        <div className="flex gap-16">
+        <div className="flex gap-16 mb-6">
           <div className="flex flex-col gap-4">
             <p className="font-display text-[13px] font-bold text-primary uppercase tracking-[3px]">Péricles</p>
             {contactsPericles.map(({ Icon, text }, i) => (
@@ -76,7 +76,16 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
         <div className="bg-white rounded-3xl p-5 shadow-2xl shadow-primary/10">
           <img src={qrCode} alt="QR Code" className="w-[340px] h-[340px] object-contain" />
         </div>
-        <p className="font-display text-[22px] text-accent font-mono tracking-wide font-bold">qr.rede.ba/mT02</p>
+        <a
+          href="https://qr.rede.ba/mT02"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-display text-[20px] font-bold text-white border border-primary/40 bg-primary/10 hover:bg-primary/20 hover:border-primary/70 transition-all duration-200"
+          style={{ boxShadow: "0 0 24px rgba(232,103,60,0.15)" }}
+        >
+          <Globe size={22} className="text-primary" />
+          Conheça mais
+        </a>
       </div>
 
       {/* Footer logos */}
