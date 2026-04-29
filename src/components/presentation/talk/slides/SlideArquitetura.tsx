@@ -20,7 +20,7 @@ const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
   const isBaia = variant === "baia";
 
   return (
-    <TalkSlideContainer className="bg-background flex flex-col px-20 pt-14 pb-10 relative overflow-hidden">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex flex-col px-20 pt-14 pb-10 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-secondary/8 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="z-10 flex flex-col h-full">
@@ -84,8 +84,8 @@ const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
               alt="Workflow real da Yá no N8N"
               className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-4 right-5 bg-background/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-border/40">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-4 right-5 bg-[#0A0A0A]/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-border/40">
               <p className="font-display text-[12px] text-foreground/60">Workflow real da Yá — N8N</p>
             </div>
           </div>

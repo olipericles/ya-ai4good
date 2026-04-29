@@ -38,7 +38,7 @@ const SlideAprendizados = ({ isActive, variant }: TalkSlideProps) => {
   const title = variant === "baia" ? "O que a pesquisa esta revelando" : "O que Harvard e o piloto nos ensinaram";
 
   return (
-    <TalkSlideContainer className="bg-background flex relative overflow-hidden">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex relative overflow-hidden">
       {/* Left content — 65% */}
       <div className="w-[65%] h-full flex flex-col pt-16 pb-16 pl-20 pr-16 z-10">
         <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] mb-4 flex items-center gap-3">
@@ -65,8 +65,8 @@ const SlideAprendizados = ({ isActive, variant }: TalkSlideProps) => {
           alt="Harvard campus"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/60 via-transparent to-transparent" />
       </div>
     </TalkSlideContainer>
   );

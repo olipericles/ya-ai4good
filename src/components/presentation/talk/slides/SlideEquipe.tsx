@@ -32,7 +32,7 @@ const SlideEquipe = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
 
   return (
-    <TalkSlideContainer className="bg-background flex flex-col pt-14 pb-14 px-20 relative overflow-hidden">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex flex-col pt-14 pb-14 px-20 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[500px] bg-secondary/6 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="z-10 flex flex-col h-full">

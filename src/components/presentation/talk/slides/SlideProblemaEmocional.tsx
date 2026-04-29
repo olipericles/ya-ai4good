@@ -6,7 +6,7 @@ const SlideProblemaEmocional = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
 
   return (
-    <TalkSlideContainer className="bg-background flex relative overflow-hidden">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex relative overflow-hidden">
       {/* Left */}
       <div className="w-[52%] h-full flex flex-col justify-center pl-24 pr-16 z-10">
         <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] mb-6 flex items-center gap-3">
@@ -37,7 +37,7 @@ const SlideProblemaEmocional = ({ isActive }: TalkSlideProps) => {
           alt="Mulher negra, Salvador"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/20 to-transparent" />
       </div>
     </TalkSlideContainer>
   );

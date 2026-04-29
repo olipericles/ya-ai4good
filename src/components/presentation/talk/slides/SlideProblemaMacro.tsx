@@ -12,7 +12,7 @@ const SlideProblemaMacro = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
 
   return (
-    <TalkSlideContainer className="bg-background flex flex-col pt-16 pb-14 px-24 relative overflow-hidden">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex flex-col pt-16 pb-14 px-24 relative overflow-hidden">
       <div className="absolute right-[-60px] top-1/2 -translate-y-1/2 pointer-events-none select-none">
         <span className="text-[38vw] font-black text-white/[0.025] leading-none">11M</span>
       </div>

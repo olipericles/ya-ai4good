@@ -14,7 +14,7 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
     : "Péricles Oliveira da Silva — Apresentação Interna — Rede Bahia 2026";
 
   return (
-    <TalkSlideContainer className="bg-background flex flex-col items-center justify-center relative overflow-hidden">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex flex-col items-center justify-center relative overflow-hidden">
       {/* Massive background text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
         <span className="text-[28vw] font-black tracking-tighter uppercase text-white/[0.025] whitespace-nowrap">

@@ -11,7 +11,7 @@ const SlideAI4Good = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
 
   return (
-    <TalkSlideContainer className="bg-background flex flex-col px-24 pt-16 pb-16 relative overflow-hidden">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex flex-col px-24 pt-16 pb-16 relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
         <span className="text-[50vw] font-black text-white/[0.025] leading-none">3</span>
       </div>

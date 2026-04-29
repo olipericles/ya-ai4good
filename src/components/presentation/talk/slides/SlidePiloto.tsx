@@ -18,7 +18,7 @@ const SlidePiloto = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
 
   return (
-    <TalkSlideContainer className="bg-background flex relative overflow-hidden">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex relative overflow-hidden">
       <div className="absolute bottom-0 left-1/4 w-[700px] h-[400px] bg-primary/6 blur-[120px] rounded-full pointer-events-none" />
 
       {/* Left 50% */}

@@ -22,11 +22,11 @@ const SlideQuemSouEu = ({ isActive, variant }: TalkSlideProps) => {
   const blocks = variant === "baia" ? blocksBaia : blocksTrind;
 
   return (
-    <TalkSlideContainer className="bg-background flex">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex">
       {/* Left — full height photo */}
       <div className="w-[38%] h-full relative overflow-hidden">
         <img src={periclesPhoto} alt="Péricles Oliveira da Silva" className="w-full h-full object-cover object-top" />
-        <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-r from-transparent to-background" />
+        <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-r from-transparent to-[#0A0A0A]" />
         <div className="absolute bottom-12 left-10">
           <p className="font-display text-[22px] font-black text-white">Péricles Oliveira da Silva</p>
           <p className="font-display text-[16px] text-foreground/50 mt-1">Salvador, Bahia</p>

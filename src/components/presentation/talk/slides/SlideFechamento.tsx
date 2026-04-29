@@ -21,7 +21,7 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
   if (!isActive) return null;
 
   return (
-    <TalkSlideContainer className="bg-background flex">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex">
       {/* Background motif */}
       <svg className="absolute inset-0 w-full h-full opacity-[0.10] pointer-events-none" viewBox="0 0 1920 1080" fill="none">
         <path d="M100 900 Q500 300 900 500 Q1300 700 1800 200" stroke="url(#motifClose)" strokeWidth="2" fill="none" />

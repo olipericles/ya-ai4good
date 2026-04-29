@@ -19,7 +19,7 @@ const SlideVisao = ({ isActive, variant }: TalkSlideProps) => {
   const isBaia = variant === "baia";
 
   return (
-    <TalkSlideContainer className="bg-background flex relative overflow-hidden">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex relative overflow-hidden">
       {/* Glow */}
       <div className="absolute bottom-0 right-0 w-[700px] h-[500px] bg-secondary/8 blur-[140px] rounded-full pointer-events-none" />
 

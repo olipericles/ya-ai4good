@@ -10,7 +10,7 @@ const SlideDemo = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
 
   return (
-    <TalkSlideContainer className="bg-background flex items-center px-16 gap-16 relative overflow-hidden">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex items-center px-16 gap-16 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-primary/6 blur-[120px] rounded-full pointer-events-none" />
 
       {/* Phones */}

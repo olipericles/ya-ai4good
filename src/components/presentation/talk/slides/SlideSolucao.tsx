@@ -25,7 +25,7 @@ const SlideSolucao = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
 
   return (
-    <TalkSlideContainer className="bg-background flex flex-col pt-14 pb-14 px-24 relative overflow-hidden">
+    <TalkSlideContainer className="bg-[#0A0A0A] flex flex-col pt-14 pb-14 px-24 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-secondary/8 blur-[140px] rounded-full pointer-events-none" />
       <svg className="absolute inset-0 w-full h-full opacity-[0.07] pointer-events-none" viewBox="0 0 1920 1080" fill="none">
         <path d="M200 800 Q600 300 1000 500 Q1400 700 1700 200" stroke="url(#solG)" strokeWidth="2" fill="none"/>
