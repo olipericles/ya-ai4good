@@ -1,6 +1,8 @@
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
+import trindaiLogo from "@/assets/logos/logo-trindai.svg";
+import redebahiaLogo from "@/assets/logos/logo-redebahia.png";
 
 const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
   if (!isActive) return null;
@@ -44,9 +46,7 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
         <p className="text-[12px] text-[#999] font-talk-body">{subtitle}</p>
         <div className="flex items-center gap-3">
           {variant === "trindai" && (
-            <div className="h-[40px] w-[100px] rounded-lg border border-dashed border-[#666] flex items-center justify-center">
-              <span className="text-[9px] text-[#888] font-mono">logo_trindai</span>
-            </div>
+            <img src={trindaiLogo} alt="Trind AI" className="h-[32px] object-contain" />
           )}
           {variant === "baia" && (
             <>
@@ -59,9 +59,7 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
             </>
           )}
           {variant === "rba" && (
-            <div className="h-[40px] w-[120px] rounded-lg border border-dashed border-[#666] flex items-center justify-center">
-              <span className="text-[9px] text-[#888] font-mono">logo_redebahia</span>
-            </div>
+            <img src={redebahiaLogo} alt="Rede Bahia" className="h-[36px] object-contain" />
           )}
         </div>
       </div>

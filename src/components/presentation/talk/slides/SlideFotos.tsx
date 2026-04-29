@@ -1,6 +1,8 @@
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
-import ImagePlaceholder from "../ImagePlaceholder";
+import palcoPhoto from "@/assets/images/boston-palco.jpeg";
+import placaPhoto from "@/assets/images/boston-harvard-placa.jpeg";
+import tuorPhoto from "@/assets/images/boston-tuor-harvard.jpeg";
 
 const SlideFotos = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
@@ -12,24 +14,24 @@ const SlideFotos = ({ isActive }: TalkSlideProps) => {
       <div className="flex-1 flex gap-5 pb-14">
         {/* Main photo - 60% */}
         <div className="w-[60%] h-full">
-          <ImagePlaceholder
-            label="foto_harvard_palco.jpg"
-            caption="Apresentação no auditório — Brazil Conference"
-            className="w-full h-full"
+          <img
+            src={palcoPhoto}
+            alt="Apresentação no auditório — Brazil Conference at Harvard"
+            className="w-full h-full object-cover rounded-2xl"
           />
         </div>
 
         {/* Right stack - 38% */}
         <div className="w-[38%] flex flex-col gap-5 h-full">
-          <ImagePlaceholder
-            label="foto_mit_campus.jpg"
-            caption="MIT Campus, Cambridge"
-            className="w-full flex-1"
+          <img
+            src={placaPhoto}
+            alt="Luã e Péricles na Harvard Business School"
+            className="w-full flex-1 object-cover rounded-2xl"
           />
-          <ImagePlaceholder
-            label="foto_equipe_boston.jpg"
-            caption="Time Yá na Brazil Conference"
-            className="w-full flex-1"
+          <img
+            src={tuorPhoto}
+            alt="Tour no campus de Harvard"
+            className="w-full flex-1 object-cover rounded-2xl"
           />
         </div>
       </div>

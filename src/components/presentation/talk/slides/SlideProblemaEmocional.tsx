@@ -1,6 +1,6 @@
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
-import ImagePlaceholder from "../ImagePlaceholder";
+import contextPhoto from "@/assets/maes/aurea.jpeg";
 
 const SlideProblemaEmocional = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
@@ -25,10 +25,10 @@ const SlideProblemaEmocional = ({ isActive }: TalkSlideProps) => {
 
       {/* Right - 45% */}
       <div className="w-[45%] h-full p-10 flex items-center">
-        <ImagePlaceholder
-          label="foto_vila_matos.jpg"
-          caption="Cena urbana periférica de Salvador"
-          className="w-full h-full"
+        <img
+          src={contextPhoto}
+          alt="Mulher negra, Salvador"
+          className="w-full h-full object-cover rounded-xl"
         />
       </div>
     </TalkSlideContainer>

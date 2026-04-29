@@ -1,25 +1,27 @@
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
-import ImagePlaceholder from "../ImagePlaceholder";
+import periclesPhoto from "@/assets/team/equipe-pericles.png";
+import luaPhoto from "@/assets/team/equipe-lua.png";
+import adrielePhoto from "@/assets/team/equipe-adriele.png";
 
 const team = [
   {
     name: "Péricles Oliveira",
     role: "Estratégia de IA & Negócio",
     bio: "Eng. Eletricista, Mestrando UFBA, Analista na Rede Bahia",
-    photo: "foto_pericles_card.jpg",
+    photo: periclesPhoto,
   },
   {
     name: "Luã Mota",
     role: "Arquitetura de Software",
     bio: "Dev na Rede Bahia, Co-arquiteto técnico da Yá",
-    photo: "foto_lua_card.jpg",
+    photo: luaPhoto,
   },
   {
     name: "Adriele Ornellas",
     role: "UX Research & Comunidades",
     bio: "Pesquisadora, porta-voz oficial, ponte com as mães",
-    photo: "foto_adriele_card.jpg",
+    photo: adrielePhoto,
   },
 ];
 
@@ -33,9 +35,10 @@ const SlideEquipe = ({ isActive }: TalkSlideProps) => {
       <div className="flex gap-8">
         {team.map((t, i) => (
           <div key={i} className="bg-white/[0.06] rounded-2xl p-7 w-[320px] flex flex-col items-center text-center">
-            <ImagePlaceholder
-              label={t.photo}
-              className="w-[100px] h-[100px] rounded-full mb-4"
+            <img
+              src={t.photo}
+              alt={t.name}
+              className="w-[100px] h-[100px] rounded-full mb-4 object-cover object-top"
             />
             <h3 className="font-talk-headline text-[18px] text-white">{t.name}</h3>
             <p className="font-talk-body text-[14px] text-[#F5A623] mt-1">{t.role}</p>

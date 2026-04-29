@@ -1,6 +1,6 @@
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
-import ImagePlaceholder from "../ImagePlaceholder";
+import periclesPhoto from "@/assets/team/pericles-oficial.jpg";
 
 const iconStyle = "w-9 h-9 rounded-full flex items-center justify-center text-white text-[16px] shrink-0";
 const gradientBg = "bg-gradient-to-br from-[#E8673C] via-[#C040A0] to-[#8C30B0]";
@@ -27,10 +27,10 @@ const SlideQuemSouEu = ({ isActive, variant }: TalkSlideProps) => {
     <TalkSlideContainer className="bg-[#F5F5F0] flex">
       {/* Left column - 40% */}
       <div className="w-[40%] h-full flex flex-col items-center justify-center px-12">
-        <ImagePlaceholder
-          label="foto_pericles_perfil.jpg"
-          caption="Foto profissional de Péricles"
-          className="w-[280px] h-[350px]"
+        <img
+          src={periclesPhoto}
+          alt="Péricles Oliveira da Silva"
+          className="w-[280px] h-[350px] object-cover object-top rounded-xl"
         />
         <h3 className="font-talk-headline text-[20px] text-[#1A1A2E] mt-6">Péricles Oliveira da Silva</h3>
         <p className="font-talk-body text-[14px] text-[#666]">Salvador, Bahia</p>

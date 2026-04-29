@@ -1,6 +1,6 @@
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
-import ImagePlaceholder from "../ImagePlaceholder";
+import equipePhoto from "@/assets/team/boston-lua-pericles.jpeg";
 
 const insightsTrind = [
   { quote: "A tecnologia que não entende contexto cultural não serve.", sub: "Design empático > design funcional para populações vulneráveis" },
@@ -48,10 +48,10 @@ const SlideAprendizados = ({ isActive, variant }: TalkSlideProps) => {
 
         {/* Photo bottom-right */}
         <div className="absolute bottom-12 right-12">
-          <ImagePlaceholder
-            label="foto_engenharia_popular.jpg"
-            caption={photoCaption}
-            className="w-[200px] h-[150px]"
+          <img
+            src={equipePhoto}
+            alt={photoCaption}
+            className="w-[200px] h-[150px] object-cover rounded-xl opacity-80"
           />
         </div>
       </div>

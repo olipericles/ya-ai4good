@@ -1,12 +1,11 @@
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
-import ImagePlaceholder from "../ImagePlaceholder";
 
 const techBlocks = [
-  { label: "WhatsApp Business API", file: "icon_whatsapp.svg" },
-  { label: "N8N — Orquestração", file: "icon_n8n.svg" },
-  { label: "Gemini API — Motor Cognitivo", file: "icon_gemini.svg" },
-  { label: "PostgreSQL — Dados", file: "icon_postgresql.svg" },
+  { label: "WhatsApp Business API", sub: "Canal de entrada", color: "#25D366", icon: "💬" },
+  { label: "N8N", sub: "Orquestração", color: "#E05B2D", icon: "⚙️" },
+  { label: "Gemini API", sub: "Motor Cognitivo", color: "#4285F4", icon: "🧠" },
+  { label: "PostgreSQL", sub: "Persistência", color: "#336791", icon: "🗄️" },
 ];
 
 const academicCards = [
@@ -21,22 +20,26 @@ const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
 
   return (
     <TalkSlideContainer className="bg-[#1A1A2E] flex flex-col px-16 pt-16">
-      <h2 className="font-talk-headline text-[isBaia ? 30 : 32]px text-white mb-1" style={{ fontSize: isBaia ? 30 : 32 }}>
+      <h2 className="font-talk-headline text-white mb-1" style={{ fontSize: isBaia ? 30 : 32 }}>
         {isBaia ? "Da arquitetura técnica ao framework teórico" : "Como funciona por dentro"}
       </h2>
       <p className="font-talk-body text-[16px] text-[#F5A623] mb-8">
         {isBaia ? "Como a Yá funciona — e como a pesquisa a investiga" : "Stack técnico da Yá"}
       </p>
 
-      {/* Tech flow diagram */}
+      {/* Tech flow */}
       <div className="flex items-center justify-center gap-4 mb-8">
         {techBlocks.map((b, i) => (
           <div key={i} className="flex items-center gap-4">
-            <div className="bg-white/[0.08] rounded-xl p-5 flex flex-col items-center w-[220px]">
-              <div className="w-[48px] h-[48px] rounded-lg border border-dashed border-[#666] flex items-center justify-center mb-3">
-                <span className="text-[8px] text-[#888] font-mono">{b.file}</span>
+            <div className="bg-white/[0.08] rounded-xl p-5 flex flex-col items-center w-[220px] border border-white/[0.06]">
+              <div
+                className="w-[52px] h-[52px] rounded-xl flex items-center justify-center text-[26px] mb-3"
+                style={{ background: `${b.color}22`, border: `1px solid ${b.color}55` }}
+              >
+                {b.icon}
               </div>
-              <p className="font-talk-body text-[14px] text-white text-center">{b.label}</p>
+              <p className="font-talk-headline text-[15px] text-white text-center">{b.label}</p>
+              <p className="font-talk-body text-[12px] text-gray-400 mt-1 text-center">{b.sub}</p>
             </div>
             {i < techBlocks.length - 1 && (
               <span className="text-[24px] bg-gradient-to-r from-[#E8673C] to-[#C040A0] bg-clip-text text-transparent font-bold">→</span>
@@ -47,7 +50,6 @@ const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
 
       {isBaia ? (
         <>
-          {/* Academic layer separator */}
           <div className="relative flex items-center my-4">
             <div className="flex-1 h-[1px] bg-gradient-to-r from-[#E8673C] via-[#C040A0] to-[#8C30B0]" />
             <span className="px-4 text-[12px] text-[#F5A623] uppercase tracking-[2px] font-talk-body font-bold">
@@ -67,16 +69,23 @@ const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
           </div>
         </>
       ) : (
-        /* Trind: N8N screenshot */
-        <div className="flex-1 mt-4 relative">
-          <ImagePlaceholder
-            label="print_n8n_workflow.png"
-            caption="Screenshot do workflow real do N8N da Yá"
-            className="w-full h-full opacity-85"
-          />
-          <p className="absolute bottom-4 right-4 text-[12px] text-[#666] font-talk-body">
-            Workflow real no N8N
-          </p>
+        /* Trind: fluxo completo detalhado */
+        <div className="flex gap-4 mt-2">
+          {[
+            { step: "1", label: "Mãe envia", desc: "Áudio, texto ou foto do comprovante via WhatsApp", icon: "📱" },
+            { step: "2", label: "N8N orquestra", desc: "Detecta tipo, roteaia para STT ou OCR se necessário", icon: "⚙️" },
+            { step: "3", label: "Gemini interpreta", desc: "Categoriza, extrai valor, gera resposta empática", icon: "🧠" },
+            { step: "4", label: "Yá responde", desc: "Confirmação + contexto do mês de volta no WhatsApp", icon: "💬" },
+          ].map((f, i) => (
+            <div key={i} className="bg-white/[0.06] rounded-xl p-5 flex-1 border border-white/[0.04]">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[24px]">{f.icon}</span>
+                <span className="font-talk-headline text-[13px] text-[#F5A623] uppercase tracking-wider">Passo {f.step}</span>
+              </div>
+              <h4 className="font-talk-headline text-[17px] text-white mb-1">{f.label}</h4>
+              <p className="font-talk-body text-[13px] text-gray-400 leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
         </div>
       )}
     </TalkSlideContainer>
