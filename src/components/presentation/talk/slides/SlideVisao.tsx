@@ -2,10 +2,10 @@ import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
 
 const roadmap = [
-  { label: "Visibilidade Financeira Individual", desc: "A mãe enxerga pra onde vai o dinheiro", status: "MVP atual", color: "#E8673C", pct: "50%" },
+  { label: "Visibilidade Financeira Individual", desc: "A mãe enxerga pra onde vai o dinheiro", status: "MVP atual", color: "#E8673C", pct: "55%" },
   { label: "Inteligência Comportamental", desc: "Padrões, alertas preditivos, comparações", status: "Próxima fase", color: "#D050A8", pct: "65%" },
-  { label: "Grafo Comportamental", desc: "Recomendações entre pares com perfis similares", status: "Futuro", color: "#A038B8", pct: "80%" },
-  { label: "Rede de Suporte Emergente", desc: "Comunidade autônoma de apoio mútuo", status: "Futuro", color: "#8C30B0", pct: "100%" },
+  { label: "Grafo Comportamental", desc: "Recomendações entre pares com perfis similares", status: "Futuro", color: "#A038B8", pct: "72%" },
+  { label: "Rede de Suporte Emergente", desc: "Comunidade autônoma de apoio mútuo", status: "Futuro", color: "#8C30B0", pct: "76%" },
 ];
 
 const academic = [
@@ -24,7 +24,7 @@ const SlideVisao = ({ isActive, variant }: TalkSlideProps) => {
       <div className="absolute bottom-0 right-0 w-[700px] h-[500px] bg-secondary/8 blur-[140px] rounded-full pointer-events-none" />
 
       {/* Left */}
-      <div className={`${isBaia ? "w-[55%]" : "w-full"} h-full flex flex-col pt-16 pb-16 pl-20 pr-16 z-10 justify-between`}>
+      <div className={`${isBaia ? "w-[55%]" : "w-full"} h-full flex flex-col pt-16 pb-16 pl-20 pr-16 z-10 justify-center gap-16`}>
         <div>
           <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] mb-4 flex items-center gap-3">
             <span className="w-8 h-px bg-primary inline-block" />
@@ -51,9 +51,7 @@ const SlideVisao = ({ isActive, variant }: TalkSlideProps) => {
           ))}
         </div>
 
-        <div>
-          <p className="font-display text-[18px] text-foreground/40">Expansão para América Latina</p>
-        </div>
+
       </div>
 
       {/* Right — baia only */}

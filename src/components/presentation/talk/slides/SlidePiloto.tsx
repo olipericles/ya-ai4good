@@ -11,7 +11,7 @@ const funnel = [
 const insights = [
   "Mães não registram gastos espontaneamente — onboarding proativo é essencial",
   "Linguagem de amiga reduz ansiedade financeira em vez de provocar",
-  "Foto do comprovante foi a forma mais natural de registro",
+  "Foto do comprovante e áudio se destacaram como formas de registro — texto foi o menos usado",
 ];
 
 const SlidePiloto = ({ isActive }: TalkSlideProps) => {
@@ -60,7 +60,7 @@ const SlidePiloto = ({ isActive }: TalkSlideProps) => {
               className="bg-card/40 backdrop-blur-md border border-border/50 rounded-2xl p-8 relative overflow-hidden flex-1 flex items-center"
             >
               <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl" style={{ background: "linear-gradient(180deg, #E8673C, #8C30B0)" }} />
-              <p className="font-display text-[20px] text-foreground/80 leading-relaxed pl-3">{t}</p>
+              <p className="font-display text-[24px] text-foreground/80 leading-relaxed pl-3">{t}</p>
             </div>
           ))}
         </div>
