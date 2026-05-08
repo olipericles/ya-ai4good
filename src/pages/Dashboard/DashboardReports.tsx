@@ -47,7 +47,7 @@ const CHART_PALETTE = [
 
 const COMO_CONHECEU_LABELS: Record<string, string> = {
     g1: "G1",
-    conexao_bahia: "Conexão Bahia",
+    a_tarde: "A Tarde",
     brazil_conference: "Brazil Conference",
     instagram: "Instagram",
     linkedin: "LinkedIn",

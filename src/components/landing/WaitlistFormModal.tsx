@@ -22,7 +22,7 @@ const ESTADOS_BR = [
 
 const COMO_CONHECEU_OPTIONS = [
     { value: "g1", labelPt: "Matéria do G1", labelEn: "G1 Article" },
-    { value: "conexao_bahia", labelPt: "Programa Conexão Bahia", labelEn: "Programa Conexão Bahia" },
+    { value: "a_tarde", labelPt: "Jornal A Tarde", labelEn: "A Tarde Newspaper" },
     { value: "brazil_conference", labelPt: "Brazil Conference", labelEn: "Brazil Conference" },
     { value: "instagram", labelPt: "Instagram", labelEn: "Instagram" },
     { value: "linkedin", labelPt: "LinkedIn", labelEn: "LinkedIn" },
