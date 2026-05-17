@@ -99,12 +99,12 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
         )}
         {variant === "baia" && (
           <>
-            <div className="bg-white rounded-lg px-3 py-1.5 flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)]">
-              <img src={baiaLogo} alt="BaIA 2026" className="h-[24px] object-contain" />
+            <div className="bg-white rounded-lg px-2 py-1 flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)]">
+              <img src={baiaLogo} alt="BaIA 2026" className="h-[38px] object-contain" />
             </div>
             <div className="w-px h-6 bg-white/20" />
-            <div className="bg-white rounded-lg px-3 py-1.5 flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)]">
-              <img src={liaoLogo} alt="LIAO UFBA" className="h-[22px] object-contain" />
+            <div className="bg-white rounded-lg px-2 py-1 flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)]">
+              <img src={liaoLogo} alt="LIAO UFBA" className="h-[38px] object-contain" />
             </div>
           </>
         )}
