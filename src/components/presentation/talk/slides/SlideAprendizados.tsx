@@ -1,6 +1,6 @@
 import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
-import bostonPhoto from "@/assets/team/boston-lua-pericles.jpeg";
+import harvardPhoto from "@/assets/team/harvard-aprendizados.jpg";
 
 const insights = [
   {
@@ -22,7 +22,7 @@ const SlideAprendizados = ({ isActive }: TalkSlideProps) => {
 
   return (
     <TalkSlideContainer className="bg-[#0A0A0A] flex relative overflow-hidden">
-      <div className="w-[65%] h-full flex flex-col pt-16 pb-16 pl-20 pr-16 z-10">
+      <div className="w-1/2 h-full flex flex-col pt-16 pb-16 pl-20 pr-10 z-10">
         <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] mb-4 flex items-center gap-3">
           <span className="w-8 h-px bg-primary inline-block" />
           Aprendizados
@@ -42,15 +42,13 @@ const SlideAprendizados = ({ isActive }: TalkSlideProps) => {
         </div>
       </div>
 
-      <div className="w-[35%] h-full relative overflow-hidden">
+      <div className="w-1/2 h-full relative flex items-center justify-center bg-[#0A0A0A]">
         <img
-          src={bostonPhoto}
-          alt="Luã e Péricles em Boston"
-          className="w-full h-full object-cover object-center"
+          src={harvardPhoto}
+          alt="Harvard — aprendizados"
+          className="w-full h-full object-contain"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-transparent to-transparent" style={{ backgroundSize: "30% 100%", backgroundRepeat: "no-repeat" }} />
-        <div className="absolute top-0 bottom-0 left-0 w-[18%] bg-gradient-to-r from-[#0A0A0A] to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/50 via-transparent to-transparent" />
+        <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-[#0A0A0A] to-transparent pointer-events-none" />
       </div>
     </TalkSlideContainer>
   );
