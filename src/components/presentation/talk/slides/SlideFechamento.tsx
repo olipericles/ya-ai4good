@@ -47,19 +47,7 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
           <p className="font-display text-[36px] text-accent font-semibold">Vamos conversar?</p>
         </div>
 
-        <div className="flex gap-16 mb-6">
-          <div className="flex flex-col gap-4">
-            <p className="font-display text-[13px] font-bold text-primary uppercase tracking-[3px]">Péricles</p>
-            {contactsPericles.map(({ Icon, text }, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <Icon size={22} className="text-primary/60 shrink-0" />
-                <span className="font-display text-[20px] text-foreground/70">{text}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="w-px bg-white/10 self-stretch" />
-
+        <div className="flex mb-6">
           <div className="flex flex-col gap-4">
             <p className="font-display text-[13px] font-bold text-primary uppercase tracking-[3px]">Yá</p>
             {contactsYa.map(({ Icon, text }, i) => (
@@ -99,12 +87,12 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
         )}
         {variant === "baia" && (
           <>
-            <div className="bg-white rounded-lg px-2 py-1 flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)]">
-              <img src={baiaLogo} alt="BaIA 2026" className="h-[38px] object-contain" />
+            <div className="bg-white rounded-lg flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)] overflow-hidden">
+              <img src={baiaLogo} alt="BaIA 2026" className="h-[60px] object-contain" />
             </div>
             <div className="w-px h-6 bg-white/20" />
-            <div className="bg-white rounded-lg px-2 py-1 flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)]">
-              <img src={liaoLogo} alt="LIAO UFBA" className="h-[38px] object-contain" />
+            <div className="bg-white rounded-lg flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)] overflow-hidden">
+              <img src={liaoLogo} alt="LIAO UFBA" className="h-[60px] object-contain" />
             </div>
           </>
         )}

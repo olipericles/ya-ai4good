@@ -64,12 +64,12 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
           )}
           {variant === "baia" && (
             <div className="flex items-center gap-3">
-              <div className="bg-white rounded-lg px-2 py-1 flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)]">
-                <img src={baiaLogo} alt="BaIA 2026" className="h-[44px] object-contain" />
+              <div className="bg-white rounded-lg flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)] overflow-hidden">
+                <img src={baiaLogo} alt="BaIA 2026" className="h-[80px] object-contain" />
               </div>
               <div className="w-px h-5 bg-white/15" />
-              <div className="bg-white rounded-lg px-2 py-1 flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)]">
-                <img src={liaoLogo} alt="LIAO UFBA" className="h-[44px] object-contain" />
+              <div className="bg-white rounded-lg flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)] overflow-hidden">
+                <img src={liaoLogo} alt="LIAO UFBA" className="h-[80px] object-contain" />
               </div>
             </div>
           )}
