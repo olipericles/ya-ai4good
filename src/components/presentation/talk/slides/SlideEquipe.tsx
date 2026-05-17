@@ -7,12 +7,12 @@ import equipeAdriele from "@/assets/team/equipe-adriele.png";
 
 const team = [
   {
-    name: "Péricles Oliveira",
-    role: "Estratégia e Produto",
-    handle: "/in/olipericles",
-    photo: equipePericles,
+    name: "Adriele Ornellas",
+    role: "UX Research & Comunidades",
+    handle: "/in/adrieleornellas",
+    photo: equipeAdriele,
     color: "#E8673C",
-    linkedin: "https://www.linkedin.com/in/olipericles/",
+    linkedin: "https://www.linkedin.com/in/adrieleornellas/",
   },
   {
     name: "Luã Mota",
@@ -23,12 +23,12 @@ const team = [
     linkedin: "https://www.linkedin.com/in/luaamota/",
   },
   {
-    name: "Adriele Ornellas",
-    role: "UX Research & Comunidades",
-    handle: "/in/adrieleornellas",
-    photo: equipeAdriele,
+    name: "Péricles Oliveira",
+    role: "Estratégia e Produto",
+    handle: "/in/olipericles",
+    photo: equipePericles,
     color: "#8C30B0",
-    linkedin: "https://www.linkedin.com/in/adrieleornellas/",
+    linkedin: "https://www.linkedin.com/in/olipericles/",
   },
 ];
 
