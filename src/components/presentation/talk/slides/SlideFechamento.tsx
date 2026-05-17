@@ -6,7 +6,7 @@ import trindaiLogo from "@/assets/logos/logo-trindai.svg";
 import redebahiaLogo from "@/assets/logos/logo-redebahia.png";
 import baiaLogo from "@/assets/logos/logo-baia.svg";
 import liaoLogo from "@/assets/logos/logo-liao.svg";
-import qrCode from "@/assets/images/ya-links-qrcode.png";
+import qrCode from "@/assets/images/ya-experimentar-qrcode.png";
 
 const contactsPericles = [
   { Icon: Mail, text: "s.olipericles@gmail.com" },
@@ -67,14 +67,14 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
           <img src={qrCode} alt="QR Code" className="w-[340px] h-[340px] object-contain" />
         </div>
         <a
-          href="https://qr.rede.ba/mT02"
+          href="https://qr.rede.ba/EBeY"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-display text-[20px] font-bold text-white border border-primary/40 bg-primary/10 hover:bg-primary/20 hover:border-primary/70 transition-all duration-200"
           style={{ boxShadow: "0 0 24px rgba(232,103,60,0.15)" }}
         >
           <Globe size={22} className="text-primary" />
-          Conheça mais
+          Experimente a Yá!
         </a>
       </div>
 
