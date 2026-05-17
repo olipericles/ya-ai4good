@@ -63,10 +63,14 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
             <img src={trindaiLogo} alt="Trind AI" className="h-[30px] object-contain opacity-70" />
           )}
           {variant === "baia" && (
-            <div className="flex items-center gap-4">
-              <img src={baiaLogo} alt="BaIA 2026" className="h-[34px] object-contain opacity-80" />
+            <div className="flex items-center gap-3">
+              <div className="bg-white rounded-lg px-3 py-1.5 flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)]">
+                <img src={baiaLogo} alt="BaIA 2026" className="h-[28px] object-contain" />
+              </div>
               <div className="w-px h-5 bg-white/15" />
-              <img src={liaoLogo} alt="LIAO UFBA" className="h-[30px] object-contain opacity-75" />
+              <div className="bg-white rounded-lg px-3 py-1.5 flex items-center justify-center border border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.12)]">
+                <img src={liaoLogo} alt="LIAO UFBA" className="h-[26px] object-contain" />
+              </div>
             </div>
           )}
           {variant === "rba" && (
