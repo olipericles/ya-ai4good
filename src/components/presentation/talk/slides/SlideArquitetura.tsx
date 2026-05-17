@@ -14,12 +14,6 @@ const techBlocks = [
   { label: "PostgreSQL", sub: "Persistência", color: "#336791" },
 ];
 
-const academicCards = [
-  { title: "SMA-c", desc: "Sistema Multi-Agente Cognitivo — deliberação habilitada por LLMs" },
-  { title: "Almere Model", desc: "Framework de robótica social aplicado a IA conversacional" },
-  { title: "Design Science Research", desc: "Construir o artefato E gerar conhecimento científico" },
-];
-
 const flows = [
   { key: "orquestrador", label: "Agente Orquestrador", color: "#E8673C", img: n8nOrquestrador },
   { key: "cadastro",     label: "Agente de Cadastro",  color: "#25D366", img: n8nCadastro },
@@ -27,9 +21,8 @@ const flows = [
   { key: "relatorio",    label: "Agente de Relatórios", color: "#C040A0", img: n8nRelatorio },
 ];
 
-const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
+const SlideArquitetura = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
-  const isBaia = variant === "baia";
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeFlow, setActiveFlow] = useState(0);
@@ -85,10 +78,10 @@ const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
         <div className="shrink-0">
           <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] mb-3 flex items-center gap-3">
             <span className="w-8 h-px bg-primary inline-block" />
-            {isBaia ? "Arquitetura + Pesquisa" : "Stack técnico"}
+            Stack técnico
           </p>
           <h2 className="font-display text-[56px] font-black text-white leading-tight mb-8">
-            {isBaia ? "Da arquitetura técnica ao framework teórico" : "Como funciona por dentro"}
+            Como funciona por dentro
           </h2>
 
           {/* Tech flow */}
@@ -118,104 +111,83 @@ const SlideArquitetura = ({ isActive, variant }: TalkSlideProps) => {
           </div>
         </div>
 
-        {isBaia ? (
-          <div className="flex flex-col flex-1 gap-5">
-            <div className="flex items-center gap-4">
-              <div className="flex-1 h-px bg-gradient-to-r from-primary/40 via-secondary/40 to-primary/40" />
-              <span className="font-display text-[12px] text-accent uppercase tracking-[3px] font-bold shrink-0">Camada Acadêmica</span>
-              <div className="flex-1 h-px bg-gradient-to-r from-primary/40 via-secondary/40 to-primary/40" />
-            </div>
-            <div className="grid grid-cols-3 gap-5 flex-1">
-              {academicCards.map((c, i) => (
-                <div key={i} className="bg-card/40 backdrop-blur-sm border border-border/50 rounded-2xl p-7 flex flex-col justify-center">
-                  <p className="font-display text-[22px] font-black text-white mb-3">{c.title}</p>
-                  <p className="font-display text-[15px] text-foreground/60 leading-relaxed">{c.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="flex-1 flex flex-col gap-3 min-h-0">
-            {/* Flow selector buttons */}
-            <div className="flex gap-3 shrink-0">
-              {flows.map((f, i) => (
-                <button
-                  key={f.key}
-                  onClick={() => selectFlow(i)}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl border text-[14px] font-bold font-display transition-all duration-200"
-                  style={{
-                    backgroundColor: activeFlow === i ? `${f.color}22` : "transparent",
-                    borderColor: activeFlow === i ? f.color : "rgba(255,255,255,0.1)",
-                    color: activeFlow === i ? f.color : "rgba(255,255,255,0.4)",
-                  }}
-                >
-                  <span
-                    className="w-2 h-2 rounded-full shrink-0"
-                    style={{ backgroundColor: activeFlow === i ? f.color : "rgba(255,255,255,0.2)" }}
-                  />
-                  {f.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Zoomable image */}
-            <div
-              ref={containerRef}
-              className="flex-1 relative rounded-2xl overflow-hidden border bg-[#111] select-none min-h-0"
-              style={{
-                borderColor: `${current.color}44`,
-                cursor: zoom > 1 ? "grab" : "zoom-in",
-              }}
-              onMouseDown={onMouseDown}
-              onMouseMove={onMouseMove}
-              onMouseUp={onMouseUp}
-              onMouseLeave={onMouseUp}
-            >
-              <img
-                key={current.key}
-                src={current.img}
-                alt={current.label}
-                draggable={false}
+        <div className="flex-1 flex flex-col gap-3 min-h-0">
+          <div className="flex gap-3 shrink-0">
+            {flows.map((f, i) => (
+              <button
+                key={f.key}
+                onClick={() => selectFlow(i)}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl border text-[14px] font-bold font-display transition-all duration-200"
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
-                  transformOrigin: "center center",
-                  transition: dragging.current ? "none" : "transform 0.15s ease",
-                  userSelect: "none",
+                  backgroundColor: activeFlow === i ? `${f.color}22` : "transparent",
+                  borderColor: activeFlow === i ? f.color : "rgba(255,255,255,0.1)",
+                  color: activeFlow === i ? f.color : "rgba(255,255,255,0.4)",
                 }}
-              />
+              >
+                <span
+                  className="w-2 h-2 rounded-full shrink-0"
+                  style={{ backgroundColor: activeFlow === i ? f.color : "rgba(255,255,255,0.2)" }}
+                />
+                {f.label}
+              </button>
+            ))}
+          </div>
 
-              {/* Zoom controls */}
-              <div className="absolute top-3 right-4 flex items-center gap-2 z-10">
-                <button
-                  onClick={() => setZoom(z => Math.min(8, z + 0.5))}
-                  className="w-8 h-8 rounded-lg bg-[#0A0A0A]/80 border border-border/40 flex items-center justify-center text-white/70 hover:text-white hover:border-primary/50 transition-colors"
-                >
-                  <ZoomIn size={14} />
-                </button>
-                <span className="font-mono text-[11px] text-white/40 min-w-[36px] text-center">{Math.round(zoom * 100)}%</span>
-                <button
-                  onClick={() => setZoom(z => Math.max(1, z - 0.5))}
-                  className="w-8 h-8 rounded-lg bg-[#0A0A0A]/80 border border-border/40 flex items-center justify-center text-white/70 hover:text-white hover:border-primary/50 transition-colors"
-                >
-                  <ZoomOut size={14} />
-                </button>
-                <button
-                  onClick={reset}
-                  className="w-8 h-8 rounded-lg bg-[#0A0A0A]/80 border border-border/40 flex items-center justify-center text-white/70 hover:text-white hover:border-primary/50 transition-colors"
-                >
-                  <RotateCcw size={13} />
-                </button>
-              </div>
+          <div
+            ref={containerRef}
+            className="flex-1 relative rounded-2xl overflow-hidden border bg-[#111] select-none min-h-0"
+            style={{
+              borderColor: `${current.color}44`,
+              cursor: zoom > 1 ? "grab" : "zoom-in",
+            }}
+            onMouseDown={onMouseDown}
+            onMouseMove={onMouseMove}
+            onMouseUp={onMouseUp}
+            onMouseLeave={onMouseUp}
+          >
+            <img
+              key={current.key}
+              src={current.img}
+              alt={current.label}
+              draggable={false}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
+                transformOrigin: "center center",
+                transition: dragging.current ? "none" : "transform 0.15s ease",
+                userSelect: "none",
+              }}
+            />
 
-              <div className="absolute bottom-3 left-4 bg-[#0A0A0A]/80 backdrop-blur-sm rounded-lg px-3 py-1.5 border border-border/40 pointer-events-none">
-                <p className="font-display text-[11px] text-foreground/50">Scroll para zoom · Arraste para navegar</p>
-              </div>
+            <div className="absolute top-3 right-4 flex items-center gap-2 z-10">
+              <button
+                onClick={() => setZoom(z => Math.min(8, z + 0.5))}
+                className="w-8 h-8 rounded-lg bg-[#0A0A0A]/80 border border-border/40 flex items-center justify-center text-white/70 hover:text-white hover:border-primary/50 transition-colors"
+              >
+                <ZoomIn size={14} />
+              </button>
+              <span className="font-mono text-[11px] text-white/40 min-w-[36px] text-center">{Math.round(zoom * 100)}%</span>
+              <button
+                onClick={() => setZoom(z => Math.max(1, z - 0.5))}
+                className="w-8 h-8 rounded-lg bg-[#0A0A0A]/80 border border-border/40 flex items-center justify-center text-white/70 hover:text-white hover:border-primary/50 transition-colors"
+              >
+                <ZoomOut size={14} />
+              </button>
+              <button
+                onClick={reset}
+                className="w-8 h-8 rounded-lg bg-[#0A0A0A]/80 border border-border/40 flex items-center justify-center text-white/70 hover:text-white hover:border-primary/50 transition-colors"
+              >
+                <RotateCcw size={13} />
+              </button>
+            </div>
+
+            <div className="absolute bottom-3 left-4 bg-[#0A0A0A]/80 backdrop-blur-sm rounded-lg px-3 py-1.5 border border-border/40 pointer-events-none">
+              <p className="font-display text-[11px] text-foreground/50">Scroll para zoom · Arraste para navegar</p>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </TalkSlideContainer>
   );

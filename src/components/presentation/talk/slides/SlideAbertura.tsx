@@ -3,6 +3,8 @@ import TalkSlideContainer from "../TalkSlideContainer";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import trindaiLogo from "@/assets/logos/logo-trindai.svg";
 import redebahiaLogo from "@/assets/logos/logo-redebahia.png";
+import baiaLogo from "@/assets/logos/logo-baia.svg";
+import liaoLogo from "@/assets/logos/logo-liao.svg";
 
 const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
   if (!isActive) return null;
@@ -61,8 +63,10 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
             <img src={trindaiLogo} alt="Trind AI" className="h-[30px] object-contain opacity-70" />
           )}
           {variant === "baia" && (
-            <div className="h-[36px] w-[80px] rounded border border-dashed border-foreground/20 flex items-center justify-center">
-              <span className="text-[9px] text-foreground/30 font-mono">logo_baia</span>
+            <div className="flex items-center gap-4">
+              <img src={baiaLogo} alt="BaIA 2026" className="h-[34px] object-contain opacity-80" />
+              <div className="w-px h-5 bg-white/15" />
+              <img src={liaoLogo} alt="LIAO UFBA" className="h-[30px] object-contain opacity-75" />
             </div>
           )}
           {variant === "rba" && (

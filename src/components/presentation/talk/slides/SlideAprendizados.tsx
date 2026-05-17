@@ -2,7 +2,7 @@ import { TalkSlideProps } from "../types";
 import TalkSlideContainer from "../TalkSlideContainer";
 import bostonPhoto from "@/assets/team/boston-lua-pericles.jpeg";
 
-const insightsTrind = [
+const insights = [
   {
     quote: "A tecnologia que não entende contexto cultural não serve.",
     sub: "Design empático supera design funcional para populações vulneráveis",
@@ -17,35 +17,19 @@ const insightsTrind = [
   },
 ];
 
-const insightsBaia = [
-  {
-    quote: "Frameworks de robótica social funcionam para IA conversacional.",
-    sub: "O Almere Model captura ansiedade social e confiança percebida que métricas de UX tradicionais ignoram",
-  },
-  {
-    quote: "O agente não é um chatbot. É um sistema cognitivo.",
-    sub: "Deliberação via LLM permite adaptação contextual que regras fixas nunca alcançam para este público",
-  },
-  {
-    quote: "Construir e pesquisar ao mesmo tempo é Design Science Research na prática.",
-    sub: "O artefato (Yá) e o conhecimento (dissertação) se alimentam mutuamente",
-  },
-];
-
-const SlideAprendizados = ({ isActive, variant }: TalkSlideProps) => {
+const SlideAprendizados = ({ isActive }: TalkSlideProps) => {
   if (!isActive) return null;
-  const insights = variant === "baia" ? insightsBaia : insightsTrind;
-  const title = variant === "baia" ? "O que a pesquisa está revelando" : "O que Harvard e o piloto nos ensinaram";
 
   return (
     <TalkSlideContainer className="bg-[#0A0A0A] flex relative overflow-hidden">
-      {/* Left content — 65% */}
       <div className="w-[65%] h-full flex flex-col pt-16 pb-16 pl-20 pr-16 z-10">
         <p className="font-display text-[14px] font-bold text-primary uppercase tracking-[3px] mb-4 flex items-center gap-3">
           <span className="w-8 h-px bg-primary inline-block" />
           Aprendizados
         </p>
-        <h2 className="font-display text-[52px] font-black text-white leading-tight mb-10">{title}</h2>
+        <h2 className="font-display text-[52px] font-black text-white leading-tight mb-10">
+          O que Harvard e o piloto nos ensinaram
+        </h2>
 
         <div className="flex flex-col gap-8 flex-1 justify-center">
           {insights.map((ins, i) => (
@@ -58,7 +42,6 @@ const SlideAprendizados = ({ isActive, variant }: TalkSlideProps) => {
         </div>
       </div>
 
-      {/* Right — photo */}
       <div className="w-[35%] h-full relative overflow-hidden">
         <img
           src={bostonPhoto}

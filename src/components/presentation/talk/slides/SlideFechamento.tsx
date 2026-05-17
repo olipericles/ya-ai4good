@@ -4,6 +4,8 @@ import TalkSlideContainer from "../TalkSlideContainer";
 import yaLogo from "@/assets/logos/ya_logo_branco.svg";
 import trindaiLogo from "@/assets/logos/logo-trindai.svg";
 import redebahiaLogo from "@/assets/logos/logo-redebahia.png";
+import baiaLogo from "@/assets/logos/logo-baia.svg";
+import liaoLogo from "@/assets/logos/logo-liao.svg";
 import qrCode from "@/assets/images/ya-links-qrcode.png";
 
 const contactsPericles = [
@@ -96,12 +98,18 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
           <img src={trindaiLogo} alt="Trind AI" className="h-[26px] object-contain opacity-70" />
         )}
         {variant === "baia" && (
-          <div className="h-[26px] w-[60px] rounded border border-dashed border-white/20 flex items-center justify-center">
-            <span className="font-display text-[8px] text-foreground/30">logo_baia</span>
-          </div>
+          <>
+            <img src={baiaLogo} alt="BaIA 2026" className="h-[28px] object-contain opacity-75" />
+            <div className="w-px h-6 bg-white/20" />
+            <img src={liaoLogo} alt="LIAO UFBA" className="h-[26px] object-contain opacity-70" />
+          </>
         )}
-        <div className="w-px h-6 bg-white/20" />
-        <img src={redebahiaLogo} alt="Rede Bahia" className="h-[30px] object-contain opacity-70" />
+        {variant !== "baia" && (
+          <>
+            <div className="w-px h-6 bg-white/20" />
+            <img src={redebahiaLogo} alt="Rede Bahia" className="h-[30px] object-contain opacity-70" />
+          </>
+        )}
       </div>
     </TalkSlideContainer>
   );
