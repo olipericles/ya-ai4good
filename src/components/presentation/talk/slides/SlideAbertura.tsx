@@ -12,7 +12,7 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
   const subtitle = variant === "trindai"
     ? "Péricles Oliveira — TrindTalk — Abril 2026"
     : variant === "baia"
-    ? "Péricles Oliveira da Silva — BaIA 2026 — UFBA — Maio 2026"
+    ? "BaIA 2026 — UFBA — Maio 2026"
     : "Péricles Oliveira da Silva — Apresentação Interna — Rede Bahia 2026";
 
   return (
@@ -51,7 +51,7 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
         </h1>
 
         <p className="font-display text-[28px] font-semibold text-accent mt-8">
-          Da Vila Matos em Salvador para Harvard e MIT
+          Da periferia de Salvador para Harvard e MIT
         </p>
       </div>
 
