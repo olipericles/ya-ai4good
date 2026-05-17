@@ -50,7 +50,7 @@ const SlideAbertura = ({ isActive, variant }: TalkSlideProps) => {
           </span>
         </h1>
 
-        <p className="font-display text-[28px] font-semibold text-accent mt-8">
+        <p className="font-display text-[28px] font-semibold text-primary mt-8">
           Da periferia de Salvador para Harvard e MIT
         </p>
       </div>

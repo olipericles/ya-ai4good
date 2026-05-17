@@ -28,7 +28,7 @@ const SlideAI4Good = ({ isActive }: TalkSlideProps) => {
           <h1 className="font-display text-[64px] font-bold text-foreground/70 mt-4">
             Selecionados entre <span className="text-white font-black">188 projetos</span>
           </h1>
-          <p className="font-display text-[28px] text-accent mt-3">
+          <p className="font-display text-[28px] text-primary mt-3">
             AI4Good 2026 — Brazil Conference at Harvard and MIT
           </p>
         </div>
@@ -39,7 +39,7 @@ const SlideAI4Good = ({ isActive }: TalkSlideProps) => {
             3
           </span>
           <p className="font-display text-[40px] font-bold text-white -mt-6">projetos premiados</p>
-          <p className="font-display text-[24px] text-accent mt-3 font-semibold">
+          <p className="font-display text-[24px] text-primary mt-3 font-semibold">
             Único projeto do Nordeste do Brasil
           </p>
         </div>

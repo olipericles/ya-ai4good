@@ -27,7 +27,7 @@ const SlideProblemaMacro = ({ isActive }: TalkSlideProps) => {
               <h1 className="font-display text-[112px] font-black text-white leading-none tracking-tight">
                 11,3 milhões
               </h1>
-              <p className="font-display text-[36px] font-semibold text-accent mt-3">
+              <p className="font-display text-[36px] font-semibold text-primary mt-3">
                 de lares chefiados por mães solo no Brasil
               </p>
             </div>

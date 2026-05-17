@@ -53,7 +53,7 @@ const SlideSolucao = ({ isActive }: TalkSlideProps) => {
               <h1 className="font-display text-[56px] font-black text-white leading-none">
                 Yá — sua amiga financeira
               </h1>
-              <p className="font-display text-[22px] text-accent mt-2">
+              <p className="font-display text-[22px] text-primary mt-2">
                 Yá vem do Yorubá e significa "mãe"
               </p>
             </div>

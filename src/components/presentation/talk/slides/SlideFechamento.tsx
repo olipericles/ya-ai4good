@@ -44,7 +44,7 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
 
         <div>
           <h1 className="font-display text-[112px] font-black text-white leading-none mb-4">Obrigado.</h1>
-          <p className="font-display text-[36px] text-accent font-semibold">Vamos conversar?</p>
+          <p className="font-display text-[36px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#C040A0] to-secondary">Vamos conversar?</p>
         </div>
 
         <div className="flex mb-6">
@@ -62,7 +62,9 @@ const SlideFechamento = ({ isActive, variant }: TalkSlideProps) => {
 
       {/* Right — 45% */}
       <div className="w-[45%] h-full flex flex-col items-center justify-center pr-20 z-10 gap-7">
-        <p className="font-display text-[14px] font-bold text-foreground/40 uppercase tracking-[3px]">Escaneie para todos os links</p>
+        <span className="font-display text-[52px] font-black leading-none text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#C040A0] to-secondary">
+          Experimente a Yá!
+        </span>
         <div className="bg-white rounded-3xl p-5 shadow-2xl shadow-primary/10">
           <img src={qrCode} alt="QR Code" className="w-[340px] h-[340px] object-contain" />
         </div>
